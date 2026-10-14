@@ -1,0 +1,860 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DA User Guide</title>
+<meta name="description" content="How to use DA (Digital Archive) to file photos and scanned documents by date.">
+<style>
+:root { --bg:#ffffff; --fg:#1d2329; --muted:#5b6670; --line:#dde3e8; --accent:#1f6feb; --code:#f3f5f7;
+        --side:#f7f9fb; --head:#0f3d6e; --headfg:#ffffff; }
+@media (prefers-color-scheme: dark) {
+  :root { --bg:#14181c; --fg:#e4e8ec; --muted:#9aa5ae; --line:#2b333a; --accent:#6aa6ff; --code:#1d232a;
+          --side:#181d22; --head:#0b2b4d; --headfg:#ffffff; }
+}
+* { box-sizing: border-box; }
+html { scroll-padding-top: 72px; }
+body { margin:0; background:var(--bg); color:var(--fg); font: 17px/1.6 "Segoe UI", system-ui, sans-serif; }
+header { position:sticky; top:0; z-index:2; display:flex; flex-wrap:wrap; gap:8px 16px; align-items:center;
+         padding:10px 20px; background:var(--head); color:var(--headfg); }
+header .title { font-weight:700; font-size:20px; margin-right:auto; }
+header .version { opacity:.8; font-size:14px; }
+header a.button { color:var(--headfg); text-decoration:none; border:1px solid rgba(255,255,255,.5);
+                  border-radius:6px; padding:5px 12px; font-size:15px; white-space:nowrap; }
+header a.button.primary { background:#2ea043; border-color:#2ea043; }
+.layout { display:flex; max-width:1240px; margin:0 auto; }
+nav { flex:0 0 270px; position:sticky; top:56px; align-self:flex-start; max-height:calc(100vh - 56px);
+      overflow:auto; padding:18px 14px 40px 20px; background:var(--side); border-right:1px solid var(--line);
+      font-size:15px; }
+nav ul { list-style:none; margin:0; padding-left:0; }
+nav ul ul { padding-left:14px; margin-bottom:6px; }
+nav li { margin:3px 0; }
+nav a { color:var(--fg); text-decoration:none; }
+nav a:hover { color:var(--accent); }
+nav > ul > li > a { font-weight:600; }
+main { flex:1; min-width:0; padding:8px 32px 80px; }
+h1 { font-size:34px; margin:18px 0 8px; }
+h2 { font-size:26px; margin:44px 0 10px; padding-top:10px; border-top:2px solid var(--line); }
+h3 { font-size:21px; margin:32px 0 8px; }
+h4 { font-size:18px; margin:24px 0 6px; }
+a { color:var(--accent); }
+code { background:var(--code); border-radius:4px; padding:1px 5px; font: 15px Consolas, "Cascadia Mono", monospace; }
+pre { background:var(--code); border:1px solid var(--line); border-radius:8px; padding:12px 14px; overflow:auto; }
+pre code { padding:0; background:none; font-size:14px; line-height:1.45; }
+table { border-collapse:collapse; width:100%; margin:12px 0; font-size:16px; display:block; overflow-x:auto; }
+th, td { border:1px solid var(--line); padding:7px 10px; text-align:left; vertical-align:top; }
+th { background:var(--side); }
+.print-only { display:none; color:var(--muted); font-size:14px; }
+footer { color:var(--muted); font-size:14px; margin-top:60px; border-top:1px solid var(--line); padding-top:12px; }
+@media (max-width: 860px) {
+  .layout { display:block; }
+  nav { position:static; max-height:none; border-right:0; border-bottom:1px solid var(--line); }
+  main { padding:8px 16px 60px; }
+  body { font-size:16px; }
+}
+@media print {
+  header, nav { display:none; }
+  .layout { display:block; }
+  main { padding:0; }
+  body { font-size:11pt; background:#fff; color:#000; }
+  h2, h3 { break-after:avoid; }
+  h2 { border-top:0; margin-top:28px; }
+  .print-only { display:block; }
+  pre, table, tr { break-inside:avoid; }
+  a { color:#000; text-decoration:none; }
+}
+</style>
+</head>
+<body>
+<header>
+  <span class="title">DA User Guide</span>
+  <span class="version">DA v2026.10.12</span>
+  <a class="button primary" href="https://github.com/devmukmuk/DA/releases/latest/download/DA.exe">Download DA</a>
+  <a class="button" href="DA-User-Guide.pdf">PDF version</a>
+</header>
+<div class="layout">
+<nav aria-label="Contents"><ul><li><a href="#words-youll-see">Words you'll see</a></li><li><a href="#getting-started">Getting started</a><ul><li><a href="#1-get-da">1. Get DA</a></li><li><a href="#2-install-it-once-per-computer">2. Install it (once per computer)</a></li><li><a href="#3-create-your-first-archive-once-per-archive">3. Create your first archive (once per archive)</a></li><li><a href="#4-open-it">4. Open it</a></li></ul></li><li><a href="#the-menu">The menu</a></li><li><a href="#common-workflows">Common workflows</a><ul><li><a href="#add-photos-from-a-phone-camera-or-memory-card">Add photos from a phone, camera or memory card</a></li><li><a href="#add-scanned-documents">Add scanned documents</a></li><li><a href="#da-run-file-new-photos-and-documents">da run: file new photos and documents</a></li><li><a href="#da-report-whats-in-the-archive-and-what-needs-you">da report: what's in the archive and what needs you</a></li><li><a href="#fix-what-needs-review">Fix what needs review</a></li><li><a href="#duplicates-put-back-or-delete">Duplicates: put back or delete</a></li><li><a href="#da-split-move-files-to-the-right-decades-archive">da split: move files to the right decade's archive</a></li><li><a href="#da-find-search-the-archive">da find: search the archive</a></li><li><a href="#da-tag-label-photos-and-documents">da tag: label photos and documents</a></li><li><a href="#switch-between-archives">Switch between archives</a></li><li><a href="#update-da">Update DA</a></li></ul></li><li><a href="#less-common-workflows">Less common workflows</a><ul><li><a href="#iphone-live-photos-mov-files">iPhone Live Photos (.MOV files)</a></li><li><a href="#iphone-heic-photos">iPhone HEIC photos</a></li><li><a href="#edit-an-archives-settings-da-archiveyaml">Edit an archive's settings (da-archive.yaml)</a></li><li><a href="#share-an-album-with-google-photos">Share an album with Google Photos</a></li><li><a href="#process-a-folder-from-somewhere-else">Process a folder from somewhere else</a></li><li><a href="#start-a-new-archive-for-another-person-or-decade">Start a new archive for another person or decade</a></li><li><a href="#use-da-on-another-computer">Use DA on another computer</a></li><li><a href="#back-up-an-archive">Back up an archive</a></li><li><a href="#check-whats-already-filed">Check what's already filed</a></li><li><a href="#do-the-runs-steps-one-at-a-time">Do the run's steps one at a time</a></li><li><a href="#coming-soon">Coming soon</a></li></ul></li><li><a href="#if-something-goes-wrong">If something goes wrong</a></li><li><a href="#reference">Reference</a><ul><li><a href="#how-da-works-out-a-date">How DA works out a date</a></li><li><a href="#photo-or-document">Photo or document?</a></li><li><a href="#which-archive-a-command-works-on">Which archive a command works on</a></li><li><a href="#commands">Commands</a></li></ul></li></ul></nav>
+<main>
+<p class="print-only">DA v2026.10.12 &middot; da.gamenightbymike.com &middot; 2026-10-14</p>
+<h1 id="da-user-guide">DA User Guide</h1>
+<p><strong>DA</strong> (short for <em>Digital Archive</em>) puts your photos and scanned documents in order. You copy
+them into one folder, and DA:</p>
+<ul>
+<li>sets exact duplicates aside, so you keep one copy of each photo,</li>
+<li>works out when each photo was taken, and renames it by that date
+  (<code>photo_19980704_101500_ab12.jpg</code> was taken on 4 July 1998 at 10:15:00),</li>
+<li>files it in a folder for its year and month (<code>photos\organized\1998\1998-07\</code>).</li>
+</ul>
+<p><strong>DA never deletes anything.</strong> It asks before it moves anything, and it keeps a record of
+every change, so every step can be checked and most can be undone.</p>
+<p>DA runs on Windows 10 and 11.</p>
+<h2 id="contents">Contents</h2>
+<ul>
+<li><a href="#words-youll-see">Words you'll see</a></li>
+<li><a href="#getting-started">Getting started</a></li>
+<li><a href="#the-menu">The menu</a></li>
+<li><a href="#common-workflows">Common workflows</a></li>
+<li><a href="#less-common-workflows">Less common workflows</a></li>
+<li><a href="#if-something-goes-wrong">If something goes wrong</a></li>
+<li><a href="#reference">Reference</a></li>
+</ul>
+<h2 id="words-youll-see">Words you'll see</h2>
+<table>
+<thead>
+<tr>
+<th>Word</th>
+<th>What it means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Archive</strong></td>
+<td>A folder DA looks after, for example <code>D:\jane-archive-199x</code>. You can have as many as you like, for example one for each person and each decade.</td>
+</tr>
+<tr>
+<td><strong>Intake</strong></td>
+<td>The folder inside an archive where you put new photos and documents: <code>intake\</code>. DA takes them from here.</td>
+</tr>
+<tr>
+<td><strong>Organized</strong></td>
+<td>Where DA files them: <code>photos\organized\</code> and <code>documents\organized\</code>, one folder per year and month.</td>
+</tr>
+<tr>
+<td><strong>Duplicate</strong></td>
+<td>An exact copy of a photo, byte for byte. DA keeps one and moves the others to <code>_duplicates-holding\</code>.</td>
+</tr>
+<tr>
+<td><strong>Sidecar</strong></td>
+<td>A small note DA keeps next to each file, named like the file plus <code>.meta.json</code>. It holds the date DA found, a fingerprint of the file, and any tags. Leave sidecars where they are.</td>
+</tr>
+<tr>
+<td><strong>Terminal</strong></td>
+<td>A window where you type commands. Windows calls it <em>PowerShell</em> or <em>Terminal</em>. DA's menu runs in one.</td>
+</tr>
+<tr>
+<td><strong>Command</strong></td>
+<td>Something you type in the terminal, like <code>da status</code>, then press <strong>Enter</strong>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="getting-started">Getting started</h2>
+<h3 id="1-get-da">1. Get DA</h3>
+<ul>
+<li><strong>Download</strong> <a href="https://github.com/devmukmuk/DA/releases/latest/download/DA.exe">DA.exe</a> (the
+  latest version), or get the file from whoever set DA up for you (for example on a USB stick).</li>
+<li>Your browser may ask whether to keep the file. Choose <strong>Keep</strong>.</li>
+</ul>
+<h3 id="2-install-it-once-per-computer">2. Install it (once per computer)</h3>
+<ol>
+<li>Open <strong>File Explorer</strong> and go to the folder with <code>DA.exe</code> (usually <strong>Downloads</strong>).</li>
+<li>Click in the <strong>address bar</strong> at the top of the window, type <code>powershell</code>, and press <strong>Enter</strong>.
+    A terminal window opens in that folder.</li>
+<li>Type this and press <strong>Enter</strong>:
+    <code>powershell
+    .\DA.exe install</code></li>
+<li>If Windows shows <em>"Windows protected your PC"</em>, click <strong>More info</strong>, then <strong>Run anyway</strong>.</li>
+<li><strong>Close the terminal window.</strong> From now on, <code>da</code> works in any new terminal window.</li>
+</ol>
+<p>DA is now at <code>C:\Scripts\DA\DA.exe</code>. To update DA later, download the new <code>DA.exe</code> and do these
+steps again; your archives aren't touched.</p>
+<h3 id="3-create-your-first-archive-once-per-archive">3. Create your first archive (once per archive)</h3>
+<ol>
+<li>Open a new terminal: press the <strong>Windows key</strong>, type <code>terminal</code>, press <strong>Enter</strong>.</li>
+<li>Type this (with your own drive, name and years) and press <strong>Enter</strong>:
+    <code>powershell
+    da setup D:\jane-archive-199x --years 1990-1999</code></li>
+</ol>
+<p>What happens depends on the folder:</p>
+<ul>
+<li><strong>A new folder:</strong> DA creates it, with everything inside it that an archive needs.</li>
+<li><strong>A folder you've already been copying photos into:</strong> DA lists what's there and asks
+  <em>"Make it an archive and move these N items into intake\?"</em>. Type <strong>y</strong>. Everything moves into
+  <code>intake\</code> with its names unchanged, and the move is written down so it can be undone.</li>
+<li><strong>A folder that's already an archive:</strong> DA asks <em>"Use the existing archive?"</em>, keeps its
+  settings, and adds anything missing.</li>
+</ul>
+<p><code>--years 1990-1999</code> is optional. With it, a photo taken in another decade (say 2005) is left in
+<code>intake\</code> and listed for you, so you can move it to the right archive (see
+<a href="#da-split-move-files-to-the-right-decades-archive">da split</a>).</p>
+<p>Your archive now looks like this:</p>
+<pre><code>D:\jane-archive-199x\
+  Open DA.cmd           &lt;- double-click this to open DA in this archive
+  da-archive.yaml       &lt;- this archive's settings
+  intake\
+    photos\             &lt;- put photos here (any subfolders, any names)
+    docs\               &lt;- documents: PDF, Word, Excel
+    scans\              &lt;- what your scanner saves: PDFs and scanned pictures
+  photos\organized\     &lt;- DA files photos here, by year and month
+  documents\organized\  &lt;- and documents here
+  output\               &lt;- DA's records and reports
+</code></pre>
+<h3 id="4-open-it">4. Open it</h3>
+<p><strong>Double-click <code>Open DA.cmd</code></strong> in the archive folder. DA's menu opens. That's all you need from
+here on.</p>
+<h2 id="the-menu">The menu</h2>
+<pre><code> DA - jane-archive-199x   D:\jane-archive-199x   years: 1990-1999
+ intake: 1,204 files waiting    organized: 5,873 photos, 12 documents    last run: 2026-10-13 21:31
+
+  1 Process intake    2 Status    3 What needs review    4 Undo last set-aside
+  5 Refresh index     6 Switch archive    7 New archive    U User guide    H Help    Q Quit
+</code></pre>
+<p>Type the number or letter, then press <strong>Enter</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1 Process intake</strong></td>
+<td>Files what's in <code>intake\</code>. See <a href="#da-run-file-new-photos-and-documents">da run</a>.</td>
+</tr>
+<tr>
+<td><strong>2 Status</strong></td>
+<td>This archive at a glance: what's waiting, what's filed, the last run.</td>
+</tr>
+<tr>
+<td><strong>3 What needs review</strong></td>
+<td>What the last run left for you to look at, with the reasons.</td>
+</tr>
+<tr>
+<td><strong>4 Undo last set-aside</strong></td>
+<td>Puts the duplicates from the last run back where they were.</td>
+</tr>
+<tr>
+<td><strong>5 Refresh index</strong></td>
+<td>Updates DA's list of files, for example after you moved files yourself.</td>
+</tr>
+<tr>
+<td><strong>6 Switch archive</strong></td>
+<td>Open another archive on this computer.</td>
+</tr>
+<tr>
+<td><strong>7 New archive</strong></td>
+<td>Create a new archive, or turn a folder into one.</td>
+</tr>
+<tr>
+<td><strong>U User guide</strong></td>
+<td>Opens this guide in your web browser.</td>
+</tr>
+<tr>
+<td><strong>H Help</strong></td>
+<td>A short reminder of how DA works.</td>
+</tr>
+<tr>
+<td><strong>Q Quit</strong></td>
+<td>Leaves the menu. The window stays open for typing commands.</td>
+</tr>
+</tbody>
+</table>
+<p>Typing <code>da</code> on its own in any terminal opens the menu too. Outside an archive, it lists the
+archives on this computer for you to pick from.</p>
+<h2 id="common-workflows">Common workflows</h2>
+<table>
+<thead>
+<tr>
+<th>Workflow</th>
+<th>What it's for</th>
+<th>Menu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#add-photos-from-a-phone-camera-or-memory-card">Add photos from a phone or camera</a></td>
+<td>Get photos into intake</td>
+<td>(File Explorer)</td>
+</tr>
+<tr>
+<td><a href="#add-scanned-documents">Add scanned documents</a></td>
+<td>Get paper into the archive</td>
+<td>(your scanner)</td>
+</tr>
+<tr>
+<td><a href="#da-run-file-new-photos-and-documents">da run</a></td>
+<td>File what's in intake</td>
+<td><strong>1</strong></td>
+</tr>
+<tr>
+<td><a href="#da-report-whats-in-the-archive-and-what-needs-you">da report</a></td>
+<td>See what's there and what needs you</td>
+<td><strong>2</strong>, <strong>3</strong></td>
+</tr>
+<tr>
+<td><a href="#fix-what-needs-review">Fix what needs review</a></td>
+<td>Help DA with photos it couldn't date</td>
+<td><strong>3</strong></td>
+</tr>
+<tr>
+<td><a href="#duplicates-put-back-or-delete">Duplicates: put back or delete</a></td>
+<td>Undo a set-aside, or free the space</td>
+<td><strong>4</strong></td>
+</tr>
+<tr>
+<td><a href="#da-split-move-files-to-the-right-decades-archive">da split</a></td>
+<td>Move photos from another decade to the right archive</td>
+<td>steps below</td>
+</tr>
+<tr>
+<td><a href="#da-find-search-the-archive">da find</a></td>
+<td>Search by month, name or tag</td>
+<td>steps below</td>
+</tr>
+<tr>
+<td><a href="#da-tag-label-photos-and-documents">da tag</a></td>
+<td>Label files (<code>beach</code>, <code>grandma</code>, <code>taxes</code>)</td>
+<td>steps below</td>
+</tr>
+<tr>
+<td><a href="#switch-between-archives">Switch between archives</a></td>
+<td>Work in another archive</td>
+<td><strong>6</strong></td>
+</tr>
+<tr>
+<td><a href="#update-da">Update DA</a></td>
+<td>Get the newest version</td>
+<td>steps below</td>
+</tr>
+</tbody>
+</table>
+<p><code>da run</code> is a command you can type. The other "da ..." names stand for a few commands or menu
+items used together.</p>
+<h3 id="add-photos-from-a-phone-camera-or-memory-card">Add photos from a phone, camera or memory card</h3>
+<ol>
+<li><strong>Open the archive's intake folder</strong> in File Explorer: <code>D:\jane-archive-199x\intake\photos\</code>.</li>
+<li><strong>Make a folder for this batch,</strong> named so you'll recognise it, e.g. <code>phone-2024-summer</code>.</li>
+<li><strong>Copy the photos into it:</strong><ul>
+<li><strong>iPhone:</strong> connect it with its cable and unlock it. Tap <strong>Trust</strong> if it asks. In File
+  Explorer, open <strong>This PC &gt; Apple iPhone &gt; Internal Storage &gt; DCIM</strong> and copy the folders you
+  want. (See <a href="#iphone-heic-photos">iPhone HEIC photos</a> about the photo format.)</li>
+<li><strong>Android phone:</strong> connect it, choose <strong>File transfer</strong> on the phone, then open
+  <strong>This PC &gt; (your phone) &gt; Internal storage &gt; DCIM &gt; Camera</strong>.</li>
+<li><strong>Camera or memory card:</strong> put the card in the computer (or connect the camera), then open
+  its drive and the <strong>DCIM</strong> folder.</li>
+</ul>
+</li>
+<li><strong>Copy, don't move,</strong> until DA has filed them and you've checked the result.</li>
+<li>Then <a href="#da-run-file-new-photos-and-documents">process them</a>.</li>
+</ol>
+<p>Any folder names and file names are fine. DA works out the dates itself.</p>
+<h3 id="add-scanned-documents">Add scanned documents</h3>
+<ol>
+<li><strong>Set your scanner to save into</strong> <code>D:\jane-archive-199x\intake\scans\</code> (or copy the files
+    there afterwards).</li>
+<li><strong>PDF is best</strong> for documents. Pictures (<code>.jpg</code>, <code>.png</code>, <code>.tif</code>) saved in <code>scans\</code> are treated
+    as documents too, not as photos.</li>
+<li>Word and Excel files and other PDFs go in <code>intake\docs\</code>.</li>
+<li>Then <a href="#da-run-file-new-photos-and-documents">process them</a>. Documents are filed in
+    <code>documents\organized\</code> by the date inside them (when they were scanned or created).</li>
+</ol>
+<h3 id="da-run-file-new-photos-and-documents">da run: file new photos and documents</h3>
+<p><strong>Menu: 1 Process intake.</strong> DA lists the folders in <code>intake\</code> and how many files each holds:</p>
+<pre><code>intake\photos\
+ #  folder                         files
+ 0  process all of intake\photos\  5,081
+ 1  phone-2024-summer\             1,204
+ 2  scans-from-grandma\              877
+  number: open   0: process   text: filter   .. up   Enter: back
+</code></pre>
+<ul>
+<li>Type a <strong>number</strong> to open that folder. A folder with no folders inside it is processed straight away.</li>
+<li>Type <strong>0</strong> to process the folder you're in, everything in it.</li>
+<li>Type some <strong>text</strong> (e.g. <code>grandma</code>) to show only the folders whose names contain it.</li>
+<li>Type <strong>..</strong> to go up a level, or just press <strong>Enter</strong> to go back.</li>
+</ul>
+<p>DA then works through seven steps. Before each step that changes anything, it asks; type <strong>y</strong>
+to go ahead, or <strong>n</strong> to stop there (nothing after that point changes).</p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>What happens</th>
+<th>Changes files?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 Index</td>
+<td>Lists everything in the archive</td>
+<td>No</td>
+</tr>
+<tr>
+<td>2 Hash</td>
+<td>Fingerprints the photos that could be copies</td>
+<td>No</td>
+</tr>
+<tr>
+<td>3 Duplicates</td>
+<td>Moves exact copies to <code>_duplicates-holding\</code></td>
+<td><strong>Yes, if you say y</strong></td>
+</tr>
+<tr>
+<td>4 Preview</td>
+<td>Works out each photo's date, new name and folder</td>
+<td>Only writes the sidecar notes</td>
+</tr>
+<tr>
+<td>5 Check</td>
+<td>Shows how many will be filed, by year, and warns about anything odd</td>
+<td>No</td>
+</tr>
+<tr>
+<td>6 File</td>
+<td>Renames and moves the photos into <code>organized</code>, then checks each one arrived intact</td>
+<td><strong>Yes, if you say y</strong></td>
+</tr>
+<tr>
+<td>7 Refresh</td>
+<td>Updates the index</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p><strong>How long it takes:</strong> a few minutes for a few hundred photos; roughly an hour for every 50,000.
+It's fine to leave it running.</p>
+<p><strong>What stays in intake, on purpose:</strong>
+- <strong>Photos with no date anywhere</strong> (none inside the file, none in its name). See
+  <a href="#fix-what-needs-review">Fix what needs review</a>.
+- <strong>Photos from another decade</strong> (with <code>years</code> set). See
+  <a href="#da-split-move-files-to-the-right-decades-archive">da split</a>.
+- <strong>Videos</strong> (<code>.mov</code>, <code>.mp4</code>): DA doesn't file videos yet.
+- <strong>Camera raw files</strong> (<code>.CR2</code>, <code>.NEF</code>, ...) without a matching JPG. With a matching JPG, the raw
+  file is filed right next to it.</p>
+<p><strong>Running it again is always safe.</strong> Files already filed aren't touched, and new ones are
+processed the same way.</p>
+<p><strong>From a terminal</strong> (handy for leaving a big run going overnight):</p>
+<pre><code class="language-powershell">da run                                  # all of intake
+da run intake\photos\phone-2024-summer  # one folder
+da run --yes                            # don't ask; go straight through
+da run E:\old-backup                    # a folder outside the archive: DA offers to copy it in first
+</code></pre>
+<h3 id="da-report-whats-in-the-archive-and-what-needs-you">da report: what's in the archive and what needs you</h3>
+<p><strong>Menu: 2 Status</strong> and <strong>3 What needs review.</strong></p>
+<ol>
+<li><strong>2 Status:</strong> the archive's name and years, what's waiting in intake, what's filed, the last run.</li>
+<li>
+<p><strong>3 What needs review:</strong> what the last run left behind, grouped by reason, with examples:</p>
+<ul>
+<li><em>No date (in the file or its name)</em></li>
+<li><em>Taken outside this archive's years</em></li>
+<li><em>File name and camera date disagree</em> (DA used the date in the name)</li>
+<li><em>Duplicate inside the folder</em> (left for you to decide)</li>
+</ul>
+<p>The full list is saved as <code>review.csv</code> in that run's folder (DA shows where). It opens in Excel.
+3. <strong>More detail, from a terminal:</strong>
+<code>powershell
+da db stats        # how many photos and documents, by year
+da intake status   # how far each intake folder has got
+da validate photos\organized   # check what's already filed: names, folders, notes (nothing moves)</code>
+4. <strong>Every run's record</strong> is kept in <code>output\runs\&lt;date-time&gt;-run\</code>: a summary, the duplicate
+list, and the preview and filing reports, file by file.</p>
+</li>
+</ol>
+<p>If you added or moved files yourself, choose <strong>5 Refresh index</strong> first so the numbers are current.</p>
+<h3 id="fix-what-needs-review">Fix what needs review</h3>
+<p>Choose <strong>3 What needs review</strong>, then for each reason:</p>
+<ul>
+<li>
+<p><strong>No date:</strong> DA couldn't find when the photo was taken. If you know (even roughly), put the
+    date at the start of its name and run again:</p>
+<ul>
+<li><code>1998-07-04 Beach.jpg</code> (day known)</li>
+<li><code>1998-07 Beach.jpg</code> (month known)</li>
+</ul>
+<p>A year on its own (<code>1998 Beach.jpg</code>) isn't enough to file it, so it stays.
+- <strong>Outside this archive's years:</strong> it belongs in another archive. See
+  <a href="#da-split-move-files-to-the-right-decades-archive">da split</a>.
+- <strong>Name and camera date disagree:</strong> usually the camera's clock was wrong. DA used the date in the
+  name. If the name is the wrong one, rename the file in <code>organized</code> yourself.
+- <strong>Duplicate inside the folder:</strong> two identical files. DA leaves both; delete the one you don't want.</p>
+</li>
+</ul>
+<h3 id="duplicates-put-back-or-delete">Duplicates: put back or delete</h3>
+<p>Exact copies are moved to <code>_duplicates-holding\&lt;date&gt;\</code> in the archive, in the same folders they
+came from.</p>
+<ul>
+<li><strong>Put them back:</strong> <strong>4 Undo last set-aside</strong>. Or, for an earlier run, from a terminal:
+  <code>da intake undo "&lt;run folder&gt;\set-aside-moved.csv"</code>.</li>
+<li><strong>Delete them</strong> to free the space, once you're happy with the result: delete the
+  <code>_duplicates-holding</code> folder. Every file in it is an exact copy of one that was kept.</li>
+</ul>
+<h3 id="da-split-move-files-to-the-right-decades-archive">da split: move files to the right decade's archive</h3>
+<p>With <code>years</code> set (e.g. <code>1990-1999</code>), a photo taken in another decade stays in intake, listed as
+<em>"Taken outside this archive's years"</em>. To move those to their own archive:</p>
+<ol>
+<li><strong>List them:</strong> <strong>3 What needs review</strong>. Note where it saved <code>review.csv</code>.</li>
+<li><strong>Create (or pick) the other archive:</strong>
+    <code>da setup D:\jane-archive-200x --years 2000-2009</code>.</li>
+<li><strong>Move them there, with their sidecars.</strong> In a terminal, with your own paths (this moves the
+    2000s ones; the <code>detail</code> column starts with the date, e.g. <em>Taken 2005-07-04, ...</em>):
+    <code>powershell
+    $review = "D:\jane-archive-199x\output\runs\&lt;date-time&gt;-run\review.csv"
+    $to = "D:\jane-archive-200x\intake\photos\from-199x"
+    New-Item -ItemType Directory -Force $to | Out-Null
+    Import-Csv $review | Where-Object { $_.detail -like "Taken 200*" } | ForEach-Object {
+        Move-Item -LiteralPath $_.file -Destination $to
+        if (Test-Path -LiteralPath "$($_.file).meta.json") { Move-Item -LiteralPath "$($_.file).meta.json" -Destination $to }
+    }</code>
+    If two files have the same name, the second gives an error and stays where it was; move it by
+    hand. A raw file (<code>.CR2</code>) beside a moved JPG isn't on the list; move it too.</li>
+<li><strong>File them there:</strong> open the other archive (its <code>Open DA.cmd</code>, or <strong>6 Switch archive</strong>) and
+    choose <strong>1 Process intake</strong>, folder <code>from-199x</code>.</li>
+</ol>
+<h3 id="da-find-search-the-archive">da find: search the archive</h3>
+<p>DA keeps an index of every file: its name, folder, date and tags. Choose <strong>5 Refresh index</strong>
+first if anything changed, then in a terminal in the archive:</p>
+<ul>
+<li><strong>Everything from one month</strong> (by the folder it's filed in):
+    <code>powershell
+    da db query "SELECT file_name, folder FROM files WHERE area='photos' AND folder LIKE '2010\2010-07%'"</code></li>
+<li><strong>By name:</strong> <code>... WHERE file_name LIKE '%0704%'</code>. For the name a file had before DA renamed it:
+  <code>... WHERE source_path LIKE '%Beach%'</code>.</li>
+<li><strong>Documents:</strong> use <code>area='documents'</code> instead of <code>area='photos'</code>.</li>
+<li><strong>By tag</strong> (see <a href="#da-tag-label-photos-and-documents">da tag</a>):
+  <code>da findit tags photos\organized -r beach -v</code>. Add <code>-r grandma</code> for both tags, <code>-x beach</code> to
+  leave a tag out, or <code>--date-prefix 2010-07</code> for one month.</li>
+</ul>
+<p>Or just browse: every photo is in <code>photos\organized\&lt;year&gt;\&lt;year&gt;-&lt;month&gt;\</code>, in date order.</p>
+<h3 id="da-tag-label-photos-and-documents">da tag: label photos and documents</h3>
+<p>There's no tag command yet, so for now a tag is added by editing the file's sidecar:</p>
+<ol>
+<li><strong>Open the sidecar</strong> next to the photo, e.g. <code>photo_19980704_101500_ab12.jpg.meta.json</code>, with
+    <strong>Notepad</strong> (right-click &gt; <strong>Open with</strong> &gt; <strong>Notepad</strong>).</li>
+<li><strong>Find the <code>"photoit"</code> part</strong> (for a document, <code>"scanit"</code>) and its <code>"tags": []</code> line. Put your
+    tags inside the brackets, in quotes, with commas between them:
+    <code>json
+    "tags": ["beach", "grandma"],</code>
+    Change nothing else, and save.</li>
+<li><strong>Choose 5 Refresh index</strong>, so <a href="#da-find-search-the-archive">da find</a> can see the new tags.</li>
+</ol>
+<h3 id="switch-between-archives">Switch between archives</h3>
+<ul>
+<li><strong>6 Switch archive</strong> in the menu lists every archive on this computer. Type its number.</li>
+<li>Or double-click that archive's <code>Open DA.cmd</code>.</li>
+<li>Or in a terminal: <code>da archives</code> lists them, and <code>da archives --open 2</code> opens number 2.</li>
+</ul>
+<h3 id="update-da">Update DA</h3>
+<p>Download the newest <a href="https://github.com/devmukmuk/DA/releases/latest/download/DA.exe">DA.exe</a> and
+install it the same way as the first time (<a href="#2-install-it-once-per-computer">Getting started</a>).
+Close any open DA windows first. Your archives aren't touched. To see which version you have:
+<code>da version</code>.</p>
+<h2 id="less-common-workflows">Less common workflows</h2>
+<table>
+<thead>
+<tr>
+<th>Workflow</th>
+<th>What it's for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#iphone-live-photos-mov-files">iPhone Live Photos (.MOV files)</a></td>
+<td>The short videos that come with iPhone photos</td>
+</tr>
+<tr>
+<td><a href="#iphone-heic-photos">iPhone HEIC photos</a></td>
+<td>The iPhone's photo format</td>
+</tr>
+<tr>
+<td><a href="#edit-an-archives-settings-da-archiveyaml">Edit an archive's settings</a></td>
+<td>Change its name, years or intake folders</td>
+</tr>
+<tr>
+<td><a href="#share-an-album-with-google-photos">Share an album with Google Photos</a></td>
+<td>Let family see some photos online</td>
+</tr>
+<tr>
+<td><a href="#process-a-folder-from-somewhere-else">Process a folder from somewhere else</a></td>
+<td>A USB stick, an old backup, another drive</td>
+</tr>
+<tr>
+<td><a href="#start-a-new-archive-for-another-person-or-decade">Start a new archive for another person or decade</a></td>
+<td>One archive per person per decade</td>
+</tr>
+<tr>
+<td><a href="#use-da-on-another-computer">Use DA on another computer</a></td>
+<td>Take an archive on a USB drive to another PC</td>
+</tr>
+<tr>
+<td><a href="#back-up-an-archive">Back up an archive</a></td>
+<td>Keep a second copy safe</td>
+</tr>
+<tr>
+<td><a href="#check-whats-already-filed">Check what's already filed</a></td>
+<td>A check-up of <code>organized</code></td>
+</tr>
+<tr>
+<td><a href="#do-the-runs-steps-one-at-a-time">Do the run's steps one at a time</a></td>
+<td>For a careful look between each step</td>
+</tr>
+<tr>
+<td><a href="#coming-soon">Coming soon</a></td>
+<td>What DA will do next</td>
+</tr>
+</tbody>
+</table>
+<h3 id="iphone-live-photos-mov-files">iPhone Live Photos (.MOV files)</h3>
+<p>An iPhone <em>Live Photo</em> is two files with the same name: the photo (<code>IMG_1234.HEIC</code> or <code>.JPG</code>) and
+a 2-3 second video (<code>IMG_1234.MOV</code>).</p>
+<ul>
+<li><strong>What DA does today:</strong> it files the photo and leaves the <code>.MOV</code> in intake, because DA doesn't
+  file videos yet. Nothing is lost; the <code>.MOV</code> just stays where it was.</li>
+<li><strong>To see how many are waiting:</strong> <strong>2 Status</strong>, or in a terminal:
+  <code>da db query "SELECT COUNT(*) AS movies FROM files WHERE area='intake' AND extension='.mov'"</code>.</li>
+<li><strong>Don't want them?</strong> On the iPhone, turn off <strong>Live</strong> (the round icon at the top of the camera)
+  before taking photos.</li>
+<li><strong>Coming soon:</strong> DA will pair each <code>.MOV</code> with its photo, so it's filed next to it with the same
+  name, and find the ones already left behind. See <a href="#coming-soon">Coming soon</a>.</li>
+</ul>
+<h3 id="iphone-heic-photos">iPhone HEIC photos</h3>
+<p>iPhones save photos as <strong>HEIC</strong> (<code>IMG_1234.HEIC</code>): the same quality as JPG in about half the space.</p>
+<ul>
+<li><strong>DA files HEIC photos like any other,</strong> using the date the iPhone stored in them.</li>
+<li><strong>To see them on Windows,</strong> install the free <strong>HEIF Image Extensions</strong> from the Microsoft Store
+  (open the <strong>Microsoft Store</strong> app and search for <em>HEIF</em>).</li>
+<li><strong>To get JPGs from the iPhone instead,</strong> on the iPhone open <strong>Settings &gt; Photos</strong> and, under
+  <em>Transfer to Mac or PC</em>, choose <strong>Automatic</strong>. The iPhone then converts photos to JPG as they're
+  copied. (<strong>Keep Originals</strong> copies the HEIC files.)</li>
+<li><strong>To find the HEIC files in the archive:</strong>
+  <code>da db query "SELECT path FROM files WHERE extension='.heic'"</code>.</li>
+<li><strong>Coming soon:</strong> a DA command that makes JPG copies of HEIC photos, e.g. for sharing.</li>
+</ul>
+<h3 id="edit-an-archives-settings-da-archiveyaml">Edit an archive's settings (da-archive.yaml)</h3>
+<p>Each archive's settings are in <code>da-archive.yaml</code> in its folder.</p>
+<ol>
+<li><strong>Make a copy first:</strong> right-click <code>da-archive.yaml</code> &gt; <strong>Copy</strong>, then <strong>Paste</strong> in the same
+    folder. If anything goes wrong, rename the copy back.</li>
+<li><strong>Open it with Notepad</strong> (right-click &gt; <strong>Open with</strong> &gt; <strong>Notepad</strong>).</li>
+<li>
+<p><strong>Change what you need.</strong> Keep the spaces at the start of each line exactly as they are; they
+    matter. Lines starting with <code>#</code> are notes and are ignored.
+    ```yaml
+    archive:
+      name: "jane-archive-199x"   # the name shown at the top of the menu
+      years: "1990-1999"          # the years this archive takes; null for any year</p>
+<p>intake:                       # the folders in intake\ and what each one holds
+  photos: photo
+  docs: document
+  scans: document
+  receipts: document          # an extra folder: anything in it is filed as a document
+```
+4. <strong>Save, then check:</strong> open the archive's menu. If DA can't read the file, it says which line is
+wrong; fix it or put the copy back.</p>
+</li>
+</ol>
+<p>A new intake folder you add here is created the next time you run <code>da setup</code> on the archive
+(<code>da setup D:\jane-archive-199x</code>), or you can create it yourself.</p>
+<h3 id="share-an-album-with-google-photos">Share an album with Google Photos</h3>
+<p>DA doesn't upload to Google (Google no longer lets apps like DA create shared albums), but your
+filed photos are easy to share by hand:</p>
+<ol>
+<li>Go to <a href="https://photos.google.com">photos.google.com</a> and sign in.</li>
+<li>Click <strong>Upload</strong> (or drag photos onto the page) and pick them from the archive, e.g.
+    <code>D:\jane-archive-199x\photos\organized\1998\1998-07\</code>.</li>
+<li>Click <strong>Create</strong> (the <strong>+</strong>) &gt; <strong>Album</strong>, give it a name, and add the uploaded photos.</li>
+<li>In the album, click <strong>Share</strong> and choose people, or <strong>Create link</strong> to send the link to anyone.</li>
+</ol>
+<p>The originals stay in your archive; Google gets copies.</p>
+<h3 id="process-a-folder-from-somewhere-else">Process a folder from somewhere else</h3>
+<p>For photos on a USB stick, an old backup drive, or anywhere outside the archive:</p>
+<pre><code class="language-powershell">da run E:\old-backup\photos --archive D:\jane-archive-199x
+</code></pre>
+<p>DA offers to <strong>copy</strong> the folder into the archive's <code>intake\</code> and processes the copy, so it can
+check every photo against what's already filed. The originals aren't touched; delete them yourself
+once you're happy.</p>
+<h3 id="start-a-new-archive-for-another-person-or-decade">Start a new archive for another person or decade</h3>
+<pre><code class="language-powershell">da setup D:\sam-archive-201x --years 2010-2019
+</code></pre>
+<p>Then double-click its <code>Open DA.cmd</code>. To make an archive from a folder that already has photos in it,
+point <code>da setup</code> at that folder: DA moves its contents into <code>intake\</code>, and lists every move in
+<code>output\runs\&lt;date&gt;-setup\moved.csv</code> (where each item was, and where it went).</p>
+<h3 id="use-da-on-another-computer">Use DA on another computer</h3>
+<p>An archive is just a folder, so it can live on a USB drive and move between computers.</p>
+<ol>
+<li><a href="#2-install-it-once-per-computer">Install DA</a> on the other computer.</li>
+<li>Plug in the drive and double-click the archive's <code>Open DA.cmd</code>. It works whatever drive letter
+    Windows gives the drive.</li>
+<li>Each computer keeps its own list of archives for <strong>6 Switch archive</strong>. Opening an archive once
+    with its <code>Open DA.cmd</code> adds it to that computer's list.</li>
+</ol>
+<h3 id="back-up-an-archive">Back up an archive</h3>
+<p>Everything about an archive is inside its folder: the photos, the documents, the settings, the
+sidecar notes and the records. To back it up, copy the <strong>whole archive folder</strong> to another drive
+(File Explorer: right-click the folder &gt; <strong>Copy</strong>, open the backup drive, <strong>Paste</strong>).</p>
+<ul>
+<li><code>_duplicates-holding\</code> only holds copies; you can leave it out.</li>
+<li>The <code>.da\</code> folder holds DA's index. It's fine to copy it, and DA can rebuild it if it's missing
+  (<strong>5 Refresh index</strong>).</li>
+</ul>
+<h3 id="check-whats-already-filed">Check what's already filed</h3>
+<pre><code class="language-powershell">da validate photos\organized
+da validate documents\organized\2010
+</code></pre>
+<p>This checks names, folders and sidecar notes, and finds duplicates inside that folder. It's a
+check only: nothing moves (it just adds any missing sidecar notes). The report is saved in
+<code>output\validateit\</code>.</p>
+<p>To fix what it found in <code>organized</code> (wrong names, a photo in the wrong month), add
+<code>--mode repair</code>. On intake, or on a folder outside the archive, repair stops and tells you to use
+<a href="#da-run-file-new-photos-and-documents">da run</a> instead, which sets duplicates aside first.</p>
+<h3 id="do-the-runs-steps-one-at-a-time">Do the run's steps one at a time</h3>
+<p>The same steps as <a href="#da-run-file-new-photos-and-documents">da run</a>, one command each, for when you
+want to look closely between them:</p>
+<pre><code class="language-powershell">da db build                                          # 1 index
+da intake hash --folder phone-2024                   # 2 hash (folder inside intake)
+da intake set-aside --folder phone-2024              # 3 plan only: what would be set aside
+da check output\runs\&lt;ts&gt;-set-aside\plan.csv         #   re-check a sample of the plan
+da intake set-aside --folder phone-2024 --apply      #   set them aside
+da validate intake\phone-2024 --kind photo           # 4 preview
+da check output\validateit\validateit-report-&lt;ts&gt;.json   # 5 check
+da validate intake\phone-2024 --kind photo --mode repair --force   # 6 file (--force: you did 2-3 yourself)
+da verify &lt;the repair report it printed&gt;
+da db build                                          # 7 refresh
+</code></pre>
+<h3 id="coming-soon">Coming soon</h3>
+<ul>
+<li><strong>Contact sheets:</strong> a PDF of small pictures of every photo in a folder, made automatically when
+  DA files photos, and kept up to date.</li>
+<li><strong>Live Photo pairing:</strong> each iPhone <code>.MOV</code> filed next to its photo, and the ones left behind found.</li>
+<li><strong>HEIC to JPG:</strong> JPG copies of iPhone photos for sharing.</li>
+<li><strong>A tag command:</strong> <code>da tag</code> instead of editing sidecars by hand.</li>
+</ul>
+<h2 id="if-something-goes-wrong">If something goes wrong</h2>
+<table>
+<thead>
+<tr>
+<th>What you see</th>
+<th>What to do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>'da' is not recognized</em></td>
+<td>Close the terminal and open a <strong>new</strong> one. If that doesn't help, <a href="#2-install-it-once-per-computer">install DA</a> again.</td>
+</tr>
+<tr>
+<td><em>Windows protected your PC</em></td>
+<td>Click <strong>More info</strong>, then <strong>Run anyway</strong>. DA isn't signed by a company, so Windows asks once.</td>
+</tr>
+<tr>
+<td><em>Not inside an archive</em></td>
+<td>Open the archive with its <code>Open DA.cmd</code>, or type <code>da</code> and pick one, or add <code>--archive D:\jane-archive-199x</code> to the command.</td>
+</tr>
+<tr>
+<td><em>DA.exe is in use</em> while updating</td>
+<td>Close every DA window, then install again.</td>
+</tr>
+<tr>
+<td>A run seems stuck</td>
+<td>It's probably working through a big folder. Big runs take hours; the step number shows where it is. To stop, press <strong>Ctrl+C</strong>. Photos already filed stay filed, and running it again carries on with the rest.</td>
+</tr>
+<tr>
+<td>A photo was filed with the wrong date</td>
+<td>The camera's clock was wrong. Rename the file in <code>organized</code> with the right date at the start, and move it to the right month folder.</td>
+</tr>
+<tr>
+<td><em>Nothing to file</em></td>
+<td>Everything in that folder is either filed or waiting for you. See <strong>3 What needs review</strong>.</td>
+</tr>
+<tr>
+<td>Files are in <code>_duplicates-holding</code> that you want back</td>
+<td><strong>4 Undo last set-aside</strong>, or <code>da intake undo "&lt;run folder&gt;\set-aside-moved.csv"</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="reference">Reference</h2>
+<h3 id="how-da-works-out-a-date">How DA works out a date</h3>
+<p>In this order:</p>
+<ol>
+<li>A date <strong>and time</strong> in the file name (<code>2024_07_04_10_15_00.jpg</code>, <code>20240704_101500.jpg</code>).</li>
+<li>The date stored <strong>inside</strong> the file:<ul>
+<li>photos: the camera's "date taken", including iPhone HEIC photos. A camera whose clock was never
+  set (1 January 1970) doesn't count.</li>
+<li>PDFs: when the PDF was made (scanned, printed or saved).</li>
+<li>Word, Excel, PowerPoint: when the document was created.</li>
+</ul>
+</li>
+<li>A date <strong>without a time</strong> in the name (<code>2010-04-27</code>, or US-style <code>04-27-2010</code>). If the date
+    inside the file is from that same day, its time is used too.</li>
+<li>A <strong>month and year</strong> in the name (<code>Resume April-2010</code>): the date inside the file, if it's from
+    that month. Otherwise only the month is known, which isn't enough, and the file stays for review.</li>
+<li>A <strong>year only</strong> (<code>Beach 1998.jpg</code>): not enough; it stays for review.</li>
+</ol>
+<p>When the name and the date inside disagree, the name wins, and the file is listed for review.</p>
+<p>Photos are named <code>photo_YYYYMMDD_HHMMSS_xxxx.jpg</code> and documents <code>doc_YYMMDD_HHMMSS_xxxx.pdf</code>; the
+last four characters come from the file's fingerprint, so two photos taken in the same second
+still get different names.</p>
+<h3 id="photo-or-document">Photo or document?</h3>
+<p>PDFs and Word, Excel and PowerPoint files are always documents. A picture (<code>.jpg .png .tif .bmp</code>)
+could be a photo or a scan, so the intake folder decides: in <code>docs\</code> or <code>scans\</code> it's a document;
+anywhere else it's a photo. To decide for a whole run: <code>da run intake\old-scans --kind document</code>.</p>
+<h3 id="which-archive-a-command-works-on">Which archive a command works on</h3>
+<ol>
+<li>The one you name: <code>--archive D:\jane-archive-199x</code> (before or after the command).</li>
+<li>Otherwise, the archive the folder you name is in.</li>
+<li>Otherwise, the archive you're in: the terminal's current folder, or one above it.</li>
+</ol>
+<h3 id="commands">Commands</h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>da</code></td>
+<td>The menu</td>
+</tr>
+<tr>
+<td><code>da run [folder]</code></td>
+<td>File what's in intake (or one folder of it)</td>
+</tr>
+<tr>
+<td><code>da status</code></td>
+<td>This archive at a glance</td>
+</tr>
+<tr>
+<td><code>da setup &lt;folder&gt; [--years 1990-1999]</code></td>
+<td>Create an archive, or turn a folder into one</td>
+</tr>
+<tr>
+<td><code>da archives [--open N]</code></td>
+<td>The archives on this computer</td>
+</tr>
+<tr>
+<td><code>da guide [--pdf]</code></td>
+<td>Open this guide (or its PDF)</td>
+</tr>
+<tr>
+<td><code>da db build</code> / <code>da db stats</code> / <code>da db query "&lt;SQL&gt;"</code></td>
+<td>The index: refresh, counts by year, search</td>
+</tr>
+<tr>
+<td><code>da intake status</code> / <code>da intake undo &lt;moved.csv&gt;</code></td>
+<td>Intake progress; put duplicates back</td>
+</tr>
+<tr>
+<td><code>da validate &lt;folder&gt;</code></td>
+<td>Check a folder (nothing moves)</td>
+</tr>
+<tr>
+<td><code>da findit tags &lt;folder&gt; -r &lt;tag&gt;</code></td>
+<td>Find files by tag</td>
+</tr>
+<tr>
+<td><code>da version</code></td>
+<td>Which version of DA this is</td>
+</tr>
+<tr>
+<td><code>&lt;DA.exe&gt; install</code></td>
+<td>Install or update DA on this computer</td>
+</tr>
+</tbody>
+</table>
+<footer>DA v2026.10.12 &middot; guide built 2026-10-14 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
+</main>
+</div>
+</body>
+</html>
