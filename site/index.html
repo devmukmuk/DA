@@ -68,14 +68,14 @@ footer { color:var(--muted); font-size:14px; margin-top:60px; border-top:1px sol
 <body>
 <header>
   <span class="title">DA User Guide</span>
-  <span class="version">DA v2026.10.15</span>
+  <span class="version">DA v2026.10.16</span>
   <a class="button primary" href="https://github.com/devmukmuk/DA/releases/latest/download/DA.exe">Download DA</a>
   <a class="button" href="DA-User-Guide.pdf">PDF version</a>
 </header>
 <div class="layout">
 <nav aria-label="Contents"><ul><li><a href="#words-youll-see">Words you'll see</a></li><li><a href="#getting-started">Getting started</a><ul><li><a href="#1-get-da">1. Get DA</a></li><li><a href="#2-install-it-once-per-computer">2. Install it (once per computer)</a></li><li><a href="#3-create-your-first-archive-once-per-archive">3. Create your first archive (once per archive)</a></li><li><a href="#4-open-it">4. Open it</a></li></ul></li><li><a href="#the-menu">The menu</a></li><li><a href="#common-workflows">Common workflows</a><ul><li><a href="#add-photos-from-a-phone-camera-or-memory-card">Add photos from a phone, camera or memory card</a></li><li><a href="#add-scanned-documents">Add scanned documents</a></li><li><a href="#da-run-file-new-photos-and-documents">da run: file new photos and documents</a></li><li><a href="#da-report-whats-in-the-archive-and-what-needs-you">da report: what's in the archive and what needs you</a></li><li><a href="#fix-what-needs-review">Fix what needs review</a></li><li><a href="#duplicates-put-back-or-delete">Duplicates: put back or delete</a></li><li><a href="#da-split-move-files-to-the-right-decades-archive">da split: move files to the right decade's archive</a></li><li><a href="#da-find-search-the-archive">da find: search the archive</a></li><li><a href="#contact-sheets-a-folder-at-a-glance">Contact sheets: a folder at a glance</a></li><li><a href="#da-tag-label-photos-and-documents">da tag: label photos and documents</a></li><li><a href="#switch-between-archives">Switch between archives</a></li><li><a href="#update-da">Update DA</a></li></ul></li><li><a href="#less-common-workflows">Less common workflows</a><ul><li><a href="#iphone-live-photos-mov-files">iPhone Live Photos (.MOV files)</a></li><li><a href="#iphone-heic-photos">iPhone HEIC photos</a></li><li><a href="#edit-an-archives-settings-da-archiveyaml">Edit an archive's settings (da-archive.yaml)</a></li><li><a href="#share-an-album-with-google-photos">Share an album with Google Photos</a></li><li><a href="#process-a-folder-from-somewhere-else">Process a folder from somewhere else</a></li><li><a href="#start-a-new-archive-for-another-person-or-decade">Start a new archive for another person or decade</a></li><li><a href="#use-da-on-another-computer">Use DA on another computer</a></li><li><a href="#back-up-an-archive">Back up an archive</a></li><li><a href="#check-whats-already-filed">Check what's already filed</a></li><li><a href="#do-the-runs-steps-one-at-a-time">Do the run's steps one at a time</a></li><li><a href="#coming-soon">Coming soon</a></li></ul></li><li><a href="#if-something-goes-wrong">If something goes wrong</a></li><li><a href="#reference">Reference</a><ul><li><a href="#how-da-works-out-a-date">How DA works out a date</a></li><li><a href="#photo-or-document">Photo or document?</a></li><li><a href="#which-archive-a-command-works-on">Which archive a command works on</a></li><li><a href="#commands">Commands</a></li></ul></li></ul></nav>
 <main>
-<p class="print-only">DA v2026.10.15 &middot; da.gamenightbymike.com &middot; 2026-10-14</p>
+<p class="print-only">DA v2026.10.16 &middot; da.gamenightbymike.com &middot; 2026-10-14</p>
 <h1 id="da-user-guide">DA User Guide</h1>
 <p><strong>DA</strong> (short for <em>Digital Archive</em>) puts your photos and scanned documents in order. You copy
 them into one folder, and DA:</p>
@@ -586,13 +586,17 @@ the date and time, and the GPS position if the phone recorded one. From those, <
     then works through every filed photo (photos filed before DA kept camera details are read once,
     roughly an hour per 50,000). To do one year or one folder: <code>da tag photos\organized\2021</code>.</li>
 <li><strong>Say who owned each camera</strong> (most cameras don't record it): <code>da tag --cameras</code> lists every
-    camera found, with how many photos it took and in which years, and prints lines to copy into
-    <a href="#edit-an-archives-settings-da-archiveyaml">da-archive.yaml</a>:
-    <code>yaml
-    cameras:
-      "Apple iPhone 12 Pro": jane
-      "Nikon D90 #3012345": sam      # one camera body, by its serial number</code>
-    Then run <code>da tag</code> again to add the <code>owner:</code> tags.</li>
+    camera found, with how many photos it took and in which years, then asks about each one with no
+    owner yet:
+    <code>Who used each camera? Type a name, or press Enter to skip.
+      Apple iPhone 7 Plus  (160 photos, 2019): jane
+      Apple iPhone 8  (13 photos, 2019):
+    Update the owner: tags now? [y/n] (y):</code>
+    DA saves the names in the archive's
+    <a href="#edit-an-archives-settings-da-archiveyaml">da-archive.yaml</a> for you (keeping a copy of the old
+    file), and updates the <code>owner:</code> tags straight away. To set one without the questions:
+    <code>da tag --owner "Apple iPhone 8" sam</code>. A camera listed with a serial number
+    (<code>Nikon D90 #3012345</code>) is that one camera body; without one, every camera of that model.</li>
 </ol>
 <p><strong>Your own tags</strong> go on one photo, several, or every file in a folder (documents too). Name the
 files or folders first, then the tags:</p>
@@ -939,7 +943,11 @@ anywhere else it's a photo. To decide for a whole run: <code>da run intake\old-s
 </tr>
 <tr>
 <td><code>da tag --cameras</code></td>
-<td>The cameras found, for the owners list</td>
+<td>The cameras found; asks who used each and saves it</td>
+</tr>
+<tr>
+<td><code>da tag --owner "&lt;camera&gt;" &lt;name&gt;</code></td>
+<td>Save who used a camera</td>
 </tr>
 <tr>
 <td><code>da findit tags &lt;folder&gt; -r &lt;tag&gt;</code></td>
@@ -963,7 +971,7 @@ anywhere else it's a photo. To decide for a whole run: <code>da run intake\old-s
 </tr>
 </tbody>
 </table>
-<footer>DA v2026.10.15 &middot; guide built 2026-10-14 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
+<footer>DA v2026.10.16 &middot; guide built 2026-10-14 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
 </main>
 </div>
 </body>
