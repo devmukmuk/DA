@@ -68,14 +68,14 @@ footer { color:var(--muted); font-size:14px; margin-top:60px; border-top:1px sol
 <body>
 <header>
   <span class="title">DA User Guide</span>
-  <span class="version">DA v2026.10.13</span>
+  <span class="version">DA v2026.10.14</span>
   <a class="button primary" href="https://github.com/devmukmuk/DA/releases/latest/download/DA.exe">Download DA</a>
   <a class="button" href="DA-User-Guide.pdf">PDF version</a>
 </header>
 <div class="layout">
 <nav aria-label="Contents"><ul><li><a href="#words-youll-see">Words you'll see</a></li><li><a href="#getting-started">Getting started</a><ul><li><a href="#1-get-da">1. Get DA</a></li><li><a href="#2-install-it-once-per-computer">2. Install it (once per computer)</a></li><li><a href="#3-create-your-first-archive-once-per-archive">3. Create your first archive (once per archive)</a></li><li><a href="#4-open-it">4. Open it</a></li></ul></li><li><a href="#the-menu">The menu</a></li><li><a href="#common-workflows">Common workflows</a><ul><li><a href="#add-photos-from-a-phone-camera-or-memory-card">Add photos from a phone, camera or memory card</a></li><li><a href="#add-scanned-documents">Add scanned documents</a></li><li><a href="#da-run-file-new-photos-and-documents">da run: file new photos and documents</a></li><li><a href="#da-report-whats-in-the-archive-and-what-needs-you">da report: what's in the archive and what needs you</a></li><li><a href="#fix-what-needs-review">Fix what needs review</a></li><li><a href="#duplicates-put-back-or-delete">Duplicates: put back or delete</a></li><li><a href="#da-split-move-files-to-the-right-decades-archive">da split: move files to the right decade's archive</a></li><li><a href="#da-find-search-the-archive">da find: search the archive</a></li><li><a href="#contact-sheets-a-folder-at-a-glance">Contact sheets: a folder at a glance</a></li><li><a href="#da-tag-label-photos-and-documents">da tag: label photos and documents</a></li><li><a href="#switch-between-archives">Switch between archives</a></li><li><a href="#update-da">Update DA</a></li></ul></li><li><a href="#less-common-workflows">Less common workflows</a><ul><li><a href="#iphone-live-photos-mov-files">iPhone Live Photos (.MOV files)</a></li><li><a href="#iphone-heic-photos">iPhone HEIC photos</a></li><li><a href="#edit-an-archives-settings-da-archiveyaml">Edit an archive's settings (da-archive.yaml)</a></li><li><a href="#share-an-album-with-google-photos">Share an album with Google Photos</a></li><li><a href="#process-a-folder-from-somewhere-else">Process a folder from somewhere else</a></li><li><a href="#start-a-new-archive-for-another-person-or-decade">Start a new archive for another person or decade</a></li><li><a href="#use-da-on-another-computer">Use DA on another computer</a></li><li><a href="#back-up-an-archive">Back up an archive</a></li><li><a href="#check-whats-already-filed">Check what's already filed</a></li><li><a href="#do-the-runs-steps-one-at-a-time">Do the run's steps one at a time</a></li><li><a href="#coming-soon">Coming soon</a></li></ul></li><li><a href="#if-something-goes-wrong">If something goes wrong</a></li><li><a href="#reference">Reference</a><ul><li><a href="#how-da-works-out-a-date">How DA works out a date</a></li><li><a href="#photo-or-document">Photo or document?</a></li><li><a href="#which-archive-a-command-works-on">Which archive a command works on</a></li><li><a href="#commands">Commands</a></li></ul></li></ul></nav>
 <main>
-<p class="print-only">DA v2026.10.13 &middot; da.gamenightbymike.com &middot; 2026-10-14</p>
+<p class="print-only">DA v2026.10.14 &middot; da.gamenightbymike.com &middot; 2026-10-14</p>
 <h1 id="da-user-guide">DA User Guide</h1>
 <p><strong>DA</strong> (short for <em>Digital Archive</em>) puts your photos and scanned documents in order. You copy
 them into one folder, and DA:</p>
@@ -519,7 +519,8 @@ first if anything changed, then in a terminal in the archive:</p>
 <li><strong>Documents:</strong> use <code>area='documents'</code> instead of <code>area='photos'</code>.</li>
 <li><strong>By tag</strong> (see <a href="#da-tag-label-photos-and-documents">da tag</a>):
   <code>da findit tags photos\organized -r beach -v</code>. Add <code>-r grandma</code> for both tags, <code>-x beach</code> to
-  leave a tag out, or <code>--date-prefix 2010-07</code> for one month.</li>
+  leave a tag out, or <code>--date-prefix 2010-07</code> for one month. Automatic tags work the same way:
+  <code>-r owner:jane -r year:2021</code> finds Jane's photos from 2021, <code>-r gps</code> the ones with a position.</li>
 </ul>
 <p>Or just browse: every photo is in <code>photos\organized\&lt;year&gt;\&lt;year&gt;-&lt;month&gt;\</code>, in date order, and each
 folder's <code>_contact-sheet.pdf</code> shows them all on a page or two.</p>
@@ -539,17 +540,68 @@ it to see a whole month at once, or print it.</p>
 <li>DA never files, indexes or checks the sheet itself, and deleting one does no harm.</li>
 </ul>
 <h3 id="da-tag-label-photos-and-documents">da tag: label photos and documents</h3>
-<p>There's no tag command yet, so for now a tag is added by editing the file's sidecar:</p>
+<p>A tag is a word attached to a photo (<code>beach</code>, <code>grandma</code>, <code>trip:big-bear</code>), so you can find it
+later with <a href="#da-find-search-the-archive">da find</a>. DA makes some tags for you, and you add your own.</p>
+<p><strong>Automatic tags.</strong> When DA first files a photo, it notes what the photo says about itself: the
+camera's maker and model, the lens, the camera's serial number, any owner name the camera recorded,
+the date and time, and the GPS position if the phone recorded one. From those, <code>da tag</code> makes:</p>
+<table>
+<thead>
+<tr>
+<th>Tag</th>
+<th>Example</th>
+<th>From</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>maker:</code></td>
+<td><code>maker:apple</code></td>
+<td>the camera's maker</td>
+</tr>
+<tr>
+<td><code>camera:</code></td>
+<td><code>camera:apple-iphone-12-pro</code></td>
+<td>the camera's model</td>
+</tr>
+<tr>
+<td><code>owner:</code></td>
+<td><code>owner:jane</code></td>
+<td>who owned that camera (see below)</td>
+</tr>
+<tr>
+<td><code>year:</code></td>
+<td><code>year:2021</code></td>
+<td>when it was taken</td>
+</tr>
+<tr>
+<td><code>gps</code></td>
+<td><code>gps</code></td>
+<td>the photo has a GPS position</td>
+</tr>
+</tbody>
+</table>
 <ol>
-<li><strong>Open the sidecar</strong> next to the photo, e.g. <code>photo_19980704_101500_ab12.jpg.meta.json</code>, with
-    <strong>Notepad</strong> (right-click &gt; <strong>Open with</strong> &gt; <strong>Notepad</strong>).</li>
-<li><strong>Find the <code>"photoit"</code> part</strong> (for a document, <code>"scanit"</code>) and its <code>"tags": []</code> line. Put your
-    tags inside the brackets, in quotes, with commas between them:
-    <code>json
-    "tags": ["beach", "grandma"],</code>
-    Change nothing else, and save.</li>
-<li><strong>Choose 5 Refresh index</strong>, so <a href="#da-find-search-the-archive">da find</a> can see the new tags.</li>
+<li><strong>Make them for the whole archive:</strong> in a terminal in the archive, <code>da tag</code>. It asks first,
+    then works through every filed photo (photos filed before DA kept camera details are read once,
+    roughly an hour per 50,000). To do one year or one folder: <code>da tag photos\organized\2021</code>.</li>
+<li><strong>Say who owned each camera</strong> (most cameras don't record it): <code>da tag --cameras</code> lists every
+    camera found, with how many photos it took and in which years, and prints lines to copy into
+    <a href="#edit-an-archives-settings-da-archiveyaml">da-archive.yaml</a>:
+    <code>yaml
+    cameras:
+      "Apple iPhone 12 Pro": jane
+      "Nikon D90 #3012345": sam      # one camera body, by its serial number</code>
+    Then run <code>da tag</code> again to add the <code>owner:</code> tags.</li>
 </ol>
+<p><strong>Your own tags</strong> go on one photo, several, or every file in a folder (documents too). Name the
+files or folders first, then the tags:</p>
+<pre><code class="language-powershell">da tag photos\organized\2021\2021-06 beach &quot;big bear&quot;
+da tag photos\organized\2021\2021-06\photo_20210601_100000_ab12.heic grandma
+da tag photos\organized\2021\2021-06 --remove beach
+</code></pre>
+<p>Tags are kept in lower case, with spaces as <code>-</code> (<code>big-bear</code>). Making the automatic tags again never
+changes yours.</p>
 <h3 id="switch-between-archives">Switch between archives</h3>
 <ul>
 <li><strong>6 Switch archive</strong> in the menu lists every archive on this computer. Type its number.</li>
@@ -669,7 +721,9 @@ a 2-3 second video (<code>IMG_1234.MOV</code>).</p>
   photos: photo
   docs: document
   scans: document
-  receipts: document          # an extra folder: anything in it is filed as a document
+  receipts: document          # an extra folder: anything in it is filed as a document</p>
+<p>cameras:                      # who owned each camera, for owner: tags (see da tag)
+  "Apple iPhone 12 Pro": jane
 ```
 4. <strong>Save, then check:</strong> open the archive's menu. If DA can't read the file, it says which line is
 wrong; fix it or put the copy back.</p>
@@ -746,7 +800,14 @@ da db build                                          # 7 refresh
 </code></pre>
 <h3 id="coming-soon">Coming soon</h3>
 <ul>
-<li><strong>A tag command:</strong> <code>da tag</code> instead of editing sidecars by hand.</li>
+<li><strong>Faces:</strong> <code>da face-recognition</code> - recognise the people in photos and tag them by name.</li>
+<li><strong>Places:</strong> <code>da location-recognition</code> - turn a photo's GPS position into place tags
+    (<code>place:lake-tahoe-ca</code>).</li>
+<li><strong>Dates you know better:</strong> <code>da date-recognition</code> - set the right date for photos whose camera
+    clock was wrong or that were scanned, kept as an override in the sidecar.</li>
+<li><strong>Folders by place:</strong> a <code>da location</code> menu item that splits a folder's GPS photos into folders
+    named by month, your title and the places, e.g. <code>2026-01 Ski trip (lake-tahoe-ca, reno-nv)</code>;
+    the title you give is kept in each photo's sidecar and in the index too.</li>
 </ul>
 <h2 id="if-something-goes-wrong">If something goes wrong</h2>
 <table>
@@ -873,6 +934,14 @@ anywhere else it's a photo. To decide for a whole run: <code>da run intake\old-s
 <td>Make the contact sheets for every folder of photos in it</td>
 </tr>
 <tr>
+<td><code>da tag [files or folders] [tags] [--remove tag]</code></td>
+<td>Automatic tags, or add or remove your own</td>
+</tr>
+<tr>
+<td><code>da tag --cameras</code></td>
+<td>The cameras found, for the owners list</td>
+</tr>
+<tr>
 <td><code>da findit tags &lt;folder&gt; -r &lt;tag&gt;</code></td>
 <td>Find files by tag</td>
 </tr>
@@ -894,7 +963,7 @@ anywhere else it's a photo. To decide for a whole run: <code>da run intake\old-s
 </tr>
 </tbody>
 </table>
-<footer>DA v2026.10.13 &middot; guide built 2026-10-14 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
+<footer>DA v2026.10.14 &middot; guide built 2026-10-14 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
 </main>
 </div>
 </body>
