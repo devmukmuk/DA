@@ -5,6 +5,13 @@ Thank you for testing DA. This plan walks through everything DA does, step by st
 have). Each step says what to do and what you should see. Tick the box when it works; when it doesn't,
 write down the step's number (like **D7**) and what happened, and see [Reporting a problem](#reporting-a-problem).
 
+**On the website** this page keeps track for you: fill in your name at the top (and the version, which is
+filled in already), tick each step's box as it works, and the page counts your progress and remembers it - in
+this browser, on this computer only. Each step's **Report** button opens a new problem report with the step,
+your name and the version already filled in. **Save as PDF** keeps a dated copy of your results; when a new
+version of DA comes out, **Start again on a new version** clears the ticks for the next round. On paper, use the
+[printable checklist](https://da.gamenightbymike.com/DA-Test-Plan.pdf).
+
 You don't need to do it all in one sitting: each part starts from where the one before left off. The whole
 plan takes a few evenings. The [user guide](https://da.gamenightbymike.com) explains anything this plan
 mentions; the [known problems](https://da.gamenightbymike.com/defects.html) list what's already known, so you
@@ -384,8 +391,10 @@ Make a copy of `da-archive.yaml` first; put it back at the end.
 ## Reporting a problem
 
 1. Check the [known problems](https://da.gamenightbymike.com/defects.html) first.
-2. Open an issue at https://github.com/devmukmuk/DA/issues (a free GitHub account is needed), or send it to
-   the person who asked you to test.
+2. On the website, press the step's **Report** button: a new issue opens at GitHub with the step, your name and
+   your version filled in (a free GitHub account is needed). Or open one yourself at
+   https://github.com/devmukmuk/DA/issues, or send it to the person who asked you to test. The panel at the top
+   shows how many of your reports are still open.
 3. Include: the step number (**L9**), what you did, what you expected, what happened (a screenshot helps),
    your DA version (`da version`), and whether DA is the DA.exe or the Python install.
 4. If DA printed an error, the archive's `logs\da.jsonl` has the details: copy the last few lines.

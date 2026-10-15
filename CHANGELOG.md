@@ -2,9 +2,17 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.27 - 2026-10-15
+
+### New
+- da dashboard - the archive in the browser, kept up to date
+- The online test plan tracks a tester's name, version, dates and ticks, reports problems per step, counts open reports, saves a dated PDF and starts again on a new version
+
 ## v2026.10.26 - 2026-10-15
 
-- Small fixes and tidying.
+### Guide
+- Link the known problems to their public issues (devmukmuk/DA #2-#14)
+- A 221-step test plan and the known problems, published on the site and in the public repo
 
 ## v2026.10.25 - 2026-10-15
 

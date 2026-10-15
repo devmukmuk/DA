@@ -1,6 +1,6 @@
 # DA - Digital Archive
 
-**Latest version:** 2026.10.26 (2026-10-15)
+**Latest version:** 2026.10.27 (2026-10-15)
 
 DA files your photos, videos and scanned documents by the date they were taken. It sets exact
 duplicates aside, names each file by its date, and puts it in a `YYYY\YYYY-MM` folder, with a contact
@@ -22,9 +22,11 @@ sheet for every month. It never deletes anything, and it asks before it moves an
 - **Testing DA?** The [test plan](https://da.gamenightbymike.com/verification.html) (also as a
   [PDF](https://da.gamenightbymike.com/DA-Test-Plan.pdf) to print) and the [known problems](https://da.gamenightbymike.com/defects.html)
 
-## What's new in v2026.10.26
+## What's new in v2026.10.27
 
-- Small fixes and tidying.
+### New
+- da dashboard - the archive in the browser, kept up to date
+- The online test plan tracks a tester's name, version, dates and ticks, reports problems per step, counts open reports, saves a dated PDF and starts again on a new version
 
 ## Found a problem?
 

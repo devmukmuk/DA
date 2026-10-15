@@ -72,12 +72,44 @@ footer { color:var(--muted); font-size:14px; margin-top:60px; border-top:1px sol
   pre, table, tr { break-inside:avoid; }
   a { color:#000; text-decoration:none; }
 }
+/* tools/site/testplan.css - the test plan's tracker (verification.html only). */
+.tracker { border:2px solid var(--accent); border-radius:10px; padding:14px 18px 10px; margin:18px 0 26px;
+           background:var(--side); }
+.tracker h2.tracker-title { margin:0 0 4px; font-size:22px; border:0; }
+.tracker-note { margin:0 0 12px; color:var(--muted); font-size:15px; }
+.tracker-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(190px, 1fr)); gap:10px 16px; }
+.tracker-grid label { display:flex; flex-direction:column; font-size:14px; color:var(--muted); gap:4px; }
+.tracker-grid input { font:inherit; font-size:16px; color:var(--fg); background:var(--bg); border:1px solid var(--line);
+                      border-radius:6px; padding:6px 8px; }
+.tracker-progress { display:flex; align-items:center; gap:12px; margin:14px 0 6px; }
+.tracker-progress .bar { flex:1; height:12px; background:var(--line); border-radius:6px; overflow:hidden; }
+.tracker-progress .bar span { display:block; height:100%; width:0; background:#2ea043; }
+.tracker-defects, .tracker-newer { margin:6px 0; font-size:15px; }
+.tracker-newer { color:#9a6700; font-weight:600; }
+.tracker-buttons { display:flex; flex-wrap:wrap; gap:10px; margin:10px 0 6px; }
+.tracker button, td button.report { font:inherit; cursor:pointer; border-radius:6px; border:1px solid var(--line);
+                                    background:var(--bg); color:var(--fg); }
+.tracker button { padding:6px 14px; font-size:15px; }
+.tracker button:hover, td button.report:hover { border-color:var(--accent); color:var(--accent); }
+.tracker details { margin:8px 0 4px; font-size:14px; }
+td input[type=checkbox] { width:20px; height:20px; cursor:pointer; vertical-align:middle; }
+td button.report { display:block; margin:6px auto 0; padding:1px 6px; font-size:12px; }
+tr.done td { background:rgba(46,160,67,.10); }
+.tp-badge { margin-left:10px; font-size:14px; font-weight:600; color:var(--muted); border:1px solid var(--line);
+            border-radius:10px; padding:1px 8px; vertical-align:middle; }
+.tp-badge.all { color:#2ea043; border-color:#2ea043; }
+@media print {
+  .tracker { border-width:1px; }
+  .tracker-buttons, .tracker-note, td button.report, .tracker-newer, .tracker details summary::marker { display:none; }
+  .tracker details { display:block; }
+  .tracker-grid input { border:0; border-bottom:1px solid #999; border-radius:0; padding:2px 0; font-weight:600; }
+}
 </style>
 </head>
-<body>
+<body data-version="2026.10.27">
 <header>
   <span class="title">DA Test Plan</span>
-  <span class="version">DA v2026.10.26</span>
+  <span class="version">DA v2026.10.27</span>
   <a class="button" href="index.html">Guide</a>
   <a class="button" href="verification.html">Test plan</a>
   <a class="button" href="defects.html">Known problems</a>
@@ -87,12 +119,18 @@ footer { color:var(--muted); font-size:14px; margin-top:60px; border-top:1px sol
 <div class="layout">
 <nav aria-label="Contents"><ul><li><a href="#before-you-start">Before you start</a><ul><li><a href="#make-a-test-kit">Make a test kit</a></li></ul></li><li><a href="#a-install-da">A. Install DA</a></li><li><a href="#b-create-an-archive">B. Create an archive</a></li><li><a href="#c-the-first-run-process-intake-menu-1">C. The first run: process intake (menu 1)</a></li><li><a href="#d-what-needs-review-menu-3">D. What needs review (menu 3)</a></li><li><a href="#e-status-and-the-index-menu-2-5">E. Status and the index (menu 2, 5)</a></li><li><a href="#f-duplicates-and-undo-menu-4">F. Duplicates and undo (menu 4)</a></li><li><a href="#g-documents-and-scans">G. Documents and scans</a></li><li><a href="#h-contact-sheets">H. Contact sheets</a></li><li><a href="#i-videos-live-photos-and-heic">I. Videos, Live Photos and HEIC</a></li><li><a href="#j-fix-dates-menu-d">J. Fix dates (menu D)</a></li><li><a href="#k-tags-terminal">K. Tags (terminal)</a></li><li><a href="#l-places-and-location-folders-menu-l">L. Places and location folders (menu L)</a></li><li><a href="#m-split-by-years-menu-s">M. Split by years (menu S)</a></li><li><a href="#n-merge-two-copies-menu-m">N. Merge two copies (menu M)</a></li><li><a href="#o-report-menu-r">O. Report (menu R)</a></li><li><a href="#p-update-sidecars-menu-j">P. Update sidecars (menu J)</a></li><li><a href="#q-checking-whats-filed-terminal">Q. Checking what's filed (terminal)</a></li><li><a href="#r-settings-da-archiveyaml">R. Settings (da-archive.yaml)</a></li><li><a href="#s-logs-records-and-safety">S. Logs, records and safety</a></li><li><a href="#t-another-pc-or-a-usb-drive">T. Another PC or a USB drive</a></li><li><a href="#u-messages-when-somethings-wrong">U. Messages when something's wrong</a></li><li><a href="#v-clean-up">V. Clean up</a></li><li><a href="#reporting-a-problem">Reporting a problem</a></li></ul></nav>
 <main>
-<p class="print-only">DA v2026.10.26 &middot; da.gamenightbymike.com &middot; 2026-10-15</p>
+<p class="print-only">DA v2026.10.27 &middot; da.gamenightbymike.com &middot; 2026-10-15</p>
 <h1 id="da-test-plan">DA test plan</h1>
 <p>Thank you for testing DA. This plan walks through everything DA does, step by step: first with the
 <strong>menu</strong> (what most people use), then with <strong>commands typed in a terminal</strong> (for things the menu doesn't
 have). Each step says what to do and what you should see. Tick the box when it works; when it doesn't,
 write down the step's number (like <strong>D7</strong>) and what happened, and see <a href="#reporting-a-problem">Reporting a problem</a>.</p>
+<p><strong>On the website</strong> this page keeps track for you: fill in your name at the top (and the version, which is
+filled in already), tick each step's box as it works, and the page counts your progress and remembers it - in
+this browser, on this computer only. Each step's <strong>Report</strong> button opens a new problem report with the step,
+your name and the version already filled in. <strong>Save as PDF</strong> keeps a dated copy of your results; when a new
+version of DA comes out, <strong>Start again on a new version</strong> clears the ticks for the next round. On paper, use the
+<a href="https://da.gamenightbymike.com/DA-Test-Plan.pdf">printable checklist</a>.</p>
 <p>You don't need to do it all in one sitting: each part starts from where the one before left off. The whole
 plan takes a few evenings. The <a href="https://da.gamenightbymike.com">user guide</a> explains anything this plan
 mentions; the <a href="https://da.gamenightbymike.com/defects.html">known problems</a> list what's already known, so you
@@ -1789,15 +1827,255 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
 <h2 id="reporting-a-problem">Reporting a problem</h2>
 <ol>
 <li>Check the <a href="https://da.gamenightbymike.com/defects.html">known problems</a> first.</li>
-<li>Open an issue at https://github.com/devmukmuk/DA/issues (a free GitHub account is needed), or send it to
-   the person who asked you to test.</li>
+<li>On the website, press the step's <strong>Report</strong> button: a new issue opens at GitHub with the step, your name and
+   your version filled in (a free GitHub account is needed). Or open one yourself at
+   https://github.com/devmukmuk/DA/issues, or send it to the person who asked you to test. The panel at the top
+   shows how many of your reports are still open.</li>
 <li>Include: the step number (<strong>L9</strong>), what you did, what you expected, what happened (a screenshot helps),
    your DA version (<code>da version</code>), and whether DA is the DA.exe or the Python install.</li>
 <li>If DA printed an error, the archive's <code>logs\da.jsonl</code> has the details: copy the last few lines.</li>
 <li>Leave out anything private: names, photos, and folder paths you'd rather not share.</li>
 </ol>
-<footer>DA v2026.10.26 &middot; guide built 2026-10-15 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
+<footer>DA v2026.10.27 &middot; guide built 2026-10-15 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
 </main>
 </div>
+<script>// tools/site/testplan.js - the test plan's tracker (verification.html only).
+//
+// Everything a tester enters (name, version, dates, ticks) is kept in this browser's localStorage, on their own
+// PC: no accounts and no server. "Report a problem" opens a new GitHub issue with the step, the tester and the
+// version filled in; the counts of their open/closed reports come from GitHub's public search.
+(function () {
+  "use strict";
+
+  var KEY = "da-test-plan";
+  var REPO = "devmukmuk/DA";
+  var STEP = /^[A-Z]\d+[a-z]?$/;
+  var siteVersion = document.body.getAttribute("data-version") || "";
+
+  function today() {
+    var d = new Date();
+    return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+  }
+
+  function load() {
+    var state = null;
+    try { state = JSON.parse(localStorage.getItem(KEY) || "null"); } catch (e) { state = null; }
+    state = state || {};
+    state.tester = state.tester || "";
+    state.github = state.github || "";
+    state.version = state.version || siteVersion;
+    state.started = state.started || "";
+    state.completed = state.completed || "";
+    state.checks = state.checks || {};
+    state.history = state.history || [];
+    return state;
+  }
+
+  var state = load();
+
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { /* private window: works until closed */ }
+  }
+
+  function el(tag, attrs, text) {
+    var node = document.createElement(tag);
+    Object.keys(attrs || {}).forEach(function (k) { node.setAttribute(k, attrs[k]); });
+    if (text) { node.textContent = text; }
+    return node;
+  }
+
+  // ------------------------------------------------------------------ the steps
+  var steps = [];                      // {id, row, box, section}
+  document.querySelectorAll("main table").forEach(function (table) {
+    var heads = table.querySelectorAll("thead th");
+    if (heads.length !== 4) { return; }
+    var section = table.previousElementSibling;
+    while (section && !/^H[23]$/.test(section.tagName)) { section = section.previousElementSibling; }
+    table.querySelectorAll("tbody tr").forEach(function (row) {
+      var cells = row.querySelectorAll("td");
+      if (cells.length !== 4) { return; }
+      var id = cells[0].textContent.trim();
+      if (!STEP.test(id)) { return; }
+      var box = el("input", {type: "checkbox", "aria-label": "Step " + id + " works", title: "It works"});
+      box.checked = !!state.checks[id];
+      box.addEventListener("change", function () {
+        if (box.checked) { state.checks[id] = true; } else { delete state.checks[id]; }
+        if (!state.started) { state.started = today(); }
+        if (done() === steps.length && !state.completed) { state.completed = today(); }
+        save();
+        refresh();
+      });
+      var report = el("button", {type: "button", class: "report", title: "Report a problem with step " + id}, "Report");
+      report.addEventListener("click", function () { openIssue(id, cells[1].textContent.trim(), cells[2].textContent.trim()); });
+      cells[3].textContent = "";
+      cells[3].appendChild(box);
+      cells[3].appendChild(report);
+      row.classList.toggle("done", box.checked);
+      steps.push({id: id, row: row, box: box, section: section});
+    });
+  });
+
+  function done() {
+    return steps.filter(function (s) { return s.box.checked; }).length;
+  }
+
+  // ------------------------------------------------------------------ the panel
+  var panel = el("section", {class: "tracker", "aria-label": "Your testing"});
+  panel.innerHTML =
+    '<h2 class="tracker-title">Your testing</h2>' +
+    '<p class="tracker-note">Kept in this browser on this computer only. Fill these in, then tick each step that works.</p>' +
+    '<div class="tracker-grid">' +
+    '<label>Your name<input id="tp-tester" autocomplete="name"></label>' +
+    '<label>GitHub name (optional)<input id="tp-github" autocomplete="username"></label>' +
+    '<label>DA version tested<input id="tp-version"></label>' +
+    '<label>Began testing<input id="tp-started" type="date"></label>' +
+    '<label>Finished testing<input id="tp-completed" type="date"></label>' +
+    '</div>' +
+    '<div class="tracker-progress"><div class="bar"><span id="tp-bar"></span></div><strong id="tp-count"></strong></div>' +
+    '<p id="tp-defects" class="tracker-defects"></p>' +
+    '<p id="tp-newer" class="tracker-newer" hidden></p>' +
+    '<div class="tracker-buttons">' +
+    '<button type="button" id="tp-pdf">Save as PDF</button>' +
+    '<button type="button" id="tp-reset">Start again on a new version</button>' +
+    '</div>' +
+    '<details id="tp-history" hidden><summary>Earlier test runs</summary><ul id="tp-history-list"></ul></details>';
+  var main = document.querySelector("main");
+  var anchor = main.querySelector("h1");
+  main.insertBefore(panel, anchor ? anchor.nextSibling : main.firstChild);
+
+  function bind(id, field) {
+    var input = document.getElementById(id);
+    input.value = state[field];
+    input.addEventListener("change", function () {
+      state[field] = input.value.trim();
+      save();
+      refresh();
+      if (field === "tester" || field === "github") { countDefects(); }
+    });
+  }
+  bind("tp-tester", "tester");
+  bind("tp-github", "github");
+  bind("tp-version", "version");
+  bind("tp-started", "started");
+  bind("tp-completed", "completed");
+
+  function refresh() {
+    var n = done();
+    document.getElementById("tp-count").textContent = n + " / " + steps.length + " steps done";
+    document.getElementById("tp-bar").style.width = (steps.length ? (100 * n / steps.length) : 0) + "%";
+    document.getElementById("tp-started").value = state.started;
+    document.getElementById("tp-completed").value = state.completed;
+    steps.forEach(function (s) { s.row.classList.toggle("done", s.box.checked); });
+    // A count on each section heading: "C. The first run ... 12 / 20".
+    var bySection = new Map();
+    steps.forEach(function (s) {
+      if (!s.section) { return; }
+      var c = bySection.get(s.section) || {done: 0, all: 0};
+      c.all += 1;
+      if (s.box.checked) { c.done += 1; }
+      bySection.set(s.section, c);
+    });
+    bySection.forEach(function (c, heading) {
+      var badge = heading.querySelector(".tp-badge");
+      if (!badge) { badge = el("span", {class: "tp-badge"}); heading.appendChild(badge); }
+      badge.textContent = c.done + " / " + c.all;
+      badge.classList.toggle("all", c.done === c.all);
+    });
+    var newer = document.getElementById("tp-newer");
+    if (siteVersion && state.version && state.version !== siteVersion && done() > 0) {
+      newer.hidden = false;
+      newer.textContent = "A newer DA is out (v" + siteVersion + "). When you're ready: Save as PDF, then Start again on it.";
+    } else {
+      newer.hidden = true;
+    }
+    var history = document.getElementById("tp-history");
+    var list = document.getElementById("tp-history-list");
+    list.textContent = "";
+    state.history.forEach(function (h) {
+      list.appendChild(el("li", {}, "v" + h.version + " - " + (h.tester || "no name") + " - " + h.done + " / " + h.total +
+        " steps - " + (h.started || "?") + " to " + (h.completed || "not finished")));
+    });
+    history.hidden = state.history.length === 0;
+  }
+
+  // ------------------------------------------------------------------ reporting a problem
+  function marker() {
+    return "Tester: " + (state.tester || "(no name)");
+  }
+
+  function openIssue(id, did, expected) {
+    if (!state.tester) {
+      alert("Please type your name at the top of the test plan first, so your reports can be counted.");
+      document.getElementById("tp-tester").focus();
+      return;
+    }
+    var title = "Step " + id + ": " + did.replace(/\s+/g, " ").slice(0, 70);
+    var body =
+      "**Step:** " + id + "\n" +
+      "**" + marker() + "**\n" +
+      "**DA version:** " + (state.version || siteVersion) + "\n\n" +
+      "**What I did:** " + did + "\n\n" +
+      "**What I expected:** " + expected + "\n\n" +
+      "**What happened instead:**\n\n(describe it here; a screenshot helps)\n\n" +
+      "**DA.exe or the Python install?**\n\n" +
+      "---\nReported from the test plan: https://da.gamenightbymike.com/verification.html";
+    var url = "https://github.com/" + REPO + "/issues/new?labels=defect&title=" + encodeURIComponent(title) +
+      "&body=" + encodeURIComponent(body);
+    window.open(url, "_blank", "noopener");
+  }
+
+  function countDefects() {
+    var line = document.getElementById("tp-defects");
+    if (!state.tester && !state.github) {
+      line.textContent = "Problems you report with the Report buttons are counted here once your name is filled in.";
+      return;
+    }
+    var who = state.github ? "author:" + state.github : '"' + marker() + '"';
+    var base = "https://api.github.com/search/issues?q=" + encodeURIComponent("repo:" + REPO + " is:issue " + who);
+    Promise.all([fetch(base), fetch(base + encodeURIComponent(" is:open"))])
+      .then(function (r) { return Promise.all(r.map(function (x) { return x.ok ? x.json() : null; })); })
+      .then(function (data) {
+        if (!data[0] || !data[1]) { throw new Error("no answer"); }
+        var all = data[0].total_count, open = data[1].total_count;
+        var link = "https://github.com/" + REPO + "/issues?q=" + encodeURIComponent("is:issue " + who);
+        line.innerHTML = "";
+        line.appendChild(document.createTextNode(all === 0 ? "No problems reported yet. " :
+          open + " / " + all + " problems you reported remain open (" + (all - open) + " fixed and closed). "));
+        if (all > 0) { line.appendChild(el("a", {href: link, target: "_blank", rel: "noopener"}, "See them")); }
+      })
+      .catch(function () {
+        line.textContent = "Couldn't count your reports just now (GitHub didn't answer); try again in a minute.";
+      });
+  }
+
+  // ------------------------------------------------------------------ PDF and starting again
+  document.getElementById("tp-pdf").addEventListener("click", function () {
+    var old = document.title;
+    document.title = "DA test plan - " + (state.tester || "tester") + " - v" + (state.version || siteVersion) + " - " + today();
+    window.print();                   // choose "Save as PDF" (or Microsoft Print to PDF) as the printer
+    document.title = old;
+  });
+
+  document.getElementById("tp-reset").addEventListener("click", function () {
+    var to = siteVersion || state.version;
+    if (!confirm("Save your results as a PDF first if you want to keep them.\n\nStart again on v" + to +
+        "? Your " + done() + " ticks and both dates are cleared (your name stays).")) { return; }
+    state.history.unshift({version: state.version, tester: state.tester, done: done(), total: steps.length,
+                           started: state.started, completed: state.completed, saved: today()});
+    state.history = state.history.slice(0, 20);
+    state.version = to;
+    state.started = "";
+    state.completed = "";
+    state.checks = {};
+    steps.forEach(function (s) { s.box.checked = false; });
+    document.getElementById("tp-version").value = state.version;
+    save();
+    refresh();
+  });
+
+  refresh();
+  countDefects();
+})();
+</script>
 </body>
 </html>
