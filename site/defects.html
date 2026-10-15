@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DA Known Problems</title>
+<meta name="description" content="How to use DA (Digital Archive) to file photos and scanned documents by date.">
+<style>
+:root { --bg:#ffffff; --fg:#1d2329; --muted:#5b6670; --line:#dde3e8; --accent:#1f6feb; --code:#f3f5f7;
+        --side:#f7f9fb; --head:#0f3d6e; --headfg:#ffffff; }
+@media (prefers-color-scheme: dark) {
+  :root { --bg:#14181c; --fg:#e4e8ec; --muted:#9aa5ae; --line:#2b333a; --accent:#6aa6ff; --code:#1d232a;
+          --side:#181d22; --head:#0b2b4d; --headfg:#ffffff; }
+}
+* { box-sizing: border-box; }
+html { scroll-padding-top: 72px; }
+body { margin:0; background:var(--bg); color:var(--fg); font: 17px/1.6 "Segoe UI", system-ui, sans-serif; }
+header { position:sticky; top:0; z-index:2; display:flex; flex-wrap:wrap; gap:8px 16px; align-items:center;
+         padding:10px 20px; background:var(--head); color:var(--headfg); }
+header .title { font-weight:700; font-size:20px; margin-right:auto; }
+header .version { opacity:.8; font-size:14px; }
+header a.button { color:var(--headfg); text-decoration:none; border:1px solid rgba(255,255,255,.5);
+                  border-radius:6px; padding:5px 12px; font-size:15px; white-space:nowrap; }
+header a.button.primary { background:#2ea043; border-color:#2ea043; }
+.layout { display:flex; max-width:1240px; margin:0 auto; }
+nav { flex:0 0 270px; position:sticky; top:56px; align-self:flex-start; max-height:calc(100vh - 56px);
+      overflow:auto; padding:18px 14px 40px 20px; background:var(--side); border-right:1px solid var(--line);
+      font-size:15px; }
+nav ul { list-style:none; margin:0; padding-left:0; }
+nav ul ul { padding-left:14px; margin-bottom:6px; }
+nav li { margin:3px 0; }
+nav a { color:var(--fg); text-decoration:none; }
+nav a:hover { color:var(--accent); }
+nav > ul > li > a { font-weight:600; }
+main { flex:1; min-width:0; padding:8px 32px 80px; }
+h1 { font-size:34px; margin:18px 0 8px; }
+h2 { font-size:26px; margin:44px 0 10px; padding-top:10px; border-top:2px solid var(--line); }
+h3 { font-size:21px; margin:32px 0 8px; }
+h4 { font-size:18px; margin:24px 0 6px; }
+a { color:var(--accent); }
+code { background:var(--code); border-radius:4px; padding:1px 5px; font: 15px Consolas, "Cascadia Mono", monospace; }
+pre { background:var(--code); border:1px solid var(--line); border-radius:8px; padding:12px 14px; overflow:auto; }
+pre code { padding:0; background:none; font-size:14px; line-height:1.45; }
+table { border-collapse:collapse; width:100%; margin:12px 0; font-size:16px; display:block; overflow-x:auto; }
+th, td { border:1px solid var(--line); padding:7px 10px; text-align:left; vertical-align:top; }
+th { background:var(--side); }
+/* The test plan's checklists: #, Do this, You should see, a tick box. */
+table:has(th:nth-child(4)) th:nth-child(1) { width:7%; }
+table:has(th:nth-child(4)) th:nth-child(2) { width:47%; }
+table:has(th:nth-child(4)) th:nth-child(3) { width:39%; }
+table:has(th:nth-child(4)) th:nth-child(4), table:has(th:nth-child(4)) td:nth-child(4) { width:7%; text-align:center; }
+.print-only { display:none; color:var(--muted); font-size:14px; }
+footer { color:var(--muted); font-size:14px; margin-top:60px; border-top:1px solid var(--line); padding-top:12px; }
+@media (max-width: 860px) {
+  .layout { display:block; }
+  nav { position:static; max-height:none; border-right:0; border-bottom:1px solid var(--line); }
+  main { padding:8px 16px 60px; }
+  body { font-size:16px; }
+}
+@media print {
+  table { display:table; table-layout:fixed; font-size:12px; }
+  td, th { word-wrap:break-word; }
+  table code { font-size:0.85em; }
+  tr { break-inside:avoid; }
+  header, nav { display:none; }
+  .layout { display:block; }
+  main { padding:0; }
+  body { font-size:11pt; background:#fff; color:#000; }
+  h2, h3 { break-after:avoid; }
+  h2 { border-top:0; margin-top:28px; }
+  .print-only { display:block; }
+  pre, table, tr { break-inside:avoid; }
+  a { color:#000; text-decoration:none; }
+}
+</style>
+</head>
+<body>
+<header>
+  <span class="title">DA Known Problems</span>
+  <span class="version">DA v2026.10.26</span>
+  <a class="button" href="index.html">Guide</a>
+  <a class="button" href="verification.html">Test plan</a>
+  <a class="button" href="defects.html">Known problems</a>
+  <a class="button primary" href="https://github.com/devmukmuk/DA/releases/latest/download/DA.exe">Download DA</a>
+  
+</header>
+<div class="layout">
+<nav aria-label="Contents"><ul><li><a href="#1-a-mistyped-folder-in-da-tag-tags-every-file">1. A mistyped folder in da tag tags every file</a></li><li><a href="#2-windows-blocks-daexe-on-some-pcs">2. Windows blocks DA.exe on some PCs</a></li><li><a href="#3-two-da-windows-changing-one-archive-at-once">3. Two DA windows changing one archive at once</a></li><li><a href="#4-an-older-archives-open-dacmd-cant-find-da-installed-with-python">4. An older archive's Open DA.cmd can't find DA installed with Python</a></li><li><a href="#5-da-update-can-fail-while-another-da-window-is-open">5. da update can fail while another DA window is open</a></li><li><a href="#6-menu-4-only-undoes-duplicates">6. Menu 4 only undoes duplicates</a></li><li><a href="#7-a-videos-time-can-be-a-few-hours-off">7. A video's time can be a few hours off</a></li><li><a href="#8-contact-sheets-are-slow-for-months-with-many-iphone-photos">8. Contact sheets are slow for months with many iPhone photos</a></li><li><a href="#9-older-photos-show-as-unknown-camera">9. Older photos show as "Unknown camera"</a></li><li><a href="#10-videos-show-as-a-video-card-on-contact-sheets">10. Videos show as a VIDEO card on contact sheets</a></li><li><a href="#11-videos-arent-used-for-places-or-location-folders">11. Videos aren't used for places or location folders</a></li><li><a href="#12-some-old-videos-have-no-date-da-can-read">12. Some old videos have no date DA can read</a></li><li><a href="#13-a-few-terminal-commands-print-raw-json">13. A few terminal commands print raw JSON</a></li></ul></nav>
+<main>
+<p class="print-only">DA v2026.10.26 &middot; da.gamenightbymike.com &middot; 2026-10-15</p>
+<h1 id="da-known-problems">DA known problems</h1>
+<p>Everything already known to be wrong or missing in DA, with a way around it where there is one. If you find
+something that isn't here, please <a href="https://github.com/devmukmuk/DA/issues">report it</a> (see
+<a href="https://da.gamenightbymike.com/verification.html#reporting-a-problem">Reporting a problem</a> in the test plan).</p>
+<p><strong>Kind:</strong> a <em>defect</em> is something DA does wrong; a <em>limitation</em> is something it doesn't do yet.
+<strong>Severity:</strong> <em>high</em> - it can change many files or stop you working; <em>medium</em> - it gets in the way, and
+there's a way around it; <em>low</em> - a nuisance.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Problem</th>
+<th>Kind</th>
+<th>Severity</th>
+<th>Issue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><a href="#1-a-mistyped-folder-in-da-tag-tags-every-file">A mistyped folder in <code>da tag</code> tags every file</a></td>
+<td>defect</td>
+<td>high</td>
+<td><a href="https://github.com/devmukmuk/DA/issues/2">#2</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td><a href="#2-windows-blocks-daexe-on-some-pcs">Windows blocks DA.exe on some PCs</a></td>
+<td>limitation</td>
+<td>medium</td>
+<td><a href="https://github.com/devmukmuk/DA/issues/3">#3</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td><a href="#3-two-da-windows-changing-one-archive-at-once">Two DA windows changing one archive at once</a></td>
+<td>defect</td>
+<td>medium</td>
+<td><a href="https://github.com/devmukmuk/DA/issues/4">#4</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td><a href="#4-an-older-archives-open-dacmd-cant-find-da-installed-with-python">An older archive's Open DA.cmd can't find DA installed with Python</a></td>
+<td>defect</td>
+<td>medium</td>
+<td><a href="https://github.com/devmukmuk/DA/issues/5">#5</a></td>
+</tr>
+<tr>
+<td>5</td>
+<td><a href="#5-da-update-can-fail-while-another-da-window-is-open"><code>da update</code> can fail while another DA window is open</a></td>
+<td>defect</td>
+<td>low</td>
+<td><a href="https://github.com/devmukmuk/DA/issues/6">#6</a></td>
+</tr>
+<tr>
+<td>6</td>
+<td><a href="#6-menu-4-only-undoes-duplicates">Menu 4 only undoes duplicates</a></td>
+<td>limitation</td>
+<td>low</td>
+<td><a href="https://github.com/devmukmuk/DA/issues/7">#7</a></td>
+</tr>
+<tr>
+<td>7</td>
+<td><a href="#7-a-videos-time-can-be-a-few-hours-off">A video's time can be a few hours off</a></td>
+<td>defect</td>
+<td>low</td>
+<td><a href="https://github.com/devmukmuk/DA/issues/8">#8</a></td>
+</tr>
+<tr>
+<td>8</td>
+<td><a href="#8-contact-sheets-are-slow-for-months-with-many-iphone-photos">Contact sheets are slow for months with many iPhone photos</a></td>
+<td>limitation</td>
+<td>low</td>
+<td><a href="https://github.com/devmukmuk/DA/issues/9">#9</a></td>
+</tr>
+<tr>
+<td>9</td>
+<td><a href="#9-older-photos-show-as-unknown-camera">Older photos show as "Unknown camera"</a></td>
+<td>limitation</td>
+<td>low</td>
+<td><a href="https://github.com/devmukmuk/DA/issues/10">#10</a></td>
+</tr>
+<tr>
+<td>10</td>
+<td><a href="#10-videos-show-as-a-video-card-on-contact-sheets">Videos show as a VIDEO card on contact sheets</a></td>
+<td>limitation</td>
+<td>low</td>
+<td><a href="https://github.com/devmukmuk/DA/issues/11">#11</a></td>
+</tr>
+<tr>
+<td>11</td>
+<td><a href="#11-videos-arent-used-for-places-or-location-folders">Videos aren't used for places or location folders</a></td>
+<td>limitation</td>
+<td>low</td>
+<td><a href="https://github.com/devmukmuk/DA/issues/12">#12</a></td>
+</tr>
+<tr>
+<td>12</td>
+<td><a href="#12-some-old-videos-have-no-date-da-can-read">Some old videos have no date DA can read</a></td>
+<td>limitation</td>
+<td>low</td>
+<td><a href="https://github.com/devmukmuk/DA/issues/13">#13</a></td>
+</tr>
+<tr>
+<td>13</td>
+<td><a href="#13-a-few-terminal-commands-print-raw-json">A few terminal commands print raw JSON</a></td>
+<td>limitation</td>
+<td>low</td>
+<td><a href="https://github.com/devmukmuk/DA/issues/14">#14</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="1-a-mistyped-folder-in-da-tag-tags-every-file">1. A mistyped folder in <code>da tag</code> tags every file</h2>
+<p><strong>Issue:</strong> <a href="https://github.com/devmukmuk/DA/issues/2">#2</a></p>
+<p><strong>What happens:</strong> <code>da tag</code> takes files or folders, then the tags to add. A folder name that doesn't exist (a
+typo, or <code>photos\organized\2020-11</code> instead of <code>photos\organized\2020\2020-11</code>) is taken as a <em>tag</em>; with no
+real folder named, DA then adds that "tag" to <strong>every file in <code>photos\organized</code></strong>, without asking.</p>
+<p><strong>What it changes:</strong> only an extra tag in each sidecar (no photo is moved, renamed or changed).</p>
+<p><strong>Way around it:</strong> check the folder exists before tagging. To undo, take the tag off again (with the same words,
+joined by <code>-</code>): <code>da tag --remove photos-organized-2020-11</code>.</p>
+<p><strong>Fix planned:</strong> a word that looks like a path but doesn't exist stops with "No such folder"; tagging the whole
+archive asks first. Test plan step U2.</p>
+<h2 id="2-windows-blocks-daexe-on-some-pcs">2. Windows blocks DA.exe on some PCs</h2>
+<p><strong>Issue:</strong> <a href="https://github.com/devmukmuk/DA/issues/3">#3</a></p>
+<p><strong>What happens:</strong> on a PC with Windows' <strong>Smart App Control</strong> turned on, <code>DA.exe</code> may not run: <em>"an
+application control policy has blocked this file"</em>, or Windows Security warnings. DA.exe isn't digitally signed,
+and Smart App Control decides each PC on its own (the same file can run on one PC and not another).</p>
+<p><strong>Way around it:</strong> install DA with Python instead (free, about ten minutes): see
+<a href="https://da.gamenightbymike.com/#install-da-with-python-if-windows-blocks-daexe">Install DA with Python</a>. It
+works the same, and updates with <code>da update</code>. Please don't turn Smart App Control off for DA.</p>
+<h2 id="3-two-da-windows-changing-one-archive-at-once">3. Two DA windows changing one archive at once</h2>
+<p><strong>Issue:</strong> <a href="https://github.com/devmukmuk/DA/issues/4">#4</a></p>
+<p><strong>What happens:</strong> two commands that change the same archive at the same time (say <code>da run</code> in one window and
+<code>da location lookup</code> in another) can fail with <em>"database is locked"</em>, or leave confusing records. Commands
+that only look (Status, Report, What needs review) are fine alongside.</p>
+<p><strong>Way around it:</strong> one changing command per archive at a time. Different archives at once are fine.</p>
+<p><strong>Fix planned:</strong> a lock, so a second DA says "another DA is working in this archive" instead.</p>
+<h2 id="4-an-older-archives-open-dacmd-cant-find-da-installed-with-python">4. An older archive's Open DA.cmd can't find DA installed with Python</h2>
+<p><strong>Issue:</strong> <a href="https://github.com/devmukmuk/DA/issues/5">#5</a></p>
+<p><strong>What happens:</strong> an archive made before version 2026.10.21 has an <code>Open DA.cmd</code> that only looks for
+<code>DA.exe</code>. After installing DA with Python (which sets DA.exe aside), double-clicking it says <em>"DA is not
+installed on this PC"</em>. The install updates the launchers of the archives this PC knows (<code>da archives</code>), so
+this only happens for an archive the PC hadn't opened before.</p>
+<p><strong>Way around it:</strong> in a terminal, <code>da setup "&lt;that archive's folder&gt;"</code>. It rewrites <code>Open DA.cmd</code> (nothing
+else changes in the archive).</p>
+<h2 id="5-da-update-can-fail-while-another-da-window-is-open">5. <code>da update</code> can fail while another DA window is open</h2>
+<p><strong>Issue:</strong> <a href="https://github.com/devmukmuk/DA/issues/6">#6</a></p>
+<p><strong>What happens:</strong> with DA installed with Python, <code>da update</code> replaces DA's files; if another DA window is using
+them, Windows may not let it, and it says the update didn't finish.</p>
+<p><strong>Way around it:</strong> close every DA window (including the menu), open one new terminal, run <code>da update</code> again.</p>
+<h2 id="6-menu-4-only-undoes-duplicates">6. Menu 4 only undoes duplicates</h2>
+<p><strong>Issue:</strong> <a href="https://github.com/devmukmuk/DA/issues/7">#7</a></p>
+<p><strong>What happens:</strong> <strong>4 Undo last set-aside</strong> puts back the last set of duplicates. Splits, merges, location
+folders and paired Live Photo videos can be undone too, but only from a terminal.</p>
+<p><strong>Way around it:</strong> each of those prints an <strong>Undo</strong> line when it finishes (<code>da intake undo "&lt;file&gt;"</code>); copy and
+run it. The files are also in the archive's <code>output\runs\</code> folders (<code>…-split\split-moved.csv</code>,
+<code>…-merge\merge-copied.csv</code>, <code>…-location-group\location-moved.csv</code>).</p>
+<h2 id="7-a-videos-time-can-be-a-few-hours-off">7. A video's time can be a few hours off</h2>
+<p><strong>Issue:</strong> <a href="https://github.com/devmukmuk/DA/issues/8">#8</a></p>
+<p><strong>What happens:</strong> some cameras and older phones store a video's time in UTC (world time). DA converts it with
+<strong>this PC's</strong> time zone, so a video recorded while travelling (or on a PC set to another zone) can be named a
+few hours early or late, and very rarely land on the day before or after. Videos whose names carry the local
+time (<code>VID 00000-20091016-2017.3gp</code>) and iPhone videos are right.</p>
+<p><strong>Way around it:</strong> shift them: <code>da date shift "&lt;video or folder&gt;" --by -3h</code> (or <code>+2h</code>, …), then
+<code>da validate "&lt;its folder&gt;" --mode repair</code>.</p>
+<h2 id="8-contact-sheets-are-slow-for-months-with-many-iphone-photos">8. Contact sheets are slow for months with many iPhone photos</h2>
+<p><strong>Issue:</strong> <a href="https://github.com/devmukmuk/DA/issues/9">#9</a></p>
+<p><strong>What happens:</strong> making a contact sheet decodes every photo to draw its small picture; iPhone HEIC photos are
+slow to decode (about 10 seconds for 170 photos). This mostly shows during big runs and <code>da contact-sheets</code>.</p>
+<p><strong>Way around it:</strong> none needed: it only happens when a month's photos change. <strong>Planned:</strong> keep the small
+pictures, so a sheet made again decodes nothing.</p>
+<h2 id="9-older-photos-show-as-unknown-camera">9. Older photos show as "Unknown camera"</h2>
+<p><strong>Issue:</strong> <a href="https://github.com/devmukmuk/DA/issues/10">#10</a></p>
+<p><strong>What happens:</strong> photos filed by an older version of DA (before 2026.10.14) don't have their camera details
+yet, so contact sheets put them all under <strong>Unknown camera</strong>, and they have no <code>camera:</code>/<code>owner:</code> tags.</p>
+<p><strong>Way around it:</strong> run <code>da tag</code> once in that archive (it reads each photo's camera details; slow the first
+time), then <code>da contact-sheets photos\organized</code>.</p>
+<h2 id="10-videos-show-as-a-video-card-on-contact-sheets">10. Videos show as a VIDEO card on contact sheets</h2>
+<p><strong>Issue:</strong> <a href="https://github.com/devmukmuk/DA/issues/11">#11</a></p>
+<p><strong>What happens:</strong> contact sheets show each video as a dark <strong>VIDEO</strong> card with its length, not a picture from
+the video. <strong>Planned</strong> for a later version.</p>
+<h2 id="11-videos-arent-used-for-places-or-location-folders">11. Videos aren't used for places or location folders</h2>
+<p><strong>Issue:</strong> <a href="https://github.com/devmukmuk/DA/issues/12">#12</a></p>
+<p><strong>What happens:</strong> <code>da location lookup</code> and location folders (menu <strong>L</strong>) use photos only; a video recorded at
+the same place stays in the month folder. <strong>Planned</strong> for a later version.</p>
+<p><strong>Way around it:</strong> move a video into a location folder yourself (with its <code>.meta.json</code>); DA accepts it there.</p>
+<h2 id="12-some-old-videos-have-no-date-da-can-read">12. Some old videos have no date DA can read</h2>
+<p><strong>Issue:</strong> <a href="https://github.com/devmukmuk/DA/issues/13">#13</a></p>
+<p><strong>What happens:</strong> many old <code>.mpg</code>, <code>.wmv</code> and some <code>.avi</code> files don't record when they were made, so DA can't
+date them; they wait in intake under <strong>3 What needs review</strong> ("No date").</p>
+<p><strong>Way around it:</strong> give them a date: menu <strong>D</strong> (a folder at a time), or
+<code>da date set "&lt;video&gt;" --date 2006-06</code>.</p>
+<h2 id="13-a-few-terminal-commands-print-raw-json">13. A few terminal commands print raw JSON</h2>
+<p><strong>Issue:</strong> <a href="https://github.com/devmukmuk/DA/issues/14">#14</a></p>
+<p><strong>What happens:</strong> some older terminal commands (<code>da findit tags</code>, <code>da db inspect</code>) print their results as JSON
+text, which is hard to read.</p>
+<p><strong>Way around it:</strong> look for <code>"match_count"</code> and the file paths; the menu and the newer commands print plain
+sentences.</p>
+<footer>DA v2026.10.26 &middot; guide built 2026-10-15 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
+</main>
+</div>
+</body>
+</html>

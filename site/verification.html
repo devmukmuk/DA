@@ -1,0 +1,1803 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DA Test Plan</title>
+<meta name="description" content="How to use DA (Digital Archive) to file photos and scanned documents by date.">
+<style>
+:root { --bg:#ffffff; --fg:#1d2329; --muted:#5b6670; --line:#dde3e8; --accent:#1f6feb; --code:#f3f5f7;
+        --side:#f7f9fb; --head:#0f3d6e; --headfg:#ffffff; }
+@media (prefers-color-scheme: dark) {
+  :root { --bg:#14181c; --fg:#e4e8ec; --muted:#9aa5ae; --line:#2b333a; --accent:#6aa6ff; --code:#1d232a;
+          --side:#181d22; --head:#0b2b4d; --headfg:#ffffff; }
+}
+* { box-sizing: border-box; }
+html { scroll-padding-top: 72px; }
+body { margin:0; background:var(--bg); color:var(--fg); font: 17px/1.6 "Segoe UI", system-ui, sans-serif; }
+header { position:sticky; top:0; z-index:2; display:flex; flex-wrap:wrap; gap:8px 16px; align-items:center;
+         padding:10px 20px; background:var(--head); color:var(--headfg); }
+header .title { font-weight:700; font-size:20px; margin-right:auto; }
+header .version { opacity:.8; font-size:14px; }
+header a.button { color:var(--headfg); text-decoration:none; border:1px solid rgba(255,255,255,.5);
+                  border-radius:6px; padding:5px 12px; font-size:15px; white-space:nowrap; }
+header a.button.primary { background:#2ea043; border-color:#2ea043; }
+.layout { display:flex; max-width:1240px; margin:0 auto; }
+nav { flex:0 0 270px; position:sticky; top:56px; align-self:flex-start; max-height:calc(100vh - 56px);
+      overflow:auto; padding:18px 14px 40px 20px; background:var(--side); border-right:1px solid var(--line);
+      font-size:15px; }
+nav ul { list-style:none; margin:0; padding-left:0; }
+nav ul ul { padding-left:14px; margin-bottom:6px; }
+nav li { margin:3px 0; }
+nav a { color:var(--fg); text-decoration:none; }
+nav a:hover { color:var(--accent); }
+nav > ul > li > a { font-weight:600; }
+main { flex:1; min-width:0; padding:8px 32px 80px; }
+h1 { font-size:34px; margin:18px 0 8px; }
+h2 { font-size:26px; margin:44px 0 10px; padding-top:10px; border-top:2px solid var(--line); }
+h3 { font-size:21px; margin:32px 0 8px; }
+h4 { font-size:18px; margin:24px 0 6px; }
+a { color:var(--accent); }
+code { background:var(--code); border-radius:4px; padding:1px 5px; font: 15px Consolas, "Cascadia Mono", monospace; }
+pre { background:var(--code); border:1px solid var(--line); border-radius:8px; padding:12px 14px; overflow:auto; }
+pre code { padding:0; background:none; font-size:14px; line-height:1.45; }
+table { border-collapse:collapse; width:100%; margin:12px 0; font-size:16px; display:block; overflow-x:auto; }
+th, td { border:1px solid var(--line); padding:7px 10px; text-align:left; vertical-align:top; }
+th { background:var(--side); }
+/* The test plan's checklists: #, Do this, You should see, a tick box. */
+table:has(th:nth-child(4)) th:nth-child(1) { width:7%; }
+table:has(th:nth-child(4)) th:nth-child(2) { width:47%; }
+table:has(th:nth-child(4)) th:nth-child(3) { width:39%; }
+table:has(th:nth-child(4)) th:nth-child(4), table:has(th:nth-child(4)) td:nth-child(4) { width:7%; text-align:center; }
+.print-only { display:none; color:var(--muted); font-size:14px; }
+footer { color:var(--muted); font-size:14px; margin-top:60px; border-top:1px solid var(--line); padding-top:12px; }
+@media (max-width: 860px) {
+  .layout { display:block; }
+  nav { position:static; max-height:none; border-right:0; border-bottom:1px solid var(--line); }
+  main { padding:8px 16px 60px; }
+  body { font-size:16px; }
+}
+@media print {
+  table { display:table; table-layout:fixed; font-size:12px; }
+  td, th { word-wrap:break-word; }
+  table code { font-size:0.85em; }
+  tr { break-inside:avoid; }
+  header, nav { display:none; }
+  .layout { display:block; }
+  main { padding:0; }
+  body { font-size:11pt; background:#fff; color:#000; }
+  h2, h3 { break-after:avoid; }
+  h2 { border-top:0; margin-top:28px; }
+  .print-only { display:block; }
+  pre, table, tr { break-inside:avoid; }
+  a { color:#000; text-decoration:none; }
+}
+</style>
+</head>
+<body>
+<header>
+  <span class="title">DA Test Plan</span>
+  <span class="version">DA v2026.10.26</span>
+  <a class="button" href="index.html">Guide</a>
+  <a class="button" href="verification.html">Test plan</a>
+  <a class="button" href="defects.html">Known problems</a>
+  <a class="button primary" href="https://github.com/devmukmuk/DA/releases/latest/download/DA.exe">Download DA</a>
+  <a class="button" href="DA-Test-Plan.pdf">PDF version</a>
+</header>
+<div class="layout">
+<nav aria-label="Contents"><ul><li><a href="#before-you-start">Before you start</a><ul><li><a href="#make-a-test-kit">Make a test kit</a></li></ul></li><li><a href="#a-install-da">A. Install DA</a></li><li><a href="#b-create-an-archive">B. Create an archive</a></li><li><a href="#c-the-first-run-process-intake-menu-1">C. The first run: process intake (menu 1)</a></li><li><a href="#d-what-needs-review-menu-3">D. What needs review (menu 3)</a></li><li><a href="#e-status-and-the-index-menu-2-5">E. Status and the index (menu 2, 5)</a></li><li><a href="#f-duplicates-and-undo-menu-4">F. Duplicates and undo (menu 4)</a></li><li><a href="#g-documents-and-scans">G. Documents and scans</a></li><li><a href="#h-contact-sheets">H. Contact sheets</a></li><li><a href="#i-videos-live-photos-and-heic">I. Videos, Live Photos and HEIC</a></li><li><a href="#j-fix-dates-menu-d">J. Fix dates (menu D)</a></li><li><a href="#k-tags-terminal">K. Tags (terminal)</a></li><li><a href="#l-places-and-location-folders-menu-l">L. Places and location folders (menu L)</a></li><li><a href="#m-split-by-years-menu-s">M. Split by years (menu S)</a></li><li><a href="#n-merge-two-copies-menu-m">N. Merge two copies (menu M)</a></li><li><a href="#o-report-menu-r">O. Report (menu R)</a></li><li><a href="#p-update-sidecars-menu-j">P. Update sidecars (menu J)</a></li><li><a href="#q-checking-whats-filed-terminal">Q. Checking what's filed (terminal)</a></li><li><a href="#r-settings-da-archiveyaml">R. Settings (da-archive.yaml)</a></li><li><a href="#s-logs-records-and-safety">S. Logs, records and safety</a></li><li><a href="#t-another-pc-or-a-usb-drive">T. Another PC or a USB drive</a></li><li><a href="#u-messages-when-somethings-wrong">U. Messages when something's wrong</a></li><li><a href="#v-clean-up">V. Clean up</a></li><li><a href="#reporting-a-problem">Reporting a problem</a></li></ul></nav>
+<main>
+<p class="print-only">DA v2026.10.26 &middot; da.gamenightbymike.com &middot; 2026-10-15</p>
+<h1 id="da-test-plan">DA test plan</h1>
+<p>Thank you for testing DA. This plan walks through everything DA does, step by step: first with the
+<strong>menu</strong> (what most people use), then with <strong>commands typed in a terminal</strong> (for things the menu doesn't
+have). Each step says what to do and what you should see. Tick the box when it works; when it doesn't,
+write down the step's number (like <strong>D7</strong>) and what happened, and see <a href="#reporting-a-problem">Reporting a problem</a>.</p>
+<p>You don't need to do it all in one sitting: each part starts from where the one before left off. The whole
+plan takes a few evenings. The <a href="https://da.gamenightbymike.com">user guide</a> explains anything this plan
+mentions; the <a href="https://da.gamenightbymike.com/defects.html">known problems</a> list what's already known, so you
+don't need to report those.</p>
+<h2 id="before-you-start">Before you start</h2>
+<ul>
+<li><strong>Use copies, never your only photos.</strong> DA never deletes anything and asks before it moves anything, but
+  this is a test: copy some photos into a new folder and test with those.</li>
+<li><strong>A Windows PC</strong> with about 5 GB free, and an internet connection for a few steps (places, updates).</li>
+<li><strong>Write down your DA version</strong> (it's shown in step A5) when you report anything.</li>
+<li>Words used here: an <strong>archive</strong> is the folder DA looks after; <strong>intake</strong> is where you put new files; a
+  <strong>sidecar</strong> is the small <code>.meta.json</code> file DA keeps beside each photo; the <strong>menu</strong> is what opens when you
+  double-click an archive's <code>Open DA.cmd</code> (or type <code>da</code>).</li>
+</ul>
+<h3 id="make-a-test-kit">Make a test kit</h3>
+<p>Make a folder <code>C:\DA-test-kit</code> and put copies of these in it. The more kinds you have, the more of the plan
+you can try; skip a step whose files you don't have and mark it <strong>skipped</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Folder in the kit</th>
+<th>What to put in it</th>
+<th>Used in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>phone</code></td>
+<td>20-50 photos from a phone (JPG or HEIC), some taken outdoors (they have a location)</td>
+<td>C, H, K, L</td>
+</tr>
+<tr>
+<td><code>phone</code></td>
+<td>2-3 iPhone <strong>Live Photos</strong> (each is a <code>.HEIC</code> or <code>.JPG</code> plus a <code>.MOV</code> with the same name)</td>
+<td>I</td>
+</tr>
+<tr>
+<td><code>phone</code></td>
+<td>2-3 ordinary videos (<code>.mov</code> or <code>.mp4</code>, longer than 5 seconds)</td>
+<td>I</td>
+</tr>
+<tr>
+<td><code>camera</code></td>
+<td>5-10 photos from a different camera (another phone, or a digital camera)</td>
+<td>H, K</td>
+</tr>
+<tr>
+<td><code>scans</code></td>
+<td>5 scans of old prints (JPG/PNG/TIFF that have <strong>no date</strong> in them or in their name)</td>
+<td>G, J</td>
+</tr>
+<tr>
+<td><code>docs</code></td>
+<td>3-5 PDFs (bills, letters) and a Word or Excel file</td>
+<td>G</td>
+</tr>
+<tr>
+<td><code>doubles</code></td>
+<td>3 photos that are <strong>exact copies</strong> of photos in <code>phone</code> (copy them again)</td>
+<td>F</td>
+</tr>
+<tr>
+<td><code>old</code></td>
+<td>3-5 photos taken in a different decade from the rest (say 2005 if the rest are 2020s)</td>
+<td>M</td>
+</tr>
+<tr>
+<td><code>other</code></td>
+<td>an old camera video (<code>.AVI</code> / <code>.MPG</code>), a <code>.CR2</code>/<code>.NEF</code> raw file with its JPG, a screenshot</td>
+<td>D, I</td>
+</tr>
+</tbody>
+</table>
+<h2 id="a-install-da">A. Install DA</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Do this</th>
+<th>You should see</th>
+<th>OK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A1</td>
+<td>Open https://da.gamenightbymike.com</td>
+<td>The DA User Guide, with a <strong>Download DA</strong> button and a contents list on the left</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>A2</td>
+<td>Click <strong>Download DA</strong></td>
+<td><code>DA.exe</code> downloads (about 75 MB); if the browser asks, choose <strong>Keep</strong></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>A3</td>
+<td>In File Explorer, go to Downloads, click the address bar, type <code>powershell</code>, press Enter</td>
+<td>A blue/black terminal window opens in Downloads</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>A4</td>
+<td>Type <code>.\DA.exe install</code> and press Enter</td>
+<td>"Installed C:\Scripts\DA\DA.exe and added it to your PATH" (or "already on your PATH")</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>A4a</td>
+<td>If instead you see <em>"an application control policy has blocked this file"</em> or a Windows Security warning that won't go away</td>
+<td>Go to step <strong>A10</strong> (install with Python) and skip A5-A9</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>A4b</td>
+<td>If you see <em>"Windows protected your PC"</em></td>
+<td>Click <strong>More info</strong>, then <strong>Run anyway</strong>; then A4 works</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>A5</td>
+<td>Close the terminal, open a <strong>new</strong> one (Windows key, type <code>powershell</code>, Enter), type <code>da version</code></td>
+<td><code>DA v2026.10.…</code> - write this version down</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>A6</td>
+<td>Type <code>da --help</code></td>
+<td>A list of commands (setup, run, status, archives, guide, …)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>A7</td>
+<td>Type <code>da guide</code></td>
+<td>The user guide opens in your browser</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>A8</td>
+<td>Type <code>da guide --pdf</code></td>
+<td>The guide's PDF opens</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>A9</td>
+<td>Type <code>da update</code></td>
+<td>It says which version you have and how to get the newest DA.exe</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>A10</td>
+<td><em>(Python install - only if Windows blocks DA.exe, or to test it)</em> Follow the guide's <a href="https://da.gamenightbymike.com/#install-da-with-python-if-windows-blocks-daexe">Install DA with Python</a>: install Python from python.org</td>
+<td><code>py --version</code> in a new terminal shows <code>Python 3.…</code></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>A11</td>
+<td>Type the guide's first line: <code>py -m venv C:\Scripts\DA\python</code></td>
+<td>No error; the folder <code>C:\Scripts\DA\python</code> exists</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>A12</td>
+<td>Type the second line (<code>…python.exe -m pip install -r https://da.gamenightbymike.com/python/requirements.txt</code>)</td>
+<td>It downloads and ends with "Successfully installed … devmukmuk-da-…"</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>A13</td>
+<td>Type the third line (<code>…python.exe -m mindit install</code>)</td>
+<td>"Installed C:\Scripts\DA\da.cmd (DA run by Python …)"; if a DA.exe was there: "Set aside DA.exe (now DA.exe.off)"</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>A14</td>
+<td>New terminal: <code>da version</code></td>
+<td>The version, with <strong>no</strong> Windows Security pop-up</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>A15</td>
+<td><code>da update</code></td>
+<td>"Downloading the newest DA …" then "Now: DA v…"</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>A16</td>
+<td>Outside any archive, type <code>da status</code></td>
+<td>"Not inside an archive" and how to open one (no crash)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>A17</td>
+<td>Type <code>da</code> on its own (outside any archive)</td>
+<td>"You're not inside an archive" and an offer to create one (answer <strong>n</strong> for now)</td>
+<td>☐</td>
+</tr>
+</tbody>
+</table>
+<h2 id="b-create-an-archive">B. Create an archive</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Do this</th>
+<th>You should see</th>
+<th>OK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B1</td>
+<td>In a terminal: <code>da setup C:\DA-test\jane-archive-202x --years 2020-2029</code></td>
+<td>"Archive ready" and the folder's path</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>B2</td>
+<td>Open <code>C:\DA-test\jane-archive-202x</code> in File Explorer</td>
+<td><code>da-archive.yaml</code>, <code>Open DA.cmd</code>, and folders <code>intake</code> (with <code>photos</code>, <code>docs</code>, <code>scans</code>), <code>photos</code>, <code>documents</code>, <code>output</code>, <code>logs</code></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>B3</td>
+<td>Open <code>da-archive.yaml</code> in Notepad (right-click, Open with, Notepad), then close it</td>
+<td><code>name: "jane-archive-202x"</code>, <code>years: "2020-2029"</code>, the intake folders, <code>contact_sheets: layout: 3x4</code></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>B4</td>
+<td>Double-click <code>Open DA.cmd</code></td>
+<td>A window opens: a box with the archive's name, folder and years, then the <strong>Status</strong> (intake: 0 files), then the menu keys</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>B5</td>
+<td>Look at the menu</td>
+<td>Keys <strong>1-7</strong>, <strong>L</strong>, <strong>S</strong>, <strong>M</strong>, <strong>R</strong>, <strong>D</strong>, <strong>J</strong>, <strong>U</strong>, <strong>H</strong>, <strong>Q</strong></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>B6</td>
+<td>Press <strong>H</strong>, Enter</td>
+<td>A short "How DA works" help, and a list of commands</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>B7</td>
+<td>Press <strong>U</strong>, Enter</td>
+<td>The user guide opens in the browser</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>B8</td>
+<td>Press <strong>x</strong> (not a menu key), Enter</td>
+<td>"Pick one of the numbers or letters shown." and the menu again</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>B9</td>
+<td>Press <strong>Q</strong>, Enter</td>
+<td>The menu closes; the window stays open with a line saying you can type <code>da</code> for the menu</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>B10</td>
+<td>Type <code>da</code> in that window</td>
+<td>The menu again, starting with the Status</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>B11</td>
+<td>Press <strong>7</strong> (New archive), Enter</td>
+<td>"Archives on this PC already:" with <code>jane-archive-202x … &lt;- open now</code>, then a question for a new folder</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>B12</td>
+<td>Type <code>C:\DA-test\sam-archive-200x</code>, Enter; years <code>2000-2009</code>, Enter</td>
+<td>"Archive ready", and the menu now shows <strong>sam-archive-200x</strong> with its Status</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>B13</td>
+<td>Press <strong>6</strong> (Switch archive), Enter</td>
+<td>Both archives listed with their years; type the number of <strong>jane-archive-202x</strong></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>B14</td>
+<td></td>
+<td>The menu shows jane-archive-202x again, with its Status</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>B15</td>
+<td>Press Q. In the same window type <code>da archives</code></td>
+<td>A table of this PC's archives (name, years, folder)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>B16</td>
+<td><code>da archives --open 2</code></td>
+<td>The second archive's menu opens (press Q to leave)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>B17</td>
+<td><code>da setup C:\DA-test\sam-archive-200x --years 2000-2009</code> again</td>
+<td>It says the archive is already there and keeps its settings (nothing moved)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>B18</td>
+<td>Make a folder <code>C:\DA-test\filled</code>, copy 3 kit photos into it, then <code>da setup C:\DA-test\filled</code></td>
+<td>It lists what's in the folder and asks before moving those into <code>intake\</code>; answer <strong>n</strong></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>B19</td>
+<td>Run it again and answer <strong>y</strong></td>
+<td>The 3 photos are now in <code>C:\DA-test\filled\intake\</code>, and the archive's files appear</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>B20</td>
+<td><code>da setup C:\DA-test\bad --years 1999-1990</code></td>
+<td>A clear message that years must look like 1990-1999 (nothing made)</td>
+<td>☐</td>
+</tr>
+</tbody>
+</table>
+<h2 id="c-the-first-run-process-intake-menu-1">C. The first run: process intake (menu 1)</h2>
+<p>Copy the whole test kit (except <code>old</code>) into <code>jane-archive-202x\intake\photos\kit</code> (so <code>kit\phone</code>,
+<code>kit\camera</code>, … are inside), copy <code>scans</code> into <code>intake\scans</code>, and <code>docs</code> into <code>intake\docs</code>.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Do this</th>
+<th>You should see</th>
+<th>OK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C1</td>
+<td>Open jane-archive-202x (its <code>Open DA.cmd</code>)</td>
+<td>The Status shows the intake files, folder by folder, with counts</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>C2</td>
+<td>Press <strong>1</strong> (Process intake)</td>
+<td>"Counting what's in intake …", then a list of intake's folders with file counts</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>C3</td>
+<td>Type the number of <code>photos</code> to open it</td>
+<td>Its subfolders (<code>kit</code>) are listed; you can open further, go up, or filter by name</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>C4</td>
+<td>Type part of a name (for example <code>kit</code>) to filter</td>
+<td>Only matching folders are listed</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>C5</td>
+<td>Go back up to the top of intake and choose to process <strong>all of intake</strong></td>
+<td>"Processing … DA asks before moving anything"</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>C6</td>
+<td>Watch step <strong>1/7 Indexing</strong></td>
+<td>A count of files indexed, no error</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>C7</td>
+<td>Step <strong>2/7 Hashing</strong></td>
+<td>A progress count, then a summary</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>C8</td>
+<td>Step <strong>3/7</strong> (duplicates): it asks whether to set exact copies aside; answer <strong>y</strong></td>
+<td>The 3 <code>doubles</code> are listed and moved to <code>_duplicates-holding</code> (see F)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>C9</td>
+<td>Step <strong>4/7 Preview</strong></td>
+<td>"planning names and folders (nothing moves)" and a plan: how many files to file, how many need review</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>C10</td>
+<td>Step <strong>5/7 Plan/check</strong></td>
+<td>Numbers of files to file, raw files and Live Photo videos going with them, and problems to review</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>C11</td>
+<td>It asks whether to file them; answer <strong>n</strong></td>
+<td>It stops; nothing was moved; the run is recorded in <code>output\runs\</code></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>C12</td>
+<td>Press <strong>1</strong> again and process all of intake again; answer <strong>y</strong> to each question</td>
+<td>Steps 1-7 run; "Filed N; hash ok N; problems: 0" and "Done. Run record: …"</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>C13</td>
+<td></td>
+<td>Right after, "Where things stand now:" and the Status (fewer files waiting)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>C14</td>
+<td>In File Explorer open <code>photos\organized</code></td>
+<td>Year folders (<code>2021</code>, …) with month folders (<code>2021-06</code>, …)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>C15</td>
+<td>Open a month folder</td>
+<td>Files named <code>photo_YYYYMMDD_HHMMSS_xxxx.jpg</code> (or <code>.heic</code>) in date order, each with a <code>.meta.json</code> beside it, and a <code>_contact-sheet.pdf</code></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>C16</td>
+<td>Check one photo's name against when it was taken (its date in the Photos app)</td>
+<td>The date and time in the name match</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>C17</td>
+<td>Open one <code>.meta.json</code> in Notepad</td>
+<td>A text file with <code>"schema": {"name": "mindit.sidecar", "version": 2}</code>, a <code>file</code> block with its sha256, and a <code>camera</code> block</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>C18</td>
+<td>Look in <code>intake\photos\kit</code></td>
+<td>Only files that need you are left (no date, other decade, …)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>C19</td>
+<td>Back in the menu, press <strong>2</strong> (Status)</td>
+<td>Organized photos/documents counts and the last run's time and "filed N"</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>C20</td>
+<td>Process intake a third time</td>
+<td>"Nothing to file" (or only the review ones are planned) - nothing is filed twice</td>
+<td>☐</td>
+</tr>
+</tbody>
+</table>
+<h2 id="d-what-needs-review-menu-3">D. What needs review (menu 3)</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Do this</th>
+<th>You should see</th>
+<th>OK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D1</td>
+<td>Press <strong>3</strong></td>
+<td>Groups of what the last run left, each with a reason and up to 5 examples</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>D2</td>
+<td></td>
+<td><strong>No date (in the file or its name)</strong>: your scans of prints and any undated files</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>D3</td>
+<td></td>
+<td>If you included a photo from another decade in <code>kit</code>: <strong>Taken outside this archive's years</strong></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>D4</td>
+<td></td>
+<td>"Full list: …\review.csv"</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>D5</td>
+<td>Open that <code>review.csv</code> (double-click; it opens in Excel or Notepad)</td>
+<td>One row per file: reason, file, detail</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>D6</td>
+<td>The screenshot from <code>other</code></td>
+<td>Filed by a date in its name, or listed under No date - not a crash</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>D7</td>
+<td>The raw file (<code>.CR2</code>/<code>.NEF</code>)</td>
+<td>Moved and renamed together with its JPG (same new name, raw extension), not left alone</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>D8</td>
+<td>A raw file whose JPG isn't there</td>
+<td>Left in intake</td>
+<td>☐</td>
+</tr>
+</tbody>
+</table>
+<h2 id="e-status-and-the-index-menu-2-5">E. Status and the index (menu 2, 5)</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Do this</th>
+<th>You should see</th>
+<th>OK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E1</td>
+<td>Press <strong>2</strong></td>
+<td>The same numbers as the box at the top, plus intake folder by folder</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>E2</td>
+<td>In File Explorer, move one filed photo (and its <code>.meta.json</code>) to your Desktop</td>
+<td></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>E3</td>
+<td>Press <strong>5</strong> (Refresh index)</td>
+<td>It indexes, then the counts drop by one</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>E4</td>
+<td>Move the photo back where it was, press <strong>5</strong></td>
+<td>Counts back up</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>E5</td>
+<td>Terminal (in the archive): <code>da db stats</code></td>
+<td>Counts by year and kind</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>E6</td>
+<td><code>da db query "SELECT file_name, captured_at FROM files WHERE area = 'photos' LIMIT 5"</code></td>
+<td>Five photos with their dates</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>E7</td>
+<td><code>da db query "DELETE FROM files"</code></td>
+<td>Refused: only SELECT is allowed (nothing deleted)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>E8</td>
+<td><code>da status</code></td>
+<td>The same Status as menu 2</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>E9</td>
+<td><code>da intake status</code></td>
+<td>Intake folder by folder: files, GB, photos, raw, documents, videos, hashed, already in organized</td>
+<td>☐</td>
+</tr>
+</tbody>
+</table>
+<h2 id="f-duplicates-and-undo-menu-4">F. Duplicates and undo (menu 4)</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Do this</th>
+<th>You should see</th>
+<th>OK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F1</td>
+<td>Open <code>_duplicates-holding</code> in the archive</td>
+<td>Today's date folder with the 3 <code>doubles</code> (exact copies), and a <code>moved.csv</code> record</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>F2</td>
+<td>Press <strong>4</strong> (Undo last set-aside)</td>
+<td>"Put 3 files back where they were (from …)?"; answer <strong>y</strong></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>F3</td>
+<td></td>
+<td>"Restored 3"; the doubles are back in <code>intake\photos\kit\doubles</code></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>F4</td>
+<td>Process intake again (menu 1, answer y)</td>
+<td>The doubles are set aside again (they're still exact copies of filed photos)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>F5</td>
+<td>Press <strong>4</strong> and answer <strong>n</strong></td>
+<td>Nothing changes</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>F6</td>
+<td>Delete the folder in <code>_duplicates-holding</code> yourself (they're copies)</td>
+<td>Fine: DA doesn't need them</td>
+<td>☐</td>
+</tr>
+</tbody>
+</table>
+<h2 id="g-documents-and-scans">G. Documents and scans</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Do this</th>
+<th>You should see</th>
+<th>OK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>G1</td>
+<td>Open <code>documents\organized</code></td>
+<td>Year/month folders with <code>doc_YYMMDD_HHMMSS_xxxx.pdf</code> (and your Word/Excel file)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>G2</td>
+<td>Compare a PDF's folder with the date it was created (File, Properties in a PDF reader)</td>
+<td>It's filed by the date inside the PDF</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>G3</td>
+<td>The scans you put in <code>intake\scans</code></td>
+<td>Treated as <strong>documents</strong>, not photos; scans with no date wait under No date</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>G4</td>
+<td>A PDF with flaws (an old scanner's PDF, if you have one)</td>
+<td>Processed without a stream of red/yellow warnings on the screen</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>G5</td>
+<td>Put a <code>.jpg</code> scan of a letter in <code>intake\docs</code> and process</td>
+<td>It's filed under <code>documents</code>, not <code>photos</code></td>
+<td>☐</td>
+</tr>
+</tbody>
+</table>
+<h2 id="h-contact-sheets">H. Contact sheets</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Do this</th>
+<th>You should see</th>
+<th>OK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1</td>
+<td>Double-click a month's <code>_contact-sheet.pdf</code></td>
+<td>Page 1 is a <strong>summary</strong>: folder name, photo/video counts, the days, GPS count, places, sidecar versions, and a <strong>Cameras</strong> table with page numbers</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>H2</td>
+<td>Page 2 onwards</td>
+<td>A section per camera: each page headed <code>&lt;month&gt; - &lt;camera&gt; / &lt;owner&gt;</code> (or just the camera)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>H3</td>
+<td></td>
+<td>12 pictures a page (3 across, 4 down), each with its name and date underneath</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>H4</td>
+<td>A photo taken outdoors with a phone</td>
+<td><strong>GPS</strong> in green down its left edge</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>H5</td>
+<td>Every picture</td>
+<td>A small circled <strong>2</strong> at its top right (the sidecar version)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>H6</td>
+<td>A video</td>
+<td>A dark <strong>VIDEO</strong> tile with its length</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>H7</td>
+<td>A Live Photo</td>
+<td>Shown once (its photo), not twice</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>H8</td>
+<td>Terminal: <code>da contact-sheets photos\organized --layout 4x5</code></td>
+<td>"Made or updated N"; that sheet now has 20 pictures a page</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>H9</td>
+<td><code>da contact-sheets photos\organized</code> (no layout)</td>
+<td>Sheets go back to 3x4</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>H10</td>
+<td><code>da contact-sheets photos\organized --layout 9x9</code></td>
+<td>A clear message: a layout looks like 3x4 or 4x5</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>H11</td>
+<td>Run H9 again</td>
+<td>"already up to date N" (nothing made again)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>H12</td>
+<td>Copy one more photo into a month folder (with no sidecar) and run <code>da validate &lt;that month folder&gt;</code></td>
+<td>Its contact sheet is made again and includes the new photo</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>H13</td>
+<td><code>da contact-sheets photos\organized --force</code></td>
+<td>Every sheet made again</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>H14</td>
+<td>In <code>da-archive.yaml</code> set <code>contact_sheets:</code> <code>layout: 4x5</code>, save, run H9</td>
+<td>Sheets now 20 a page; set it back to <code>3x4</code> afterwards</td>
+<td>☐</td>
+</tr>
+</tbody>
+</table>
+<h2 id="i-videos-live-photos-and-heic">I. Videos, Live Photos and HEIC</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Do this</th>
+<th>You should see</th>
+<th>OK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>I1</td>
+<td>Your ordinary videos</td>
+<td>Filed in their month as <code>video_YYYYMMDD_HHMMSS_xxxx.mov</code> (or <code>.mp4</code>) beside the photos</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>I2</td>
+<td>Open a video's <code>.meta.json</code></td>
+<td>A <code>video</code> block with <code>duration_seconds</code> and <code>recorded_at</code>; <code>classification</code> says <code>video</code></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>I3</td>
+<td>A Live Photo (HEIC + MOV with the same name)</td>
+<td>Both filed together: <code>photo_…_xxxx.heic</code> and <code>photo_…_xxxx.mov</code> (same name)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>I4</td>
+<td>Copy a Live Photo's <code>.MOV</code> alone (without its photo) into intake, process</td>
+<td>It stays in intake (it's the short video of a Live Photo)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>I5</td>
+<td>Terminal: <code>da pair-movies</code></td>
+<td>It finds that video's filed photo and lists where it would go; nothing moves</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>I6</td>
+<td><code>da pair-movies --apply</code></td>
+<td>"Moved 1" and an Undo line; the video is now beside its photo with the same name</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>I7</td>
+<td><code>da intake undo "&lt;the file it names&gt;"</code></td>
+<td>The video goes back to intake</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>I8</td>
+<td>An old camera <code>.AVI</code>/<code>.MPG</code></td>
+<td>Filed by the date inside it, or listed under No date (then see J)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>I9</td>
+<td><code>da heic-to-jpg photos\organized\&lt;year&gt;\&lt;month&gt;</code></td>
+<td>JPG copies of the HEIC photos made in a folder beside it (the HEICs stay)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>I10</td>
+<td><code>da heic-to-jpg &lt;a folder&gt; --out C:\DA-test\jpgs</code></td>
+<td>The copies go to <code>C:\DA-test\jpgs</code></td>
+<td>☐</td>
+</tr>
+</tbody>
+</table>
+<h2 id="j-fix-dates-menu-d">J. Fix dates (menu D)</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Do this</th>
+<th>You should see</th>
+<th>OK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>J1</td>
+<td>Press <strong>D</strong></td>
+<td>Each intake folder with undated photos, one at a time, with a count and an example name</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>J2</td>
+<td>For the scans folder type <code>1998-07</code>, Enter</td>
+<td>(B1's archive takes 2020-2029, so these will wait as "outside this archive's years" - that's expected)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>J3</td>
+<td>For another folder type <code>July</code>, Enter</td>
+<td>"'July' isn't a date DA reads. Use 1998, 1998-07, …" and it asks again</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>J4</td>
+<td>Type <code>2021-06-15</code>, Enter</td>
+<td>Accepted</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>J5</td>
+<td>Press Enter on a folder</td>
+<td>That folder is skipped</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>J6</td>
+<td></td>
+<td>"Dates set on N files." and "Process intake now?"; answer <strong>y</strong></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>J7</td>
+<td></td>
+<td>The folder dated 2021-06-15 is filed as <code>photo_20210615_000000_xxxx</code> in <code>2021\2021-06</code></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>J8</td>
+<td>Terminal: <code>da date list</code></td>
+<td>Photos still without a sure date, folder by folder (or "Every photo … has a sure date")</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>J9</td>
+<td><code>da date set "&lt;a scan&gt;" --date 2022</code></td>
+<td>"Only a year: DA files them under 2022-01 (January)…", "Date set to 2022 on 1 file"</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>J10</td>
+<td><code>da date set "&lt;a scan&gt;" --date "2022-03-04 14:30"</code></td>
+<td>Date set; after processing, named <code>photo_20220304_143000_…</code></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>J11</td>
+<td><code>da date set "&lt;a scan&gt;" --date 2022-13</code></td>
+<td>A clear message: not a real date</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>J12</td>
+<td><code>da date clear "&lt;that scan&gt;"</code></td>
+<td>"Dates set by hand taken off on 1 file"</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>J13</td>
+<td>Pick a <strong>filed</strong> photo; <code>da date shift "&lt;it&gt;" --by +1h</code></td>
+<td>"Dates shifted +1h on 1 file" and a <code>da validate … --mode repair</code> line</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>J14</td>
+<td>Run that <code>da validate … --mode repair</code> line</td>
+<td>The photo is renamed one hour later (and moved if the month changed)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>J15</td>
+<td><code>da date shift "&lt;it&gt;" --by -1h</code> and repair again</td>
+<td>Back to its original name</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>J16</td>
+<td><code>da date shift &lt;folder&gt; --by +2d</code> / <code>-30m</code> / <code>+1mo</code> / <code>-1y</code></td>
+<td>Each accepted (try one, then shift back)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>J17</td>
+<td><code>da date shift &lt;folder&gt; --by 1h</code> (no sign)</td>
+<td>A clear message: use +1h, -30m, …</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>J18</td>
+<td>Shift a folder that includes an undated scan</td>
+<td>The undated one is listed as skipped: "no sure date to shift"</td>
+<td>☐</td>
+</tr>
+</tbody>
+</table>
+<h2 id="k-tags-terminal">K. Tags (terminal)</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Do this</th>
+<th>You should see</th>
+<th>OK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>K1</td>
+<td>In the archive: <code>da tag</code></td>
+<td>"Read camera details and make automatic tags for N photos in …?"; answer <strong>y</strong>; "Tagged N photos"</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>K2</td>
+<td>Open a filed photo's <code>.meta.json</code></td>
+<td><code>auto_tags</code> with tags like <code>maker:apple</code>, <code>camera:apple-iphone-…</code>, <code>year:2021</code>, and <code>gps</code> for outdoor photos</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>K3</td>
+<td><code>da tag --cameras</code></td>
+<td>A table of the cameras found, with photo counts and years; it asks who used each (type a name like <code>jane</code>, or Enter to skip)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>K4</td>
+<td></td>
+<td>"saved: <camera> -&gt; jane", and <code>da-archive.yaml</code> now has that camera under <code>cameras:</code> (a <code>.bak</code> copy kept)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>K5</td>
+<td><code>da tag --owner "&lt;a camera from K3&gt;" sam</code></td>
+<td>"saved: … -&gt; sam" and "Update the owner: tags now?"</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>K6</td>
+<td><code>da tag photos\organized\&lt;year&gt;\&lt;month&gt; beach</code></td>
+<td>"Your tags on N files: +beach"</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>K7</td>
+<td><code>da tag photos\organized\&lt;year&gt;\&lt;month&gt; -x beach</code></td>
+<td>"-beach"</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>K8</td>
+<td><code>da tag "&lt;one photo&gt;" grandma "summer trip"</code></td>
+<td>Tags <code>grandma</code> and <code>summer-trip</code> added to that photo</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>K9</td>
+<td><code>da findit tags photos\organized -r grandma -v</code></td>
+<td><code>"match_count": 1</code> and that photo</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>K10</td>
+<td><code>da findit tags photos\organized -r gps -v</code></td>
+<td>The photos with a location</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>K11</td>
+<td><code>da findit tags photos\organized -x gps -v</code></td>
+<td>The photos without</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>K12</td>
+<td><code>da findit tags photos\organized -r owner:jane -v</code></td>
+<td>Photos from the camera you named in K3</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>K13</td>
+<td><code>da tag --refresh</code> (answer y)</td>
+<td>Camera details read again from every photo; tags unchanged</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>K14</td>
+<td>Open a contact sheet made after K3 (run <code>da contact-sheets &lt;month&gt;</code>)</td>
+<td>The camera sections now show <strong>/ jane</strong></td>
+<td>☐</td>
+</tr>
+</tbody>
+</table>
+<h2 id="l-places-and-location-folders-menu-l">L. Places and location folders (menu L)</h2>
+<p>These need an internet connection, except L12.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Do this</th>
+<th>You should see</th>
+<th>OK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L1</td>
+<td>Terminal: <code>da location lookup</code></td>
+<td>How many photos have a GPS position, how many new places, "about one a second", a privacy note; "Start?"</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>L2</td>
+<td>Answer <strong>y</strong></td>
+<td>A progress count, then "N of N GPS photos have a place" and a list like <code>place:springfield-il  24</code></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>L3</td>
+<td>Run it again</td>
+<td>"0 new spots"; it finishes at once (places are remembered)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>L4</td>
+<td><code>da findit tags photos\organized -r place:&lt;one of the places&gt; -v</code></td>
+<td>Those photos</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>L5</td>
+<td><code>da db query "SELECT city, COUNT(*) FROM files GROUP BY city"</code></td>
+<td>Towns with counts</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>L6</td>
+<td>In the menu press <strong>L</strong></td>
+<td>"Months with GPS photos (newest first):" numbered</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>L7</td>
+<td>Type a month's number</td>
+<td>Groups of photos taken close together: count, days and times, places, first file</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>L8</td>
+<td>For group 1 type a title like <code>Beach day</code>; press Enter for the others</td>
+<td>"DA will: make  2021-06 Beach day (<place>)   (N photos)" and "Move them?"</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>L9</td>
+<td>Answer <strong>y</strong></td>
+<td>"Moved N photos into 1 folder; … contact sheets made" and an <strong>Undo</strong> line</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>L10</td>
+<td>Open the year folder</td>
+<td><code>2021-06 Beach day (&lt;place&gt;)</code> beside <code>2021-06</code>, with its own contact sheet; photos without GPS stayed in <code>2021-06</code></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>L11</td>
+<td><code>da validate "photos\organized\2021\2021-06 Beach day (&lt;place&gt;)"</code></td>
+<td>"Problems found: 0" (a location folder is a proper home)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>L12</td>
+<td><code>da location rename "&lt;that folder&gt;" "Beach with grandma"</code></td>
+<td>The new name, "Rename it?", then "Renamed; title set on N sidecars" and an Undo line</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>L13</td>
+<td><code>da location set "&lt;a photo without GPS&gt;" --place "Springfield, IL"</code></td>
+<td>"Found: Springfield, …", asks, "Done: 1 photo"</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>L14</td>
+<td><code>da location set "&lt;another photo&gt;" --same-as "&lt;a GPS photo&gt;"</code></td>
+<td>"Done: 1 photo" (no lookup)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>L15</td>
+<td><code>da location set "&lt;that photo&gt;" --clear</code></td>
+<td>"Done: 1 photo"</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>L16</td>
+<td>Group that month again with <strong>L</strong></td>
+<td>A group taken at the same time and place says "fits the folder already there"; Enter adds to it</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>L17</td>
+<td><code>da location group photos\organized\&lt;year&gt;\&lt;month&gt; --hours 1 --km 0.5</code></td>
+<td>Smaller groups; answer <strong>n</strong> / press Enter to move nothing</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>L18</td>
+<td><code>da intake undo "&lt;the file L9 named&gt;"</code></td>
+<td>The photos go back to <code>2021-06</code>; the location folder is gone</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>L19</td>
+<td><code>da location lookup --offline</code></td>
+<td>Uses only remembered places; nothing sent</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>L20</td>
+<td>In <code>da-archive.yaml</code> set <code>location:</code> <code>lookup: off</code>, run <code>da location lookup</code></td>
+<td>"Lookups are off in da-archive.yaml …"; set it back afterwards</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>L21</td>
+<td><code>da location group C:\DA-test</code> (not a month folder)</td>
+<td>A clear message that it isn't a month folder</td>
+<td>☐</td>
+</tr>
+</tbody>
+</table>
+<h2 id="m-split-by-years-menu-s">M. Split by years (menu S)</h2>
+<p>Copy the kit's <code>old</code> photos (another decade) into jane-archive-202x's <code>intake\photos\old</code>, process intake
+(they stay: outside this archive's years). sam-archive-200x (from B12) takes 2000-2009.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Do this</th>
+<th>You should see</th>
+<th>OK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M1</td>
+<td>In jane-archive-202x press <strong>S</strong></td>
+<td>"Working out the dates …", "N files in intake were taken outside 2020-2029", and which archive each belongs in</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>M2</td>
+<td></td>
+<td>"Move them to:" with sam-archive-200x listed; choose it</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>M3</td>
+<td></td>
+<td>What will move (from → to) and "Move them?"; answer <strong>y</strong></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>M4</td>
+<td></td>
+<td>"Moved N files", an Undo line, and "Next: open sam-archive-200x … 1 Process intake"</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>M5</td>
+<td>Open sam-archive-200x's <code>intake\photos\from-jane-archive-202x</code></td>
+<td>The old photos (and their sidecars)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>M6</td>
+<td>In sam-archive-200x, process intake</td>
+<td>They're filed in <code>2000s</code> year folders</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>M7</td>
+<td>Terminal (jane-archive-202x): <code>da split</code></td>
+<td>"0 files in intake were taken outside 2020-2029"</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>M8</td>
+<td>Undo instead (repeat M1-M4 with new old photos, then <code>da intake undo "&lt;the file M4 named&gt;"</code>)</td>
+<td>They're back in jane's intake (works even across drives)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>M9</td>
+<td>A decade with no archive yet</td>
+<td>"N from the 1990s have no archive on this PC yet. Make one: da setup <folder> --years 1990-1999"</td>
+<td>☐</td>
+</tr>
+</tbody>
+</table>
+<h2 id="n-merge-two-copies-menu-m">N. Merge two copies (menu M)</h2>
+<p>Copy the whole <code>C:\DA-test\jane-archive-202x</code> folder to <code>C:\DA-test\jane-copy</code>. Add 3 new photos to
+jane-copy's intake and process them <strong>in jane-copy</strong> (open its <code>Open DA.cmd</code>).</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Do this</th>
+<th>You should see</th>
+<th>OK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>N1</td>
+<td>In <strong>jane-archive-202x</strong> press <strong>M</strong></td>
+<td>This PC's other archives listed; choose jane-copy (or type its folder)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>N2</td>
+<td></td>
+<td>"Indexing …", "Comparing …", "N files in jane-copy: M already here" and what would be copied (3 to the same folder and name here)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>N3</td>
+<td></td>
+<td>"Copy them?"; answer <strong>y</strong></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>N4</td>
+<td></td>
+<td>"Copied 3 files: 3 filed …" and an Undo line; the 3 photos are in jane-archive-202x's month folders</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>N5</td>
+<td>Look in jane-copy</td>
+<td>Unchanged (merge only copies from it)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>N6</td>
+<td>Press <strong>M</strong> again, choose jane-copy</td>
+<td>"Nothing to copy"</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>N7</td>
+<td><code>da intake undo "&lt;the file N4 named&gt;"</code></td>
+<td>The 3 copies are removed from jane-archive-202x</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>N8</td>
+<td><code>da merge --from C:\DA-test\nowhere</code></td>
+<td>A clear message that it isn't an archive</td>
+<td>☐</td>
+</tr>
+</tbody>
+</table>
+<h2 id="o-report-menu-r">O. Report (menu R)</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Do this</th>
+<th>You should see</th>
+<th>OK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>O1</td>
+<td>Press <strong>R</strong></td>
+<td>A short summary, then the PDF opens</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>O2</td>
+<td></td>
+<td>One page: what's filed (photos, documents, videos, space, years), waiting for you, by year, cameras, places</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>O3</td>
+<td>Open the archive's <code>output</code> folder</td>
+<td><code>jane-archive-202x-report-YYYY-MM-DD.pdf</code></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>O4</td>
+<td><code>da report --refresh</code></td>
+<td>The index is refreshed first; the same day's PDF is replaced</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>O5</td>
+<td><code>da report --open</code></td>
+<td>The PDF opens</td>
+<td>☐</td>
+</tr>
+</tbody>
+</table>
+<h2 id="p-update-sidecars-menu-j">P. Update sidecars (menu J)</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Do this</th>
+<th>You should see</th>
+<th>OK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>Press <strong>J</strong></td>
+<td>"N sidecars: N up to date (schema 2), 0 older." (everything DA made is current)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>P2</td>
+<td><em>(If you have an older DA archive)</em> run J there</td>
+<td>How many are older and what would change, then "Upgrade N sidecars?"</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>Answer <strong>y</strong></td>
+<td>"Upgraded N sidecars", the backup folder, and a <code>--restore</code> line</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>Run the <code>--restore</code> line</td>
+<td>"Put back N sidecars"</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>P5</td>
+<td><code>da sidecar upgrade photos\organized\&lt;year&gt;</code></td>
+<td>Only that year is looked at</td>
+<td>☐</td>
+</tr>
+</tbody>
+</table>
+<h2 id="q-checking-whats-filed-terminal">Q. Checking what's filed (terminal)</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Do this</th>
+<th>You should see</th>
+<th>OK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Q1</td>
+<td><code>da validate photos\organized</code></td>
+<td>A summary: files checked, problems found (0 or a few notes), nothing moved</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>Q2</td>
+<td>Rename a filed photo in Explorer to <code>test.jpg</code> (keep its <code>.meta.json</code> renamed to match: <code>test.jpg.meta.json</code>), then <code>da validate &lt;its folder&gt;</code></td>
+<td>A "wrong name" problem for it, nothing moved</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>Q3</td>
+<td><code>da validate &lt;its folder&gt; --mode repair</code></td>
+<td>It's renamed back to <code>photo_…</code></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>Q4</td>
+<td><code>da validate intake --mode repair</code></td>
+<td>Refused: repair isn't for intake (use 1 Process intake / <code>da run</code>)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>Q5</td>
+<td><code>da validate C:\DA-test\kit-copy --archive C:\DA-test\jane-archive-202x</code> (any folder outside)</td>
+<td>It checks that folder using jane's settings</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>Q6</td>
+<td><code>da run intake\photos\kit\camera --yes</code></td>
+<td>That folder alone is processed, no questions</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>Q7</td>
+<td><code>da check "&lt;the preview report path from a run&gt;"</code></td>
+<td>A check of that report</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>Q8</td>
+<td><code>da verify "&lt;a repair report path&gt;"</code></td>
+<td>Every filed file's hash matches its sidecar</td>
+<td>☐</td>
+</tr>
+</tbody>
+</table>
+<h2 id="r-settings-da-archiveyaml">R. Settings (da-archive.yaml)</h2>
+<p>Make a copy of <code>da-archive.yaml</code> first; put it back at the end.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Do this</th>
+<th>You should see</th>
+<th>OK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R1</td>
+<td>Change <code>years:</code> to <code>"2021-2021"</code>, process a folder with 2022 photos</td>
+<td>They wait as "outside this archive's years"</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>R2</td>
+<td>Add an intake folder: under <code>intake:</code> add <code>phone: photo</code>, then <code>da setup &lt;this archive&gt;</code></td>
+<td><code>intake\phone</code> is created</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>R3</td>
+<td>Change <code>photoit:</code> <code>pattern:</code> to <code>{date_taken:%Y-%m-%d}_{hash:4}</code> and validate a month with <code>--mode repair</code></td>
+<td>Photos renamed like <code>2021-06-01_ab12.jpg</code> (change it back and repair again)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>R4</td>
+<td>Break the file (delete a <code>:</code>), then <code>da status</code></td>
+<td>A clear message about da-archive.yaml (no crash)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>R5</td>
+<td>Put the copy back, then <code>da status</code></td>
+<td>The Status as before</td>
+<td>☐</td>
+</tr>
+</tbody>
+</table>
+<h2 id="s-logs-records-and-safety">S. Logs, records and safety</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Do this</th>
+<th>You should see</th>
+<th>OK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S1</td>
+<td>Open <code>logs\da.jsonl</code> in Notepad</td>
+<td>One line per command: "da … started", "… finished in Ns", and lines for what was moved</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>S2</td>
+<td>Open <code>output\runs\</code></td>
+<td>A folder per run (<code>…-run</code>, <code>…-split</code>, <code>…-merge</code>, <code>…-location-group</code>, …) with its records</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>S3</td>
+<td>Start processing a big folder and press <strong>Ctrl+C</strong> during step 2</td>
+<td>It stops; run it again and it carries on (nothing half-moved)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>S4</td>
+<td>Run <code>da run --yes</code> in one window and <code>da status</code> in another</td>
+<td>Status works while the run is going (don't run two changing commands at once - see the known problems)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>S5</td>
+<td>Throughout: did DA ever delete a photo?</td>
+<td>No (it only moves, and asks first)</td>
+<td>☐</td>
+</tr>
+</tbody>
+</table>
+<h2 id="t-another-pc-or-a-usb-drive">T. Another PC or a USB drive</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Do this</th>
+<th>You should see</th>
+<th>OK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T1</td>
+<td>Copy <code>C:\DA-test\sam-archive-200x</code> to a USB stick</td>
+<td></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>T2</td>
+<td>On another PC with DA installed (or the same one, from the stick), double-click the stick's <code>Open DA.cmd</code></td>
+<td>The menu opens for that archive</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>T3</td>
+<td><code>da archives</code></td>
+<td>The stick's archive is now on this PC's list</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>T4</td>
+<td>Unplug the stick, <code>da archives</code></td>
+<td>It's left out until it's plugged in again</td>
+<td>☐</td>
+</tr>
+</tbody>
+</table>
+<h2 id="u-messages-when-somethings-wrong">U. Messages when something's wrong</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Do this</th>
+<th>You should see</th>
+<th>OK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>U1</td>
+<td><code>da run</code> in <code>C:\</code> (not an archive)</td>
+<td>"Not inside an archive …" and how to open one</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>U2</td>
+<td><code>da tag photos\organized\2099\2099-01</code> (a folder that doesn't exist)</td>
+<td><em>(Known problem: it's treated as a tag. See the known problems; undo with <code>da tag --remove photos-organized-2099-2099-01</code>.)</em></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>U3</td>
+<td><code>da location set &lt;a photo&gt; --place "zzzz nowhere"</code></td>
+<td>"Nothing found for …"</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>U4</td>
+<td>Disconnect the internet, <code>da location lookup</code> on new GPS photos</td>
+<td>It stops after two tries and says N photos still need a place; run again later</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>U5</td>
+<td><code>da contact-sheets C:\nowhere</code></td>
+<td>"No such folder"</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>U6</td>
+<td><code>da --help</code> and <code>da location --help</code> outside an archive</td>
+<td>Help shows (no "not inside an archive")</td>
+<td>☐</td>
+</tr>
+</tbody>
+</table>
+<h2 id="v-clean-up">V. Clean up</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Do this</th>
+<th>You should see</th>
+<th>OK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>V1</td>
+<td>Delete <code>C:\DA-test</code> and <code>C:\DA-test-kit</code> when you're done</td>
+<td>(Your real photos were never touched)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>V2</td>
+<td>To remove DA: delete <code>C:\Scripts\DA</code>, and remove it from your PATH (Settings, search "environment variables", Path)</td>
+<td><code>da</code> is no longer recognised</td>
+<td>☐</td>
+</tr>
+</tbody>
+</table>
+<h2 id="reporting-a-problem">Reporting a problem</h2>
+<ol>
+<li>Check the <a href="https://da.gamenightbymike.com/defects.html">known problems</a> first.</li>
+<li>Open an issue at https://github.com/devmukmuk/DA/issues (a free GitHub account is needed), or send it to
+   the person who asked you to test.</li>
+<li>Include: the step number (<strong>L9</strong>), what you did, what you expected, what happened (a screenshot helps),
+   your DA version (<code>da version</code>), and whether DA is the DA.exe or the Python install.</li>
+<li>If DA printed an error, the archive's <code>logs\da.jsonl</code> has the details: copy the last few lines.</li>
+<li>Leave out anything private: names, photos, and folder paths you'd rather not share.</li>
+</ol>
+<footer>DA v2026.10.26 &middot; guide built 2026-10-15 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
+</main>
+</div>
+</body>
+</html>
