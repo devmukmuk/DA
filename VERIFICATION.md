@@ -306,7 +306,7 @@ jane-copy's intake and process them **in jane-copy** (open its `Open DA.cmd`).
 | N7 | `da intake undo "<the file N4 named>"` | The 3 copies are removed from jane-archive-202x | ☐ |
 | N8 | `da merge --from C:\DA-test\nowhere` | A clear message that it isn't an archive | ☐ |
 
-## O. Report (menu R)
+## O. Report and dashboard (menu R, B)
 
 | # | Do this | You should see | OK |
 |---|---|---|---|
@@ -315,6 +315,14 @@ jane-copy's intake and process them **in jane-copy** (open its `Open DA.cmd`).
 | O3 | Open the archive's `output` folder | `jane-archive-202x-report-YYYY-MM-DD.pdf` | ☐ |
 | O4 | `da report --refresh` | The index is refreshed first; the same day's PDF is replaced | ☐ |
 | O5 | `da report --open` | The PDF opens | ☐ |
+| O6 | Press **B** | The browser opens a page titled *DA - jane-archive-202x*; the terminal says how to stop it (Ctrl+C) | ☐ |
+| O7 | | **Filed**, **Waiting in intake** (folder by folder), **Needs review**, **Latest runs** and **Activity** match what you've done so far | ☐ |
+| O8 | Wait a few seconds | **In the archive** fills in: by year, cameras, places (the same numbers as the report) | ☐ |
+| O9 | Copy a few photos into `intake\photos`, then in another window `da db build` | Within about 10 seconds the page shows the new files waiting; while `da db build` runs, **Happening now** names it | ☐ |
+| O10 | Press **Recount** | The button greys out, then the numbers are counted again | ☐ |
+| O11 | Press **Ctrl+C** in the DA window | Back at the menu; after a few seconds the page says the dashboard stopped | ☐ |
+| O12 | `da dashboard --no-open --port 9000` | It prints `http://127.0.0.1:9000/` (or the next free port); that address opens the page | ☐ |
+| O13 | From another computer or a phone, try this PC's name or address with that port | It doesn't open: the dashboard is for this PC only | ☐ |
 
 ## P. Update sidecars (menu J)
 

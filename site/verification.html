@@ -117,7 +117,7 @@ tr.done td { background:rgba(46,160,67,.10); }
   <a class="button" href="DA-Test-Plan.pdf">PDF version</a>
 </header>
 <div class="layout">
-<nav aria-label="Contents"><ul><li><a href="#before-you-start">Before you start</a><ul><li><a href="#make-a-test-kit">Make a test kit</a></li></ul></li><li><a href="#a-install-da">A. Install DA</a></li><li><a href="#b-create-an-archive">B. Create an archive</a></li><li><a href="#c-the-first-run-process-intake-menu-1">C. The first run: process intake (menu 1)</a></li><li><a href="#d-what-needs-review-menu-3">D. What needs review (menu 3)</a></li><li><a href="#e-status-and-the-index-menu-2-5">E. Status and the index (menu 2, 5)</a></li><li><a href="#f-duplicates-and-undo-menu-4">F. Duplicates and undo (menu 4)</a></li><li><a href="#g-documents-and-scans">G. Documents and scans</a></li><li><a href="#h-contact-sheets">H. Contact sheets</a></li><li><a href="#i-videos-live-photos-and-heic">I. Videos, Live Photos and HEIC</a></li><li><a href="#j-fix-dates-menu-d">J. Fix dates (menu D)</a></li><li><a href="#k-tags-terminal">K. Tags (terminal)</a></li><li><a href="#l-places-and-location-folders-menu-l">L. Places and location folders (menu L)</a></li><li><a href="#m-split-by-years-menu-s">M. Split by years (menu S)</a></li><li><a href="#n-merge-two-copies-menu-m">N. Merge two copies (menu M)</a></li><li><a href="#o-report-menu-r">O. Report (menu R)</a></li><li><a href="#p-update-sidecars-menu-j">P. Update sidecars (menu J)</a></li><li><a href="#q-checking-whats-filed-terminal">Q. Checking what's filed (terminal)</a></li><li><a href="#r-settings-da-archiveyaml">R. Settings (da-archive.yaml)</a></li><li><a href="#s-logs-records-and-safety">S. Logs, records and safety</a></li><li><a href="#t-another-pc-or-a-usb-drive">T. Another PC or a USB drive</a></li><li><a href="#u-messages-when-somethings-wrong">U. Messages when something's wrong</a></li><li><a href="#v-clean-up">V. Clean up</a></li><li><a href="#reporting-a-problem">Reporting a problem</a></li></ul></nav>
+<nav aria-label="Contents"><ul><li><a href="#before-you-start">Before you start</a><ul><li><a href="#make-a-test-kit">Make a test kit</a></li></ul></li><li><a href="#a-install-da">A. Install DA</a></li><li><a href="#b-create-an-archive">B. Create an archive</a></li><li><a href="#c-the-first-run-process-intake-menu-1">C. The first run: process intake (menu 1)</a></li><li><a href="#d-what-needs-review-menu-3">D. What needs review (menu 3)</a></li><li><a href="#e-status-and-the-index-menu-2-5">E. Status and the index (menu 2, 5)</a></li><li><a href="#f-duplicates-and-undo-menu-4">F. Duplicates and undo (menu 4)</a></li><li><a href="#g-documents-and-scans">G. Documents and scans</a></li><li><a href="#h-contact-sheets">H. Contact sheets</a></li><li><a href="#i-videos-live-photos-and-heic">I. Videos, Live Photos and HEIC</a></li><li><a href="#j-fix-dates-menu-d">J. Fix dates (menu D)</a></li><li><a href="#k-tags-terminal">K. Tags (terminal)</a></li><li><a href="#l-places-and-location-folders-menu-l">L. Places and location folders (menu L)</a></li><li><a href="#m-split-by-years-menu-s">M. Split by years (menu S)</a></li><li><a href="#n-merge-two-copies-menu-m">N. Merge two copies (menu M)</a></li><li><a href="#o-report-and-dashboard-menu-r-b">O. Report and dashboard (menu R, B)</a></li><li><a href="#p-update-sidecars-menu-j">P. Update sidecars (menu J)</a></li><li><a href="#q-checking-whats-filed-terminal">Q. Checking what's filed (terminal)</a></li><li><a href="#r-settings-da-archiveyaml">R. Settings (da-archive.yaml)</a></li><li><a href="#s-logs-records-and-safety">S. Logs, records and safety</a></li><li><a href="#t-another-pc-or-a-usb-drive">T. Another PC or a USB drive</a></li><li><a href="#u-messages-when-somethings-wrong">U. Messages when something's wrong</a></li><li><a href="#v-clean-up">V. Clean up</a></li><li><a href="#reporting-a-problem">Reporting a problem</a></li></ul></nav>
 <main>
 <p class="print-only">DA v2026.10.27 &middot; da.gamenightbymike.com &middot; 2026-10-15</p>
 <h1 id="da-test-plan">DA test plan</h1>
@@ -1479,7 +1479,7 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
 </tr>
 </tbody>
 </table>
-<h2 id="o-report-menu-r">O. Report (menu R)</h2>
+<h2 id="o-report-and-dashboard-menu-r-b">O. Report and dashboard (menu R, B)</h2>
 <table>
 <thead>
 <tr>
@@ -1518,6 +1518,54 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
 <td>O5</td>
 <td><code>da report --open</code></td>
 <td>The PDF opens</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>O6</td>
+<td>Press <strong>B</strong></td>
+<td>The browser opens a page titled <em>DA - jane-archive-202x</em>; the terminal says how to stop it (Ctrl+C)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>O7</td>
+<td></td>
+<td><strong>Filed</strong>, <strong>Waiting in intake</strong> (folder by folder), <strong>Needs review</strong>, <strong>Latest runs</strong> and <strong>Activity</strong> match what you've done so far</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>O8</td>
+<td>Wait a few seconds</td>
+<td><strong>In the archive</strong> fills in: by year, cameras, places (the same numbers as the report)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>O9</td>
+<td>Copy a few photos into <code>intake\photos</code>, then in another window <code>da db build</code></td>
+<td>Within about 10 seconds the page shows the new files waiting; while <code>da db build</code> runs, <strong>Happening now</strong> names it</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>O10</td>
+<td>Press <strong>Recount</strong></td>
+<td>The button greys out, then the numbers are counted again</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>O11</td>
+<td>Press <strong>Ctrl+C</strong> in the DA window</td>
+<td>Back at the menu; after a few seconds the page says the dashboard stopped</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>O12</td>
+<td><code>da dashboard --no-open --port 9000</code></td>
+<td>It prints <code>http://127.0.0.1:9000/</code> (or the next free port); that address opens the page</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>O13</td>
+<td>From another computer or a phone, try this PC's name or address with that port</td>
+<td>It doesn't open: the dashboard is for this PC only</td>
 <td>☐</td>
 </tr>
 </tbody>
