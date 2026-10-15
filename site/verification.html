@@ -134,10 +134,10 @@ tr.tp-issues li { margin:3px 0; }
 }
 </style>
 </head>
-<body data-version="2026.10.28">
+<body data-version="2026.10.29">
 <header>
   <span class="title">DA Test Plan</span>
-  <span class="version">DA v2026.10.28</span>
+  <span class="version">DA v2026.10.29</span>
   <a class="button" href="index.html">Guide</a>
   <a class="button" href="verification.html">Test plan</a>
   <a class="button" href="defects.html">Known problems</a>
@@ -147,7 +147,7 @@ tr.tp-issues li { margin:3px 0; }
 <div class="layout">
 <nav aria-label="Contents"><ul><li><a href="#before-you-start">Before you start</a><ul><li><a href="#make-a-test-kit">Make a test kit</a></li></ul></li><li><a href="#a-install-da">A. Install DA</a></li><li><a href="#b-create-an-archive">B. Create an archive</a></li><li><a href="#c-the-first-run-process-intake-menu-1">C. The first run: process intake (menu 1)</a></li><li><a href="#d-what-needs-review-menu-3">D. What needs review (menu 3)</a></li><li><a href="#e-status-and-the-index-menu-2-5">E. Status and the index (menu 2, 5)</a></li><li><a href="#f-duplicates-and-undo-menu-4">F. Duplicates and undo (menu 4)</a></li><li><a href="#g-documents-and-scans">G. Documents and scans</a></li><li><a href="#h-contact-sheets">H. Contact sheets</a></li><li><a href="#i-videos-live-photos-and-heic">I. Videos, Live Photos and HEIC</a></li><li><a href="#j-fix-dates-menu-d">J. Fix dates (menu D)</a></li><li><a href="#k-tags-terminal">K. Tags (terminal)</a></li><li><a href="#l-places-and-location-folders-menu-l">L. Places and location folders (menu L)</a></li><li><a href="#m-split-by-years-menu-s">M. Split by years (menu S)</a></li><li><a href="#n-merge-two-copies-menu-m">N. Merge two copies (menu M)</a></li><li><a href="#o-report-and-dashboard-menu-r-b">O. Report and dashboard (menu R, B)</a></li><li><a href="#p-update-sidecars-menu-j">P. Update sidecars (menu J)</a></li><li><a href="#q-checking-whats-filed-terminal">Q. Checking what's filed (terminal)</a></li><li><a href="#r-settings-da-archiveyaml">R. Settings (da-archive.yaml)</a></li><li><a href="#s-logs-records-and-safety">S. Logs, records and safety</a></li><li><a href="#t-another-pc-or-a-usb-drive">T. Another PC or a USB drive</a></li><li><a href="#u-messages-when-somethings-wrong">U. Messages when something's wrong</a></li><li><a href="#v-clean-up">V. Clean up</a></li><li><a href="#reporting-a-problem">Reporting a problem</a></li></ul></nav>
 <main>
-<p class="print-only">DA v2026.10.28 &middot; da.gamenightbymike.com &middot; 2026-10-15</p>
+<p class="print-only">DA v2026.10.29 &middot; da.gamenightbymike.com &middot; 2026-10-15</p>
 <h1 id="da-test-plan">DA test plan</h1>
 <p>Thank you for testing DA. This plan walks through everything DA does, step by step: first with the
 <strong>menu</strong> (what most people use), then with <strong>commands typed in a terminal</strong> (for things the menu doesn't
@@ -1236,6 +1236,54 @@ you can try; skip a step whose files you don't have and mark it <strong>skipped<
 <td>The camera sections now show <strong>/ jane</strong></td>
 <td>☐</td>
 </tr>
+<tr>
+<td>K15</td>
+<td>Copy 2-3 screenshots or photos of receipts into <code>intake\phone</code> and choose <strong>1 Process intake</strong></td>
+<td>They're filed under <code>photos\organized</code></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>K16</td>
+<td><code>da tag ocr photos\organised</code> (a typo)</td>
+<td><em>No such folder or file</em>; nothing is tagged</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>K17</td>
+<td><code>da tag ocr photos\organized\&lt;their year&gt;</code></td>
+<td>A preview: how many are mostly text (document), with some text, without; <em>Nothing changed</em>; the path of <code>ocr-results.csv</code></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>K18</td>
+<td>Open that <code>ocr-results.csv</code> in Excel</td>
+<td>One row per picture: level, words, <em>would tag and move</em> for the screenshots, and the start of their text</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>K19</td>
+<td><code>da tag ocr photos\organized\&lt;their year&gt; --tag-only</code></td>
+<td><em>read now: 0</em> (the preview's reading is reused); <em>Tagged N pictures</em></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>K20</td>
+<td>Open a screenshot's <code>.meta.json</code></td>
+<td>An <code>ocr</code> block with its text, and <code>text</code>, <code>document</code> in <code>auto_tags</code></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>K21</td>
+<td><code>da tag ocr photos\organized\&lt;their year&gt; --tag-and-move</code></td>
+<td>It asks <em>Move N document pictures?</em>; answer <strong>y</strong>: they're in <code>documents\organized\&lt;year&gt;\&lt;year-month&gt;</code> with <code>doc_</code> names, with sidecars</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>K22</td>
+<td><code>da intake undo "&lt;the ocr-moved.csv it printed&gt;"</code></td>
+<td>They're back in <code>photos\organized</code>, with their old names</td>
+<td>☐</td>
+</tr>
 </tbody>
 </table>
 <h2 id="l-places-and-location-folders-menu-l">L. Places and location folders (menu L)</h2>
@@ -1554,7 +1602,7 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
 <tr>
 <td>O6</td>
 <td>Press <strong>B</strong></td>
-<td>The browser opens a page titled <em>DA - jane-archive-202x</em>; the terminal says how to stop it (Ctrl+C)</td>
+<td>The browser opens a page titled <em>DA - jane-archive-202x</em>; DA says how to stop it (<code>da dashboard --stop</code>) and the menu is back straight away</td>
 <td>☐</td>
 </tr>
 <tr>
@@ -1583,14 +1631,32 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
 </tr>
 <tr>
 <td>O11</td>
-<td>Press <strong>Ctrl+C</strong> in the DA window</td>
-<td>Back at the menu; after a few seconds the page says the dashboard stopped</td>
+<td>Press <strong>B</strong> again</td>
+<td><em>already running</em>, with the same address; the same page opens (not a second dashboard)</td>
 <td>☐</td>
 </tr>
 <tr>
 <td>O12</td>
-<td><code>da dashboard --no-open --port 9000</code></td>
-<td>It prints <code>http://127.0.0.1:9000/</code> (or the next free port); that address opens the page</td>
+<td>Quit the menu and close its window; reload the page</td>
+<td>The dashboard still works</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>O12a</td>
+<td>In a terminal in the archive, <code>da dashboard --stop</code></td>
+<td><em>Dashboard stopped</em>; after a few seconds the page says the dashboard stopped</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>O12b</td>
+<td><code>da dashboard --stop</code> again</td>
+<td><em>No dashboard is running for this archive</em></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>O12c</td>
+<td><code>da dashboard --foreground --port 9000</code></td>
+<td>It prints <code>http://127.0.0.1:9000/</code> (or the next free port) and the browser opens it; <strong>Ctrl+C</strong> stops it</td>
 <td>☐</td>
 </tr>
 <tr>
@@ -1915,7 +1981,7 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
 <li>If DA printed an error, the archive's <code>logs\da.jsonl</code> has the details: copy the last few lines.</li>
 <li>Leave out anything private: names, photos, and folder paths you'd rather not share.</li>
 </ol>
-<footer>DA v2026.10.28 &middot; guide built 2026-10-15 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
+<footer>DA v2026.10.29 &middot; guide built 2026-10-15 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
 </main>
 </div>
 <script>// tools/site/testplan.js - the test plan's tracker (verification.html only).

@@ -247,6 +247,14 @@ Copy the whole test kit (except `old`) into `jane-archive-202x\intake\photos\kit
 | K12 | `da findit tags photos\organized -r owner:jane -v` | Photos from the camera you named in K3 | ☐ |
 | K13 | `da tag --refresh` (answer y) | Camera details read again from every photo; tags unchanged | ☐ |
 | K14 | Open a contact sheet made after K3 (run `da contact-sheets <month>`) | The camera sections now show **/ jane** | ☐ |
+| K15 | Copy 2-3 screenshots or photos of receipts into `intake\phone` and choose **1 Process intake** | They're filed under `photos\organized` | ☐ |
+| K16 | `da tag ocr photos\organised` (a typo) | *No such folder or file*; nothing is tagged | ☐ |
+| K17 | `da tag ocr photos\organized\<their year>` | A preview: how many are mostly text (document), with some text, without; *Nothing changed*; the path of `ocr-results.csv` | ☐ |
+| K18 | Open that `ocr-results.csv` in Excel | One row per picture: level, words, *would tag and move* for the screenshots, and the start of their text | ☐ |
+| K19 | `da tag ocr photos\organized\<their year> --tag-only` | *read now: 0* (the preview's reading is reused); *Tagged N pictures* | ☐ |
+| K20 | Open a screenshot's `.meta.json` | An `ocr` block with its text, and `text`, `document` in `auto_tags` | ☐ |
+| K21 | `da tag ocr photos\organized\<their year> --tag-and-move` | It asks *Move N document pictures?*; answer **y**: they're in `documents\organized\<year>\<year-month>` with `doc_` names, with sidecars | ☐ |
+| K22 | `da intake undo "<the ocr-moved.csv it printed>"` | They're back in `photos\organized`, with their old names | ☐ |
 
 ## L. Places and location folders (menu L)
 
@@ -318,13 +326,16 @@ jane-copy's intake and process them **in jane-copy** (open its `Open DA.cmd`).
 | O3 | Open the archive's `output` folder | `jane-archive-202x-report-YYYY-MM-DD.pdf` | ☐ |
 | O4 | `da report --refresh` | The index is refreshed first; the same day's PDF is replaced | ☐ |
 | O5 | `da report --open` | The PDF opens | ☐ |
-| O6 | Press **B** | The browser opens a page titled *DA - jane-archive-202x*; the terminal says how to stop it (Ctrl+C) | ☐ |
+| O6 | Press **B** | The browser opens a page titled *DA - jane-archive-202x*; DA says how to stop it (`da dashboard --stop`) and the menu is back straight away | ☐ |
 | O7 | | **Filed**, **Waiting in intake** (folder by folder), **Needs review**, **Latest runs** and **Activity** match what you've done so far | ☐ |
 | O8 | Wait a few seconds | **In the archive** fills in: by year, cameras, places (the same numbers as the report) | ☐ |
 | O9 | Copy a few photos into `intake\photos`, then in another window `da db build` | Within about 10 seconds the page shows the new files waiting; while `da db build` runs, **Happening now** names it | ☐ |
 | O10 | Press **Recount** | The button greys out, then the numbers are counted again | ☐ |
-| O11 | Press **Ctrl+C** in the DA window | Back at the menu; after a few seconds the page says the dashboard stopped | ☐ |
-| O12 | `da dashboard --no-open --port 9000` | It prints `http://127.0.0.1:9000/` (or the next free port); that address opens the page | ☐ |
+| O11 | Press **B** again | *already running*, with the same address; the same page opens (not a second dashboard) | ☐ |
+| O12 | Quit the menu and close its window; reload the page | The dashboard still works | ☐ |
+| O12a | In a terminal in the archive, `da dashboard --stop` | *Dashboard stopped*; after a few seconds the page says the dashboard stopped | ☐ |
+| O12b | `da dashboard --stop` again | *No dashboard is running for this archive* | ☐ |
+| O12c | `da dashboard --foreground --port 9000` | It prints `http://127.0.0.1:9000/` (or the next free port) and the browser opens it; **Ctrl+C** stops it | ☐ |
 | O13 | From another computer or a phone, try this PC's name or address with that port | It doesn't open: the dashboard is for this PC only | ☐ |
 
 ## P. Update sidecars (menu J)

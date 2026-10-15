@@ -2,6 +2,12 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.29 - 2026-10-15
+
+### New
+- da tag ocr - read the text in pictures, tag text/document, move documents
+- Run in the background by default; da dashboard --stop, --foreground
+
 ## v2026.10.28 - 2026-10-15
 
 ### New
