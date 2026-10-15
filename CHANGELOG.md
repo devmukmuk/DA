@@ -2,6 +2,15 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.28 - 2026-10-15
+
+### New
+- Pass / skip / fail per step with the step's reported problems; dashboard years one by one, most first
+
+### Guide
+- O9 uses the default intake\photos folder
+- Test plan steps for da dashboard (O6-O13)
+
 ## v2026.10.27 - 2026-10-15
 
 ### New

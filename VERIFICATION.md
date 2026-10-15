@@ -2,15 +2,18 @@
 
 Thank you for testing DA. This plan walks through everything DA does, step by step: first with the
 **menu** (what most people use), then with **commands typed in a terminal** (for things the menu doesn't
-have). Each step says what to do and what you should see. Tick the box when it works; when it doesn't,
-write down the step's number (like **D7**) and what happened, and see [Reporting a problem](#reporting-a-problem).
+have). Each step says what to do and what you should see. Mark it **passed** when it works, **skipped** when
+you can't try it, and **failed** when it doesn't: write down the step's number (like **D7**) and what happened,
+and see [Reporting a problem](#reporting-a-problem).
 
 **On the website** this page keeps track for you: fill in your name at the top (and the version, which is
-filled in already), tick each step's box as it works, and the page counts your progress and remembers it - in
-this browser, on this computer only. Each step's **Report** button opens a new problem report with the step,
-your name and the version already filled in. **Save as PDF** keeps a dated copy of your results; when a new
-version of DA comes out, **Start again on a new version** clears the ticks for the next round. On paper, use the
-[printable checklist](https://da.gamenightbymike.com/DA-Test-Plan.pdf).
+filled in already), then mark each step with its buttons: **✓ passed** (green), **○ skipped** (yellow) or
+**✗ failed** (red); press it again to clear it. The page counts your progress and remembers it - in this
+browser, on this computer only. Each step's **Report** button opens a new problem report with the step, your
+name and the version already filled in, and marks the step failed. Problems already reported for a step (by
+you or anyone) are listed under it, with whether they're still open and their labels. **Save as PDF** keeps a
+dated copy of your results; when a new version of DA comes out, **Start again on a new version** clears them for
+the next round. On paper, use the [printable checklist](https://da.gamenightbymike.com/DA-Test-Plan.pdf).
 
 You don't need to do it all in one sitting: each part starts from where the one before left off. The whole
 plan takes a few evenings. The [user guide](https://da.gamenightbymike.com) explains anything this plan
@@ -46,7 +49,7 @@ you can try; skip a step whose files you don't have and mark it **skipped**.
 
 ## A. Install DA
 
-| # | Do this | You should see | OK |
+| # | Do this | You should see | Result |
 |---|---|---|---|
 | A1 | Open https://da.gamenightbymike.com | The DA User Guide, with a **Download DA** button and a contents list on the left | ☐ |
 | A2 | Click **Download DA** | `DA.exe` downloads (about 75 MB); if the browser asks, choose **Keep** | ☐ |
@@ -70,7 +73,7 @@ you can try; skip a step whose files you don't have and mark it **skipped**.
 
 ## B. Create an archive
 
-| # | Do this | You should see | OK |
+| # | Do this | You should see | Result |
 |---|---|---|---|
 | B1 | In a terminal: `da setup C:\DA-test\jane-archive-202x --years 2020-2029` | "Archive ready" and the folder's path | ☐ |
 | B2 | Open `C:\DA-test\jane-archive-202x` in File Explorer | `da-archive.yaml`, `Open DA.cmd`, and folders `intake` (with `photos`, `docs`, `scans`), `photos`, `documents`, `output`, `logs` | ☐ |
@@ -98,7 +101,7 @@ you can try; skip a step whose files you don't have and mark it **skipped**.
 Copy the whole test kit (except `old`) into `jane-archive-202x\intake\photos\kit` (so `kit\phone`,
 `kit\camera`, … are inside), copy `scans` into `intake\scans`, and `docs` into `intake\docs`.
 
-| # | Do this | You should see | OK |
+| # | Do this | You should see | Result |
 |---|---|---|---|
 | C1 | Open jane-archive-202x (its `Open DA.cmd`) | The Status shows the intake files, folder by folder, with counts | ☐ |
 | C2 | Press **1** (Process intake) | "Counting what's in intake …", then a list of intake's folders with file counts | ☐ |
@@ -123,7 +126,7 @@ Copy the whole test kit (except `old`) into `jane-archive-202x\intake\photos\kit
 
 ## D. What needs review (menu 3)
 
-| # | Do this | You should see | OK |
+| # | Do this | You should see | Result |
 |---|---|---|---|
 | D1 | Press **3** | Groups of what the last run left, each with a reason and up to 5 examples | ☐ |
 | D2 | | **No date (in the file or its name)**: your scans of prints and any undated files | ☐ |
@@ -136,7 +139,7 @@ Copy the whole test kit (except `old`) into `jane-archive-202x\intake\photos\kit
 
 ## E. Status and the index (menu 2, 5)
 
-| # | Do this | You should see | OK |
+| # | Do this | You should see | Result |
 |---|---|---|---|
 | E1 | Press **2** | The same numbers as the box at the top, plus intake folder by folder | ☐ |
 | E2 | In File Explorer, move one filed photo (and its `.meta.json`) to your Desktop | | ☐ |
@@ -150,7 +153,7 @@ Copy the whole test kit (except `old`) into `jane-archive-202x\intake\photos\kit
 
 ## F. Duplicates and undo (menu 4)
 
-| # | Do this | You should see | OK |
+| # | Do this | You should see | Result |
 |---|---|---|---|
 | F1 | Open `_duplicates-holding` in the archive | Today's date folder with the 3 `doubles` (exact copies), and a `moved.csv` record | ☐ |
 | F2 | Press **4** (Undo last set-aside) | "Put 3 files back where they were (from …)?"; answer **y** | ☐ |
@@ -161,7 +164,7 @@ Copy the whole test kit (except `old`) into `jane-archive-202x\intake\photos\kit
 
 ## G. Documents and scans
 
-| # | Do this | You should see | OK |
+| # | Do this | You should see | Result |
 |---|---|---|---|
 | G1 | Open `documents\organized` | Year/month folders with `doc_YYMMDD_HHMMSS_xxxx.pdf` (and your Word/Excel file) | ☐ |
 | G2 | Compare a PDF's folder with the date it was created (File, Properties in a PDF reader) | It's filed by the date inside the PDF | ☐ |
@@ -171,7 +174,7 @@ Copy the whole test kit (except `old`) into `jane-archive-202x\intake\photos\kit
 
 ## H. Contact sheets
 
-| # | Do this | You should see | OK |
+| # | Do this | You should see | Result |
 |---|---|---|---|
 | H1 | Double-click a month's `_contact-sheet.pdf` | Page 1 is a **summary**: folder name, photo/video counts, the days, GPS count, places, sidecar versions, and a **Cameras** table with page numbers | ☐ |
 | H2 | Page 2 onwards | A section per camera: each page headed `<month> - <camera> / <owner>` (or just the camera) | ☐ |
@@ -190,7 +193,7 @@ Copy the whole test kit (except `old`) into `jane-archive-202x\intake\photos\kit
 
 ## I. Videos, Live Photos and HEIC
 
-| # | Do this | You should see | OK |
+| # | Do this | You should see | Result |
 |---|---|---|---|
 | I1 | Your ordinary videos | Filed in their month as `video_YYYYMMDD_HHMMSS_xxxx.mov` (or `.mp4`) beside the photos | ☐ |
 | I2 | Open a video's `.meta.json` | A `video` block with `duration_seconds` and `recorded_at`; `classification` says `video` | ☐ |
@@ -205,7 +208,7 @@ Copy the whole test kit (except `old`) into `jane-archive-202x\intake\photos\kit
 
 ## J. Fix dates (menu D)
 
-| # | Do this | You should see | OK |
+| # | Do this | You should see | Result |
 |---|---|---|---|
 | J1 | Press **D** | Each intake folder with undated photos, one at a time, with a count and an example name | ☐ |
 | J2 | For the scans folder type `1998-07`, Enter | (B1's archive takes 2020-2029, so these will wait as "outside this archive's years" - that's expected) | ☐ |
@@ -228,7 +231,7 @@ Copy the whole test kit (except `old`) into `jane-archive-202x\intake\photos\kit
 
 ## K. Tags (terminal)
 
-| # | Do this | You should see | OK |
+| # | Do this | You should see | Result |
 |---|---|---|---|
 | K1 | In the archive: `da tag` | "Read camera details and make automatic tags for N photos in …?"; answer **y**; "Tagged N photos" | ☐ |
 | K2 | Open a filed photo's `.meta.json` | `auto_tags` with tags like `maker:apple`, `camera:apple-iphone-…`, `year:2021`, and `gps` for outdoor photos | ☐ |
@@ -249,7 +252,7 @@ Copy the whole test kit (except `old`) into `jane-archive-202x\intake\photos\kit
 
 These need an internet connection, except L12.
 
-| # | Do this | You should see | OK |
+| # | Do this | You should see | Result |
 |---|---|---|---|
 | L1 | Terminal: `da location lookup` | How many photos have a GPS position, how many new places, "about one a second", a privacy note; "Start?" | ☐ |
 | L2 | Answer **y** | A progress count, then "N of N GPS photos have a place" and a list like `place:springfield-il  24` | ☐ |
@@ -278,7 +281,7 @@ These need an internet connection, except L12.
 Copy the kit's `old` photos (another decade) into jane-archive-202x's `intake\photos\old`, process intake
 (they stay: outside this archive's years). sam-archive-200x (from B12) takes 2000-2009.
 
-| # | Do this | You should see | OK |
+| # | Do this | You should see | Result |
 |---|---|---|---|
 | M1 | In jane-archive-202x press **S** | "Working out the dates …", "N files in intake were taken outside 2020-2029", and which archive each belongs in | ☐ |
 | M2 | | "Move them to:" with sam-archive-200x listed; choose it | ☐ |
@@ -295,7 +298,7 @@ Copy the kit's `old` photos (another decade) into jane-archive-202x's `intake\ph
 Copy the whole `C:\DA-test\jane-archive-202x` folder to `C:\DA-test\jane-copy`. Add 3 new photos to
 jane-copy's intake and process them **in jane-copy** (open its `Open DA.cmd`).
 
-| # | Do this | You should see | OK |
+| # | Do this | You should see | Result |
 |---|---|---|---|
 | N1 | In **jane-archive-202x** press **M** | This PC's other archives listed; choose jane-copy (or type its folder) | ☐ |
 | N2 | | "Indexing …", "Comparing …", "N files in jane-copy: M already here" and what would be copied (3 to the same folder and name here) | ☐ |
@@ -308,7 +311,7 @@ jane-copy's intake and process them **in jane-copy** (open its `Open DA.cmd`).
 
 ## O. Report and dashboard (menu R, B)
 
-| # | Do this | You should see | OK |
+| # | Do this | You should see | Result |
 |---|---|---|---|
 | O1 | Press **R** | A short summary, then the PDF opens | ☐ |
 | O2 | | One page: what's filed (photos, documents, videos, space, years), waiting for you, by year, cameras, places | ☐ |
@@ -326,7 +329,7 @@ jane-copy's intake and process them **in jane-copy** (open its `Open DA.cmd`).
 
 ## P. Update sidecars (menu J)
 
-| # | Do this | You should see | OK |
+| # | Do this | You should see | Result |
 |---|---|---|---|
 | P1 | Press **J** | "N sidecars: N up to date (schema 2), 0 older." (everything DA made is current) | ☐ |
 | P2 | *(If you have an older DA archive)* run J there | How many are older and what would change, then "Upgrade N sidecars?" | ☐ |
@@ -336,7 +339,7 @@ jane-copy's intake and process them **in jane-copy** (open its `Open DA.cmd`).
 
 ## Q. Checking what's filed (terminal)
 
-| # | Do this | You should see | OK |
+| # | Do this | You should see | Result |
 |---|---|---|---|
 | Q1 | `da validate photos\organized` | A summary: files checked, problems found (0 or a few notes), nothing moved | ☐ |
 | Q2 | Rename a filed photo in Explorer to `test.jpg` (keep its `.meta.json` renamed to match: `test.jpg.meta.json`), then `da validate <its folder>` | A "wrong name" problem for it, nothing moved | ☐ |
@@ -351,7 +354,7 @@ jane-copy's intake and process them **in jane-copy** (open its `Open DA.cmd`).
 
 Make a copy of `da-archive.yaml` first; put it back at the end.
 
-| # | Do this | You should see | OK |
+| # | Do this | You should see | Result |
 |---|---|---|---|
 | R1 | Change `years:` to `"2021-2021"`, process a folder with 2022 photos | They wait as "outside this archive's years" | ☐ |
 | R2 | Add an intake folder: under `intake:` add `phone: photo`, then `da setup <this archive>` | `intake\phone` is created | ☐ |
@@ -361,7 +364,7 @@ Make a copy of `da-archive.yaml` first; put it back at the end.
 
 ## S. Logs, records and safety
 
-| # | Do this | You should see | OK |
+| # | Do this | You should see | Result |
 |---|---|---|---|
 | S1 | Open `logs\da.jsonl` in Notepad | One line per command: "da … started", "… finished in Ns", and lines for what was moved | ☐ |
 | S2 | Open `output\runs\` | A folder per run (`…-run`, `…-split`, `…-merge`, `…-location-group`, …) with its records | ☐ |
@@ -371,7 +374,7 @@ Make a copy of `da-archive.yaml` first; put it back at the end.
 
 ## T. Another PC or a USB drive
 
-| # | Do this | You should see | OK |
+| # | Do this | You should see | Result |
 |---|---|---|---|
 | T1 | Copy `C:\DA-test\sam-archive-200x` to a USB stick | | ☐ |
 | T2 | On another PC with DA installed (or the same one, from the stick), double-click the stick's `Open DA.cmd` | The menu opens for that archive | ☐ |
@@ -380,7 +383,7 @@ Make a copy of `da-archive.yaml` first; put it back at the end.
 
 ## U. Messages when something's wrong
 
-| # | Do this | You should see | OK |
+| # | Do this | You should see | Result |
 |---|---|---|---|
 | U1 | `da run` in `C:\` (not an archive) | "Not inside an archive …" and how to open one | ☐ |
 | U2 | `da tag photos\organized\2099\2099-01` (a folder that doesn't exist) | *(Known problem: it's treated as a tag. See the known problems; undo with `da tag --remove photos-organized-2099-2099-01`.)* | ☐ |
@@ -391,7 +394,7 @@ Make a copy of `da-archive.yaml` first; put it back at the end.
 
 ## V. Clean up
 
-| # | Do this | You should see | OK |
+| # | Do this | You should see | Result |
 |---|---|---|---|
 | V1 | Delete `C:\DA-test` and `C:\DA-test-kit` when you're done | (Your real photos were never touched) | ☐ |
 | V2 | To remove DA: delete `C:\Scripts\DA`, and remove it from your PATH (Settings, search "environment variables", Path) | `da` is no longer recognised | ☐ |

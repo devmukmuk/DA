@@ -46,9 +46,9 @@ th, td { border:1px solid var(--line); padding:7px 10px; text-align:left; vertic
 th { background:var(--side); }
 /* The test plan's checklists: #, Do this, You should see, a tick box. */
 table:has(th:nth-child(4)) th:nth-child(1) { width:7%; }
-table:has(th:nth-child(4)) th:nth-child(2) { width:47%; }
-table:has(th:nth-child(4)) th:nth-child(3) { width:39%; }
-table:has(th:nth-child(4)) th:nth-child(4), table:has(th:nth-child(4)) td:nth-child(4) { width:7%; text-align:center; }
+table:has(th:nth-child(4)) th:nth-child(2) { width:44%; }
+table:has(th:nth-child(4)) th:nth-child(3) { width:36%; }
+table:has(th:nth-child(4)) th:nth-child(4), table:has(th:nth-child(4)) td:nth-child(4) { width:13%; text-align:center; }
 .print-only { display:none; color:var(--muted); font-size:14px; }
 footer { color:var(--muted); font-size:14px; margin-top:60px; border-top:1px solid var(--line); padding-top:12px; }
 @media (max-width: 860px) {
@@ -82,9 +82,16 @@ footer { color:var(--muted); font-size:14px; margin-top:60px; border-top:1px sol
 .tracker-grid input { font:inherit; font-size:16px; color:var(--fg); background:var(--bg); border:1px solid var(--line);
                       border-radius:6px; padding:6px 8px; }
 .tracker-progress { display:flex; align-items:center; gap:12px; margin:14px 0 6px; }
-.tracker-progress .bar { flex:1; height:12px; background:var(--line); border-radius:6px; overflow:hidden; }
-.tracker-progress .bar span { display:block; height:100%; width:0; background:#2ea043; }
-.tracker-defects, .tracker-newer { margin:6px 0; font-size:15px; }
+.tracker-progress .bar { flex:1; height:12px; background:var(--line); border-radius:6px; overflow:hidden; display:flex; }
+.tracker-progress .bar span { display:block; height:100%; width:0; }
+.tracker-progress .bar span.tp-pass { background:#2ea043; }
+.tracker-progress .bar span.tp-skip { background:#d4a72c; }
+.tracker-progress .bar span.tp-fail { background:#cf222e; }
+.tracker-defects, .tracker-newer, .tracker-tally { margin:6px 0; font-size:15px; }
+.tp-key { white-space:nowrap; padding:0 6px; border-radius:4px; }
+.tp-key.tp-pass { background:rgba(46,160,67,.18); }
+.tp-key.tp-skip { background:rgba(212,167,44,.25); }
+.tp-key.tp-fail { background:rgba(207,34,46,.18); }
 .tracker-newer { color:#9a6700; font-weight:600; }
 .tracker-buttons { display:flex; flex-wrap:wrap; gap:10px; margin:10px 0 6px; }
 .tracker button, td button.report { font:inherit; cursor:pointer; border-radius:6px; border:1px solid var(--line);
@@ -92,24 +99,45 @@ footer { color:var(--muted); font-size:14px; margin-top:60px; border-top:1px sol
 .tracker button { padding:6px 14px; font-size:15px; }
 .tracker button:hover, td button.report:hover { border-color:var(--accent); color:var(--accent); }
 .tracker details { margin:8px 0 4px; font-size:14px; }
-td input[type=checkbox] { width:20px; height:20px; cursor:pointer; vertical-align:middle; }
-td button.report { display:block; margin:6px auto 0; padding:1px 6px; font-size:12px; }
-tr.done td { background:rgba(46,160,67,.10); }
+.tp-outcomes { display:flex; justify-content:center; gap:3px; }
+button.tp-outcome { font:inherit; font-size:15px; line-height:1; width:26px; height:26px; padding:0; cursor:pointer;
+                    border-radius:5px; border:1px solid var(--line); background:var(--bg); color:var(--muted); }
+button.tp-outcome:hover { border-color:var(--accent); }
+button.tp-outcome.tp-pass[aria-pressed=true] { background:#2ea043; border-color:#2ea043; color:#fff; }
+button.tp-outcome.tp-skip[aria-pressed=true] { background:#d4a72c; border-color:#d4a72c; color:#1f2328; }
+button.tp-outcome.tp-fail[aria-pressed=true] { background:#cf222e; border-color:#cf222e; color:#fff; }
+.tp-word { display:block; font-size:12px; font-weight:600; margin-top:3px; min-height:1em; }
+td button.report { display:block; margin:4px auto 0; padding:1px 6px; font-size:12px; }
+tr.tp-row-pass td { background:rgba(46,160,67,.12); }
+tr.tp-row-skip td { background:rgba(212,167,44,.18); }
+tr.tp-row-fail td, tr.tp-row-fail + tr.tp-issues td { background:rgba(207,34,46,.12); }
+tr.tp-issues td { padding-top:0; border-top:0; font-size:14px; }
+tr.tp-issues ul { margin:0; padding-left:18px; }
+tr.tp-issues li { margin:3px 0; }
+.tp-state { margin-left:8px; font-size:12px; font-weight:600; border-radius:10px; padding:0 7px; border:1px solid; }
+.tp-state.open { color:#1a7f37; border-color:#1a7f37; }
+.tp-state.closed { color:#8250df; border-color:#8250df; }
+.tp-label { margin-left:6px; font-size:12px; font-weight:600; border-radius:10px; padding:0 7px; }
 .tp-badge { margin-left:10px; font-size:14px; font-weight:600; color:var(--muted); border:1px solid var(--line);
             border-radius:10px; padding:1px 8px; vertical-align:middle; }
 .tp-badge.all { color:#2ea043; border-color:#2ea043; }
+.tp-badge.failed { color:#cf222e; border-color:#cf222e; }
 @media print {
   .tracker { border-width:1px; }
+  tr.tp-row-pass td, tr.tp-row-skip td, tr.tp-row-fail td, tr.tp-issues td, .tp-label, .tracker-progress .bar span
+    { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .tp-outcomes { display:none; }
+  .tp-word { font-size:13px; }
   .tracker-buttons, .tracker-note, td button.report, .tracker-newer, .tracker details summary::marker { display:none; }
   .tracker details { display:block; }
   .tracker-grid input { border:0; border-bottom:1px solid #999; border-radius:0; padding:2px 0; font-weight:600; }
 }
 </style>
 </head>
-<body data-version="2026.10.27">
+<body data-version="2026.10.28">
 <header>
   <span class="title">DA Test Plan</span>
-  <span class="version">DA v2026.10.27</span>
+  <span class="version">DA v2026.10.28</span>
   <a class="button" href="index.html">Guide</a>
   <a class="button" href="verification.html">Test plan</a>
   <a class="button" href="defects.html">Known problems</a>
@@ -119,18 +147,21 @@ tr.done td { background:rgba(46,160,67,.10); }
 <div class="layout">
 <nav aria-label="Contents"><ul><li><a href="#before-you-start">Before you start</a><ul><li><a href="#make-a-test-kit">Make a test kit</a></li></ul></li><li><a href="#a-install-da">A. Install DA</a></li><li><a href="#b-create-an-archive">B. Create an archive</a></li><li><a href="#c-the-first-run-process-intake-menu-1">C. The first run: process intake (menu 1)</a></li><li><a href="#d-what-needs-review-menu-3">D. What needs review (menu 3)</a></li><li><a href="#e-status-and-the-index-menu-2-5">E. Status and the index (menu 2, 5)</a></li><li><a href="#f-duplicates-and-undo-menu-4">F. Duplicates and undo (menu 4)</a></li><li><a href="#g-documents-and-scans">G. Documents and scans</a></li><li><a href="#h-contact-sheets">H. Contact sheets</a></li><li><a href="#i-videos-live-photos-and-heic">I. Videos, Live Photos and HEIC</a></li><li><a href="#j-fix-dates-menu-d">J. Fix dates (menu D)</a></li><li><a href="#k-tags-terminal">K. Tags (terminal)</a></li><li><a href="#l-places-and-location-folders-menu-l">L. Places and location folders (menu L)</a></li><li><a href="#m-split-by-years-menu-s">M. Split by years (menu S)</a></li><li><a href="#n-merge-two-copies-menu-m">N. Merge two copies (menu M)</a></li><li><a href="#o-report-and-dashboard-menu-r-b">O. Report and dashboard (menu R, B)</a></li><li><a href="#p-update-sidecars-menu-j">P. Update sidecars (menu J)</a></li><li><a href="#q-checking-whats-filed-terminal">Q. Checking what's filed (terminal)</a></li><li><a href="#r-settings-da-archiveyaml">R. Settings (da-archive.yaml)</a></li><li><a href="#s-logs-records-and-safety">S. Logs, records and safety</a></li><li><a href="#t-another-pc-or-a-usb-drive">T. Another PC or a USB drive</a></li><li><a href="#u-messages-when-somethings-wrong">U. Messages when something's wrong</a></li><li><a href="#v-clean-up">V. Clean up</a></li><li><a href="#reporting-a-problem">Reporting a problem</a></li></ul></nav>
 <main>
-<p class="print-only">DA v2026.10.27 &middot; da.gamenightbymike.com &middot; 2026-10-15</p>
+<p class="print-only">DA v2026.10.28 &middot; da.gamenightbymike.com &middot; 2026-10-15</p>
 <h1 id="da-test-plan">DA test plan</h1>
 <p>Thank you for testing DA. This plan walks through everything DA does, step by step: first with the
 <strong>menu</strong> (what most people use), then with <strong>commands typed in a terminal</strong> (for things the menu doesn't
-have). Each step says what to do and what you should see. Tick the box when it works; when it doesn't,
-write down the step's number (like <strong>D7</strong>) and what happened, and see <a href="#reporting-a-problem">Reporting a problem</a>.</p>
+have). Each step says what to do and what you should see. Mark it <strong>passed</strong> when it works, <strong>skipped</strong> when
+you can't try it, and <strong>failed</strong> when it doesn't: write down the step's number (like <strong>D7</strong>) and what happened,
+and see <a href="#reporting-a-problem">Reporting a problem</a>.</p>
 <p><strong>On the website</strong> this page keeps track for you: fill in your name at the top (and the version, which is
-filled in already), tick each step's box as it works, and the page counts your progress and remembers it - in
-this browser, on this computer only. Each step's <strong>Report</strong> button opens a new problem report with the step,
-your name and the version already filled in. <strong>Save as PDF</strong> keeps a dated copy of your results; when a new
-version of DA comes out, <strong>Start again on a new version</strong> clears the ticks for the next round. On paper, use the
-<a href="https://da.gamenightbymike.com/DA-Test-Plan.pdf">printable checklist</a>.</p>
+filled in already), then mark each step with its buttons: <strong>✓ passed</strong> (green), <strong>○ skipped</strong> (yellow) or
+<strong>✗ failed</strong> (red); press it again to clear it. The page counts your progress and remembers it - in this
+browser, on this computer only. Each step's <strong>Report</strong> button opens a new problem report with the step, your
+name and the version already filled in, and marks the step failed. Problems already reported for a step (by
+you or anyone) are listed under it, with whether they're still open and their labels. <strong>Save as PDF</strong> keeps a
+dated copy of your results; when a new version of DA comes out, <strong>Start again on a new version</strong> clears them for
+the next round. On paper, use the <a href="https://da.gamenightbymike.com/DA-Test-Plan.pdf">printable checklist</a>.</p>
 <p>You don't need to do it all in one sitting: each part starts from where the one before left off. The whole
 plan takes a few evenings. The <a href="https://da.gamenightbymike.com">user guide</a> explains anything this plan
 mentions; the <a href="https://da.gamenightbymike.com/defects.html">known problems</a> list what's already known, so you
@@ -211,7 +242,7 @@ you can try; skip a step whose files you don't have and mark it <strong>skipped<
 <th>#</th>
 <th>Do this</th>
 <th>You should see</th>
-<th>OK</th>
+<th>Result</th>
 </tr>
 </thead>
 <tbody>
@@ -338,7 +369,7 @@ you can try; skip a step whose files you don't have and mark it <strong>skipped<
 <th>#</th>
 <th>Do this</th>
 <th>You should see</th>
-<th>OK</th>
+<th>Result</th>
 </tr>
 </thead>
 <tbody>
@@ -473,7 +504,7 @@ you can try; skip a step whose files you don't have and mark it <strong>skipped<
 <th>#</th>
 <th>Do this</th>
 <th>You should see</th>
-<th>OK</th>
+<th>Result</th>
 </tr>
 </thead>
 <tbody>
@@ -606,7 +637,7 @@ you can try; skip a step whose files you don't have and mark it <strong>skipped<
 <th>#</th>
 <th>Do this</th>
 <th>You should see</th>
-<th>OK</th>
+<th>Result</th>
 </tr>
 </thead>
 <tbody>
@@ -667,7 +698,7 @@ you can try; skip a step whose files you don't have and mark it <strong>skipped<
 <th>#</th>
 <th>Do this</th>
 <th>You should see</th>
-<th>OK</th>
+<th>Result</th>
 </tr>
 </thead>
 <tbody>
@@ -734,7 +765,7 @@ you can try; skip a step whose files you don't have and mark it <strong>skipped<
 <th>#</th>
 <th>Do this</th>
 <th>You should see</th>
-<th>OK</th>
+<th>Result</th>
 </tr>
 </thead>
 <tbody>
@@ -783,7 +814,7 @@ you can try; skip a step whose files you don't have and mark it <strong>skipped<
 <th>#</th>
 <th>Do this</th>
 <th>You should see</th>
-<th>OK</th>
+<th>Result</th>
 </tr>
 </thead>
 <tbody>
@@ -826,7 +857,7 @@ you can try; skip a step whose files you don't have and mark it <strong>skipped<
 <th>#</th>
 <th>Do this</th>
 <th>You should see</th>
-<th>OK</th>
+<th>Result</th>
 </tr>
 </thead>
 <tbody>
@@ -923,7 +954,7 @@ you can try; skip a step whose files you don't have and mark it <strong>skipped<
 <th>#</th>
 <th>Do this</th>
 <th>You should see</th>
-<th>OK</th>
+<th>Result</th>
 </tr>
 </thead>
 <tbody>
@@ -996,7 +1027,7 @@ you can try; skip a step whose files you don't have and mark it <strong>skipped<
 <th>#</th>
 <th>Do this</th>
 <th>You should see</th>
-<th>OK</th>
+<th>Result</th>
 </tr>
 </thead>
 <tbody>
@@ -1117,7 +1148,7 @@ you can try; skip a step whose files you don't have and mark it <strong>skipped<
 <th>#</th>
 <th>Do this</th>
 <th>You should see</th>
-<th>OK</th>
+<th>Result</th>
 </tr>
 </thead>
 <tbody>
@@ -1215,7 +1246,7 @@ you can try; skip a step whose files you don't have and mark it <strong>skipped<
 <th>#</th>
 <th>Do this</th>
 <th>You should see</th>
-<th>OK</th>
+<th>Result</th>
 </tr>
 </thead>
 <tbody>
@@ -1356,7 +1387,7 @@ you can try; skip a step whose files you don't have and mark it <strong>skipped<
 <th>#</th>
 <th>Do this</th>
 <th>You should see</th>
-<th>OK</th>
+<th>Result</th>
 </tr>
 </thead>
 <tbody>
@@ -1425,7 +1456,7 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
 <th>#</th>
 <th>Do this</th>
 <th>You should see</th>
-<th>OK</th>
+<th>Result</th>
 </tr>
 </thead>
 <tbody>
@@ -1486,7 +1517,7 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
 <th>#</th>
 <th>Do this</th>
 <th>You should see</th>
-<th>OK</th>
+<th>Result</th>
 </tr>
 </thead>
 <tbody>
@@ -1577,7 +1608,7 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
 <th>#</th>
 <th>Do this</th>
 <th>You should see</th>
-<th>OK</th>
+<th>Result</th>
 </tr>
 </thead>
 <tbody>
@@ -1620,7 +1651,7 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
 <th>#</th>
 <th>Do this</th>
 <th>You should see</th>
-<th>OK</th>
+<th>Result</th>
 </tr>
 </thead>
 <tbody>
@@ -1682,7 +1713,7 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
 <th>#</th>
 <th>Do this</th>
 <th>You should see</th>
-<th>OK</th>
+<th>Result</th>
 </tr>
 </thead>
 <tbody>
@@ -1725,7 +1756,7 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
 <th>#</th>
 <th>Do this</th>
 <th>You should see</th>
-<th>OK</th>
+<th>Result</th>
 </tr>
 </thead>
 <tbody>
@@ -1768,7 +1799,7 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
 <th>#</th>
 <th>Do this</th>
 <th>You should see</th>
-<th>OK</th>
+<th>Result</th>
 </tr>
 </thead>
 <tbody>
@@ -1805,7 +1836,7 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
 <th>#</th>
 <th>Do this</th>
 <th>You should see</th>
-<th>OK</th>
+<th>Result</th>
 </tr>
 </thead>
 <tbody>
@@ -1854,7 +1885,7 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
 <th>#</th>
 <th>Do this</th>
 <th>You should see</th>
-<th>OK</th>
+<th>Result</th>
 </tr>
 </thead>
 <tbody>
@@ -1884,20 +1915,28 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
 <li>If DA printed an error, the archive's <code>logs\da.jsonl</code> has the details: copy the last few lines.</li>
 <li>Leave out anything private: names, photos, and folder paths you'd rather not share.</li>
 </ol>
-<footer>DA v2026.10.27 &middot; guide built 2026-10-15 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
+<footer>DA v2026.10.28 &middot; guide built 2026-10-15 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
 </main>
 </div>
 <script>// tools/site/testplan.js - the test plan's tracker (verification.html only).
 //
-// Everything a tester enters (name, version, dates, ticks) is kept in this browser's localStorage, on their own
-// PC: no accounts and no server. "Report a problem" opens a new GitHub issue with the step, the tester and the
-// version filled in; the counts of their open/closed reports come from GitHub's public search.
+// Everything a tester enters (name, version, dates, each step's outcome) is kept in this browser's localStorage, on
+// their own PC: no accounts and no server. "Report" opens a new GitHub issue with the step, the tester and the
+// version filled in, and marks the step Failed. The problems already reported (by anyone) are read from the public
+// repo's issues and listed under their step, with their state and labels.
 (function () {
   "use strict";
 
   var KEY = "da-test-plan";
+  var ISSUES_KEY = "da-test-plan-issues";
   var REPO = "devmukmuk/DA";
   var STEP = /^[A-Z]\d+[a-z]?$/;
+  var OUTCOMES = [                     // [state, mark, word]
+    ["pass", "✓", "Passed"],
+    ["skip", "○", "Skipped"],
+    ["fail", "✗", "Failed"]
+  ];
+  var WORD = {pass: "Passed", skip: "Skipped", fail: "Failed"};
   var siteVersion = document.body.getAttribute("data-version") || "";
 
   function today() {
@@ -1915,6 +1954,10 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
     state.started = state.started || "";
     state.completed = state.completed || "";
     state.checks = state.checks || {};
+    Object.keys(state.checks).forEach(function (id) {       // the first tracker only had ticks
+      if (state.checks[id] === true) { state.checks[id] = "pass"; }
+      if (!WORD[state.checks[id]]) { delete state.checks[id]; }
+    });
     state.history = state.history || [];
     return state;
   }
@@ -1933,7 +1976,8 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
   }
 
   // ------------------------------------------------------------------ the steps
-  var steps = [];                      // {id, row, box, section}
+  var steps = [];                      // {id, row, cell, buttons, word, issuesRow, section}
+  var byId = {};
   document.querySelectorAll("main table").forEach(function (table) {
     var heads = table.querySelectorAll("thead th");
     if (heads.length !== 4) { return; }
@@ -1944,34 +1988,54 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
       if (cells.length !== 4) { return; }
       var id = cells[0].textContent.trim();
       if (!STEP.test(id)) { return; }
-      var box = el("input", {type: "checkbox", "aria-label": "Step " + id + " works", title: "It works"});
-      box.checked = !!state.checks[id];
-      box.addEventListener("change", function () {
-        if (box.checked) { state.checks[id] = true; } else { delete state.checks[id]; }
-        if (!state.started) { state.started = today(); }
-        if (done() === steps.length && !state.completed) { state.completed = today(); }
-        save();
-        refresh();
+      var step = {id: id, row: row, section: section, buttons: {}};
+      var group = el("div", {class: "tp-outcomes", role: "group", "aria-label": "Step " + id + " result"});
+      OUTCOMES.forEach(function (o) {
+        var b = el("button", {type: "button", class: "tp-outcome tp-" + o[0], title: o[2],
+                              "aria-label": "Step " + id + " " + o[2], "aria-pressed": "false"}, o[1]);
+        b.addEventListener("click", function () { choose(step, state.checks[id] === o[0] ? null : o[0]); });
+        group.appendChild(b);
+        step.buttons[o[0]] = b;
       });
+      step.word = el("span", {class: "tp-word"});
       var report = el("button", {type: "button", class: "report", title: "Report a problem with step " + id}, "Report");
-      report.addEventListener("click", function () { openIssue(id, cells[1].textContent.trim(), cells[2].textContent.trim()); });
+      report.addEventListener("click", function () {
+        if (openIssue(id, cells[1].textContent.trim(), cells[2].textContent.trim())) { choose(step, "fail"); }
+      });
       cells[3].textContent = "";
-      cells[3].appendChild(box);
+      cells[3].appendChild(group);
+      cells[3].appendChild(step.word);
       cells[3].appendChild(report);
-      row.classList.toggle("done", box.checked);
-      steps.push({id: id, row: row, box: box, section: section});
+      steps.push(step);
+      byId[id] = step;
     });
   });
 
-  function done() {
-    return steps.filter(function (s) { return s.box.checked; }).length;
+  function choose(step, outcome) {
+    if (outcome) { state.checks[step.id] = outcome; } else { delete state.checks[step.id]; }
+    if (outcome && !state.started) { state.started = today(); }
+    if (tally().done === steps.length && !state.completed) { state.completed = today(); }
+    save();
+    refresh();
+  }
+
+  function tally() {
+    var t = {pass: 0, skip: 0, fail: 0, done: 0};
+    steps.forEach(function (s) {
+      var o = state.checks[s.id];
+      if (o) { t[o] += 1; t.done += 1; }
+    });
+    return t;
   }
 
   // ------------------------------------------------------------------ the panel
   var panel = el("section", {class: "tracker", "aria-label": "Your testing"});
   panel.innerHTML =
     '<h2 class="tracker-title">Your testing</h2>' +
-    '<p class="tracker-note">Kept in this browser on this computer only. Fill these in, then tick each step that works.</p>' +
+    '<p class="tracker-note">Kept in this browser on this computer only. Fill these in, then mark each step: ' +
+    '<b class="tp-key tp-pass">✓ Passed</b> <b class="tp-key tp-skip">○ Skipped</b> ' +
+    '<b class="tp-key tp-fail">✗ Failed</b> (press it again to clear it). Report opens a problem report ' +
+    'and marks the step Failed.</p>' +
     '<div class="tracker-grid">' +
     '<label>Your name<input id="tp-tester" autocomplete="name"></label>' +
     '<label>GitHub name (optional)<input id="tp-github" autocomplete="username"></label>' +
@@ -1979,7 +2043,10 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
     '<label>Began testing<input id="tp-started" type="date"></label>' +
     '<label>Finished testing<input id="tp-completed" type="date"></label>' +
     '</div>' +
-    '<div class="tracker-progress"><div class="bar"><span id="tp-bar"></span></div><strong id="tp-count"></strong></div>' +
+    '<div class="tracker-progress"><div class="bar"><span id="tp-bar-pass" class="tp-pass"></span>' +
+    '<span id="tp-bar-skip" class="tp-skip"></span><span id="tp-bar-fail" class="tp-fail"></span></div>' +
+    '<strong id="tp-count"></strong></div>' +
+    '<p id="tp-tally" class="tracker-tally"></p>' +
     '<p id="tp-defects" class="tracker-defects"></p>' +
     '<p id="tp-newer" class="tracker-newer" hidden></p>' +
     '<div class="tracker-buttons">' +
@@ -1998,7 +2065,7 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
       state[field] = input.value.trim();
       save();
       refresh();
-      if (field === "tester" || field === "github") { countDefects(); }
+      if (field === "tester" || field === "github") { showIssues(); }
     });
   }
   bind("tp-tester", "tester");
@@ -2007,30 +2074,43 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
   bind("tp-started", "started");
   bind("tp-completed", "completed");
 
+  function pct(n) { return (steps.length ? (100 * n / steps.length) : 0) + "%"; }
+
   function refresh() {
-    var n = done();
-    document.getElementById("tp-count").textContent = n + " / " + steps.length + " steps done";
-    document.getElementById("tp-bar").style.width = (steps.length ? (100 * n / steps.length) : 0) + "%";
+    var t = tally();
+    document.getElementById("tp-count").textContent = t.done + " / " + steps.length + " steps done";
+    document.getElementById("tp-tally").textContent =
+      t.pass + " passed, " + t.skip + " skipped, " + t.fail + " failed, " + (steps.length - t.done) + " to go";
+    ["pass", "skip", "fail"].forEach(function (o) { document.getElementById("tp-bar-" + o).style.width = pct(t[o]); });
     document.getElementById("tp-started").value = state.started;
     document.getElementById("tp-completed").value = state.completed;
-    steps.forEach(function (s) { s.row.classList.toggle("done", s.box.checked); });
-    // A count on each section heading: "C. The first run ... 12 / 20".
+    steps.forEach(function (s) {
+      var o = state.checks[s.id] || "";
+      OUTCOMES.forEach(function (x) {
+        s.row.classList.toggle("tp-row-" + x[0], o === x[0]);
+        s.buttons[x[0]].setAttribute("aria-pressed", o === x[0] ? "true" : "false");
+      });
+      s.word.textContent = WORD[o] || "";
+    });
+    // A count on each section heading: "C. The first run ... 12 / 20", red when one failed.
     var bySection = new Map();
     steps.forEach(function (s) {
       if (!s.section) { return; }
-      var c = bySection.get(s.section) || {done: 0, all: 0};
+      var c = bySection.get(s.section) || {done: 0, all: 0, fail: 0};
       c.all += 1;
-      if (s.box.checked) { c.done += 1; }
+      if (state.checks[s.id]) { c.done += 1; }
+      if (state.checks[s.id] === "fail") { c.fail += 1; }
       bySection.set(s.section, c);
     });
     bySection.forEach(function (c, heading) {
       var badge = heading.querySelector(".tp-badge");
       if (!badge) { badge = el("span", {class: "tp-badge"}); heading.appendChild(badge); }
-      badge.textContent = c.done + " / " + c.all;
-      badge.classList.toggle("all", c.done === c.all);
+      badge.textContent = c.done + " / " + c.all + (c.fail ? " (" + c.fail + " failed)" : "");
+      badge.classList.toggle("all", c.done === c.all && !c.fail);
+      badge.classList.toggle("failed", c.fail > 0);
     });
     var newer = document.getElementById("tp-newer");
-    if (siteVersion && state.version && state.version !== siteVersion && done() > 0) {
+    if (siteVersion && state.version && state.version !== siteVersion && t.done > 0) {
       newer.hidden = false;
       newer.textContent = "A newer DA is out (v" + siteVersion + "). When you're ready: Save as PDF, then Start again on it.";
     } else {
@@ -2040,8 +2120,10 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
     var list = document.getElementById("tp-history-list");
     list.textContent = "";
     state.history.forEach(function (h) {
-      list.appendChild(el("li", {}, "v" + h.version + " - " + (h.tester || "no name") + " - " + h.done + " / " + h.total +
-        " steps - " + (h.started || "?") + " to " + (h.completed || "not finished")));
+      var counts = h.pass === undefined ? h.done + " / " + h.total + " steps" :
+        h.pass + " passed, " + h.skip + " skipped, " + h.fail + " failed of " + h.total;
+      list.appendChild(el("li", {}, "v" + h.version + " - " + (h.tester || "no name") + " - " + counts + " - " +
+        (h.started || "?") + " to " + (h.completed || "not finished")));
     });
     history.hidden = state.history.length === 0;
   }
@@ -2055,7 +2137,7 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
     if (!state.tester) {
       alert("Please type your name at the top of the test plan first, so your reports can be counted.");
       document.getElementById("tp-tester").focus();
-      return;
+      return false;
     }
     var title = "Step " + id + ": " + did.replace(/\s+/g, " ").slice(0, 70);
     var body =
@@ -2070,30 +2152,103 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
     var url = "https://github.com/" + REPO + "/issues/new?labels=defect&title=" + encodeURIComponent(title) +
       "&body=" + encodeURIComponent(body);
     window.open(url, "_blank", "noopener");
+    try { sessionStorage.removeItem(ISSUES_KEY); } catch (e) { /* read again next time */ }
+    return true;
   }
 
-  function countDefects() {
-    var line = document.getElementById("tp-defects");
-    if (!state.tester && !state.github) {
-      line.textContent = "Problems you report with the Report buttons are counted here once your name is filled in.";
-      return;
+  // The step an issue is about: "**Step:** A16" in its body, else "Step A16:" at the start of its title.
+  function stepOf(issue) {
+    var m = /\*\*Step:\*\*\s*([A-Z]\d+[a-z]?)\b/.exec(issue.body || "") || /^Step ([A-Z]\d+[a-z]?)\b/.exec(issue.title || "");
+    return m ? m[1] : null;
+  }
+
+  // Every issue in the public repo (a few pages of 100), kept for two minutes so reloading doesn't use up
+  // GitHub's limit for visitors (60 asks an hour).
+  function fetchIssues() {
+    try {
+      var kept = JSON.parse(sessionStorage.getItem(ISSUES_KEY) || "null");
+      if (kept && Date.now() - kept.at < 120000) { return Promise.resolve(kept.issues); }
+    } catch (e) { /* ask GitHub */ }
+    var all = [];
+    function page(n) {
+      return fetch("https://api.github.com/repos/" + REPO + "/issues?state=all&per_page=100&page=" + n)
+        .then(function (r) { if (!r.ok) { throw new Error("GitHub said " + r.status); } return r.json(); })
+        .then(function (items) {
+          items.forEach(function (i) {
+            if (i.pull_request) { return; }
+            all.push({number: i.number, title: i.title, state: i.state, url: i.html_url,
+                      login: i.user ? i.user.login : "", body: i.body || "",
+                      labels: (i.labels || []).map(function (l) { return {name: l.name, color: l.color}; })});
+          });
+          return items.length === 100 && n < 5 ? page(n + 1) : all;
+        });
     }
-    var who = state.github ? "author:" + state.github : '"' + marker() + '"';
-    var base = "https://api.github.com/search/issues?q=" + encodeURIComponent("repo:" + REPO + " is:issue " + who);
-    Promise.all([fetch(base), fetch(base + encodeURIComponent(" is:open"))])
-      .then(function (r) { return Promise.all(r.map(function (x) { return x.ok ? x.json() : null; })); })
-      .then(function (data) {
-        if (!data[0] || !data[1]) { throw new Error("no answer"); }
-        var all = data[0].total_count, open = data[1].total_count;
-        var link = "https://github.com/" + REPO + "/issues?q=" + encodeURIComponent("is:issue " + who);
-        line.innerHTML = "";
-        line.appendChild(document.createTextNode(all === 0 ? "No problems reported yet. " :
-          open + " / " + all + " problems you reported remain open (" + (all - open) + " fixed and closed). "));
-        if (all > 0) { line.appendChild(el("a", {href: link, target: "_blank", rel: "noopener"}, "See them")); }
-      })
-      .catch(function () {
-        line.textContent = "Couldn't count your reports just now (GitHub didn't answer); try again in a minute.";
+    return page(1).then(function (issues) {
+      try { sessionStorage.setItem(ISSUES_KEY, JSON.stringify({at: Date.now(), issues: issues})); } catch (e) { /* fine */ }
+      return issues;
+    });
+  }
+
+  function label(l) {
+    var chip = el("span", {class: "tp-label"}, l.name);
+    var hex = /^[0-9a-f]{6}$/i.test(l.color || "") ? l.color : "888888";
+    var r = parseInt(hex.slice(0, 2), 16), g = parseInt(hex.slice(2, 4), 16), b = parseInt(hex.slice(4, 6), 16);
+    chip.style.background = "#" + hex;
+    chip.style.color = (0.299 * r + 0.587 * g + 0.114 * b) > 150 ? "#1f2328" : "#ffffff";
+    return chip;
+  }
+
+  function listUnder(step, issues) {
+    if (step.issuesRow) { step.issuesRow.remove(); step.issuesRow = null; }
+    if (!issues.length) { return; }
+    var row = el("tr", {class: "tp-issues"});
+    row.appendChild(el("td"));
+    var cell = el("td", {colspan: "3"});
+    var list = el("ul");
+    issues.forEach(function (i) {
+      var li = el("li");
+      li.appendChild(el("a", {href: i.url, target: "_blank", rel: "noopener"}, "#" + i.number + " " + i.title));
+      li.appendChild(el("span", {class: "tp-state " + i.state}, i.state === "open" ? "Open" : "Closed"));
+      i.labels.forEach(function (l) { li.appendChild(label(l)); });
+      list.appendChild(li);
+    });
+    cell.appendChild(list);
+    row.appendChild(cell);
+    step.row.parentNode.insertBefore(row, step.row.nextSibling);
+    step.issuesRow = row;
+  }
+
+  function showIssues() {
+    var line = document.getElementById("tp-defects");
+    fetchIssues().then(function (issues) {
+      var perStep = {};
+      issues.forEach(function (i) {
+        var id = stepOf(i);
+        if (id && byId[id]) { (perStep[id] = perStep[id] || []).push(i); }
       });
+      steps.forEach(function (s) {
+        listUnder(s, (perStep[s.id] || []).sort(function (a, b) { return a.number - b.number; }));
+      });
+      if (!state.tester && !state.github) {
+        line.textContent = "Problems you report with the Report buttons are counted here once your name is filled in.";
+        return;
+      }
+      var gh = state.github.toLowerCase();
+      var mine = issues.filter(function (i) {
+        return (gh && i.login.toLowerCase() === gh) || i.body.indexOf(marker()) !== -1;
+      });
+      var open = mine.filter(function (i) { return i.state === "open"; }).length;
+      var who = state.github ? "author:" + state.github : '"' + marker() + '"';
+      line.textContent = "";
+      line.appendChild(document.createTextNode(mine.length === 0 ? "No problems reported yet. " :
+        open + " / " + mine.length + " problems you reported remain open (" + (mine.length - open) + " fixed and closed). "));
+      if (mine.length) {
+        line.appendChild(el("a", {href: "https://github.com/" + REPO + "/issues?q=" + encodeURIComponent("is:issue " + who),
+                                  target: "_blank", rel: "noopener"}, "See them"));
+      }
+    }).catch(function () {
+      line.textContent = "Couldn't read the problem reports just now (GitHub didn't answer); try again in a minute.";
+    });
   }
 
   // ------------------------------------------------------------------ PDF and starting again
@@ -2106,23 +2261,24 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
 
   document.getElementById("tp-reset").addEventListener("click", function () {
     var to = siteVersion || state.version;
+    var t = tally();
     if (!confirm("Save your results as a PDF first if you want to keep them.\n\nStart again on v" + to +
-        "? Your " + done() + " ticks and both dates are cleared (your name stays).")) { return; }
-    state.history.unshift({version: state.version, tester: state.tester, done: done(), total: steps.length,
-                           started: state.started, completed: state.completed, saved: today()});
+        "? Your " + t.done + " results and both dates are cleared (your name stays).")) { return; }
+    state.history.unshift({version: state.version, tester: state.tester, done: t.done, pass: t.pass, skip: t.skip,
+                           fail: t.fail, total: steps.length, started: state.started, completed: state.completed,
+                           saved: today()});
     state.history = state.history.slice(0, 20);
     state.version = to;
     state.started = "";
     state.completed = "";
     state.checks = {};
-    steps.forEach(function (s) { s.box.checked = false; });
     document.getElementById("tp-version").value = state.version;
     save();
     refresh();
   });
 
   refresh();
-  countDefects();
+  showIssues();
 })();
 </script>
 </body>
