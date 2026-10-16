@@ -2,6 +2,14 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.31 - 2026-10-16
+
+### New
+- Camera, owner, place and more name tokens; da rename previews the names
+
+### Fixed
+- Add tokens.py (the token* ignore rule hid it); ignore token*.json/.pickle only
+
 ## v2026.10.30 - 2026-10-16
 
 ### Fixed

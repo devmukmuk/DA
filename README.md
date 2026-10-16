@@ -1,6 +1,6 @@
 # DA - Digital Archive
 
-**Latest version:** 2026.10.30 (2026-10-16)
+**Latest version:** 2026.10.31 (2026-10-16)
 
 DA files your photos, videos and scanned documents by the date they were taken. It sets exact
 duplicates aside, names each file by its date, and puts it in a `YYYY\YYYY-MM` folder, with a contact
@@ -24,10 +24,13 @@ sheet for every month. It never deletes anything, and it asks before it moves an
 - **Testing DA?** The [test plan](https://da.gamenightbymike.com/verification.html) (also as a
   [PDF](https://da.gamenightbymike.com/DA-Test-Plan.pdf) to print) and the [known problems](https://da.gamenightbymike.com/defects.html)
 
-## What's new in v2026.10.30
+## What's new in v2026.10.31
+
+### New
+- Camera, owner, place and more name tokens; da rename previews the names
 
 ### Fixed
-- Intake: long paths - one failed move no longer stops a run; da install offers Windows' long paths
+- Add tokens.py (the token* ignore rule hid it); ignore token*.json/.pickle only
 
 ## Found a problem?
 

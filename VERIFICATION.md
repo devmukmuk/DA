@@ -258,6 +258,10 @@ Copy the whole test kit (except `old`) into `jane-archive-202x\intake\photos\kit
 | K20 | Open a screenshot's `.meta.json` | An `ocr` block with its text, and `text`, `document` in `auto_tags` | ☐ |
 | K21 | `da tag ocr photos\organized\<their year> --tag-and-move` | It asks *Move N document pictures?*; answer **y**: they're in `documents\organized\<year>\<year-month>` with `doc_` names, with sidecars | ☐ |
 | K22 | `da intake undo "<the ocr-moved.csv it printed>"` | They're back in `photos\organized`, with their old names | ☐ |
+| K23 | `da rename` | *0 would be renamed, N already named so*; *Nothing changed*; the path of `rename-plan.csv` | ☐ |
+| K24 | `da rename photos\organized\<their year> --pattern "{YYYY}{MM}{DD}_{camera}_{owner}_{hash:4}"` | How many *would be renamed*, raw files following them, and *had nothing for {owner}* for photos with no known owner; the files keep their names | ☐ |
+| K25 | Open that `rename-plan.csv` in Excel | One row per file: its path, the new name, *rename* / *follows* / *unchanged*, and notes like *the name token {owner} was missing* | ☐ |
+| K26 | `da rename intake` | *use da run*; nothing is planned | ☐ |
 
 ## L. Places and location folders (menu L)
 
