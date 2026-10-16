@@ -269,6 +269,10 @@ Copy the whole test kit (except `old`) into `jane-archive-202x\intake\photos\kit
 | K31 | Press **N** again, then **Enter** | *0 would be renamed* | ☐ |
 | K32 | `da intake undo "<the rename-moved.csv it printed>"` | The old names are back; **N**, **Enter** now offers to rename them again (the saved pattern stays until you change it) | ☐ |
 | K33 | Press **N**, **1**, type the old pattern (`photo_{date_taken:%Y%m%d_%H%M%S}_{hash:4}`), answer **y** twice | Back as before; `da-archive.yaml` keeps both earlier patterns as notes, newest first | ☐ |
+| K34 | `da rename --folder "{owner}\{YYYY}"` | *N moved to another folder*, *had nothing for {owner}* for photos with no known owner; nothing moves | ☐ |
+| K35 | `da rename --folder "{owner}\{YYYY}" --kind photo --apply --save` and answer **y** twice | Photos of cameras with an owner are in `photos\organized\<owner>\<year>`, the others in `photos\organized\<year>`; the emptied month folders are gone; each folder has a contact sheet | ☐ |
+| K36 | Copy a new photo into intake and choose **1 Process intake** | It's filed by the new folder pattern | ☐ |
+| K37 | `da intake undo "<the rename-moved.csv it printed>"`, then **N**, **1**, Enter, type `{YYYY}\{YYYY}-{MM}`, answer **y** twice | Back in year and month folders; `da-archive.yaml` keeps `# folder was (...)` notes | ☐ |
 
 ## L. Places and location folders (menu L)
 

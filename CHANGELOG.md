@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.34 - 2026-10-16
+
+### New
+- Folder patterns - file into any layout; da rename --folder moves filed files
+
 ## v2026.10.33 - 2026-10-16
 
 ### New

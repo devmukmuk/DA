@@ -134,10 +134,10 @@ tr.tp-issues li { margin:3px 0; }
 }
 </style>
 </head>
-<body data-version="2026.10.33">
+<body data-version="2026.10.34">
 <header>
   <span class="title">DA Test Plan</span>
-  <span class="version">DA v2026.10.33</span>
+  <span class="version">DA v2026.10.34</span>
   <a class="button" href="index.html">Guide</a>
   <a class="button" href="verification.html">Test plan</a>
   <a class="button" href="defects.html">Known problems</a>
@@ -147,7 +147,7 @@ tr.tp-issues li { margin:3px 0; }
 <div class="layout">
 <nav aria-label="Contents"><ul><li><a href="#before-you-start">Before you start</a><ul><li><a href="#make-a-test-kit">Make a test kit</a></li></ul></li><li><a href="#a-install-da">A. Install DA</a></li><li><a href="#b-create-an-archive">B. Create an archive</a></li><li><a href="#c-the-first-run-process-intake-menu-1">C. The first run: process intake (menu 1)</a></li><li><a href="#d-what-needs-review-menu-3">D. What needs review (menu 3)</a></li><li><a href="#e-status-and-the-index-menu-2-5">E. Status and the index (menu 2, 5)</a></li><li><a href="#f-duplicates-and-undo-menu-4">F. Duplicates and undo (menu 4)</a></li><li><a href="#g-documents-and-scans">G. Documents and scans</a></li><li><a href="#h-contact-sheets">H. Contact sheets</a></li><li><a href="#i-videos-live-photos-and-heic">I. Videos, Live Photos and HEIC</a></li><li><a href="#j-fix-dates-menu-d">J. Fix dates (menu D)</a></li><li><a href="#k-tags-terminal">K. Tags (terminal)</a></li><li><a href="#l-places-and-location-folders-menu-l">L. Places and location folders (menu L)</a></li><li><a href="#m-split-by-years-menu-s">M. Split by years (menu S)</a></li><li><a href="#n-merge-two-copies-menu-m">N. Merge two copies (menu M)</a></li><li><a href="#o-report-and-dashboard-menu-r-b">O. Report and dashboard (menu R, B)</a></li><li><a href="#p-update-sidecars-menu-j">P. Update sidecars (menu J)</a></li><li><a href="#q-checking-whats-filed-terminal">Q. Checking what's filed (terminal)</a></li><li><a href="#r-settings-da-archiveyaml">R. Settings (da-archive.yaml)</a></li><li><a href="#s-logs-records-and-safety">S. Logs, records and safety</a></li><li><a href="#t-another-pc-or-a-usb-drive">T. Another PC or a USB drive</a></li><li><a href="#u-messages-when-somethings-wrong">U. Messages when something's wrong</a></li><li><a href="#v-clean-up">V. Clean up</a></li><li><a href="#reporting-a-problem">Reporting a problem</a></li></ul></nav>
 <main>
-<p class="print-only">DA v2026.10.33 &middot; da.gamenightbymike.com &middot; 2026-10-16</p>
+<p class="print-only">DA v2026.10.34 &middot; da.gamenightbymike.com &middot; 2026-10-16</p>
 <h1 id="da-test-plan">DA test plan</h1>
 <p>Thank you for testing DA. This plan walks through everything DA does, step by step: first with the
 <strong>menu</strong> (what most people use), then with <strong>commands typed in a terminal</strong> (for things the menu doesn't
@@ -1368,6 +1368,30 @@ you can try; skip a step whose files you don't have and mark it <strong>skipped<
 <td>Back as before; <code>da-archive.yaml</code> keeps both earlier patterns as notes, newest first</td>
 <td>☐</td>
 </tr>
+<tr>
+<td>K34</td>
+<td><code>da rename --folder "{owner}\{YYYY}"</code></td>
+<td><em>N moved to another folder</em>, <em>had nothing for {owner}</em> for photos with no known owner; nothing moves</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>K35</td>
+<td><code>da rename --folder "{owner}\{YYYY}" --kind photo --apply --save</code> and answer <strong>y</strong> twice</td>
+<td>Photos of cameras with an owner are in <code>photos\organized\&lt;owner&gt;\&lt;year&gt;</code>, the others in <code>photos\organized\&lt;year&gt;</code>; the emptied month folders are gone; each folder has a contact sheet</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>K36</td>
+<td>Copy a new photo into intake and choose <strong>1 Process intake</strong></td>
+<td>It's filed by the new folder pattern</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>K37</td>
+<td><code>da intake undo "&lt;the rename-moved.csv it printed&gt;"</code>, then <strong>N</strong>, <strong>1</strong>, Enter, type <code>{YYYY}\{YYYY}-{MM}</code>, answer <strong>y</strong> twice</td>
+<td>Back in year and month folders; <code>da-archive.yaml</code> keeps <code># folder was (...)</code> notes</td>
+<td>☐</td>
+</tr>
 </tbody>
 </table>
 <h2 id="l-places-and-location-folders-menu-l">L. Places and location folders (menu L)</h2>
@@ -2065,7 +2089,7 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
 <li>If DA printed an error, the archive's <code>logs\da.jsonl</code> has the details: copy the last few lines.</li>
 <li>Leave out anything private: names, photos, and folder paths you'd rather not share.</li>
 </ol>
-<footer>DA v2026.10.33 &middot; guide built 2026-10-16 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
+<footer>DA v2026.10.34 &middot; guide built 2026-10-16 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
 </main>
 </div>
 <script>// tools/site/testplan.js - the test plan's tracker (verification.html only).
