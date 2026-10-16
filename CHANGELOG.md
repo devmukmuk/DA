@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.32 - 2026-10-16
+
+### Fixed
+- Checking: an older sidecar's duplicate_status "original" no longer stops a run
+
 ## v2026.10.31 - 2026-10-16
 
 ### New
