@@ -1,6 +1,6 @@
 # DA - Digital Archive
 
-**Latest version:** 2026.10.34 (2026-10-16)
+**Latest version:** 2026.10.35 (2026-10-16)
 
 DA files your photos, videos and scanned documents by the date they were taken. It sets exact
 duplicates aside, names each file by its date, and puts it in a `YYYY\YYYY-MM` folder, with a contact
@@ -24,10 +24,10 @@ sheet for every month. It never deletes anything, and it asks before it moves an
 - **Testing DA?** The [test plan](https://da.gamenightbymike.com/verification.html) (also as a
   [PDF](https://da.gamenightbymike.com/DA-Test-Plan.pdf) to print) and the [known problems](https://da.gamenightbymike.com/defects.html)
 
-## What's new in v2026.10.34
+## What's new in v2026.10.35
 
 ### New
-- Folder patterns - file into any layout; da rename --folder moves filed files
+- Location folders in any layout (da location group 2019-04); OCR and merge follow the folder patterns
 
 ## Found a problem?
 

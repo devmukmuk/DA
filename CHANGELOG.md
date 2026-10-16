@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.35 - 2026-10-16
+
+### New
+- Location folders in any layout (da location group 2019-04); OCR and merge follow the folder patterns
+
 ## v2026.10.34 - 2026-10-16
 
 ### New

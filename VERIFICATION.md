@@ -273,6 +273,7 @@ Copy the whole test kit (except `old`) into `jane-archive-202x\intake\photos\kit
 | K35 | `da rename --folder "{owner}\{YYYY}" --kind photo --apply --save` and answer **y** twice | Photos of cameras with an owner are in `photos\organized\<owner>\<year>`, the others in `photos\organized\<year>`; the emptied month folders are gone; each folder has a contact sheet | ☐ |
 | K36 | Copy a new photo into intake and choose **1 Process intake** | It's filed by the new folder pattern | ☐ |
 | K37 | `da intake undo "<the rename-moved.csv it printed>"`, then **N**, **1**, Enter, type `{YYYY}\{YYYY}-{MM}`, answer **y** twice | Back in year and month folders; `da-archive.yaml` keeps `# folder was (...)` notes | ☐ |
+| K38 | *(Optional: do it between K35 and K37, while the photos are in the owner layout)* `da location group <a month with GPS photos, e.g. 2024-07>` and give group 1 a title | The month's photos are found in `<owner>\<year>`; the location folder is made there (`<owner>\<year>\<year-month> <title> (<place>)`) | ☐ |
 
 ## L. Places and location folders (menu L)
 
