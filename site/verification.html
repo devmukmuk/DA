@@ -88,6 +88,9 @@ footer { color:var(--muted); font-size:14px; margin-top:60px; border-top:1px sol
 .tracker-progress .bar span.tp-skip { background:#d4a72c; }
 .tracker-progress .bar span.tp-fail { background:#cf222e; }
 .tracker-defects, .tracker-newer, .tracker-tally { margin:6px 0; font-size:15px; }
+.tracker-timing { display:flex; flex-wrap:wrap; align-items:center; gap:8px 14px; margin:8px 0; font-size:15px; }
+.tracker-timing p { flex-basis:100%; margin:0; font-size:16px; }
+.tracker-timing strong { font-variant-numeric:tabular-nums; }
 .tp-key { white-space:nowrap; padding:0 6px; border-radius:4px; }
 .tp-key.tp-pass { background:rgba(46,160,67,.18); }
 .tp-key.tp-skip { background:rgba(212,167,44,.25); }
@@ -107,6 +110,10 @@ button.tp-outcome.tp-pass[aria-pressed=true] { background:#2ea043; border-color:
 button.tp-outcome.tp-skip[aria-pressed=true] { background:#d4a72c; border-color:#d4a72c; color:#1f2328; }
 button.tp-outcome.tp-fail[aria-pressed=true] { background:#cf222e; border-color:#cf222e; color:#fff; }
 .tp-word { display:block; font-size:12px; font-weight:600; margin-top:3px; min-height:1em; }
+.tp-step-time { display:block; margin-top:4px; color:var(--muted); font-size:12px; font-variant-numeric:tabular-nums;
+                white-space:nowrap; }
+.tp-section-time { color:var(--muted); font-size:15px; font-variant-numeric:tabular-nums; white-space:nowrap; }
+tr.tp-row-timing td { box-shadow:inset 0 0 0 2px var(--accent); }
 td button.report { display:block; margin:4px auto 0; padding:1px 6px; font-size:12px; }
 tr.tp-row-pass td { background:rgba(46,160,67,.12); }
 tr.tp-row-skip td { background:rgba(212,167,44,.18); }
@@ -128,16 +135,17 @@ tr.tp-issues li { margin:3px 0; }
     { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
   .tp-outcomes { display:none; }
   .tp-word { font-size:13px; }
+  .tracker-timing button { display:none; }
   .tracker-buttons, .tracker-note, td button.report, .tracker-newer, .tracker details summary::marker { display:none; }
   .tracker details { display:block; }
   .tracker-grid input { border:0; border-bottom:1px solid #999; border-radius:0; padding:2px 0; font-weight:600; }
 }
 </style>
 </head>
-<body data-version="2026.10.35">
+<body data-version="2026.10.36">
 <header>
   <span class="title">DA Test Plan</span>
-  <span class="version">DA v2026.10.35</span>
+  <span class="version">DA v2026.10.36</span>
   <a class="button" href="index.html">Guide</a>
   <a class="button" href="verification.html">Test plan</a>
   <a class="button" href="defects.html">Known problems</a>
@@ -147,7 +155,7 @@ tr.tp-issues li { margin:3px 0; }
 <div class="layout">
 <nav aria-label="Contents"><ul><li><a href="#before-you-start">Before you start</a><ul><li><a href="#make-a-test-kit">Make a test kit</a></li></ul></li><li><a href="#a-install-da">A. Install DA</a></li><li><a href="#b-create-an-archive">B. Create an archive</a></li><li><a href="#c-the-first-run-process-intake-menu-1">C. The first run: process intake (menu 1)</a></li><li><a href="#d-what-needs-review-menu-3">D. What needs review (menu 3)</a></li><li><a href="#e-status-and-the-index-menu-2-5">E. Status and the index (menu 2, 5)</a></li><li><a href="#f-duplicates-and-undo-menu-4">F. Duplicates and undo (menu 4)</a></li><li><a href="#g-documents-and-scans">G. Documents and scans</a></li><li><a href="#h-contact-sheets">H. Contact sheets</a></li><li><a href="#i-videos-live-photos-and-heic">I. Videos, Live Photos and HEIC</a></li><li><a href="#j-fix-dates-menu-d">J. Fix dates (menu D)</a></li><li><a href="#k-tags-terminal">K. Tags (terminal)</a></li><li><a href="#l-places-and-location-folders-menu-l">L. Places and location folders (menu L)</a></li><li><a href="#m-split-by-years-menu-s">M. Split by years (menu S)</a></li><li><a href="#n-merge-two-copies-menu-m">N. Merge two copies (menu M)</a></li><li><a href="#o-report-and-dashboard-menu-r-b">O. Report and dashboard (menu R, B)</a></li><li><a href="#p-update-sidecars-menu-j">P. Update sidecars (menu J)</a></li><li><a href="#q-checking-whats-filed-terminal">Q. Checking what's filed (terminal)</a></li><li><a href="#r-settings-da-archiveyaml">R. Settings (da-archive.yaml)</a></li><li><a href="#s-logs-records-and-safety">S. Logs, records and safety</a></li><li><a href="#t-another-pc-or-a-usb-drive">T. Another PC or a USB drive</a></li><li><a href="#u-messages-when-somethings-wrong">U. Messages when something's wrong</a></li><li><a href="#v-clean-up">V. Clean up</a></li><li><a href="#reporting-a-problem">Reporting a problem</a></li></ul></nav>
 <main>
-<p class="print-only">DA v2026.10.35 &middot; da.gamenightbymike.com &middot; 2026-10-16</p>
+<p class="print-only">DA v2026.10.36 &middot; da.gamenightbymike.com &middot; 2026-10-16</p>
 <h1 id="da-test-plan">DA test plan</h1>
 <p>Thank you for testing DA. This plan walks through everything DA does, step by step: first with the
 <strong>menu</strong> (what most people use), then with <strong>commands typed in a terminal</strong> (for things the menu doesn't
@@ -162,6 +170,11 @@ name and the version already filled in, and marks the step failed. Problems alre
 you or anyone) are listed under it, with whether they're still open and their labels. <strong>Save as PDF</strong> keeps a
 dated copy of your results; when a new version of DA comes out, <strong>Start again on a new version</strong> clears them for
 the next round. On paper, use the <a href="https://da.gamenightbymike.com/DA-Test-Plan.pdf">printable checklist</a>.</p>
+<p>The website has one <strong>Start timing</strong> button. When you're ready, start it; the first unfinished step is timed.
+Choose that step's passed, skipped or failed result to save its time and automatically move timing to the next
+unfinished step. Use <strong>Pause timing</strong> for breaks; resume when you're ready. Each section's time is the sum of
+its steps, and the overall time is the sum of all section times. Timing is saved in this browser along with
+your results; starting again on a new version clears it.</p>
 <p>You don't need to do it all in one sitting: each part starts from where the one before left off. The whole
 plan takes a few evenings. The <a href="https://da.gamenightbymike.com">user guide</a> explains anything this plan
 mentions; the <a href="https://da.gamenightbymike.com/defects.html">known problems</a> list what's already known, so you
@@ -2095,13 +2108,13 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
 <li>If DA printed an error, the archive's <code>logs\da.jsonl</code> has the details: copy the last few lines.</li>
 <li>Leave out anything private: names, photos, and folder paths you'd rather not share.</li>
 </ol>
-<footer>DA v2026.10.35 &middot; guide built 2026-10-16 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
+<footer>DA v2026.10.36 &middot; guide built 2026-10-16 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
 </main>
 </div>
 <script>// tools/site/testplan.js - the test plan's tracker (verification.html only).
 //
-// Everything a tester enters (name, version, dates, each step's outcome) is kept in this browser's localStorage, on
-// their own PC: no accounts and no server. "Report" opens a new GitHub issue with the step, the tester and the
+// Everything a tester enters (name, version, dates, outcomes and step times) is kept in this browser's localStorage,
+// on their own PC: no accounts and no server. "Report" opens a new GitHub issue with the step, the tester and the
 // version filled in, and marks the step Failed. The problems already reported (by anyone) are read from the public
 // repo's issues and listed under their step, with their state and labels.
 (function () {
@@ -2139,6 +2152,29 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
       if (!WORD[state.checks[id]]) { delete state.checks[id]; }
     });
     state.history = state.history || [];
+    var oldTimers = state.timers && typeof state.timers === "object" ? state.timers : {};
+    var stepTimes = {};
+    if (oldTimers.steps && typeof oldTimers.steps === "object" && !Array.isArray(oldTimers.steps)) {
+      Object.keys(oldTimers.steps).forEach(function (id) {
+        var timer = oldTimers.steps[id];
+        var elapsed = Number.isFinite(timer) ? timer :
+          (timer && typeof timer === "object" ?
+            (Number.isFinite(timer.locked) ? timer.locked : 0) +
+            (Number.isFinite(timer.elapsed) ? timer.elapsed : 0) +
+            (Number.isFinite(timer.startedAt) ? Math.max(0, Date.now() - timer.startedAt) : 0) : 0);
+        stepTimes[id] = Number.isFinite(elapsed) && elapsed >= 0 ? elapsed : 0;
+      });
+    }
+    state.timers = {
+      steps: stepTimes,
+      running: oldTimers.running === true,
+      activeStep: typeof oldTimers.activeStep === "string" ? oldTimers.activeStep : null,
+      startedAt: Number.isFinite(oldTimers.startedAt) ? oldTimers.startedAt : null
+    };
+    if (!state.timers.running || state.timers.startedAt === null) {
+      state.timers.running = false;
+      state.timers.startedAt = null;
+    }
     return state;
   }
 
@@ -2158,17 +2194,96 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
   // ------------------------------------------------------------------ the steps
   var steps = [];                      // {id, row, cell, buttons, word, issuesRow, section}
   var byId = {};
+  var sections = [];
+  var sectionByKey = {};
+
+  function formatTime(milliseconds) {
+    var seconds = Math.floor(Math.max(0, milliseconds) / 1000);
+    var hours = Math.floor(seconds / 3600);
+    var minutes = Math.floor((seconds % 3600) / 60);
+    return String(hours).padStart(2, "0") + ":" + String(minutes).padStart(2, "0") + ":" +
+      String(seconds % 60).padStart(2, "0");
+  }
+
+  function stepTime(step, now) {
+    var elapsed = state.timers.steps[step.id] || 0;
+    if (state.timers.running && state.timers.activeStep === step.id && state.timers.startedAt !== null) {
+      elapsed += Math.max(0, now - state.timers.startedAt);
+    }
+    return elapsed;
+  }
+
+  function nextUnfinishedStep() {
+    return steps.find(function (step) { return !state.checks[step.id]; }) || null;
+  }
+
+  function commitActiveStep(now) {
+    var activeId = state.timers.activeStep;
+    if (activeId && state.timers.startedAt !== null) {
+      state.timers.steps[activeId] = (state.timers.steps[activeId] || 0) +
+        Math.max(0, now - state.timers.startedAt);
+    }
+    state.timers.startedAt = null;
+  }
+
+  function advanceTimer(now) {
+    if (!state.timers.running) { return; }
+    var next = nextUnfinishedStep();
+    if (!next) {
+      commitActiveStep(now);
+      state.timers.running = false;
+      state.timers.activeStep = null;
+      return;
+    }
+    if (state.timers.activeStep !== next.id) {
+      commitActiveStep(now);
+      state.timers.activeStep = next.id;
+      state.timers.startedAt = now;
+    }
+  }
+
+  function toggleTimer() {
+    var now = Date.now();
+    if (state.timers.running) {
+      commitActiveStep(now);
+      state.timers.running = false;
+    } else {
+      var next = nextUnfinishedStep();
+      if (next) {
+        state.timers.activeStep = next.id;
+        state.timers.startedAt = now;
+        state.timers.running = true;
+        if (!state.started) { state.started = today(); }
+      }
+    }
+    save();
+    refresh();
+  }
+
   document.querySelectorAll("main table").forEach(function (table) {
     var heads = table.querySelectorAll("thead th");
     if (heads.length !== 4) { return; }
     var section = table.previousElementSibling;
     while (section && !/^H[23]$/.test(section.tagName)) { section = section.previousElementSibling; }
+    var sectionInfo = null;
+    if (section) {
+      var sectionKey = section.id || section.textContent.trim();
+      if (!sectionByKey[sectionKey]) {
+        sectionInfo = {key: sectionKey, heading: section, steps: []};
+        sectionByKey[sectionKey] = sectionInfo;
+        sections.push(sectionInfo);
+        sectionInfo.time = el("span", {class: "tp-section-time"});
+        section.appendChild(sectionInfo.time);
+      } else {
+        sectionInfo = sectionByKey[sectionKey];
+      }
+    }
     table.querySelectorAll("tbody tr").forEach(function (row) {
       var cells = row.querySelectorAll("td");
       if (cells.length !== 4) { return; }
       var id = cells[0].textContent.trim();
       if (!STEP.test(id)) { return; }
-      var step = {id: id, row: row, section: section, buttons: {}};
+      var step = {id: id, row: row, section: section, sectionInfo: sectionInfo, buttons: {}};
       var group = el("div", {class: "tp-outcomes", role: "group", "aria-label": "Step " + id + " result"});
       OUTCOMES.forEach(function (o) {
         var b = el("button", {type: "button", class: "tp-outcome tp-" + o[0], title: o[2],
@@ -2178,6 +2293,8 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
         step.buttons[o[0]] = b;
       });
       step.word = el("span", {class: "tp-word"});
+      step.time = el("span", {class: "tp-step-time"});
+      if (!Number.isFinite(state.timers.steps[id]) || state.timers.steps[id] < 0) { state.timers.steps[id] = 0; }
       var report = el("button", {type: "button", class: "report", title: "Report a problem with step " + id}, "Report");
       report.addEventListener("click", function () {
         if (openIssue(id, cells[1].textContent.trim(), cells[2].textContent.trim())) { choose(step, "fail"); }
@@ -2185,15 +2302,19 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
       cells[3].textContent = "";
       cells[3].appendChild(group);
       cells[3].appendChild(step.word);
+      cells[3].appendChild(step.time);
       cells[3].appendChild(report);
       steps.push(step);
+      if (sectionInfo) { sectionInfo.steps.push(step); }
       byId[id] = step;
     });
   });
 
   function choose(step, outcome) {
     if (outcome) { state.checks[step.id] = outcome; } else { delete state.checks[step.id]; }
+    advanceTimer(Date.now());
     if (outcome && !state.started) { state.started = today(); }
+    if (tally().done < steps.length) { state.completed = ""; }
     if (tally().done === steps.length && !state.completed) { state.completed = today(); }
     save();
     refresh();
@@ -2215,7 +2336,8 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
     '<p class="tracker-note">Kept in this browser on this computer only. Fill these in, then mark each step: ' +
     '<b class="tp-key tp-pass">✓ Passed</b> <b class="tp-key tp-skip">○ Skipped</b> ' +
     '<b class="tp-key tp-fail">✗ Failed</b> (press it again to clear it). Report opens a problem report ' +
-    'and marks the step Failed.</p>' +
+    'and marks the step Failed. Start timing once below; choosing a result records the active step\'s time and ' +
+    'automatically moves the timer to the next unfinished step. Use Pause for breaks.</p>' +
     '<div class="tracker-grid">' +
     '<label>Your name<input id="tp-tester" autocomplete="name"></label>' +
     '<label>GitHub name (optional)<input id="tp-github" autocomplete="username"></label>' +
@@ -2227,6 +2349,9 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
     '<span id="tp-bar-skip" class="tp-skip"></span><span id="tp-bar-fail" class="tp-fail"></span></div>' +
     '<strong id="tp-count"></strong></div>' +
     '<p id="tp-tally" class="tracker-tally"></p>' +
+    '<div class="tracker-timing"><button type="button" id="tp-timer-toggle">Start timing</button>' +
+    '<span id="tp-timer-status" aria-live="polite"></span>' +
+    '<p>Overall test time: <strong id="tp-total-time">00:00:00</strong></p></div>' +
     '<p id="tp-defects" class="tracker-defects"></p>' +
     '<p id="tp-newer" class="tracker-newer" hidden></p>' +
     '<div class="tracker-buttons">' +
@@ -2254,7 +2379,49 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
   bind("tp-started", "started");
   bind("tp-completed", "completed");
 
+  document.getElementById("tp-timer-toggle").addEventListener("click", toggleTimer);
+
   function pct(n) { return (steps.length ? (100 * n / steps.length) : 0) + "%"; }
+
+  function sectionLockedTime(section) {
+    var now = Date.now();
+    return section.steps.reduce(function (total, step) { return total + stepTime(step, now); }, 0);
+  }
+
+  function totalTime(now) {
+    return steps.reduce(function (total, step) { return total + stepTime(step, now); }, 0);
+  }
+
+  function updateTimerDisplays() {
+    var now = Date.now();
+    sections.forEach(function (section) {
+      section.steps.forEach(function (step) {
+        step.time.textContent = "Time: " + formatTime(stepTime(step, now));
+        step.row.classList.toggle("tp-row-timing", state.timers.running && state.timers.activeStep === step.id);
+      });
+      section.time.textContent = " · Time: " + formatTime(sectionLockedTime(section));
+    });
+    document.getElementById("tp-total-time").textContent = formatTime(totalTime(now));
+    var toggle = document.getElementById("tp-timer-toggle");
+    var status = document.getElementById("tp-timer-status");
+    var active = state.timers.activeStep;
+    var hasElapsed = Object.values(state.timers.steps).some(function (time) { return time > 0; });
+    var hasStarted = hasElapsed || Boolean(active);
+    var hasNext = Boolean(nextUnfinishedStep());
+    toggle.textContent = !hasNext ? "Timing complete" : (state.timers.running ? "Pause timing" :
+      (hasStarted ? "Resume timing" : "Start timing"));
+    toggle.disabled = !hasNext;
+    if (state.timers.running && active) {
+      status.textContent = "Timing step " + active + " — choose its result to move on.";
+    } else if (hasNext && hasStarted) {
+      active = nextUnfinishedStep().id;
+      status.textContent = "Paused at step " + active + ".";
+    } else if (!hasNext) {
+      status.textContent = "All steps completed.";
+    } else {
+      status.textContent = "Start when you're ready to begin the first unfinished step.";
+    }
+  }
 
   function refresh() {
     var t = tally();
@@ -2289,6 +2456,7 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
       badge.classList.toggle("all", c.done === c.all && !c.fail);
       badge.classList.toggle("failed", c.fail > 0);
     });
+    updateTimerDisplays();
     var newer = document.getElementById("tp-newer");
     if (siteVersion && state.version && state.version !== siteVersion && t.done > 0) {
       newer.hidden = false;
@@ -2302,7 +2470,8 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
     state.history.forEach(function (h) {
       var counts = h.pass === undefined ? h.done + " / " + h.total + " steps" :
         h.pass + " passed, " + h.skip + " skipped, " + h.fail + " failed of " + h.total;
-      list.appendChild(el("li", {}, "v" + h.version + " - " + (h.tester || "no name") + " - " + counts + " - " +
+      var time = Number.isFinite(h.time) ? " - " + formatTime(h.time) : "";
+      list.appendChild(el("li", {}, "v" + h.version + " - " + (h.tester || "no name") + " - " + counts + time + " - " +
         (h.started || "?") + " to " + (h.completed || "not finished")));
     });
     history.hidden = state.history.length === 0;
@@ -2443,21 +2612,31 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
     var to = siteVersion || state.version;
     var t = tally();
     if (!confirm("Save your results as a PDF first if you want to keep them.\n\nStart again on v" + to +
-        "? Your " + t.done + " results and both dates are cleared (your name stays).")) { return; }
+        "? Your " + t.done + " results, both dates, and all timers are cleared (your name stays).")) { return; }
     state.history.unshift({version: state.version, tester: state.tester, done: t.done, pass: t.pass, skip: t.skip,
                            fail: t.fail, total: steps.length, started: state.started, completed: state.completed,
-                           saved: today()});
+                           time: lockedTimeTotal(), saved: today()});
     state.history = state.history.slice(0, 20);
     state.version = to;
     state.started = "";
     state.completed = "";
     state.checks = {};
+    state.timers = {steps: {}, running: false, activeStep: null, startedAt: null};
     document.getElementById("tp-version").value = state.version;
     save();
     refresh();
   });
 
+  window.addEventListener("pagehide", function () {
+    if (state.timers.running) {
+      commitActiveStep(Date.now());
+      state.timers.running = false;
+      save();
+    }
+  });
+
   refresh();
+  window.setInterval(updateTimerDisplays, 250);
   showIssues();
 })();
 </script>

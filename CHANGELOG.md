@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.36 - 2026-10-16
+
+### New
+- Add automatic step timing
+
 ## v2026.10.35 - 2026-10-16
 
 ### New

@@ -15,6 +15,12 @@ you or anyone) are listed under it, with whether they're still open and their la
 dated copy of your results; when a new version of DA comes out, **Start again on a new version** clears them for
 the next round. On paper, use the [printable checklist](https://da.gamenightbymike.com/DA-Test-Plan.pdf).
 
+The website has one **Start timing** button. When you're ready, start it; the first unfinished step is timed.
+Choose that step's passed, skipped or failed result to save its time and automatically move timing to the next
+unfinished step. Use **Pause timing** for breaks; resume when you're ready. Each section's time is the sum of
+its steps, and the overall time is the sum of all section times. Timing is saved in this browser along with
+your results; starting again on a new version clears it.
+
 You don't need to do it all in one sitting: each part starts from where the one before left off. The whole
 plan takes a few evenings. The [user guide](https://da.gamenightbymike.com) explains anything this plan
 mentions; the [known problems](https://da.gamenightbymike.com/defects.html) list what's already known, so you
