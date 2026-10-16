@@ -74,10 +74,10 @@ footer { color:var(--muted); font-size:14px; margin-top:60px; border-top:1px sol
 }
 </style>
 </head>
-<body data-version="2026.10.32">
+<body data-version="2026.10.33">
 <header>
   <span class="title">DA User Guide</span>
-  <span class="version">DA v2026.10.32</span>
+  <span class="version">DA v2026.10.33</span>
   <a class="button" href="index.html">Guide</a>
   <a class="button" href="verification.html">Test plan</a>
   <a class="button" href="defects.html">Known problems</a>
@@ -87,7 +87,7 @@ footer { color:var(--muted); font-size:14px; margin-top:60px; border-top:1px sol
 <div class="layout">
 <nav aria-label="Contents"><ul><li><a href="#words-youll-see">Words you'll see</a></li><li><a href="#getting-started">Getting started</a><ul><li><a href="#1-get-da">1. Get DA</a></li><li><a href="#2-install-it-once-per-computer">2. Install it (once per computer)</a></li><li><a href="#install-da-with-python-if-windows-blocks-daexe">Install DA with Python (if Windows blocks DA.exe)</a></li><li><a href="#3-create-your-first-archive-once-per-archive">3. Create your first archive (once per archive)</a></li><li><a href="#4-open-it">4. Open it</a></li></ul></li><li><a href="#the-menu">The menu</a></li><li><a href="#common-workflows">Common workflows</a><ul><li><a href="#add-photos-from-a-phone-camera-or-memory-card">Add photos from a phone, camera or memory card</a></li><li><a href="#add-scanned-documents">Add scanned documents</a></li><li><a href="#da-run-file-new-photos-and-documents">da run: file new photos and documents</a></li><li><a href="#da-report-whats-in-the-archive-and-what-needs-you">da report: what's in the archive and what needs you</a></li><li><a href="#da-dashboard-the-archive-in-your-browser">da dashboard: the archive in your browser</a></li><li><a href="#fix-what-needs-review">Fix what needs review</a></li><li><a href="#fix-dates-photos-with-no-date-or-the-wrong-one">Fix dates: photos with no date, or the wrong one</a></li><li><a href="#duplicates-put-back-or-delete">Duplicates: put back or delete</a></li><li><a href="#da-split-move-files-to-the-right-decades-archive">da split: move files to the right decade's archive</a></li><li><a href="#da-find-search-the-archive">da find: search the archive</a></li><li><a href="#contact-sheets-a-folder-at-a-glance">Contact sheets: a folder at a glance</a></li><li><a href="#da-tag-label-photos-and-documents">da tag: label photos and documents</a></li><li><a href="#switch-between-archives">Switch between archives</a></li><li><a href="#update-da">Update DA</a></li></ul></li><li><a href="#less-common-workflows">Less common workflows</a><ul><li><a href="#videos">Videos</a></li><li><a href="#iphone-live-photos-mov-files">iPhone Live Photos (.MOV files)</a></li><li><a href="#iphone-heic-photos">iPhone HEIC photos</a></li><li><a href="#edit-an-archives-settings-da-archiveyaml">Edit an archive's settings (da-archive.yaml)</a></li><li><a href="#share-an-album-with-google-photos">Share an album with Google Photos</a></li><li><a href="#process-a-folder-from-somewhere-else">Process a folder from somewhere else</a></li><li><a href="#start-a-new-archive-for-another-person-or-decade">Start a new archive for another person or decade</a></li><li><a href="#use-da-on-another-computer">Use DA on another computer</a></li><li><a href="#merge-two-copies-of-an-archive">Merge two copies of an archive</a></li><li><a href="#back-up-an-archive">Back up an archive</a></li><li><a href="#check-whats-already-filed">Check what's already filed</a></li><li><a href="#update-sidecars-the-metajson-files">Update sidecars (the .meta.json files)</a></li><li><a href="#do-the-runs-steps-one-at-a-time">Do the run's steps one at a time</a></li><li><a href="#coming-soon">Coming soon</a></li></ul></li><li><a href="#location-and-gps-workflows">Location and GPS workflows</a><ul><li><a href="#works-today">Works today</a></li><li><a href="#look-up-where-photos-were-taken">Look up where photos were taken</a></li><li><a href="#group-a-month-into-location-folders">Group a month into location folders</a></li><li><a href="#rename-a-location-folder">Rename a location folder</a></li><li><a href="#set-a-place-by-hand">Set a place by hand</a></li></ul></li><li><a href="#config-tokens">Config tokens</a><ul><li><a href="#file-name-tokens">File-name tokens</a></li><li><a href="#folder-tokens">Folder tokens</a></li></ul></li><li><a href="#if-something-goes-wrong">If something goes wrong</a></li><li><a href="#reference">Reference</a><ul><li><a href="#how-da-works-out-a-date">How DA works out a date</a></li><li><a href="#photo-or-document">Photo or document?</a></li><li><a href="#which-archive-a-command-works-on">Which archive a command works on</a></li><li><a href="#commands">Commands</a></li></ul></li></ul></nav>
 <main>
-<p class="print-only">DA v2026.10.32 &middot; da.gamenightbymike.com &middot; 2026-10-16</p>
+<p class="print-only">DA v2026.10.33 &middot; da.gamenightbymike.com &middot; 2026-10-16</p>
 <h1 id="da-user-guide">DA User Guide</h1>
 <p><strong>DA</strong> (short for <em>Digital Archive</em>) puts your photos and scanned documents in order. You copy
 them into one folder, and DA:</p>
@@ -282,7 +282,7 @@ here on.</p>
   1 Process intake    2 Status    3 What needs review    4 Undo last set-aside
   5 Refresh index     6 Switch archive    7 New archive
   L Location folders  S Split by years    M Merge from another copy    R Report (PDF)
-  B Dashboard (browser)    D Fix dates    J Update sidecars    U User guide    H Help    Q Quit
+  B Dashboard (browser)    D Fix dates    N Naming    J Update sidecars    U User guide    H Help    Q Quit
 </code></pre>
 <p>The menu opens with the archive's <strong>Status</strong>: what's waiting in intake, folder by folder, and the
 last run. It shows it again at the end of <strong>1 Process intake</strong>, and when you switch to another
@@ -346,6 +346,10 @@ archive. Type the number or letter, then press <strong>Enter</strong>.</p>
 <tr>
 <td><strong>D Fix dates</strong></td>
 <td>Give a date to photos that have none (a folder at a time), then file them. See <a href="#fix-dates-photos-with-no-date-or-the-wrong-one">Fix dates</a>.</td>
+</tr>
+<tr>
+<td><strong>N Naming</strong></td>
+<td>Shows how files are named, tries a new pattern, and renames the filed files to match (with undo). See <a href="#change-how-files-are-named-n-naming-da-rename">Change how files are named</a>.</td>
 </tr>
 <tr>
 <td><strong>J Update sidecars</strong></td>
@@ -1465,12 +1469,18 @@ tagged <code>beach</code> and <code>grandma</code>, taken at 39.78 N, 89.65 W:</
 - A token with nothing to show (no tags, no position, no owner) disappears, with its extra <code>_</code>.
 - Keep <code>{hash}</code>, or the time to the second, in the pattern: without it two photos can end up with the
   same name.
-- <strong>Try a pattern before you change it</strong> with <code>da rename</code> (below): changing the pattern makes every
-  photo already filed count as misnamed.</p>
-<h4 id="see-what-a-pattern-would-do-da-rename">See what a pattern would do: da rename</h4>
-<p><code>da rename</code> works out what every filed file would be called, and changes <strong>nothing</strong>:</p>
-<pre><code class="language-powershell">da rename                                                            # with da-archive.yaml's patterns
-da rename photos\organized\2019 --pattern &quot;{YYYY}{MM}{DD}_{camera}_{hash:4}&quot;     # try one
+- <strong>Change a pattern with menu N Naming</strong> (or <code>da rename</code>, below): it renames the files already filed to
+  match, and can be undone.</p>
+<h4 id="change-how-files-are-named-n-naming-da-rename">Change how files are named: N Naming, da rename</h4>
+<p>Choose <strong>N Naming</strong> in the menu. It shows each kind's pattern (photos, videos, documents) and the ones
+used before. Then:
+- <strong>Enter</strong> checks every filed file against the patterns, and offers to rename those that don't match.
+- <strong>A number</strong> (1 photos, 2 videos, 3 documents) asks for a new pattern for that kind, shows what every
+  file would be called, asks <em>Rename N files?</em>, then <em>Save it in da-archive.yaml?</em></p>
+<p>The same in the terminal:</p>
+<pre><code class="language-powershell">da rename                                                            # check: what would change (nothing changes)
+da rename photos\organized\2019 --pattern &quot;{YYYY}{MM}{DD}_{camera}_{hash:4}&quot;            # try a pattern
+da rename --pattern &quot;{YYYY}{MM}{DD}_{camera}_{hash:4}&quot; --kind photo --apply --save      # rename, and keep it
 </code></pre>
 <p>It prints how many would be renamed (with the raw files and Live Photo videos that follow them), how many
 are already named so, and what to follow up:
@@ -1478,8 +1488,19 @@ are already named so, and what to follow up:
 - <strong>no sure date / no sidecar:</strong> they keep their names; set a date with <code>da date set</code>, or run
   <code>da validate</code> on the folder, then try again.
 - <strong>had nothing for {owner}</strong> (or another token): it was left out of those names.</p>
-<p>The plan, file by file, is <code>rename-plan.csv</code> in <code>output\runs\&lt;date-time&gt;-rename\</code> (it opens in Excel).
-<em>Coming next:</em> <code>da rename --apply</code> renames them (with undo), and folder patterns (menu <strong>N Naming</strong>).</p>
+<ul>
+<li><strong>The plan</strong>, file by file, is <code>rename-plan.csv</code> in <code>output\runs\&lt;date-time&gt;-rename\</code> (it opens in Excel).</li>
+<li><strong>--apply</strong> asks, then renames each file with its sidecar, raw file and Live Photo video, updates the
+  index, and remakes the folders' contact sheets.</li>
+<li><strong>Undo:</strong> DA prints the line, <code>da intake undo "&lt;...\rename-moved.csv&gt;"</code>; the old names come back.</li>
+<li><strong>--save</strong> writes the pattern into <code>da-archive.yaml</code> (with <code>--kind</code>), and keeps the earlier ones as notes
+  under it, newest first, so going back is easy:
+    <code>yaml
+    pattern: "{YYYY}{MM}{DD}_{camera}_{hash:4}"
+    # was (2026-10-16): photo_{date_taken:%Y%m%d_%H%M%S}_{hash:4}</code>
+    New files are named by it from then on. A copy of the old file is kept (<code>da-archive.yaml.bak-&lt;date-time&gt;</code>).</li>
+</ul>
+<p><em>Coming next:</em> folder patterns, so folders can be named by these tokens too.</p>
 <h3 id="folder-tokens">Folder tokens</h3>
 <p><code>da run</code> files photos in <code>organized\YYYY\YYYY-MM\</code>. Location folders (see
 <a href="#group-a-month-into-location-folders">Group a month into location folders</a>) are named by a folder
@@ -1755,8 +1776,8 @@ anywhere else it's a photo. To decide for a whole run: <code>da run intake\old-s
 <td>Read the text in pictures; tag <code>text</code> / <code>document</code>; move documents</td>
 </tr>
 <tr>
-<td><code>da rename [&lt;folder&gt;] [--pattern "..."] [--kind photo\|video\|document]</code></td>
-<td>Preview what filed files would be called by the name patterns (nothing changes)</td>
+<td><code>da rename [&lt;folder&gt;] [--pattern "..." --kind photo\|video\|document] [--apply] [--save]</code></td>
+<td>Rename filed files by the name patterns (menu N; a preview without --apply; undo with <code>da intake undo</code>)</td>
 </tr>
 <tr>
 <td><code>da findit tags &lt;folder&gt; -r &lt;tag&gt;</code></td>
@@ -1816,7 +1837,7 @@ anywhere else it's a photo. To decide for a whole run: <code>da run intake\old-s
 </tr>
 </tbody>
 </table>
-<footer>DA v2026.10.32 &middot; guide built 2026-10-16 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
+<footer>DA v2026.10.33 &middot; guide built 2026-10-16 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
 </main>
 </div>
 

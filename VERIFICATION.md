@@ -262,6 +262,13 @@ Copy the whole test kit (except `old`) into `jane-archive-202x\intake\photos\kit
 | K24 | `da rename photos\organized\<their year> --pattern "{YYYY}{MM}{DD}_{camera}_{owner}_{hash:4}"` | How many *would be renamed*, raw files following them, and *had nothing for {owner}* for photos with no known owner; the files keep their names | ☐ |
 | K25 | Open that `rename-plan.csv` in Excel | One row per file: its path, the new name, *rename* / *follows* / *unchanged*, and notes like *the name token {owner} was missing* | ☐ |
 | K26 | `da rename intake` | *use da run*; nothing is planned | ☐ |
+| K27 | In the menu press **N** | The photo, video and document patterns, and how to try one | ☐ |
+| K28 | Type **1**, then the pattern `{YYYY}-{MM}-{DD}_{hh}{mm}_{hash:4}` | How many *would be renamed*; *Rename N files?* - answer **y** | ☐ |
+| K29 | | *Renamed N*, and an *Undo: da intake undo ...* line; then *Save it in da-archive.yaml?* - answer **y** | ☐ |
+| K30 | Open a month folder and `da-archive.yaml` | Photos named like `2024-07-04_1015_ab12.jpg` (raw files too, sidecars beside them); in the file, the new pattern and `# was (<today>): photo_...` under it | ☐ |
+| K31 | Press **N** again, then **Enter** | *0 would be renamed* | ☐ |
+| K32 | `da intake undo "<the rename-moved.csv it printed>"` | The old names are back; **N**, **Enter** now offers to rename them again (the saved pattern stays until you change it) | ☐ |
+| K33 | Press **N**, **1**, type the old pattern (`photo_{date_taken:%Y%m%d_%H%M%S}_{hash:4}`), answer **y** twice | Back as before; `da-archive.yaml` keeps both earlier patterns as notes, newest first | ☐ |
 
 ## L. Places and location folders (menu L)
 

@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.33 - 2026-10-16
+
+### New
+- da rename --apply with undo, --save keeps old patterns, menu N Naming
+
 ## v2026.10.32 - 2026-10-16
 
 ### Fixed
