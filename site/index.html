@@ -74,10 +74,10 @@ footer { color:var(--muted); font-size:14px; margin-top:60px; border-top:1px sol
 }
 </style>
 </head>
-<body data-version="2026.10.29">
+<body data-version="2026.10.30">
 <header>
   <span class="title">DA User Guide</span>
-  <span class="version">DA v2026.10.29</span>
+  <span class="version">DA v2026.10.30</span>
   <a class="button" href="index.html">Guide</a>
   <a class="button" href="verification.html">Test plan</a>
   <a class="button" href="defects.html">Known problems</a>
@@ -87,7 +87,7 @@ footer { color:var(--muted); font-size:14px; margin-top:60px; border-top:1px sol
 <div class="layout">
 <nav aria-label="Contents"><ul><li><a href="#words-youll-see">Words you'll see</a></li><li><a href="#getting-started">Getting started</a><ul><li><a href="#1-get-da">1. Get DA</a></li><li><a href="#2-install-it-once-per-computer">2. Install it (once per computer)</a></li><li><a href="#install-da-with-python-if-windows-blocks-daexe">Install DA with Python (if Windows blocks DA.exe)</a></li><li><a href="#3-create-your-first-archive-once-per-archive">3. Create your first archive (once per archive)</a></li><li><a href="#4-open-it">4. Open it</a></li></ul></li><li><a href="#the-menu">The menu</a></li><li><a href="#common-workflows">Common workflows</a><ul><li><a href="#add-photos-from-a-phone-camera-or-memory-card">Add photos from a phone, camera or memory card</a></li><li><a href="#add-scanned-documents">Add scanned documents</a></li><li><a href="#da-run-file-new-photos-and-documents">da run: file new photos and documents</a></li><li><a href="#da-report-whats-in-the-archive-and-what-needs-you">da report: what's in the archive and what needs you</a></li><li><a href="#da-dashboard-the-archive-in-your-browser">da dashboard: the archive in your browser</a></li><li><a href="#fix-what-needs-review">Fix what needs review</a></li><li><a href="#fix-dates-photos-with-no-date-or-the-wrong-one">Fix dates: photos with no date, or the wrong one</a></li><li><a href="#duplicates-put-back-or-delete">Duplicates: put back or delete</a></li><li><a href="#da-split-move-files-to-the-right-decades-archive">da split: move files to the right decade's archive</a></li><li><a href="#da-find-search-the-archive">da find: search the archive</a></li><li><a href="#contact-sheets-a-folder-at-a-glance">Contact sheets: a folder at a glance</a></li><li><a href="#da-tag-label-photos-and-documents">da tag: label photos and documents</a></li><li><a href="#switch-between-archives">Switch between archives</a></li><li><a href="#update-da">Update DA</a></li></ul></li><li><a href="#less-common-workflows">Less common workflows</a><ul><li><a href="#videos">Videos</a></li><li><a href="#iphone-live-photos-mov-files">iPhone Live Photos (.MOV files)</a></li><li><a href="#iphone-heic-photos">iPhone HEIC photos</a></li><li><a href="#edit-an-archives-settings-da-archiveyaml">Edit an archive's settings (da-archive.yaml)</a></li><li><a href="#share-an-album-with-google-photos">Share an album with Google Photos</a></li><li><a href="#process-a-folder-from-somewhere-else">Process a folder from somewhere else</a></li><li><a href="#start-a-new-archive-for-another-person-or-decade">Start a new archive for another person or decade</a></li><li><a href="#use-da-on-another-computer">Use DA on another computer</a></li><li><a href="#merge-two-copies-of-an-archive">Merge two copies of an archive</a></li><li><a href="#back-up-an-archive">Back up an archive</a></li><li><a href="#check-whats-already-filed">Check what's already filed</a></li><li><a href="#update-sidecars-the-metajson-files">Update sidecars (the .meta.json files)</a></li><li><a href="#do-the-runs-steps-one-at-a-time">Do the run's steps one at a time</a></li><li><a href="#coming-soon">Coming soon</a></li></ul></li><li><a href="#location-and-gps-workflows">Location and GPS workflows</a><ul><li><a href="#works-today">Works today</a></li><li><a href="#look-up-where-photos-were-taken">Look up where photos were taken</a></li><li><a href="#group-a-month-into-location-folders">Group a month into location folders</a></li><li><a href="#rename-a-location-folder">Rename a location folder</a></li><li><a href="#set-a-place-by-hand">Set a place by hand</a></li></ul></li><li><a href="#config-tokens">Config tokens</a><ul><li><a href="#file-name-tokens">File-name tokens</a></li><li><a href="#folder-tokens">Folder tokens</a></li></ul></li><li><a href="#if-something-goes-wrong">If something goes wrong</a></li><li><a href="#reference">Reference</a><ul><li><a href="#how-da-works-out-a-date">How DA works out a date</a></li><li><a href="#photo-or-document">Photo or document?</a></li><li><a href="#which-archive-a-command-works-on">Which archive a command works on</a></li><li><a href="#commands">Commands</a></li></ul></li></ul></nav>
 <main>
-<p class="print-only">DA v2026.10.29 &middot; da.gamenightbymike.com &middot; 2026-10-15</p>
+<p class="print-only">DA v2026.10.30 &middot; da.gamenightbymike.com &middot; 2026-10-16</p>
 <h1 id="da-user-guide">DA User Guide</h1>
 <p><strong>DA</strong> (short for <em>Digital Archive</em>) puts your photos and scanned documents in order. You copy
 them into one folder, and DA:</p>
@@ -167,10 +167,27 @@ every change, so every step can be checked and most can be undone.</p>
     <code>powershell
     .\DA.exe install</code></li>
 <li>If Windows shows <em>"Windows protected your PC"</em>, click <strong>More info</strong>, then <strong>Run anyway</strong>.</li>
+<li>If it says <strong>Long paths are off</strong> and asks <em>Turn long paths on now?</em>, press <strong>Enter</strong> (yes), then
+    click <strong>Yes</strong> when Windows asks for permission. See <a href="#long-paths">Long paths</a> for why.</li>
 <li><strong>Close the terminal window.</strong> From now on, <code>da</code> works in any new terminal window.</li>
 </ol>
 <p>DA is now at <code>C:\Scripts\DA\DA.exe</code>. To update DA later, download the new <code>DA.exe</code> and do these
 steps again; your archives aren't touched.</p>
+<h4 id="long-paths">Long paths</h4>
+<p>Windows normally refuses a file path of <strong>260 characters or more</strong> (the folder names plus the file name).
+Files copied from deep folders, like <code>intake\docs\from-old-pc\users\jane\school\2022\course\...</code>,
+can get that long, and setting copies aside (into <code>_duplicates-holding\&lt;date&gt;\...</code>) adds about 30 more.
+Windows has a setting that lifts the limit, <strong>long paths</strong>, and DA works with it.</p>
+<ul>
+<li><code>da install</code> checks it and offers to turn it on. Windows asks for permission (you need to be an
+    administrator of the computer). It takes effect in <strong>new</strong> windows.</li>
+<li>While it's off, DA <strong>skips</strong> a file whose new path would be too long, carries on with the rest, and
+    says so: <em>path too long for Windows</em>. Turn it on and run again; the skipped files are done then.</li>
+<li>To turn it on by hand: right-click <strong>Terminal</strong> (or <strong>Windows PowerShell</strong>), choose <strong>Run as
+    administrator</strong>, and type:
+    <code>powershell
+    New-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem -Name LongPathsEnabled -Value 1 -PropertyType DWORD -Force</code></li>
+</ul>
 <p><strong>Windows won't run DA.exe?</strong> If you see <em>"an application control policy has blocked this file"</em>, or
 Windows Security keeps warning about <code>DA.exe</code>, your computer has <strong>Smart App Control</strong> turned on. It
 only runs programs that are digitally signed, and DA.exe isn't. Don't turn your protection off:
@@ -213,7 +230,8 @@ C:\Scripts\DA\python\Scripts\python.exe -m mindit install
     computer is changed.
 2. Download DA (from this website) and what it needs into that copy.
 3. Set up the <code>da</code> command and update every archive's <code>Open DA.cmd</code> to use it. (If an old <code>DA.exe</code> is in
-    <code>C:\Scripts\DA</code>, it's renamed <code>DA.exe.off</code>, so it doesn't get in the way.)</p>
+    <code>C:\Scripts\DA</code>, it's renamed <code>DA.exe.off</code>, so it doesn't get in the way.) It also offers to turn on
+    <a href="#long-paths">long paths</a>.</p>
 <p><strong>Close the terminal and open a new one.</strong> Type <code>da version</code>: it shows DA's version. From here on,
 everything in this guide works the same: <code>da</code>, <code>Open DA.cmd</code>, the menu.</p>
 <p><strong>C. Update DA later:</strong> type <code>da update</code>. It downloads the newest version and says which one you have
@@ -1531,6 +1549,14 @@ from another month in that folder is still moved back to its own month folder. N
 <td>Close every DA window, then install again.</td>
 </tr>
 <tr>
+<td><em>The system cannot find the path specified</em>, or <em>path too long for Windows</em></td>
+<td>The file's path is 260 characters or more. Turn on <a href="#long-paths">long paths</a> (run <code>da install</code> again, or the command there), open a new DA window and run again.</td>
+</tr>
+<tr>
+<td>Which DA is this?</td>
+<td><code>da version</code> shows its version. In PowerShell, <code>Get-Command da</code> shows which one runs: <code>C:\Scripts\DA\DA.exe</code>, or <code>da.cmd</code> for DA installed with Python. In Explorer, <strong>Properties &gt; Details</strong> of <code>DA.exe</code> shows its version too.</td>
+</tr>
+<tr>
 <td>A run seems stuck</td>
 <td>It's probably working through a big folder. Big runs take hours; the step number shows where it is. To stop, press <strong>Ctrl+C</strong>. Photos already filed stay filed, and running it again carries on with the rest.</td>
 </tr>
@@ -1715,7 +1741,7 @@ anywhere else it's a photo. To decide for a whole run: <code>da run intake\old-s
 </tr>
 </tbody>
 </table>
-<footer>DA v2026.10.29 &middot; guide built 2026-10-15 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
+<footer>DA v2026.10.30 &middot; guide built 2026-10-16 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
 </main>
 </div>
 

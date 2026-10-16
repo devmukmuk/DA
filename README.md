@@ -1,6 +1,6 @@
 # DA - Digital Archive
 
-**Latest version:** 2026.10.29 (2026-10-15)
+**Latest version:** 2026.10.30 (2026-10-16)
 
 DA files your photos, videos and scanned documents by the date they were taken. It sets exact
 duplicates aside, names each file by its date, and puts it in a `YYYY\YYYY-MM` folder, with a contact
@@ -14,6 +14,8 @@ sheet for every month. It never deletes anything, and it asks before it moves an
   [with Python instead](https://da.gamenightbymike.com/#install-da-with-python-if-windows-blocks-daexe): free, and about ten minutes, once.
 - **Already have DA?** Type `da update` (DA installed with Python), or download DA.exe again and run
   `.\DA.exe install`.
+- **Long paths:** `da install` offers to turn on Windows' long paths, so files in deep folders (paths of
+  260 characters or more) can be moved. See [Long paths](https://da.gamenightbymike.com/#long-paths).
 
 ## Read
 
@@ -22,11 +24,10 @@ sheet for every month. It never deletes anything, and it asks before it moves an
 - **Testing DA?** The [test plan](https://da.gamenightbymike.com/verification.html) (also as a
   [PDF](https://da.gamenightbymike.com/DA-Test-Plan.pdf) to print) and the [known problems](https://da.gamenightbymike.com/defects.html)
 
-## What's new in v2026.10.29
+## What's new in v2026.10.30
 
-### New
-- da tag ocr - read the text in pictures, tag text/document, move documents
-- Run in the background by default; da dashboard --stop, --foreground
+### Fixed
+- Intake: long paths - one failed move no longer stops a run; da install offers Windows' long paths
 
 ## Found a problem?
 

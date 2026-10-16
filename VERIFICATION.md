@@ -57,6 +57,8 @@ you can try; skip a step whose files you don't have and mark it **skipped**.
 | A4 | Type `.\DA.exe install` and press Enter | "Installed C:\Scripts\DA\DA.exe and added it to your PATH" (or "already on your PATH") | ☐ |
 | A4a | If instead you see *"an application control policy has blocked this file"* or a Windows Security warning that won't go away | Go to step **A10** (install with Python) and skip A5-A9 | ☐ |
 | A4b | If you see *"Windows protected your PC"* | Click **More info**, then **Run anyway**; then A4 works | ☐ |
+| A4c | At the end of A4, read the *Long paths* line | *Long paths: on*, or *Long paths are off* and *Turn long paths on now?*: answer **y**, click **Yes** in Windows' permission window; it says *Long paths: on* | ☐ |
+| A4d | In File Explorer, right-click `C:\Scripts\DA\DA.exe`, **Properties**, **Details** | *File version* and *Product version* show the same version as `da version` (not 0.0.0.0) | ☐ |
 | A5 | Close the terminal, open a **new** one (Windows key, type `powershell`, Enter), type `da version` | `DA v2026.10.…` - write this version down | ☐ |
 | A6 | Type `da --help` | A list of commands (setup, run, status, archives, guide, …) | ☐ |
 | A7 | Type `da guide` | The user guide opens in your browser | ☐ |
@@ -161,6 +163,7 @@ Copy the whole test kit (except `old`) into `jane-archive-202x\intake\photos\kit
 | F4 | Process intake again (menu 1, answer y) | The doubles are set aside again (they're still exact copies of filed photos) | ☐ |
 | F5 | Press **4** and answer **n** | Nothing changes | ☐ |
 | F6 | Delete the folder in `_duplicates-holding` yourself (they're copies) | Fine: DA doesn't need them | ☐ |
+| F7 | *(Optional, long paths off: skip it if A4c turned them on)* Put a copy of a kit photo in intake inside folders nested deep enough that its path is about 240 characters, and process intake | The step carries on; *Not moved ... path too long for Windows* for that copy, which stays in intake | ☐ |
 
 ## G. Documents and scans
 

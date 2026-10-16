@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.30 - 2026-10-16
+
+### Fixed
+- Intake: long paths - one failed move no longer stops a run; da install offers Windows' long paths
+
 ## v2026.10.29 - 2026-10-15
 
 ### New
