@@ -22,6 +22,16 @@ header .version { opacity:.8; font-size:14px; }
 header a.button { color:var(--headfg); text-decoration:none; border:1px solid rgba(255,255,255,.5);
                   border-radius:6px; padding:5px 12px; font-size:15px; white-space:nowrap; }
 header a.button.primary { background:#2ea043; border-color:#2ea043; }
+#guide-search { display:flex; align-items:center; gap:6px; margin:0; font-size:14px; }
+#guide-search label { white-space:nowrap; }
+#guide-search input { width:min(28vw, 260px); min-width:130px; padding:6px 8px; border:1px solid var(--line);
+                     border-radius:5px; font:inherit; }
+#guide-search button { padding:6px 10px; border:1px solid rgba(255,255,255,.5); border-radius:5px;
+                       background:transparent; color:var(--headfg); font:inherit; cursor:pointer; }
+#guide-search button:disabled { opacity:.5; cursor:default; }
+#guide-search-status { min-width:70px; white-space:nowrap; font-size:13px; }
+mark.guide-search-match { background:#ffe66d; color:#1d2329; }
+mark.guide-search-match.is-current { background:#ffad33; outline:2px solid #ffad33; }
 .layout { display:flex; max-width:1240px; margin:0 auto; }
 nav { flex:0 0 270px; position:sticky; top:56px; align-self:flex-start; max-height:calc(100vh - 56px);
       overflow:auto; padding:18px 14px 40px 20px; background:var(--side); border-right:1px solid var(--line);
@@ -65,6 +75,7 @@ footer { color:var(--muted); font-size:14px; margin-top:60px; border-top:1px sol
   main .tp-step-time { white-space:normal; }
 }
 @media (max-width: 540px) {
+  #guide-search input { width:min(34vw, 200px); min-width:100px; }
   table:has(th:nth-child(4)) th:nth-child(1) { width:9%; }
   table:has(th:nth-child(4)) th:nth-child(2) { width:32%; }
   table:has(th:nth-child(4)) th:nth-child(3) { width:32%; }
@@ -83,6 +94,7 @@ footer { color:var(--muted); font-size:14px; margin-top:60px; border-top:1px sol
   table code { font-size:0.85em; }
   tr { break-inside:avoid; }
   header, nav { display:none; }
+  mark.guide-search-match { background:transparent; color:inherit; }
   .layout { display:block; }
   main { padding:0; }
   body { font-size:11pt; background:#fff; color:#000; }
@@ -94,10 +106,17 @@ footer { color:var(--muted); font-size:14px; margin-top:60px; border-top:1px sol
 }
 </style>
 </head>
-<body data-version="2026.10.37">
+<body data-version="2026.10.38">
 <header>
   <span class="title">DA User Guide</span>
-  <span class="version">DA v2026.10.37</span>
+  <form id="guide-search" role="search">
+    <label for="guide-search-input">Search:</label>
+    <input id="guide-search-input" type="search" autocomplete="off" aria-describedby="guide-search-status">
+    <button id="guide-search-next" type="button" disabled>Next</button>
+    <button id="guide-search-previous" type="button" disabled>Prev</button>
+    <span id="guide-search-status" aria-live="polite"></span>
+  </form>
+  <span class="version">DA v2026.10.38</span>
   <a class="button" href="index.html">Guide</a>
   <a class="button" href="verification.html">Test plan</a>
   <a class="button" href="defects.html">Known problems</a>
@@ -107,7 +126,7 @@ footer { color:var(--muted); font-size:14px; margin-top:60px; border-top:1px sol
 <div class="layout">
 <nav aria-label="Contents"><ul><li><a href="#words-youll-see">Words you'll see</a></li><li><a href="#getting-started">Getting started</a><ul><li><a href="#1-get-da">1. Get DA</a></li><li><a href="#2-install-it-once-per-computer">2. Install it (once per computer)</a></li><li><a href="#install-da-with-python-if-windows-blocks-daexe">Install DA with Python (if Windows blocks DA.exe)</a></li><li><a href="#3-create-your-first-archive-once-per-archive">3. Create your first archive (once per archive)</a></li><li><a href="#4-open-it">4. Open it</a></li></ul></li><li><a href="#the-menu">The menu</a></li><li><a href="#common-workflows">Common workflows</a><ul><li><a href="#add-photos-from-a-phone-camera-or-memory-card">Add photos from a phone, camera or memory card</a></li><li><a href="#add-scanned-documents">Add scanned documents</a></li><li><a href="#da-run-file-new-photos-and-documents">da run: file new photos and documents</a></li><li><a href="#da-report-whats-in-the-archive-and-what-needs-you">da report: what's in the archive and what needs you</a></li><li><a href="#da-dashboard-the-archive-in-your-browser">da dashboard: the archive in your browser</a></li><li><a href="#fix-what-needs-review">Fix what needs review</a></li><li><a href="#fix-dates-photos-with-no-date-or-the-wrong-one">Fix dates: photos with no date, or the wrong one</a></li><li><a href="#duplicates-put-back-or-delete">Duplicates: put back or delete</a></li><li><a href="#da-split-move-files-to-the-right-decades-archive">da split: move files to the right decade's archive</a></li><li><a href="#da-find-search-the-archive">da find: search the archive</a></li><li><a href="#contact-sheets-a-folder-at-a-glance">Contact sheets: a folder at a glance</a></li><li><a href="#da-tag-label-photos-and-documents">da tag: label photos and documents</a></li><li><a href="#switch-between-archives">Switch between archives</a></li><li><a href="#update-da">Update DA</a></li></ul></li><li><a href="#less-common-workflows">Less common workflows</a><ul><li><a href="#videos">Videos</a></li><li><a href="#iphone-live-photos-mov-files">iPhone Live Photos (.MOV files)</a></li><li><a href="#iphone-heic-photos">iPhone HEIC photos</a></li><li><a href="#edit-an-archives-settings-da-archiveyaml">Edit an archive's settings (da-archive.yaml)</a></li><li><a href="#share-an-album-with-google-photos">Share an album with Google Photos</a></li><li><a href="#process-a-folder-from-somewhere-else">Process a folder from somewhere else</a></li><li><a href="#start-a-new-archive-for-another-person-or-decade">Start a new archive for another person or decade</a></li><li><a href="#use-da-on-another-computer">Use DA on another computer</a></li><li><a href="#merge-two-copies-of-an-archive">Merge two copies of an archive</a></li><li><a href="#back-up-an-archive">Back up an archive</a></li><li><a href="#check-whats-already-filed">Check what's already filed</a></li><li><a href="#update-sidecars-the-metajson-files">Update sidecars (the .meta.json files)</a></li><li><a href="#do-the-runs-steps-one-at-a-time">Do the run's steps one at a time</a></li><li><a href="#coming-soon">Coming soon</a></li></ul></li><li><a href="#location-and-gps-workflows">Location and GPS workflows</a><ul><li><a href="#works-today">Works today</a></li><li><a href="#look-up-where-photos-were-taken">Look up where photos were taken</a></li><li><a href="#group-a-month-into-location-folders">Group a month into location folders</a></li><li><a href="#rename-a-location-folder">Rename a location folder</a></li><li><a href="#set-a-place-by-hand">Set a place by hand</a></li></ul></li><li><a href="#config-tokens">Config tokens</a><ul><li><a href="#file-name-tokens">File-name tokens</a></li><li><a href="#folder-tokens">Folder tokens</a></li></ul></li><li><a href="#if-something-goes-wrong">If something goes wrong</a></li><li><a href="#reference">Reference</a><ul><li><a href="#how-da-works-out-a-date">How DA works out a date</a></li><li><a href="#photo-or-document">Photo or document?</a></li><li><a href="#which-archive-a-command-works-on">Which archive a command works on</a></li><li><a href="#commands">Commands</a></li></ul></li></ul></nav>
 <main>
-<p class="print-only">DA v2026.10.37 &middot; da.gamenightbymike.com &middot; 2026-10-16</p>
+<p class="print-only">DA v2026.10.38 &middot; da.gamenightbymike.com &middot; 2026-10-17</p>
 <h1 id="da-user-guide">DA User Guide</h1>
 <p><strong>DA</strong> (short for <em>Digital Archive</em>) puts your photos and scanned documents in order. You copy
 them into one folder, and DA:</p>
@@ -738,14 +757,170 @@ first if anything changed, then in a terminal in the archive:</p>
 <li><strong>Everything from one month</strong> (by the folder it's filed in):
     <code>powershell
     da db query "SELECT file_name, folder FROM files WHERE area='photos' AND folder LIKE '2010\2010-07%'"</code></li>
-<li><strong>By name:</strong> <code>... WHERE file_name LIKE '%0704%'</code>. For the name a file had before DA renamed it:
-  <code>... WHERE source_path LIKE '%Beach%'</code>.</li>
-<li><strong>Documents:</strong> use <code>area='documents'</code> instead of <code>area='photos'</code>.</li>
-<li><strong>By tag</strong> (see <a href="#da-tag-label-photos-and-documents">da tag</a>):
-  <code>da findit tags photos\organized -r beach -v</code>. Add <code>-r grandma</code> for both tags, <code>-x beach</code> to
-  leave a tag out, or <code>--date-prefix 2010-07</code> for one month. Automatic tags work the same way:
-  <code>-r owner:jane -r year:2021</code> finds Jane's photos from 2021, <code>-r gps</code> the ones with a position.</li>
+<li><strong>By name:</strong> <code>da db query "SELECT path, file_name FROM files WHERE file_name LIKE '%0704%'"</code>.
+  To find a file by its original path or name after DA moved or renamed it, search <code>source_path</code>:
+    <code>powershell
+    da db query "SELECT path, area, folder, file_name, source_path FROM files WHERE source_path LIKE '%7a376dda4c8afe76-video.MOV%'"</code></li>
+<li><strong>Documents:</strong> use <code>area='documents'</code> instead of <code>area='photos'</code>. Other area values are <code>intake</code>
+  and <code>holding</code>.</li>
+<li><strong>By indexed tags, date, and GPS:</strong> <code>tags</code> is stored as a JSON list, so include the quotes around
+  the tag when searching it with SQLite's <code>json_each</code>:
+    <code>powershell
+    da db query "SELECT f.path, f.captured_at, f.tags FROM files AS f, json_each(f.tags) AS tag WHERE lower(tag.value) = 'beach' AND f.gps_present = 1"</code></li>
+<li><strong>By place and date range:</strong> <code>captured_at</code> is usually ISO date/time text; <code>city</code> and <code>country_code</code>
+  come from location metadata:
+    <code>powershell
+    da db query "SELECT path, captured_at, city, country_code FROM files WHERE city = 'Springfield' AND captured_at LIKE '2010-07%'"</code></li>
 </ul>
+<p>The index's main table is <code>files</code>. These are all its columns:</p>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>What it contains</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>Internal row number.</td>
+</tr>
+<tr>
+<td><code>path</code></td>
+<td>File's current full path; use this to locate it now.</td>
+</tr>
+<tr>
+<td><code>area</code></td>
+<td>Indexed tree: <code>photos</code>, <code>documents</code>, <code>intake</code>, or <code>holding</code>.</td>
+</tr>
+<tr>
+<td><code>folder</code></td>
+<td>Folder relative to its area root (empty for the root itself).</td>
+</tr>
+<tr>
+<td><code>file_name</code></td>
+<td>Current filename, including extension.</td>
+</tr>
+<tr>
+<td><code>source_path</code></td>
+<td>Original path recorded in the sidecar, when available.</td>
+</tr>
+<tr>
+<td><code>module</code></td>
+<td>Metadata module, commonly <code>photoit</code> or <code>scanit</code>.</td>
+</tr>
+<tr>
+<td><code>media_type</code></td>
+<td>Kind of file: <code>photo</code>, <code>video</code>, <code>document</code>, <code>raw</code>, or <code>other</code>.</td>
+</tr>
+<tr>
+<td><code>extension</code></td>
+<td>Lowercase extension, such as <code>.jpg</code> or <code>.pdf</code>.</td>
+</tr>
+<tr>
+<td><code>size_bytes</code></td>
+<td>Current file size in bytes.</td>
+</tr>
+<tr>
+<td><code>modified_at</code></td>
+<td>Current file modification time.</td>
+</tr>
+<tr>
+<td><code>sha256</code></td>
+<td>Recorded SHA-256 content hash, when available.</td>
+</tr>
+<tr>
+<td><code>sidecar_path</code></td>
+<td>Full path to its <code>.meta.json</code> sidecar, when one was found.</td>
+</tr>
+<tr>
+<td><code>sidecar_schema_version</code></td>
+<td>Sidecar format version, when present.</td>
+</tr>
+<tr>
+<td><code>captured_at</code></td>
+<td>Capture/document date from metadata, or a date parsed from a DA filename.</td>
+</tr>
+<tr>
+<td><code>tags</code></td>
+<td>Tags from metadata as a JSON list, or <code>NULL</code> when there are no tags.</td>
+</tr>
+<tr>
+<td><code>gps_present</code></td>
+<td><code>1</code> if GPS metadata was found, otherwise <code>0</code>.</td>
+</tr>
+<tr>
+<td><code>city</code></td>
+<td>City from location metadata, when available.</td>
+</tr>
+<tr>
+<td><code>state_code</code></td>
+<td>State or region code from location metadata, when available.</td>
+</tr>
+<tr>
+<td><code>country_code</code></td>
+<td>Country code from location metadata, when available.</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td>Location-group title, when set.</td>
+</tr>
+<tr>
+<td><code>validation_status</code></td>
+<td><code>ok</code> or <code>problems</code> after validation; <code>NULL</code> if not recorded.</td>
+</tr>
+<tr>
+<td><code>validation_problem_count</code></td>
+<td>Number of validation problems recorded.</td>
+</tr>
+<tr>
+<td><code>hash_status</code></td>
+<td>Hash/quarantine status from metadata, when available.</td>
+</tr>
+<tr>
+<td><code>duplicate_status</code></td>
+<td>Duplicate status from metadata, when available.</td>
+</tr>
+<tr>
+<td><code>indexed_at</code></td>
+<td>Time this row was last indexed.</td>
+</tr>
+</tbody>
+</table>
+<p>Some values are <code>NULL</code> when the sidecar has no corresponding metadata or the file has not been
+through that workflow. <code>path</code>, <code>file_name</code>, and <code>folder</code> describe its current location; <code>source_path</code>
+is only as complete as the original sidecar metadata. The index reflects its last build, so refresh
+it with <strong>5 Refresh index</strong> or <code>da db build</code> after files change. <code>da db query</code> accepts read-only
+<code>SELECT</code> queries; use <code>da findit tags</code> for tag searches when you want full tag matching rather than
+a SQL text search.</p>
+<ul>
+<li>
+<p><strong>By tag or sidecar metadata</strong>, use FindIt. Unlike <code>da db query</code>, FindIt reads the <code>.meta.json</code>
+  sidecars in the folder you give it; it searches recursively by default. For example:
+    ```powershell
+    # Find files with the beach tag; -v shows the matching file paths and details.
+    da findit tags photos\organized --require-tag beach --verbose</p>
+<h1 id="require-both-tags-exclude-anything-tagged-grandma">Require both tags; exclude anything tagged grandma.</h1>
+<p>da findit tags photos\organized -r beach -r family -x grandma -v</p>
+<h1 id="find-july-2010-photos-that-have-gps-metadata">Find July 2010 photos that have GPS metadata.</h1>
+<p>da findit tags photos\organized --date-prefix 2010-07 --require-gps -v</p>
+<h1 id="find-tagged-scanned-documents-and-ignore-results-whose-files-are-missing">Find tagged scanned documents, and ignore results whose files are missing.</h1>
+<p>da findit tags documents\organized -r receipt --module scanit --media-type document --file-exists -v
+<code>``
+  Repeated</code>-r<code>options mean **all** those tags must be present; repeated</code>-x<code>options exclude a
+  match if it has **any** of those tags. Tag searches include your tags and DA's automatic tags,
+  such as</code>owner:jane<code>,</code>year:2021<code>, and</code>gps<code>. Other useful filters are</code>--name-contains 0704<code>(case-insensitive filename substring) and</code>--no-recursive` (only sidecars directly in that
+  folder). Filters combine, so the result must satisfy every filter you give.</p>
+</li>
+</ul>
+<p><code>-v</code> prints the matching files and details; without it, <code>tags</code> prints the search summary and
+  match count. To save the full results as JSON, use <code>--output-file matches.json</code> or
+  <code>--write-output</code> (which writes under <code>reports\findit</code>).
+- <strong>See what metadata FindIt can read:</strong> <code>da findit summary photos\organized</code> counts sidecars,
+  files with and without tags, missing files, and metadata categories. It does not list individual
+  matches. Add <code>--no-recursive</code> to limit the summary to that folder, or <code>--write-output</code> to save
+  its JSON. The optional <code>--backend sqlite --db-path &lt;database&gt;</code> is only supported by <code>summary</code>;
+  tag searches use the sidecar backend.</p>
 <p>Or just browse: every photo is in <code>photos\organized\&lt;year&gt;\&lt;year&gt;-&lt;month&gt;\</code>, in date order, and each
 folder's <code>_contact-sheet.pdf</code> shows them all on a page or two.</p>
 <h3 id="contact-sheets-a-folder-at-a-glance">Contact sheets: a folder at a glance</h3>
@@ -1913,9 +2088,103 @@ anywhere else it's a photo. To decide for a whole run: <code>da run intake\old-s
 </tr>
 </tbody>
 </table>
-<footer>DA v2026.10.37 &middot; guide built 2026-10-16 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
+<footer>DA v2026.10.38 &middot; guide built 2026-10-17 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
 </main>
 </div>
+<script>
+const form = document.getElementById("guide-search");
+const input = document.getElementById("guide-search-input");
+const status = document.getElementById("guide-search-status");
+const nextButton = document.getElementById("guide-search-next");
+const previousButton = document.getElementById("guide-search-previous");
+const main = document.querySelector("main");
+let matches = [];
+let currentMatch = -1;
+let lastQuery = "";
+
+function clearGuideSearch() {
+  main.querySelectorAll("mark.guide-search-match").forEach(mark => {
+    mark.replaceWith(document.createTextNode(mark.textContent || ""));
+  });
+  matches = [];
+  currentMatch = -1;
+}
+
+function updateCurrentMatch() {
+  matches.forEach((mark, index) => {
+    mark.classList.toggle("is-current", index === currentMatch);
+  });
+  nextButton.disabled = matches.length === 0;
+  previousButton.disabled = matches.length === 0;
+  if (currentMatch >= 0) {
+    status.textContent = `${currentMatch + 1} of ${matches.length} match${matches.length === 1 ? "" : "es"}`;
+    matches[currentMatch].scrollIntoView({ behavior: "smooth", block: "center" });
+  } else {
+    status.textContent = matches.length ? `${matches.length} matches` : "0 matches";
+  }
+}
+
+function runGuideSearch() {
+  clearGuideSearch();
+  const query = input.value.trim();
+  if (!query) {
+    lastQuery = "";
+    status.textContent = "0 matches";
+    nextButton.disabled = true;
+    previousButton.disabled = true;
+    return;
+  }
+  lastQuery = query;
+
+  const walker = document.createTreeWalker(main, NodeFilter.SHOW_TEXT);
+  const nodes = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+
+  const escaped = query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const pattern = new RegExp(escaped, "gi");
+
+  for (const node of nodes) {
+    const text = node.nodeValue || "";
+    pattern.lastIndex = 0;
+    let match;
+    let lastIndex = 0;
+    const fragment = document.createDocumentFragment();
+    while ((match = pattern.exec(text)) !== null) {
+      fragment.append(document.createTextNode(text.slice(lastIndex, match.index)));
+      const mark = document.createElement("mark");
+      mark.className = "guide-search-match";
+      mark.textContent = match[0];
+      fragment.append(mark);
+      matches.push(mark);
+      lastIndex = match.index + match[0].length;
+    }
+    if (lastIndex > 0) {
+      fragment.append(document.createTextNode(text.slice(lastIndex)));
+      node.replaceWith(fragment);
+    }
+  }
+
+  currentMatch = matches.length ? 0 : -1;
+  updateCurrentMatch();
+}
+
+function moveGuideMatch(direction) {
+  if (input.value.trim() !== lastQuery) {
+    runGuideSearch();
+    return;
+  }
+  if (!matches.length) return;
+  currentMatch = (currentMatch + direction + matches.length) % matches.length;
+  updateCurrentMatch();
+}
+
+form.addEventListener("submit", event => {
+  event.preventDefault();
+  runGuideSearch();
+});
+nextButton.addEventListener("click", () => moveGuideMatch(1));
+previousButton.addEventListener("click", () => moveGuideMatch(-1));
+</script>
 
 </body>
 </html>

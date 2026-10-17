@@ -22,6 +22,16 @@ header .version { opacity:.8; font-size:14px; }
 header a.button { color:var(--headfg); text-decoration:none; border:1px solid rgba(255,255,255,.5);
                   border-radius:6px; padding:5px 12px; font-size:15px; white-space:nowrap; }
 header a.button.primary { background:#2ea043; border-color:#2ea043; }
+#guide-search { display:flex; align-items:center; gap:6px; margin:0; font-size:14px; }
+#guide-search label { white-space:nowrap; }
+#guide-search input { width:min(28vw, 260px); min-width:130px; padding:6px 8px; border:1px solid var(--line);
+                     border-radius:5px; font:inherit; }
+#guide-search button { padding:6px 10px; border:1px solid rgba(255,255,255,.5); border-radius:5px;
+                       background:transparent; color:var(--headfg); font:inherit; cursor:pointer; }
+#guide-search button:disabled { opacity:.5; cursor:default; }
+#guide-search-status { min-width:70px; white-space:nowrap; font-size:13px; }
+mark.guide-search-match { background:#ffe66d; color:#1d2329; }
+mark.guide-search-match.is-current { background:#ffad33; outline:2px solid #ffad33; }
 .layout { display:flex; max-width:1240px; margin:0 auto; }
 nav { flex:0 0 270px; position:sticky; top:56px; align-self:flex-start; max-height:calc(100vh - 56px);
       overflow:auto; padding:18px 14px 40px 20px; background:var(--side); border-right:1px solid var(--line);
@@ -65,6 +75,7 @@ footer { color:var(--muted); font-size:14px; margin-top:60px; border-top:1px sol
   main .tp-step-time { white-space:normal; }
 }
 @media (max-width: 540px) {
+  #guide-search input { width:min(34vw, 200px); min-width:100px; }
   table:has(th:nth-child(4)) th:nth-child(1) { width:9%; }
   table:has(th:nth-child(4)) th:nth-child(2) { width:32%; }
   table:has(th:nth-child(4)) th:nth-child(3) { width:32%; }
@@ -83,6 +94,7 @@ footer { color:var(--muted); font-size:14px; margin-top:60px; border-top:1px sol
   table code { font-size:0.85em; }
   tr { break-inside:avoid; }
   header, nav { display:none; }
+  mark.guide-search-match { background:transparent; color:inherit; }
   .layout { display:block; }
   main { padding:0; }
   body { font-size:11pt; background:#fff; color:#000; }
@@ -162,10 +174,11 @@ tr.tp-issues li { margin:3px 0; }
 }
 </style>
 </head>
-<body data-version="2026.10.37">
+<body data-version="2026.10.38">
 <header>
   <span class="title">DA Test Plan</span>
-  <span class="version">DA v2026.10.37</span>
+  
+  <span class="version">DA v2026.10.38</span>
   <a class="button" href="index.html">Guide</a>
   <a class="button" href="verification.html">Test plan</a>
   <a class="button" href="defects.html">Known problems</a>
@@ -175,7 +188,7 @@ tr.tp-issues li { margin:3px 0; }
 <div class="layout">
 <nav aria-label="Contents"><ul><li><a href="#before-you-start">Before you start</a><ul><li><a href="#make-a-test-kit">Make a test kit</a></li></ul></li><li><a href="#a-install-da">A. Install DA</a></li><li><a href="#b-create-an-archive">B. Create an archive</a></li><li><a href="#c-the-first-run-process-intake-menu-1">C. The first run: process intake (menu 1)</a></li><li><a href="#d-what-needs-review-menu-3">D. What needs review (menu 3)</a></li><li><a href="#e-status-and-the-index-menu-2-5">E. Status and the index (menu 2, 5)</a></li><li><a href="#f-duplicates-and-undo-menu-4">F. Duplicates and undo (menu 4)</a></li><li><a href="#g-documents-and-scans">G. Documents and scans</a></li><li><a href="#h-contact-sheets">H. Contact sheets</a></li><li><a href="#i-videos-live-photos-and-heic">I. Videos, Live Photos and HEIC</a></li><li><a href="#j-fix-dates-menu-d">J. Fix dates (menu D)</a></li><li><a href="#k-tags-terminal">K. Tags (terminal)</a></li><li><a href="#l-places-and-location-folders-menu-l">L. Places and location folders (menu L)</a></li><li><a href="#m-split-by-years-menu-s">M. Split by years (menu S)</a></li><li><a href="#n-merge-two-copies-menu-m">N. Merge two copies (menu M)</a></li><li><a href="#o-report-and-dashboard-menu-r-b">O. Report and dashboard (menu R, B)</a></li><li><a href="#p-update-sidecars-menu-j">P. Update sidecars (menu J)</a></li><li><a href="#q-checking-whats-filed-terminal">Q. Checking what's filed (terminal)</a></li><li><a href="#r-settings-da-archiveyaml">R. Settings (da-archive.yaml)</a></li><li><a href="#s-logs-records-and-safety">S. Logs, records and safety</a></li><li><a href="#t-another-pc-or-a-usb-drive">T. Another PC or a USB drive</a></li><li><a href="#u-messages-when-somethings-wrong">U. Messages when something's wrong</a></li><li><a href="#v-clean-up">V. Clean up</a></li><li><a href="#reporting-a-problem">Reporting a problem</a></li></ul></nav>
 <main>
-<p class="print-only">DA v2026.10.37 &middot; da.gamenightbymike.com &middot; 2026-10-16</p>
+<p class="print-only">DA v2026.10.38 &middot; da.gamenightbymike.com &middot; 2026-10-17</p>
 <h1 id="da-test-plan">DA test plan</h1>
 <p>Thank you for testing DA. This plan walks through everything DA does, step by step: first with the
 <strong>menu</strong> (what most people use), then with <strong>commands typed in a terminal</strong> (for things the menu doesn't
@@ -2128,9 +2141,10 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
 <li>If DA printed an error, the archive's <code>logs\da.jsonl</code> has the details: copy the last few lines.</li>
 <li>Leave out anything private: names, photos, and folder paths you'd rather not share.</li>
 </ol>
-<footer>DA v2026.10.37 &middot; guide built 2026-10-16 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
+<footer>DA v2026.10.38 &middot; guide built 2026-10-17 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
 </main>
 </div>
+
 <script>// tools/site/testplan.js - the test plan's tracker (verification.html only).
 //
 // Everything a tester enters (name, version, dates, outcomes and step times) is kept in this browser's localStorage,

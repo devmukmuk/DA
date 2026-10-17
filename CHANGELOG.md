@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.38 - 2026-10-17
+
+### New
+- Add searchable guide with match navigation
+
 ## v2026.10.37 - 2026-10-16
 
 ### Fixed
