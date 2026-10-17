@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.41 - 2026-10-17
+
+### Fixed
+- Restore text nodes between searches
+
 ## v2026.10.40 - 2026-10-17
 
 ### New
