@@ -1,6 +1,6 @@
 # DA - Digital Archive
 
-**Latest version:** 2026.10.41 (2026-10-17)
+**Latest version:** 2026.10.42 (2026-10-18)
 
 DA files your photos, videos and scanned documents by the date they were taken. It sets exact
 duplicates aside, names each file by its date, and puts it in a `YYYY\YYYY-MM` folder, with a contact
@@ -24,10 +24,11 @@ sheet for every month. It never deletes anything, and it asks before it moves an
 - **Testing DA?** The [test plan](https://da.gamenightbymike.com/verification.html) (also as a
   [PDF](https://da.gamenightbymike.com/DA-Test-Plan.pdf) to print) and the [known problems](https://da.gamenightbymike.com/defects.html)
 
-## What's new in v2026.10.41
+## What's new in v2026.10.42
 
-### Fixed
-- Restore text nodes between searches
+### Faster
+- Contact sheets: keep each thumbnail in .da\thumbs by its hash, so remade sheets don't open photos
+- A big run ~2.5x faster - settings read once, filing reuses the preview, quick verify, HEIC previews
 
 ## Found a problem?
 

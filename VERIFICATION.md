@@ -122,7 +122,7 @@ Copy the whole test kit (except `old`) into `jane-archive-202x\intake\photos\kit
 | C9 | Step **4/7 Preview** | "planning names and folders (nothing moves)" and a plan: how many files to file, how many need review | ☐ |
 | C10 | Step **5/7 Plan/check** | Numbers of files to file, raw files and Live Photo videos going with them, and problems to review | ☐ |
 | C11 | It asks whether to file them; answer **n** | It stops; nothing was moved; the run is recorded in `output\runs\` | ☐ |
-| C12 | Press **1** again and process all of intake again; answer **y** to each question | Steps 1-7 run; "Filed N; hash ok N; problems: 0" and "Done. Run record: …" | ☐ |
+| C12 | Press **1** again and process all of intake again; answer **y** to each question | Steps 1-7 run; "Filed N; unchanged N (M re-hashed); problems: 0" and "Done. Run record: …" | ☐ |
 | C13 | | Right after, "Where things stand now:" and the Status (fewer files waiting) | ☐ |
 | C14 | In File Explorer open `photos\organized` | Year folders (`2021`, …) with month folders (`2021-06`, …) | ☐ |
 | C15 | Open a month folder | Files named `photo_YYYYMMDD_HHMMSS_xxxx.jpg` (or `.heic`) in date order, each with a `.meta.json` beside it, and a `_contact-sheet.pdf` | ☐ |
@@ -384,7 +384,8 @@ jane-copy's intake and process them **in jane-copy** (open its `Open DA.cmd`).
 | Q5 | `da validate C:\DA-test\kit-copy --archive C:\DA-test\jane-archive-202x` (any folder outside) | It checks that folder using jane's settings | ☐ |
 | Q6 | `da run intake\photos\kit\camera --yes` | That folder alone is processed, no questions | ☐ |
 | Q7 | `da check "<the preview report path from a run>"` | A check of that report | ☐ |
-| Q8 | `da verify "<a repair report path>"` | Every filed file's hash matches its sidecar | ☐ |
+| Q8 | `da verify "<a repair report path>"` | Quick: every filed file in place with its size and date, a sample re-hashed; *ok* | ☐ |
+| Q8a | `da verify "<a repair report path>" --full` | Every filed file re-read; its hash matches its sidecar (slower) | ☐ |
 
 ## R. Settings (da-archive.yaml)
 

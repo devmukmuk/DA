@@ -2,6 +2,12 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.42 - 2026-10-18
+
+### Faster
+- Contact sheets: keep each thumbnail in .da\thumbs by its hash, so remade sheets don't open photos
+- A big run ~2.5x faster - settings read once, filing reuses the preview, quick verify, HEIC previews
+
 ## v2026.10.41 - 2026-10-17
 
 ### Fixed
