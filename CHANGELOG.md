@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.44 - 2026-10-18
+
+### New
+- da split --organized - split filed files into the archives for their years
+
 ## v2026.10.43 - 2026-10-18
 
 - Small fixes and tidying.

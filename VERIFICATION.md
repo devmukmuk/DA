@@ -325,6 +325,11 @@ Copy the kit's `old` photos (another decade) into jane-archive-202x's `intake\ph
 | M7 | Terminal (jane-archive-202x): `da split` | "0 files in intake were taken outside 2020-2029" | ☐ |
 | M8 | Undo instead (repeat M1-M4 with new old photos, then `da intake undo "<the file M4 named>"`) | They're back in jane's intake (works even across drives) | ☐ |
 | M9 | A decade with no archive yet | "N from the 1990s have no archive on this PC yet. Make one: da setup <folder> --years 1990-1999" | ☐ |
+| M10 | Make an archive with no years (`da setup D:\test-all --yes`), copy photos from two decades into its intake, process it | They're filed in its `photos\organized` | ☐ |
+| M11 | In it: `da split --organized` | *N filed files were taken with a sure date*, and how many belong in each decade's archive | ☐ |
+| M12 | `da split --organized --to <one decade's archive>`, answer **y** | *N straight into its organized folders*; *Moved N files*; the photos are in that archive's `photos\organized\<year>\<year-month>` with sidecars and a contact sheet, and gone (with their emptied folders) from the first | ☐ |
+| M13 | Open that archive and choose **2 Status** | The photos are counted there (its index was updated) | ☐ |
+| M14 | `da intake undo "<the split-moved.csv it printed>"`, then **5 Refresh index** in both | They're back in the first archive | ☐ |
 
 ## N. Merge two copies (menu M)
 

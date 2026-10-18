@@ -106,7 +106,7 @@ footer { color:var(--muted); font-size:14px; margin-top:60px; border-top:1px sol
 }
 </style>
 </head>
-<body data-version="2026.10.43">
+<body data-version="2026.10.44">
 <header>
   <span class="title">DA User Guide</span>
   <form id="guide-search" role="search">
@@ -116,7 +116,7 @@ footer { color:var(--muted); font-size:14px; margin-top:60px; border-top:1px sol
     <button id="guide-search-previous" type="button" disabled>Prev</button>
     <span id="guide-search-status" aria-live="polite"></span>
   </form>
-  <span class="version">DA v2026.10.43</span>
+  <span class="version">DA v2026.10.44</span>
   <a class="button" href="index.html">Guide</a>
   <a class="button" href="verification.html">Test plan</a>
   <a class="button" href="defects.html">Known problems</a>
@@ -126,7 +126,7 @@ footer { color:var(--muted); font-size:14px; margin-top:60px; border-top:1px sol
 <div class="layout">
 <nav aria-label="Contents"><ul><li><a href="#words-youll-see">Words you'll see</a></li><li><a href="#getting-started">Getting started</a><ul><li><a href="#1-get-da">1. Get DA</a></li><li><a href="#2-install-it-once-per-computer">2. Install it (once per computer)</a></li><li><a href="#install-da-with-python-if-windows-blocks-daexe">Install DA with Python (if Windows blocks DA.exe)</a></li><li><a href="#3-create-your-first-archive-once-per-archive">3. Create your first archive (once per archive)</a></li><li><a href="#4-open-it">4. Open it</a></li></ul></li><li><a href="#the-menu">The menu</a></li><li><a href="#common-workflows">Common workflows</a><ul><li><a href="#add-photos-from-a-phone-camera-or-memory-card">Add photos from a phone, camera or memory card</a></li><li><a href="#add-scanned-documents">Add scanned documents</a></li><li><a href="#da-run-file-new-photos-and-documents">da run: file new photos and documents</a></li><li><a href="#da-report-whats-in-the-archive-and-what-needs-you">da report: what's in the archive and what needs you</a></li><li><a href="#da-dashboard-the-archive-in-your-browser">da dashboard: the archive in your browser</a></li><li><a href="#fix-what-needs-review">Fix what needs review</a></li><li><a href="#fix-dates-photos-with-no-date-or-the-wrong-one">Fix dates: photos with no date, or the wrong one</a></li><li><a href="#duplicates-put-back-or-delete">Duplicates: put back or delete</a></li><li><a href="#da-split-move-files-to-the-right-decades-archive">da split: move files to the right decade's archive</a></li><li><a href="#da-find-search-the-archive">da find: search the archive</a></li><li><a href="#contact-sheets-a-folder-at-a-glance">Contact sheets: a folder at a glance</a></li><li><a href="#da-tag-label-photos-and-documents">da tag: label photos and documents</a></li><li><a href="#switch-between-archives">Switch between archives</a></li><li><a href="#update-da">Update DA</a></li></ul></li><li><a href="#less-common-workflows">Less common workflows</a><ul><li><a href="#videos">Videos</a></li><li><a href="#iphone-live-photos-mov-files">iPhone Live Photos (.MOV files)</a></li><li><a href="#iphone-heic-photos">iPhone HEIC photos</a></li><li><a href="#edit-an-archives-settings-da-archiveyaml">Edit an archive's settings (da-archive.yaml)</a></li><li><a href="#share-an-album-with-google-photos">Share an album with Google Photos</a></li><li><a href="#process-a-folder-from-somewhere-else">Process a folder from somewhere else</a></li><li><a href="#start-a-new-archive-for-another-person-or-decade">Start a new archive for another person or decade</a></li><li><a href="#use-da-on-another-computer">Use DA on another computer</a></li><li><a href="#merge-two-copies-of-an-archive">Merge two copies of an archive</a></li><li><a href="#back-up-an-archive">Back up an archive</a></li><li><a href="#check-whats-already-filed">Check what's already filed</a></li><li><a href="#update-sidecars-the-metajson-files">Update sidecars (the .meta.json files)</a></li><li><a href="#do-the-runs-steps-one-at-a-time">Do the run's steps one at a time</a></li><li><a href="#move-folders-to-another-archive-by-hand">Move folders to another archive by hand</a></li><li><a href="#coming-soon">Coming soon</a></li></ul></li><li><a href="#location-and-gps-workflows">Location and GPS workflows</a><ul><li><a href="#works-today">Works today</a></li><li><a href="#look-up-where-photos-were-taken">Look up where photos were taken</a></li><li><a href="#group-a-month-into-location-folders">Group a month into location folders</a></li><li><a href="#rename-a-location-folder">Rename a location folder</a></li><li><a href="#set-a-place-by-hand">Set a place by hand</a></li></ul></li><li><a href="#config-tokens">Config tokens</a><ul><li><a href="#file-name-tokens">File-name tokens</a></li><li><a href="#folder-tokens">Folder tokens</a></li></ul></li><li><a href="#if-something-goes-wrong">If something goes wrong</a></li><li><a href="#reference">Reference</a><ul><li><a href="#how-da-works-out-a-date">How DA works out a date</a></li><li><a href="#photo-or-document">Photo or document?</a></li><li><a href="#which-archive-a-command-works-on">Which archive a command works on</a></li><li><a href="#commands">Commands</a></li></ul></li></ul></nav>
 <main>
-<p class="print-only">DA v2026.10.43 &middot; da.gamenightbymike.com &middot; 2026-10-18</p>
+<p class="print-only">DA v2026.10.44 &middot; da.gamenightbymike.com &middot; 2026-10-18</p>
 <h1 id="da-user-guide">DA User Guide</h1>
 <p><strong>DA</strong> (short for <em>Digital Archive</em>) puts your photos and scanned documents in order. You copy
 them into one folder, and DA:</p>
@@ -749,7 +749,27 @@ each archive's own <code>years</code> setting decides.</p>
 - <strong>An archive that takes any year</strong> (no <code>years:</code>) has nothing "outside" it. To move some photos
   anyway, give <code>--years</code>.
 - Files with no sure date stay in intake. Fix their dates first (see
-  <a href="#fix-what-needs-review">Fix what needs review</a>), then run <code>da split</code> again.</p>
+  <a href="#fix-what-needs-review">Fix what needs review</a>), then run <code>da split</code> again.
+- <strong>Two archives taking the same years:</strong> <code>da split</code> says so; the first one on this PC's list gets them
+  unless you say which with <code>--to</code>.</p>
+<h4 id="split-filed-files-too-organized">Split filed files too: --organized</h4>
+<p><code>da split --organized</code> does the same for photos, videos and documents <strong>already filed</strong> in <code>organized</code>.
+Use it to split a big archive that takes any year into the archives for each decade:</p>
+<pre><code class="language-powershell">da split --organized                                    # see where they all belong (nothing moves)
+da split --organized --to D:\jane-archive-200x          # move them (asks first)
+da split --organized --to D:\jane-archive-200x --years 2000-2004    # a few years at a time
+</code></pre>
+<ul>
+<li>DA finds them by the date in its index (it refreshes the index first), so it's quick even on a big archive.</li>
+<li><strong>Where they go:</strong> when both archives name and folder files the same way (see <strong>N Naming</strong>), straight into
+    the other archive's <code>organized</code>, in the same folders (location folders too). Otherwise, or when a file
+    with that name is already there, into its <code>intake\photos\from-&lt;this archive&gt;\</code>, to be filed there with
+    <strong>1 Process intake</strong>. DA says how many go each way.</li>
+<li>Each file goes with its sidecar, raw file and Live Photo video; folders it leaves empty are removed, and
+    the contact sheets of both archives are made again (quickly: their thumbnails are kept). The other
+    archive's index is updated straight away.</li>
+<li>Files with no date stay. <strong>Undo:</strong> the line DA prints; then <strong>5 Refresh index</strong> in both archives.</li>
+</ul>
 <h3 id="da-find-search-the-archive">da find: search the archive</h3>
 <p>DA keeps an index of every file: its name, folder, date and tags. Choose <strong>5 Refresh index</strong>
 first if anything changed, then in a terminal in the archive:</p>
@@ -1373,7 +1393,8 @@ da db build                                          # 7 refresh
 <ul>
 <li>Moves you make by hand have <strong>no undo log</strong>: the Recycle Bin is your way back until you empty it.</li>
 <li>Copies of those photos set aside in <code>_duplicates-holding</code> stay in the old archive.</li>
-<li><em>Coming:</em> <code>da split --organized</code> does all of this for every file another archive's years take.</li>
+<li><code>da split --organized</code> (see <a href="#split-filed-files-too-organized">da split</a>) does all of this for every file
+    another archive's years take.</li>
 </ul>
 <h3 id="coming-soon">Coming soon</h3>
 <ul>
@@ -2128,7 +2149,7 @@ anywhere else it's a photo. To decide for a whole run: <code>da run intake\old-s
 </tr>
 </tbody>
 </table>
-<footer>DA v2026.10.43 &middot; guide built 2026-10-18 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
+<footer>DA v2026.10.44 &middot; guide built 2026-10-18 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
 </main>
 </div>
 <script>
