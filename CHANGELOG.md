@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.48 - 2026-10-18
+
+### New
+- Pictures - thumbnails by month, enlarge, set as desktop, open its folder
+
 ## v2026.10.47 - 2026-10-18
 
 - Small fixes and tidying.

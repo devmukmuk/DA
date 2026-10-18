@@ -380,6 +380,12 @@ jane-copy's intake and process them **in jane-copy** (open its `Open DA.cmd`).
 | O12b | `da dashboard --stop` again | *No dashboard is running for this archive* | ☐ |
 | O12c | `da dashboard --foreground --port 9000` | It prints `http://127.0.0.1:9000/` (or the next free port) and the browser opens it; **Ctrl+C** stops it | ☐ |
 | O13 | From another computer or a phone, try this PC's name or address with that port | It doesn't open: the dashboard is for this PC only | ☐ |
+| O14 | In the dashboard, scroll to **Pictures** | Small pictures of the latest filed files; videos as *video* tiles | ☐ |
+| O15 | **Show**: pick a month | That month's pictures | ☐ |
+| O16 | Click a photo (an iPhone HEIC one if you have it) | It opens large; left/right arrows go through the month; **Esc** closes it | ☐ |
+| O17 | Click a video, then a PDF | The video plays; the PDF opens in the browser's viewer | ☐ |
+| O18 | On a photo: **Set as desktop** | *It's the desktop background now*, and it is | ☐ |
+| O19 | **Open its folder** | File Explorer opens with the file selected | ☐ |
 
 ## P. Update sidecars (menu J)
 
