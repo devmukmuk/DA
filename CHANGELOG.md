@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.45 - 2026-10-18
+
+### New
+- da archives delete - only when every file exists elsewhere, to the Recycle Bin
+
 ## v2026.10.44 - 2026-10-18
 
 ### New

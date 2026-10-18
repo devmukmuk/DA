@@ -330,6 +330,10 @@ Copy the kit's `old` photos (another decade) into jane-archive-202x's `intake\ph
 | M12 | `da split --organized --to <one decade's archive>`, answer **y** | *N straight into its organized folders*; *Moved N files*; the photos are in that archive's `photos\organized\<year>\<year-month>` with sidecars and a contact sheet, and gone (with their emptied folders) from the first | ☐ |
 | M13 | Open that archive and choose **2 Status** | The photos are counted there (its index was updated) | ☐ |
 | M14 | `da intake undo "<the split-moved.csv it printed>"`, then **5 Refresh index** in both | They're back in the first archive | ☐ |
+| M15 | Make an archive and merge another into it (`da merge --from <the other>` in the new one); then, in a terminal outside both: `da archives delete <the other>` | *N have a copy elsewhere*, *Everything ... also exists elsewhere*, *Type the archive's name*; press **Enter**: *Kept* | ☐ |
+| M16 | Copy one new photo into the other archive's `intake\photos`, then `da archives delete <the other>` again | *Not deleted: 1 files exist only in ...*, with that photo listed | ☐ |
+| M17 | Delete the new photo; `da archives delete <the other>` and type its name | It's in the Recycle Bin, and gone from `da archives` | ☐ |
+| M18 | Restore it from the Recycle Bin; open its `Open DA.cmd` | It's back on `da archives` | ☐ |
 
 ## N. Merge two copies (menu M)
 
