@@ -2,6 +2,10 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.43 - 2026-10-18
+
+- Small fixes and tidying.
+
 ## v2026.10.42 - 2026-10-18
 
 ### Faster
