@@ -280,6 +280,11 @@ Copy the whole test kit (except `old`) into `jane-archive-202x\intake\photos\kit
 | K36 | Copy a new photo into intake and choose **1 Process intake** | It's filed by the new folder pattern | ☐ |
 | K37 | `da intake undo "<the rename-moved.csv it printed>"`, then **N**, **1**, Enter, type `{YYYY}\{YYYY}-{MM}`, answer **y** twice | Back in year and month folders; `da-archive.yaml` keeps `# folder was (...)` notes | ☐ |
 | K38 | *(Optional: do it between K35 and K37, while the photos are in the owner layout)* `da location group <a month with GPS photos, e.g. 2024-07>` and give group 1 a title | The month's photos are found in `<owner>\<year>`; the location folder is made there (`<owner>\<year>\<year-month> <title> (<place>)`) | ☐ |
+| K39 | Make a text file `logins.txt` in `intake\docs` with the line `Password: Test-1234`, and a PDF that only says *change your password* | (setup) | ☐ |
+| K40 | `da find --passwords` | *1 hold a password (or PIN), 1 only mention one*; the snippet shows dots, never `Test-1234`; *Nothing moved* | ☐ |
+| K41 | Open `passwords.csv` from `output\runs\<date-time>-passwords\` | Both files, the password hidden | ☐ |
+| K42 | `da find --passwords --move`, answer **y** | *Moved 1 to ...\_secure-holding*; `logins.txt` is in `_secure-holding\<today>\intake\docs`, the PDF stays | ☐ |
+| K43 | `da intake undo "<the secure-moved.csv it printed>"` | `logins.txt` is back in `intake\docs` | ☐ |
 
 ## L. Places and location folders (menu L)
 
