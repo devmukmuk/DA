@@ -334,6 +334,10 @@ Copy the kit's `old` photos (another decade) into jane-archive-202x's `intake\ph
 | M16 | Copy one new photo into the other archive's `intake\photos`, then `da archives delete <the other>` again | *Not deleted: 1 files exist only in ...*, with that photo listed | ☐ |
 | M17 | Delete the new photo; `da archives delete <the other>` and type its name | It's in the Recycle Bin, and gone from `da archives` | ☐ |
 | M18 | Restore it from the Recycle Bin; open its `Open DA.cmd` | It's back on `da archives` | ☐ |
+| M19 | Close DA; in a terminal outside it: `da archives move D:\<test archive> D:\moved\<test archive>` (same drive), answer **y** | *one rename on the same drive*; the folder is at the new place; `da archives` lists the new place | ☐ |
+| M20 | Open it there (`Open DA.cmd`), choose **2 Status** and **4 Undo last set-aside** | The counts are as before; the undo finds its files at the new place | ☐ |
+| M21 | `da archives move <it> E:\<test archive>` (another drive or a USB stick), answer **y**, then **n** to the Recycle Bin question | *The copy is right: N files, M re-read in full*; the old folder has `MOVED.txt` and no `da-archive.yaml` | ☐ |
+| M22 | `da archives move <it> <a folder that has files in it>` | *isn't empty*; nothing moves | ☐ |
 
 ## N. Merge two copies (menu M)
 
