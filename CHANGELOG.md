@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.50 - 2026-10-18
+
+### New
+- Logging: every change to an archive is logged, with the computer's name
+
 ## v2026.10.49 - 2026-10-18
 
 ### New
