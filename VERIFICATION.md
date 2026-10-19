@@ -481,10 +481,10 @@ and **Clients**).
 | W12 | | *Google hasn't verified this app*: choose **Continue** (it's your own app); then allow **Send email on your behalf** | ☐ |
 | W13 | Back in the terminal | *Signed in to Gmail (DA may only send). The sign-in is kept in ...\google-token.json* | ☐ |
 | W14 | Look in `%LOCALAPPDATA%\DA`, then search the archive folder for `google` | `google-token.json` is in `%LOCALAPPDATA%\DA`; nothing about Google is in the archive | ☐ |
-| W15 | `da share photos\organized\<the month> --to me --note "Test share" --send` | *Email 1 message to me (1 people)?*; answer **y**: *Sent Photos: ...* | ☐ |
-| W16 | Open your Gmail inbox | An email *Photos: <the month>*, your note in it, the PDF attached; the To line says *undisclosed-recipients* | ☐ |
+| W15 | `da share photos\organized\<the month> --to me --note "Test share" --send` | *Email 1 message to me (1 people)?*; answer **y**: *Sent Photos: ... to 1 person (each their own email)* | ☐ |
+| W16 | Open your Gmail inbox | An email *Photos: <the month>*, your note in it, the PDF attached; the To line has only your address | ☐ |
 | W17 | Gmail's **Sent** folder | The same email, sent from your address | ☐ |
-| W18 | Add a second address of yours to the list (`me: [you@gmail.com, you2@example.com]`) and send again | Both get it; neither email shows the other address | ☐ |
+| W18 | Add a second address of yours to the list (`me: [you@gmail.com, you2@example.com]`) and send again | *to 2 people*; each address gets its own email, showing only that address | ☐ |
 | W19 | Share a few months at once (big enough: 200+ photos), with `--send` | *2 PDFs* (or more) and emails *(1 of 2)*, *(2 of 2)*, each with the note page | ☐ |
 | W20 | `da share photos\organized\<the month> --to neighbours` | *No list called 'neighbours'*; nothing made | ☐ |
 | W21 | In the dashboard (menu **B**), open a photo large and press **Share** | (one list: *Email this photo to me?* - **OK**) *Sent to me (1 people)*; the photo arrives as a JPEG | ☐ |

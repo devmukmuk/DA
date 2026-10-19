@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.53 - 2026-10-18
+
+### Fixed
+- Each person gets their own email - Gmail refused "To: undisclosed-recipients" (Invalid To header)
+
 ## v2026.10.52 - 2026-10-18
 
 ### New
