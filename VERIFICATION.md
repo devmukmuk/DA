@@ -437,6 +437,14 @@ Make a copy of `da-archive.yaml` first; put it back at the end.
 | S1e | `da history` again | Quick (*only what's new*); the same changes | ☐ |
 | S1f | Undo something (**4 Undo last set-aside**), then `da history` | Those files are marked *(undone ...)* | ☐ |
 | S1g | `da history --kind video --since <today>` | Only today's videos (or *None recorded yet*) | ☐ |
+| S1h | `da history IMG_xxxx.JPG` (a photo's name before DA renamed it) | Its story: *Now* (its organized path, taken, camera, fingerprint), *Came from*, *History* (*filed (da run)*) | ☐ |
+| S1i | `da history --hash <first 8 characters of that fingerprint>` | The same story | ☐ |
+| S1j | `da history --hash abc` | Refused: *the first 8 or more characters* | ☐ |
+| S1k | Rename that photo (**N Naming**, apply), then `da history <its old name>` | *History* shows *filed*, then *renamed*; *Now* is the new name | ☐ |
+| S1l | `da history <a photo with a copy in _duplicates-holding>` | *Copies* lists the held one | ☐ |
+| S1m | Same, with `--everywhere` (the same photo in another archive) | *Copies* also lists the other archive's | ☐ |
+| S1n | `da history --duplicates` | Each held copy, when it was set aside, and *a copy of* its filed original | ☐ |
+| S1o | `da history nothing-like-this.jpg` | *Nothing found ...* (and the `--everywhere` hint) | ☐ |
 | S2 | Open `output\runs\` | A folder per run (`…-run`, `…-split`, `…-merge`, `…-location-group`, …) with its records | ☐ |
 | S3 | Start processing a big folder and press **Ctrl+C** during step 2 | It stops; run it again and it carries on (nothing half-moved) | ☐ |
 | S4 | Run `da run --yes` in one window and `da status` in another | Status works while the run is going (don't run two changing commands at once - see the known problems) | ☐ |

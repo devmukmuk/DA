@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.56 - 2026-10-19
+
+### New
+- A file's whole story, --hash, --everywhere, --duplicates
+
 ## v2026.10.55 - 2026-10-19
 
 ### New
