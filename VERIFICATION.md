@@ -499,6 +499,13 @@ Needs a folder Picasa looked at, with its `Picasa.ini` (or hidden `.picasa.ini`)
 | X18 | `da share <a month with copies in holding>` | *N copies in holding*; each picture in `details.txt` lists *Copy: exact/resized copy in holding*; the PDF ends with **Copies in holding** pages | ☐ |
 | X19 | The same with `--no-copies` | No copies listed or shown | ☐ |
 | X20 | `da intake undo "<…\similar-moved.csv>"` | The resized copies are back where they were | ☐ |
+| X21 | A photo and the same picture saved again without its date (e.g. by Photoshop Elements) in intake, process | Step 3: *1 re-saved copies*; the undated one goes to `_duplicates-holding\<date>\resaved\`, the dated one is filed | ☐ |
+| X22 | `da similar` in an archive with Picasa crops | *N pictures with edited or cropped versions* and `versions.csv` | ☐ |
+| X23 | `da similar --apply` | *Versions linked: N sidecars*; each version's `.meta.json` has a `versions` block (role original / cropped) | ☐ |
+| X24 | The month's `_contact-sheet.pdf` | Tiles say *+1 version (cropped)* / *cropped version - original filed too*, and *N copies in holding (1 resized ...)* | ☐ |
+| X25 | `da share` that month | The last pages: a framed box per picture with its copies and versions, each labelled | ☐ |
+| X26 | A burst (two shots a second apart of the same scene) | Neither set aside nor linked | ☐ |
+| X27 | A copy that had Photoshop Elements keywords, set aside | The kept photo's sidecar has a `keywords` block and those words in `user.tags` | ☐ |
 | X13 | `da share <that month> --to <your own list>` | Page 1: *People: …* and *Tags: …*; film strips with boxes; big pictures with boxes and names; `details.txt` starts with the people and each picture lists *People* and *Tags* | ☐ |
 
 ## W. Share with family and friends (da share)
