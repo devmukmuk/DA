@@ -490,6 +490,9 @@ Needs a folder Picasa looked at, with its `Picasa.ini` (or hidden `.picasa.ini`)
 | X8 | `da picasa` again | The same photos found (it reads the kept `picasa\` copy) | ☐ |
 | X9 | `da intake undo "<…\picasa-moved.csv>"` | The `Picasa.ini` is back in intake | ☐ |
 | X10 | A photo that was a duplicate (set aside) with a face in Picasa | Its details go to the copy that was kept (*the copy kept*) | ☐ |
+| X11 | `da contact-sheets <a month with Picasa faces>`, open `_contact-sheet.pdf` | A yellow box on each face, the name above it; page 1 has a **People** line | ☐ |
+| X12 | The same with a photo taken sideways (portrait) | The box is still on the face | ☐ |
+| X13 | `da share <that month> --to <your own list>` | Page 1: *People: …* and *Tags: …*; film strips with boxes; big pictures with boxes and names; `details.txt` starts with the people and each picture lists *People* and *Tags* | ☐ |
 
 ## W. Share with family and friends (da share)
 

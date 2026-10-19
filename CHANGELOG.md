@@ -2,6 +2,14 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.58 - 2026-10-19
+
+### New
+- Yellow face boxes and names on contact sheets and shares; people and tags in share emails
+
+### Fixed
+- An empty GPS block isn't a position
+
 ## v2026.10.57 - 2026-10-19
 
 ### New
