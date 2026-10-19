@@ -432,6 +432,11 @@ Make a copy of `da-archive.yaml` first; put it back at the end.
 | S1 | Open `logs\da.jsonl` in Notepad | One line per command: "da … started", "… finished in Ns", and lines for what was moved | ☐ |
 | S1a | Look at any line | It ends with `"host": "<this computer's name>"` | ☐ |
 | S1b | Run `da validate photos\organized`, `da db build` and `da contact-sheets photos\organized`, then look at the end of `da.jsonl` | A `validate`, an `index` and a `contact_sheets` line, each with its counts | ☐ |
+| S1c | `da history` | *Reading DA's records*, then *What DA did in <archive>* (command summaries, with the computer's name) and *Files changed* (e.g. *filed (da run)*, from intake to organized) | ☐ |
+| S1d | Open the `history.csv` it saved (`output\runs\<date-time>-history\`) | The same lines, paths inside the archive | ☐ |
+| S1e | `da history` again | Quick (*only what's new*); the same changes | ☐ |
+| S1f | Undo something (**4 Undo last set-aside**), then `da history` | Those files are marked *(undone ...)* | ☐ |
+| S1g | `da history --kind video --since <today>` | Only today's videos (or *None recorded yet*) | ☐ |
 | S2 | Open `output\runs\` | A folder per run (`…-run`, `…-split`, `…-merge`, `…-location-group`, …) with its records | ☐ |
 | S3 | Start processing a big folder and press **Ctrl+C** during step 2 | It stops; run it again and it carries on (nothing half-moved) | ☐ |
 | S4 | Run `da run --yes` in one window and `da status` in another | Status works while the run is going (don't run two changing commands at once - see the known problems) | ☐ |

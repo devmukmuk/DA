@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.55 - 2026-10-19
+
+### New
+- da history - the archive's latest changes, from DA's own records
+
 ## v2026.10.54 - 2026-10-19
 
 ### New
