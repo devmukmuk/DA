@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.54 - 2026-10-19
+
+### New
+- Film strips on the first page, each photo's details in the email, the archive named
+
 ## v2026.10.53 - 2026-10-18
 
 ### Fixed

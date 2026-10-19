@@ -469,7 +469,7 @@ and **Clients**).
 |---|---|---|---|
 | W1 | In `da-archive.yaml` add, at the end: `share:` / `  lists:` / `    me: [you@gmail.com]` (your own address); then `da share --lists` | *me: 1 people* | ☐ |
 | W2 | `da share photos\organized\<a month with photos> --to me --note "Test share"` | *Making the sheet: N photos* (videos and documents left out are counted), the PDF's folder in `output\shares\`, and *Nothing sent. To send it to me (1 people): add --send* | ☐ |
-| W3 | Open that PDF | Page 1: the month's name, *N pictures*, the dates, your note; then 6 pictures a page, each with its date (and place, for GPS photos) right under it | ☐ |
+| W3 | Open that PDF | Page 1: the title, *N pictures*, the dates, *From the archive <its name> (<years>)*, your note, then every picture on film strips (4 a strip), each frame numbered along the top and with an ID like *▶ 9B05* along the bottom; then 6 big pictures a page with the date, place and the same ID under each | ☐ |
 | W4 | The same command with `--send` (before any setup) | *No Google client file at ...\google-client.json. See 'Set up sharing' in the guide*; nothing sent | ☐ |
 | W5 | Open https://console.cloud.google.com, sign in with your Gmail; at the top, **Select a project** > **New project**, give it a name of 4 to 30 characters (e.g. `DA-sharing`), **Create**, and select it | The page shows project your project at the top | ☐ |
 | W6 | **APIs & Services** > **Library**, search **Gmail API**, open it, **Enable** | *Gmail API* with **Manage** (it's enabled) | ☐ |
@@ -482,7 +482,8 @@ and **Clients**).
 | W13 | Back in the terminal | *Signed in to Gmail (DA may only send). The sign-in is kept in ...\google-token.json* | ☐ |
 | W14 | Look in `%LOCALAPPDATA%\DA`, then search the archive folder for `google` | `google-token.json` is in `%LOCALAPPDATA%\DA`; nothing about Google is in the archive | ☐ |
 | W15 | `da share photos\organized\<the month> --to me --note "Test share" --send` | *Email 1 message to me (1 people)?*; answer **y**: *Sent Photos: ... to 1 person (each their own email)* | ☐ |
-| W16 | Open your Gmail inbox | An email *Photos: <the month>*, your note in it, the PDF attached; the To line has only your address | ☐ |
+| W16 | Open your Gmail inbox | An email *Photos: <the month>*, your note, *... from the archive <its name>*, then each picture by its ID: name, file (in your archive), SHA-256, camera, place, GPS, when taken; the PDF attached; the To line has only your address | ☐ |
+| W16a | Pick one ID from the email and find it in the PDF | The same ID on its film-strip frame and under its big picture; `details.txt` beside the PDF has the same list | ☐ |
 | W17 | Gmail's **Sent** folder | The same email, sent from your address | ☐ |
 | W18 | Add a second address of yours to the list (`me: [you@gmail.com, you2@example.com]`) and send again | *to 2 people*; each address gets its own email, showing only that address | ☐ |
 | W19 | Share a few months at once (big enough: 200+ photos), with `--send` | *2 PDFs* (or more) and emails *(1 of 2)*, *(2 of 2)*, each with the note page | ☐ |
