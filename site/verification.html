@@ -174,11 +174,11 @@ tr.tp-issues li { margin:3px 0; }
 }
 </style>
 </head>
-<body data-version="2026.10.56">
+<body data-version="2026.10.57">
 <header>
   <span class="title">DA Test Plan</span>
   
-  <span class="version">DA v2026.10.56</span>
+  <span class="version">DA v2026.10.57</span>
   <a class="button" href="index.html">Guide</a>
   <a class="button" href="verification.html">Test plan</a>
   <a class="button" href="defects.html">Known problems</a>
@@ -186,9 +186,9 @@ tr.tp-issues li { margin:3px 0; }
   <a class="button" href="DA-Test-Plan.pdf">PDF version</a>
 </header>
 <div class="layout">
-<nav aria-label="Contents"><ul><li><a href="#before-you-start">Before you start</a><ul><li><a href="#make-a-test-kit">Make a test kit</a></li></ul></li><li><a href="#a-install-da">A. Install DA</a></li><li><a href="#b-create-an-archive">B. Create an archive</a></li><li><a href="#c-the-first-run-process-intake-menu-1">C. The first run: process intake (menu 1)</a></li><li><a href="#d-what-needs-review-menu-3">D. What needs review (menu 3)</a></li><li><a href="#e-status-and-the-index-menu-2-5">E. Status and the index (menu 2, 5)</a></li><li><a href="#f-duplicates-and-undo-menu-4">F. Duplicates and undo (menu 4)</a></li><li><a href="#g-documents-and-scans">G. Documents and scans</a></li><li><a href="#h-contact-sheets">H. Contact sheets</a></li><li><a href="#i-videos-live-photos-and-heic">I. Videos, Live Photos and HEIC</a></li><li><a href="#j-fix-dates-menu-d">J. Fix dates (menu D)</a></li><li><a href="#k-tags-terminal">K. Tags (terminal)</a></li><li><a href="#l-places-and-location-folders-menu-l">L. Places and location folders (menu L)</a></li><li><a href="#m-split-by-years-menu-s">M. Split by years (menu S)</a></li><li><a href="#n-merge-two-copies-menu-m">N. Merge two copies (menu M)</a></li><li><a href="#o-report-and-dashboard-menu-r-b">O. Report and dashboard (menu R, B)</a></li><li><a href="#p-update-sidecars-menu-j">P. Update sidecars (menu J)</a></li><li><a href="#q-checking-whats-filed-terminal">Q. Checking what's filed (terminal)</a></li><li><a href="#r-settings-da-archiveyaml">R. Settings (da-archive.yaml)</a></li><li><a href="#s-logs-records-and-safety">S. Logs, records and safety</a></li><li><a href="#t-another-pc-or-a-usb-drive">T. Another PC or a USB drive</a></li><li><a href="#u-messages-when-somethings-wrong">U. Messages when something's wrong</a></li><li><a href="#w-share-with-family-and-friends-da-share">W. Share with family and friends (da share)</a></li><li><a href="#v-clean-up">V. Clean up</a></li><li><a href="#reporting-a-problem">Reporting a problem</a></li></ul></nav>
+<nav aria-label="Contents"><ul><li><a href="#before-you-start">Before you start</a><ul><li><a href="#make-a-test-kit">Make a test kit</a></li></ul></li><li><a href="#a-install-da">A. Install DA</a></li><li><a href="#b-create-an-archive">B. Create an archive</a></li><li><a href="#c-the-first-run-process-intake-menu-1">C. The first run: process intake (menu 1)</a></li><li><a href="#d-what-needs-review-menu-3">D. What needs review (menu 3)</a></li><li><a href="#e-status-and-the-index-menu-2-5">E. Status and the index (menu 2, 5)</a></li><li><a href="#f-duplicates-and-undo-menu-4">F. Duplicates and undo (menu 4)</a></li><li><a href="#g-documents-and-scans">G. Documents and scans</a></li><li><a href="#h-contact-sheets">H. Contact sheets</a></li><li><a href="#i-videos-live-photos-and-heic">I. Videos, Live Photos and HEIC</a></li><li><a href="#j-fix-dates-menu-d">J. Fix dates (menu D)</a></li><li><a href="#k-tags-terminal">K. Tags (terminal)</a></li><li><a href="#l-places-and-location-folders-menu-l">L. Places and location folders (menu L)</a></li><li><a href="#m-split-by-years-menu-s">M. Split by years (menu S)</a></li><li><a href="#n-merge-two-copies-menu-m">N. Merge two copies (menu M)</a></li><li><a href="#o-report-and-dashboard-menu-r-b">O. Report and dashboard (menu R, B)</a></li><li><a href="#p-update-sidecars-menu-j">P. Update sidecars (menu J)</a></li><li><a href="#q-checking-whats-filed-terminal">Q. Checking what's filed (terminal)</a></li><li><a href="#r-settings-da-archiveyaml">R. Settings (da-archive.yaml)</a></li><li><a href="#s-logs-records-and-safety">S. Logs, records and safety</a></li><li><a href="#t-another-pc-or-a-usb-drive">T. Another PC or a USB drive</a></li><li><a href="#u-messages-when-somethings-wrong">U. Messages when something's wrong</a></li><li><a href="#x-picasa-da-picasa">X. Picasa (da picasa)</a></li><li><a href="#w-share-with-family-and-friends-da-share">W. Share with family and friends (da share)</a></li><li><a href="#v-clean-up">V. Clean up</a></li><li><a href="#reporting-a-problem">Reporting a problem</a></li></ul></nav>
 <main>
-<p class="print-only">DA v2026.10.56 &middot; da.gamenightbymike.com &middot; 2026-10-19</p>
+<p class="print-only">DA v2026.10.57 &middot; da.gamenightbymike.com &middot; 2026-10-19</p>
 <h1 id="da-test-plan">DA test plan</h1>
 <p>Thank you for testing DA. This plan walks through everything DA does, step by step: first with the
 <strong>menu</strong> (what most people use), then with <strong>commands typed in a terminal</strong> (for things the menu doesn't
@@ -1074,6 +1074,30 @@ you can try; skip a step whose files you don't have and mark it <strong>skipped<
 <td>I7</td>
 <td><code>da intake undo "&lt;the file it names&gt;"</code></td>
 <td>The video goes back to intake</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>I7a</td>
+<td>A photo with a voice note (<code>SAM_0010.JPG</code> + <code>SAM_0010.WAV</code>) in intake, process</td>
+<td>Both filed: <code>photo_…_xxxx.jpg</code> and <code>photo_…_xxxx.wav</code></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>I7b</td>
+<td>A <code>.WAV</code> alone whose photo was filed earlier; <code>da pair-movies</code></td>
+<td>It's listed with its photo; <code>--apply</code> puts it beside it</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>I7c</td>
+<td>A folder where a few photos have a date years outside the archive's (camera clock reset), process</td>
+<td>Step 5 warns <em>… a camera clock that was reset?</em> and names the folder; those photos stay in intake</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>I7d</td>
+<td>An old Word <code>.doc</code> (e.g. <code>Journal January 4th 2009.doc</code>) in <code>intake\photos\</code>, process</td>
+<td>Filed in <code>documents\organized\2009\…</code>; one with no date in its name gets the date it was created</td>
 <td>☐</td>
 </tr>
 <tr>
@@ -2356,6 +2380,80 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
 </tr>
 </tbody>
 </table>
+<h2 id="x-picasa-da-picasa">X. Picasa (da picasa)</h2>
+<p>Needs a folder Picasa looked at, with its <code>Picasa.ini</code> (or hidden <code>.picasa.ini</code>) and photos with named faces.</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Do this</th>
+<th>Expect</th>
+<th>✓</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X1</td>
+<td>Copy the folder into <code>intake\photos\</code>, <strong>1 Process intake</strong></td>
+<td>The photos are filed; the <code>Picasa.ini</code> stays in intake</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>X2</td>
+<td><code>da picasa</code></td>
+<td><em>N Picasa.ini files</em>, <em>N photos found: N faces (N named, N people)</em>; nothing written</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>X3</td>
+<td>Open the <code>picasa-plan.csv</code> it names</td>
+<td>A row per photo: the filed photo, the people, <em>followed through DA's moves</em></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>X4</td>
+<td><code>da picasa --apply</code></td>
+<td><em>Picasa details written for N photos</em>; the <code>Picasa.ini</code> is now in <code>picasa\photos\&lt;folder&gt;\</code></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>X5</td>
+<td>Open a filed photo's <code>.meta.json</code></td>
+<td>A <code>picasa</code> block: faces with <code>box</code> and <code>name</code> (no emails); <code>person:&lt;name&gt;</code> in <code>auto_tags</code></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>X6</td>
+<td><code>da findit tags photos\organized -r person:&lt;name&gt; -v</code></td>
+<td>That person's photos</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>X7</td>
+<td><code>da tag &lt;that month folder&gt; --yes</code>, then open the sidecar again</td>
+<td><code>person:</code> tags still there</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>X8</td>
+<td><code>da picasa</code> again</td>
+<td>The same photos found (it reads the kept <code>picasa\</code> copy)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>X9</td>
+<td><code>da intake undo "&lt;…\picasa-moved.csv&gt;"</code></td>
+<td>The <code>Picasa.ini</code> is back in intake</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>X10</td>
+<td>A photo that was a duplicate (set aside) with a face in Picasa</td>
+<td>Its details go to the copy that was kept (<em>the copy kept</em>)</td>
+<td>☐</td>
+</tr>
+</tbody>
+</table>
 <h2 id="w-share-with-family-and-friends-da-share">W. Share with family and friends (da share)</h2>
 <p>Sharing sends email <strong>from your own Gmail</strong>, so it needs a one-time setup in Google's developer pages (about ten
 minutes; the guide's <em>Set up sharing (once)</em> has the same steps). Use a list with only <strong>your own address</strong> while
@@ -2579,7 +2677,7 @@ and <strong>Clients</strong>).</p>
 <li>If DA printed an error, the archive's <code>logs\da.jsonl</code> has the details: copy the last few lines.</li>
 <li>Leave out anything private: names, photos, and folder paths you'd rather not share.</li>
 </ol>
-<footer>DA v2026.10.56 &middot; guide built 2026-10-19 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
+<footer>DA v2026.10.57 &middot; guide built 2026-10-19 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
 </main>
 </div>
 

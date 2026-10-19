@@ -2,6 +2,13 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.57 - 2026-10-19
+
+### New
+- da picasa - Picasa's faces, names, captions and stars into the sidecars
+- Dates: old Word files' creation dates and dates written out in names
+- Voice notes follow their photo; warn when a camera clock was reset
+
 ## v2026.10.56 - 2026-10-19
 
 ### New

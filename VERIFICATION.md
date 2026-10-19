@@ -213,6 +213,10 @@ Copy the whole test kit (except `old`) into `jane-archive-202x\intake\photos\kit
 | I5 | Terminal: `da pair-movies` | It finds that video's filed photo and lists where it would go; nothing moves | ☐ |
 | I6 | `da pair-movies --apply` | "Moved 1" and an Undo line; the video is now beside its photo with the same name | ☐ |
 | I7 | `da intake undo "<the file it names>"` | The video goes back to intake | ☐ |
+| I7a | A photo with a voice note (`SAM_0010.JPG` + `SAM_0010.WAV`) in intake, process | Both filed: `photo_…_xxxx.jpg` and `photo_…_xxxx.wav` | ☐ |
+| I7b | A `.WAV` alone whose photo was filed earlier; `da pair-movies` | It's listed with its photo; `--apply` puts it beside it | ☐ |
+| I7c | A folder where a few photos have a date years outside the archive's (camera clock reset), process | Step 5 warns *… a camera clock that was reset?* and names the folder; those photos stay in intake | ☐ |
+| I7d | An old Word `.doc` (e.g. `Journal January 4th 2009.doc`) in `intake\photos\`, process | Filed in `documents\organized\2009\…`; one with no date in its name gets the date it was created | ☐ |
 | I8 | An old camera `.AVI`/`.MPG` | Filed by the date inside it, or listed under No date (then see J) | ☐ |
 | I9 | `da heic-to-jpg photos\organized\<year>\<month>` | JPG copies of the HEIC photos made in a folder beside it (the HEICs stay) | ☐ |
 | I10 | `da heic-to-jpg <a folder> --out C:\DA-test\jpgs` | The copies go to `C:\DA-test\jpgs` | ☐ |
@@ -469,6 +473,23 @@ Make a copy of `da-archive.yaml` first; put it back at the end.
 | U4 | Disconnect the internet, `da location lookup` on new GPS photos | It stops after two tries and says N photos still need a place; run again later | ☐ |
 | U5 | `da contact-sheets C:\nowhere` | "No such folder" | ☐ |
 | U6 | `da --help` and `da location --help` outside an archive | Help shows (no "not inside an archive") | ☐ |
+
+## X. Picasa (da picasa)
+
+Needs a folder Picasa looked at, with its `Picasa.ini` (or hidden `.picasa.ini`) and photos with named faces.
+
+| ID | Do this | Expect | ✓ |
+|---|---|---|---|
+| X1 | Copy the folder into `intake\photos\`, **1 Process intake** | The photos are filed; the `Picasa.ini` stays in intake | ☐ |
+| X2 | `da picasa` | *N Picasa.ini files*, *N photos found: N faces (N named, N people)*; nothing written | ☐ |
+| X3 | Open the `picasa-plan.csv` it names | A row per photo: the filed photo, the people, *followed through DA's moves* | ☐ |
+| X4 | `da picasa --apply` | *Picasa details written for N photos*; the `Picasa.ini` is now in `picasa\photos\<folder>\` | ☐ |
+| X5 | Open a filed photo's `.meta.json` | A `picasa` block: faces with `box` and `name` (no emails); `person:<name>` in `auto_tags` | ☐ |
+| X6 | `da findit tags photos\organized -r person:<name> -v` | That person's photos | ☐ |
+| X7 | `da tag <that month folder> --yes`, then open the sidecar again | `person:` tags still there | ☐ |
+| X8 | `da picasa` again | The same photos found (it reads the kept `picasa\` copy) | ☐ |
+| X9 | `da intake undo "<…\picasa-moved.csv>"` | The `Picasa.ini` is back in intake | ☐ |
+| X10 | A photo that was a duplicate (set aside) with a face in Picasa | Its details go to the copy that was kept (*the copy kept*) | ☐ |
 
 ## W. Share with family and friends (da share)
 

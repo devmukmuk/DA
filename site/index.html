@@ -106,7 +106,7 @@ footer { color:var(--muted); font-size:14px; margin-top:60px; border-top:1px sol
 }
 </style>
 </head>
-<body data-version="2026.10.56">
+<body data-version="2026.10.57">
 <header>
   <span class="title">DA User Guide</span>
   <form id="guide-search" role="search">
@@ -116,7 +116,7 @@ footer { color:var(--muted); font-size:14px; margin-top:60px; border-top:1px sol
     <button id="guide-search-previous" type="button" disabled>Prev</button>
     <span id="guide-search-status" aria-live="polite"></span>
   </form>
-  <span class="version">DA v2026.10.56</span>
+  <span class="version">DA v2026.10.57</span>
   <a class="button" href="index.html">Guide</a>
   <a class="button" href="verification.html">Test plan</a>
   <a class="button" href="defects.html">Known problems</a>
@@ -124,9 +124,9 @@ footer { color:var(--muted); font-size:14px; margin-top:60px; border-top:1px sol
   <a class="button" href="DA-User-Guide.pdf">PDF version</a>
 </header>
 <div class="layout">
-<nav aria-label="Contents"><ul><li><a href="#words-youll-see">Words you'll see</a></li><li><a href="#getting-started">Getting started</a><ul><li><a href="#1-get-da">1. Get DA</a></li><li><a href="#2-install-it-once-per-computer">2. Install it (once per computer)</a></li><li><a href="#install-da-with-python-if-windows-blocks-daexe">Install DA with Python (if Windows blocks DA.exe)</a></li><li><a href="#3-create-your-first-archive-once-per-archive">3. Create your first archive (once per archive)</a></li><li><a href="#4-open-it">4. Open it</a></li></ul></li><li><a href="#the-menu">The menu</a></li><li><a href="#common-workflows">Common workflows</a><ul><li><a href="#add-photos-from-a-phone-camera-or-memory-card">Add photos from a phone, camera or memory card</a></li><li><a href="#add-scanned-documents">Add scanned documents</a></li><li><a href="#da-run-file-new-photos-and-documents">da run: file new photos and documents</a></li><li><a href="#da-report-whats-in-the-archive-and-what-needs-you">da report: what's in the archive and what needs you</a></li><li><a href="#da-dashboard-the-archive-in-your-browser">da dashboard: the archive in your browser</a></li><li><a href="#fix-what-needs-review">Fix what needs review</a></li><li><a href="#fix-dates-photos-with-no-date-or-the-wrong-one">Fix dates: photos with no date, or the wrong one</a></li><li><a href="#duplicates-put-back-or-delete">Duplicates: put back or delete</a></li><li><a href="#da-split-move-files-to-the-right-decades-archive">da split: move files to the right decade's archive</a></li><li><a href="#da-share-send-photos-to-family-and-friends">da share: send photos to family and friends</a></li><li><a href="#da-find-passwords-set-aside-documents-that-hold-passwords">da find --passwords: set aside documents that hold passwords</a></li><li><a href="#da-find-search-the-archive">da find: search the archive</a></li><li><a href="#contact-sheets-a-folder-at-a-glance">Contact sheets: a folder at a glance</a></li><li><a href="#da-tag-label-photos-and-documents">da tag: label photos and documents</a></li><li><a href="#switch-between-archives">Switch between archives</a></li><li><a href="#update-da">Update DA</a></li></ul></li><li><a href="#less-common-workflows">Less common workflows</a><ul><li><a href="#videos">Videos</a></li><li><a href="#iphone-live-photos-mov-files">iPhone Live Photos (.MOV files)</a></li><li><a href="#iphone-heic-photos">iPhone HEIC photos</a></li><li><a href="#edit-an-archives-settings-da-archiveyaml">Edit an archive's settings (da-archive.yaml)</a></li><li><a href="#share-an-album-with-google-photos">Share an album with Google Photos</a></li><li><a href="#process-a-folder-from-somewhere-else">Process a folder from somewhere else</a></li><li><a href="#start-a-new-archive-for-another-person-or-decade">Start a new archive for another person or decade</a></li><li><a href="#use-da-on-another-computer">Use DA on another computer</a></li><li><a href="#merge-two-copies-of-an-archive">Merge two copies of an archive</a></li><li><a href="#back-up-an-archive">Back up an archive</a></li><li><a href="#move-an-archive-to-another-drive">Move an archive to another drive</a></li><li><a href="#delete-an-archive-you-no-longer-need">Delete an archive you no longer need</a></li><li><a href="#da-history-what-da-did-and-when">da history: what DA did, and when</a></li><li><a href="#check-whats-already-filed">Check what's already filed</a></li><li><a href="#update-sidecars-the-metajson-files">Update sidecars (the .meta.json files)</a></li><li><a href="#do-the-runs-steps-one-at-a-time">Do the run's steps one at a time</a></li><li><a href="#move-folders-to-another-archive-by-hand">Move folders to another archive by hand</a></li><li><a href="#coming-soon">Coming soon</a></li></ul></li><li><a href="#location-and-gps-workflows">Location and GPS workflows</a><ul><li><a href="#works-today">Works today</a></li><li><a href="#look-up-where-photos-were-taken">Look up where photos were taken</a></li><li><a href="#group-a-month-into-location-folders">Group a month into location folders</a></li><li><a href="#rename-a-location-folder">Rename a location folder</a></li><li><a href="#set-a-place-by-hand">Set a place by hand</a></li></ul></li><li><a href="#config-tokens">Config tokens</a><ul><li><a href="#file-name-tokens">File-name tokens</a></li><li><a href="#folder-tokens">Folder tokens</a></li></ul></li><li><a href="#if-something-goes-wrong">If something goes wrong</a></li><li><a href="#reference">Reference</a><ul><li><a href="#how-da-works-out-a-date">How DA works out a date</a></li><li><a href="#photo-or-document">Photo or document?</a></li><li><a href="#which-archive-a-command-works-on">Which archive a command works on</a></li><li><a href="#commands">Commands</a></li></ul></li></ul></nav>
+<nav aria-label="Contents"><ul><li><a href="#words-youll-see">Words you'll see</a></li><li><a href="#getting-started">Getting started</a><ul><li><a href="#1-get-da">1. Get DA</a></li><li><a href="#2-install-it-once-per-computer">2. Install it (once per computer)</a></li><li><a href="#install-da-with-python-if-windows-blocks-daexe">Install DA with Python (if Windows blocks DA.exe)</a></li><li><a href="#3-create-your-first-archive-once-per-archive">3. Create your first archive (once per archive)</a></li><li><a href="#4-open-it">4. Open it</a></li></ul></li><li><a href="#the-menu">The menu</a></li><li><a href="#common-workflows">Common workflows</a><ul><li><a href="#add-photos-from-a-phone-camera-or-memory-card">Add photos from a phone, camera or memory card</a></li><li><a href="#add-scanned-documents">Add scanned documents</a></li><li><a href="#da-run-file-new-photos-and-documents">da run: file new photos and documents</a></li><li><a href="#da-report-whats-in-the-archive-and-what-needs-you">da report: what's in the archive and what needs you</a></li><li><a href="#da-dashboard-the-archive-in-your-browser">da dashboard: the archive in your browser</a></li><li><a href="#fix-what-needs-review">Fix what needs review</a></li><li><a href="#fix-dates-photos-with-no-date-or-the-wrong-one">Fix dates: photos with no date, or the wrong one</a></li><li><a href="#duplicates-put-back-or-delete">Duplicates: put back or delete</a></li><li><a href="#da-split-move-files-to-the-right-decades-archive">da split: move files to the right decade's archive</a></li><li><a href="#da-share-send-photos-to-family-and-friends">da share: send photos to family and friends</a></li><li><a href="#da-find-passwords-set-aside-documents-that-hold-passwords">da find --passwords: set aside documents that hold passwords</a></li><li><a href="#da-find-search-the-archive">da find: search the archive</a></li><li><a href="#contact-sheets-a-folder-at-a-glance">Contact sheets: a folder at a glance</a></li><li><a href="#da-tag-label-photos-and-documents">da tag: label photos and documents</a></li><li><a href="#bring-in-picasas-faces-and-captions">Bring in Picasa's faces and captions</a></li><li><a href="#switch-between-archives">Switch between archives</a></li><li><a href="#update-da">Update DA</a></li></ul></li><li><a href="#less-common-workflows">Less common workflows</a><ul><li><a href="#videos">Videos</a></li><li><a href="#iphone-live-photos-mov-files">iPhone Live Photos (.MOV files)</a></li><li><a href="#iphone-heic-photos">iPhone HEIC photos</a></li><li><a href="#edit-an-archives-settings-da-archiveyaml">Edit an archive's settings (da-archive.yaml)</a></li><li><a href="#share-an-album-with-google-photos">Share an album with Google Photos</a></li><li><a href="#process-a-folder-from-somewhere-else">Process a folder from somewhere else</a></li><li><a href="#start-a-new-archive-for-another-person-or-decade">Start a new archive for another person or decade</a></li><li><a href="#use-da-on-another-computer">Use DA on another computer</a></li><li><a href="#merge-two-copies-of-an-archive">Merge two copies of an archive</a></li><li><a href="#back-up-an-archive">Back up an archive</a></li><li><a href="#move-an-archive-to-another-drive">Move an archive to another drive</a></li><li><a href="#delete-an-archive-you-no-longer-need">Delete an archive you no longer need</a></li><li><a href="#da-history-what-da-did-and-when">da history: what DA did, and when</a></li><li><a href="#check-whats-already-filed">Check what's already filed</a></li><li><a href="#update-sidecars-the-metajson-files">Update sidecars (the .meta.json files)</a></li><li><a href="#do-the-runs-steps-one-at-a-time">Do the run's steps one at a time</a></li><li><a href="#move-folders-to-another-archive-by-hand">Move folders to another archive by hand</a></li><li><a href="#coming-soon">Coming soon</a></li></ul></li><li><a href="#location-and-gps-workflows">Location and GPS workflows</a><ul><li><a href="#works-today">Works today</a></li><li><a href="#look-up-where-photos-were-taken">Look up where photos were taken</a></li><li><a href="#group-a-month-into-location-folders">Group a month into location folders</a></li><li><a href="#rename-a-location-folder">Rename a location folder</a></li><li><a href="#set-a-place-by-hand">Set a place by hand</a></li></ul></li><li><a href="#config-tokens">Config tokens</a><ul><li><a href="#file-name-tokens">File-name tokens</a></li><li><a href="#folder-tokens">Folder tokens</a></li></ul></li><li><a href="#if-something-goes-wrong">If something goes wrong</a></li><li><a href="#reference">Reference</a><ul><li><a href="#how-da-works-out-a-date">How DA works out a date</a></li><li><a href="#photo-or-document">Photo or document?</a></li><li><a href="#which-archive-a-command-works-on">Which archive a command works on</a></li><li><a href="#commands">Commands</a></li></ul></li></ul></nav>
 <main>
-<p class="print-only">DA v2026.10.56 &middot; da.gamenightbymike.com &middot; 2026-10-19</p>
+<p class="print-only">DA v2026.10.57 &middot; da.gamenightbymike.com &middot; 2026-10-19</p>
 <h1 id="da-user-guide">DA User Guide</h1>
 <p><strong>DA</strong> (short for <em>Digital Archive</em>) puts your photos and scanned documents in order. You copy
 them into one folder, and DA:</p>
@@ -718,7 +718,13 @@ you give is kept with the photo (in its sidecar) and always wins over the camera
 - Give a folder (or photos) a date: <code>da date set intake\scans\album-1 --date 1998-07</code>.
 - <strong>A camera's clock was off</strong> (an hour after a time change, or a year that was never set): shift all
   its photos by the same amount: <code>da date shift intake\phone-old --by +1h</code> (or <code>-1y</code>, <code>+2d</code>, <code>-30m</code>,
-  <code>+3mo</code>).
+  <code>+3mo</code>). One amount at a time; each shift adds to the last, so <em>8 years and 4 months back</em> is
+  <code>--by -8y</code>, then <code>--by -4mo</code>.
+- <strong>A camera whose clock was reset</strong> (its battery ran out) dates the rest of a trip years later. When
+  some photos in a folder are filed and others there are dated outside the archive's years, <strong>Process
+  intake</strong> says so at step 5: <em>"501 photos in ...\trip are dated 2017, while 327 beside them are dated
+  2008 - a camera clock that was reset?"</em> Those stay in intake. Move them into a folder of their own,
+  find one whose real date you know, and shift the folder by the difference; then process intake again.
 - Changed your mind? <code>da date clear &lt;photos or folder&gt;</code>: the photo's own date counts again.</p>
 <p>For photos already in <code>organized</code>, DA then says how to move them to match:
 <code>da validate "&lt;their folder&gt;" --mode repair</code> renames and moves them by the new date.</p>
@@ -1163,6 +1169,29 @@ da tag ocr photos\organized\2021 --tag-and-move     # tag them, and move the doc
 <li><strong>Undo the moves:</strong> DA prints the line, <code>da intake undo "&lt;…\ocr-moved.csv&gt;"</code>.</li>
 <li>Find them: <code>da findit tags photos\organized -r document -v</code>.</li>
 </ul>
+<h3 id="bring-in-picasas-faces-and-captions">Bring in Picasa's faces and captions</h3>
+<p>If you used Google's Picasa, every folder it looked at has a <code>Picasa.ini</code> (or a hidden <code>.picasa.ini</code>): the faces
+it found in each photo and who they are, captions, stars and albums. DA's filing renames the photos and
+leaves those files behind in intake. <code>da picasa</code> copies what they hold into each photo's sidecar:</p>
+<pre><code class="language-powershell">da picasa              # shows what it found; nothing is written
+da picasa --apply      # writes it into the sidecars, and keeps the Picasa.ini files in picasa\
+</code></pre>
+<ul>
+<li><strong>Each photo is found</strong> where it is now: still in intake, filed (DA follows its moves and renames), or - when
+    it was set aside as a copy - the copy DA kept.</li>
+<li><strong>What it writes:</strong> a <code>picasa</code> block in the sidecar: each face's box (where it is in the photo) and name,
+    the caption, the star, the albums. Picasa's email addresses for people are left out.</li>
+<li><strong>Tags:</strong> <code>person:jane-doe</code> for each named face, <code>album:&lt;name&gt;</code>, <code>picasa:starred</code>. <code>da tag</code> keeps them. Find
+    them: <code>da findit tags photos\organized -r person:jane-doe -v</code>.</li>
+<li><strong>The Picasa.ini files</strong> move to <code>picasa\&lt;the folder they were in&gt;\</code> in the archive, as a record. Running
+    <code>da picasa</code> again still reads them there.</li>
+<li><code>picasa-plan.csv</code> in <code>output\runs\&lt;date-time&gt;-picasa\</code> lists every entry: the photo it went to, the people,
+    or why not (<em>not found</em>: the photo was deleted, or never copied into this archive). Entries with only
+    Picasa's own edit settings are skipped.</li>
+<li><strong>Undo:</strong> DA prints the line, <code>da intake undo "&lt;…\picasa-moved.csv&gt;"</code>, to put the Picasa.ini files back.
+    The <code>picasa</code> blocks stay (running it again rewrites them).</li>
+<li>Faces named in Picasa are the start of face recognition in DA (planned: <code>da facial</code>).</li>
+</ul>
 <h3 id="switch-between-archives">Switch between archives</h3>
 <ul>
 <li><strong>6 Switch archive</strong> in the menu lists every archive on this computer. Type its number.</li>
@@ -1294,6 +1323,9 @@ a 2-3 second video (<code>IMG_1234.MOV</code>).</p>
   It lists what it moved, and <code>da intake undo "&lt;the file it names&gt;"</code> puts them back. A video
   whose photo hasn't been filed yet is left alone; file the photo first.</li>
 <li><strong>Other videos</strong> (not part of a Live Photo) stay in intake: DA doesn't file videos yet.</li>
+<li><strong>Voice notes.</strong> Some cameras record a short sound with a photo (<code>SAM_0010.WAV</code> with <code>SAM_0010.JPG</code>).
+    It follows its photo the same way (<code>photo_..._ab12.wav</code>), and <code>da pair-movies</code> finds the ones an earlier
+    run left behind too.</li>
 <li><strong>Don't want Live Photos?</strong> On the iPhone, turn off <strong>Live</strong> (the round icon at the top of the
   camera) before taking photos.</li>
 </ul>
@@ -2176,11 +2208,11 @@ from another month in that folder is still moved back to its own month folder. N
 <li>photos: the camera's "date taken", including iPhone HEIC photos. A camera whose clock was never
   set (1 January 1970) doesn't count.</li>
 <li>PDFs: when the PDF was made (scanned, printed or saved).</li>
-<li>Word, Excel, PowerPoint: when the document was created.</li>
+<li>Word, Excel, PowerPoint: when the document was created (the older <code>.doc .xls .ppt</code> too).</li>
 </ul>
 </li>
-<li>A date <strong>without a time</strong> in the name (<code>2010-04-27</code>, or US-style <code>04-27-2010</code>). If the date
-    inside the file is from that same day, its time is used too.</li>
+<li>A date <strong>without a time</strong> in the name (<code>2010-04-27</code>, US-style <code>04-27-2010</code> or <code>1-11-09</code>, or written
+    out: <code>January 4th 2009</code>). If the date inside the file is from that same day, its time is used too.</li>
 <li>A <strong>month and year</strong> in the name (<code>Resume April-2010</code>): the date inside the file, if it's from
     that month. Otherwise only the month is known, which isn't enough, and the file stays for review.</li>
 <li>A <strong>year only</strong> (<code>Beach 1998.jpg</code>): not enough; it stays for review.</li>
@@ -2190,7 +2222,7 @@ from another month in that folder is still moved back to its own month folder. N
 last four characters come from the file's fingerprint, so two photos taken in the same second
 still get different names.</p>
 <h3 id="photo-or-document">Photo or document?</h3>
-<p>PDFs and Word, Excel and PowerPoint files are always documents. A picture (<code>.jpg .png .tif .bmp</code>)
+<p>PDFs and Word, Excel and PowerPoint files are always documents - even in <code>intake\photos\</code>, where DA files them with the documents. A picture (<code>.jpg .png .tif .bmp</code>)
 could be a photo or a scan, so the intake folder decides: in <code>docs\</code> or <code>scans\</code> it's a document;
 anywhere else it's a photo. To decide for a whole run: <code>da run intake\old-scans --kind document</code>.</p>
 <h3 id="which-archive-a-command-works-on">Which archive a command works on</h3>
@@ -2325,8 +2357,12 @@ anywhere else it's a photo. To decide for a whole run: <code>da run intake\old-s
 <td>Set a place by hand (<code>--same-as &lt;photo&gt;</code>, <code>--clear</code>)</td>
 </tr>
 <tr>
+<td><code>da picasa [&lt;folders&gt;] [--apply]</code></td>
+<td>Bring Picasa's faces, names, captions, stars and albums into the sidecars</td>
+</tr>
+<tr>
 <td><code>da pair-movies [--apply]</code></td>
-<td>Put Live Photo videos left in intake beside their filed photo</td>
+<td>Put Live Photo videos and voice notes left in intake beside their filed photo</td>
 </tr>
 <tr>
 <td><code>da heic-to-jpg &lt;folder&gt; [--out &lt;folder&gt;]</code></td>
@@ -2354,7 +2390,7 @@ anywhere else it's a photo. To decide for a whole run: <code>da run intake\old-s
 </tr>
 </tbody>
 </table>
-<footer>DA v2026.10.56 &middot; guide built 2026-10-19 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
+<footer>DA v2026.10.57 &middot; guide built 2026-10-19 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
 </main>
 </div>
 <script>
