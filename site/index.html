@@ -106,7 +106,7 @@ footer { color:var(--muted); font-size:14px; margin-top:60px; border-top:1px sol
 }
 </style>
 </head>
-<body data-version="2026.10.48">
+<body data-version="2026.10.49">
 <header>
   <span class="title">DA User Guide</span>
   <form id="guide-search" role="search">
@@ -116,7 +116,7 @@ footer { color:var(--muted); font-size:14px; margin-top:60px; border-top:1px sol
     <button id="guide-search-previous" type="button" disabled>Prev</button>
     <span id="guide-search-status" aria-live="polite"></span>
   </form>
-  <span class="version">DA v2026.10.48</span>
+  <span class="version">DA v2026.10.49</span>
   <a class="button" href="index.html">Guide</a>
   <a class="button" href="verification.html">Test plan</a>
   <a class="button" href="defects.html">Known problems</a>
@@ -124,9 +124,9 @@ footer { color:var(--muted); font-size:14px; margin-top:60px; border-top:1px sol
   <a class="button" href="DA-User-Guide.pdf">PDF version</a>
 </header>
 <div class="layout">
-<nav aria-label="Contents"><ul><li><a href="#words-youll-see">Words you'll see</a></li><li><a href="#getting-started">Getting started</a><ul><li><a href="#1-get-da">1. Get DA</a></li><li><a href="#2-install-it-once-per-computer">2. Install it (once per computer)</a></li><li><a href="#install-da-with-python-if-windows-blocks-daexe">Install DA with Python (if Windows blocks DA.exe)</a></li><li><a href="#3-create-your-first-archive-once-per-archive">3. Create your first archive (once per archive)</a></li><li><a href="#4-open-it">4. Open it</a></li></ul></li><li><a href="#the-menu">The menu</a></li><li><a href="#common-workflows">Common workflows</a><ul><li><a href="#add-photos-from-a-phone-camera-or-memory-card">Add photos from a phone, camera or memory card</a></li><li><a href="#add-scanned-documents">Add scanned documents</a></li><li><a href="#da-run-file-new-photos-and-documents">da run: file new photos and documents</a></li><li><a href="#da-report-whats-in-the-archive-and-what-needs-you">da report: what's in the archive and what needs you</a></li><li><a href="#da-dashboard-the-archive-in-your-browser">da dashboard: the archive in your browser</a></li><li><a href="#fix-what-needs-review">Fix what needs review</a></li><li><a href="#fix-dates-photos-with-no-date-or-the-wrong-one">Fix dates: photos with no date, or the wrong one</a></li><li><a href="#duplicates-put-back-or-delete">Duplicates: put back or delete</a></li><li><a href="#da-split-move-files-to-the-right-decades-archive">da split: move files to the right decade's archive</a></li><li><a href="#da-find-passwords-set-aside-documents-that-hold-passwords">da find --passwords: set aside documents that hold passwords</a></li><li><a href="#da-find-search-the-archive">da find: search the archive</a></li><li><a href="#contact-sheets-a-folder-at-a-glance">Contact sheets: a folder at a glance</a></li><li><a href="#da-tag-label-photos-and-documents">da tag: label photos and documents</a></li><li><a href="#switch-between-archives">Switch between archives</a></li><li><a href="#update-da">Update DA</a></li></ul></li><li><a href="#less-common-workflows">Less common workflows</a><ul><li><a href="#videos">Videos</a></li><li><a href="#iphone-live-photos-mov-files">iPhone Live Photos (.MOV files)</a></li><li><a href="#iphone-heic-photos">iPhone HEIC photos</a></li><li><a href="#edit-an-archives-settings-da-archiveyaml">Edit an archive's settings (da-archive.yaml)</a></li><li><a href="#share-an-album-with-google-photos">Share an album with Google Photos</a></li><li><a href="#process-a-folder-from-somewhere-else">Process a folder from somewhere else</a></li><li><a href="#start-a-new-archive-for-another-person-or-decade">Start a new archive for another person or decade</a></li><li><a href="#use-da-on-another-computer">Use DA on another computer</a></li><li><a href="#merge-two-copies-of-an-archive">Merge two copies of an archive</a></li><li><a href="#back-up-an-archive">Back up an archive</a></li><li><a href="#move-an-archive-to-another-drive">Move an archive to another drive</a></li><li><a href="#delete-an-archive-you-no-longer-need">Delete an archive you no longer need</a></li><li><a href="#check-whats-already-filed">Check what's already filed</a></li><li><a href="#update-sidecars-the-metajson-files">Update sidecars (the .meta.json files)</a></li><li><a href="#do-the-runs-steps-one-at-a-time">Do the run's steps one at a time</a></li><li><a href="#move-folders-to-another-archive-by-hand">Move folders to another archive by hand</a></li><li><a href="#coming-soon">Coming soon</a></li></ul></li><li><a href="#location-and-gps-workflows">Location and GPS workflows</a><ul><li><a href="#works-today">Works today</a></li><li><a href="#look-up-where-photos-were-taken">Look up where photos were taken</a></li><li><a href="#group-a-month-into-location-folders">Group a month into location folders</a></li><li><a href="#rename-a-location-folder">Rename a location folder</a></li><li><a href="#set-a-place-by-hand">Set a place by hand</a></li></ul></li><li><a href="#config-tokens">Config tokens</a><ul><li><a href="#file-name-tokens">File-name tokens</a></li><li><a href="#folder-tokens">Folder tokens</a></li></ul></li><li><a href="#if-something-goes-wrong">If something goes wrong</a></li><li><a href="#reference">Reference</a><ul><li><a href="#how-da-works-out-a-date">How DA works out a date</a></li><li><a href="#photo-or-document">Photo or document?</a></li><li><a href="#which-archive-a-command-works-on">Which archive a command works on</a></li><li><a href="#commands">Commands</a></li></ul></li></ul></nav>
+<nav aria-label="Contents"><ul><li><a href="#words-youll-see">Words you'll see</a></li><li><a href="#getting-started">Getting started</a><ul><li><a href="#1-get-da">1. Get DA</a></li><li><a href="#2-install-it-once-per-computer">2. Install it (once per computer)</a></li><li><a href="#install-da-with-python-if-windows-blocks-daexe">Install DA with Python (if Windows blocks DA.exe)</a></li><li><a href="#3-create-your-first-archive-once-per-archive">3. Create your first archive (once per archive)</a></li><li><a href="#4-open-it">4. Open it</a></li></ul></li><li><a href="#the-menu">The menu</a></li><li><a href="#common-workflows">Common workflows</a><ul><li><a href="#add-photos-from-a-phone-camera-or-memory-card">Add photos from a phone, camera or memory card</a></li><li><a href="#add-scanned-documents">Add scanned documents</a></li><li><a href="#da-run-file-new-photos-and-documents">da run: file new photos and documents</a></li><li><a href="#da-report-whats-in-the-archive-and-what-needs-you">da report: what's in the archive and what needs you</a></li><li><a href="#da-dashboard-the-archive-in-your-browser">da dashboard: the archive in your browser</a></li><li><a href="#fix-what-needs-review">Fix what needs review</a></li><li><a href="#fix-dates-photos-with-no-date-or-the-wrong-one">Fix dates: photos with no date, or the wrong one</a></li><li><a href="#duplicates-put-back-or-delete">Duplicates: put back or delete</a></li><li><a href="#da-split-move-files-to-the-right-decades-archive">da split: move files to the right decade's archive</a></li><li><a href="#da-share-send-photos-to-family-and-friends">da share: send photos to family and friends</a></li><li><a href="#da-find-passwords-set-aside-documents-that-hold-passwords">da find --passwords: set aside documents that hold passwords</a></li><li><a href="#da-find-search-the-archive">da find: search the archive</a></li><li><a href="#contact-sheets-a-folder-at-a-glance">Contact sheets: a folder at a glance</a></li><li><a href="#da-tag-label-photos-and-documents">da tag: label photos and documents</a></li><li><a href="#switch-between-archives">Switch between archives</a></li><li><a href="#update-da">Update DA</a></li></ul></li><li><a href="#less-common-workflows">Less common workflows</a><ul><li><a href="#videos">Videos</a></li><li><a href="#iphone-live-photos-mov-files">iPhone Live Photos (.MOV files)</a></li><li><a href="#iphone-heic-photos">iPhone HEIC photos</a></li><li><a href="#edit-an-archives-settings-da-archiveyaml">Edit an archive's settings (da-archive.yaml)</a></li><li><a href="#share-an-album-with-google-photos">Share an album with Google Photos</a></li><li><a href="#process-a-folder-from-somewhere-else">Process a folder from somewhere else</a></li><li><a href="#start-a-new-archive-for-another-person-or-decade">Start a new archive for another person or decade</a></li><li><a href="#use-da-on-another-computer">Use DA on another computer</a></li><li><a href="#merge-two-copies-of-an-archive">Merge two copies of an archive</a></li><li><a href="#back-up-an-archive">Back up an archive</a></li><li><a href="#move-an-archive-to-another-drive">Move an archive to another drive</a></li><li><a href="#delete-an-archive-you-no-longer-need">Delete an archive you no longer need</a></li><li><a href="#check-whats-already-filed">Check what's already filed</a></li><li><a href="#update-sidecars-the-metajson-files">Update sidecars (the .meta.json files)</a></li><li><a href="#do-the-runs-steps-one-at-a-time">Do the run's steps one at a time</a></li><li><a href="#move-folders-to-another-archive-by-hand">Move folders to another archive by hand</a></li><li><a href="#coming-soon">Coming soon</a></li></ul></li><li><a href="#location-and-gps-workflows">Location and GPS workflows</a><ul><li><a href="#works-today">Works today</a></li><li><a href="#look-up-where-photos-were-taken">Look up where photos were taken</a></li><li><a href="#group-a-month-into-location-folders">Group a month into location folders</a></li><li><a href="#rename-a-location-folder">Rename a location folder</a></li><li><a href="#set-a-place-by-hand">Set a place by hand</a></li></ul></li><li><a href="#config-tokens">Config tokens</a><ul><li><a href="#file-name-tokens">File-name tokens</a></li><li><a href="#folder-tokens">Folder tokens</a></li></ul></li><li><a href="#if-something-goes-wrong">If something goes wrong</a></li><li><a href="#reference">Reference</a><ul><li><a href="#how-da-works-out-a-date">How DA works out a date</a></li><li><a href="#photo-or-document">Photo or document?</a></li><li><a href="#which-archive-a-command-works-on">Which archive a command works on</a></li><li><a href="#commands">Commands</a></li></ul></li></ul></nav>
 <main>
-<p class="print-only">DA v2026.10.48 &middot; da.gamenightbymike.com &middot; 2026-10-18</p>
+<p class="print-only">DA v2026.10.49 &middot; da.gamenightbymike.com &middot; 2026-10-18</p>
 <h1 id="da-user-guide">DA User Guide</h1>
 <p><strong>DA</strong> (short for <em>Digital Archive</em>) puts your photos and scanned documents in order. You copy
 them into one folder, and DA:</p>
@@ -644,7 +644,7 @@ few seconds. It's handy in a second window while <code>da run</code> works:
   arrow keys go through the month; <strong>Esc</strong> closes it. Under the large picture:
     - <strong>Set as desktop:</strong> makes the photo this computer's desktop background.
     - <strong>Open its folder:</strong> opens File Explorer with the file selected.
-    - <strong>Share:</strong> comes with <code>da share</code> (sending pictures to friends and family by email).</p>
+    - <strong>Share:</strong> emails the photo to one of your <a href="#da-share-send-photos-to-family-and-friends">share lists</a>.</p>
 <p>The page doesn't change your files, and only this computer can open it (its address starts
 <code>http://127.0.0.1:</code>). It only shows what's filed in <code>organized</code>; documents set aside by
 <a href="#da-find-passwords-set-aside-documents-that-hold-passwords">da find --passwords</a> never show.</p>
@@ -777,6 +777,48 @@ da split --organized --to D:\jane-archive-200x --years 2000-2004    # a few year
     the contact sheets of both archives are made again (quickly: their thumbnails are kept). The other
     archive's index is updated straight away.</li>
 <li>Files with no date stay. <strong>Undo:</strong> the line DA prints; then <strong>5 Refresh index</strong> in both archives.</li>
+</ul>
+<h3 id="da-share-send-photos-to-family-and-friends">da share: send photos to family and friends</h3>
+<p><code>da share</code> makes a simple contact sheet of one or more months, 6 big pictures a page with the date and
+place under each, and a first page with your note, and emails it <strong>from your own Gmail</strong> to a list of people.</p>
+<pre><code class="language-powershell">da share photos\organized\2019\2019-04 --to family --note &quot;Easter at grandma's&quot;          # make it (nothing sent)
+da share photos\organized\2019\2019-04 --to family --note &quot;Easter at grandma's&quot; --send   # send it (asks first)
+</code></pre>
+<ul>
+<li><strong>The lists</strong> are in <a href="#edit-an-archives-settings-da-archiveyaml">da-archive.yaml</a>; <code>da share --lists</code> shows them:
+    <code>yaml
+    share:
+      lists:
+        family: [grandma@example.com, sam@example.com]
+        friends: [pat@example.com]</code>
+    Or name people straight away: <code>--to "grandma@example.com, sam@example.com"</code>.</li>
+<li><strong>Each person sees only their own address</strong> (the others are hidden, like Bcc).</li>
+<li><strong>Photos only:</strong> videos and documents in those folders are left out (DA says how many). Documents set aside by
+    <a href="#da-find-passwords-set-aside-documents-that-hold-passwords">da find --passwords</a> are never in them.</li>
+<li><strong>A big share</strong> is sent as several emails (each under Gmail's size limit), each with the note page.</li>
+<li>The PDF is kept in <code>output\shares\&lt;date-time&gt;-&lt;name&gt;\</code>, so you can look at it first, or print it.</li>
+<li><strong>From the dashboard:</strong> open a photo large and press <strong>Share</strong> to email just that photo to a list.</li>
+</ul>
+<h4 id="set-up-sharing-once">Set up sharing (once)</h4>
+<p>DA sends through Gmail's own way for programs to send mail, and only ever asks for permission to <strong>send</strong>. You
+make a small "app" in Google's developer pages for DA, once (about ten minutes):</p>
+<ol>
+<li>Open https://console.cloud.google.com and sign in with your Gmail account.</li>
+<li>At the top, <strong>Select a project</strong> &gt; <strong>New project</strong>. Name it <code>DA</code>, then <strong>Create</strong>, and make sure it's selected.</li>
+<li><strong>APIs &amp; Services</strong> &gt; <strong>Library</strong>: search <strong>Gmail API</strong>, open it, <strong>Enable</strong>.</li>
+<li><strong>APIs &amp; Services</strong> &gt; <strong>OAuth consent screen</strong>: <strong>External</strong>, then fill in an app name (<code>DA</code>) and your email
+    address where asked. Under <strong>Test users</strong>, add your own Gmail address. Save.</li>
+<li><strong>APIs &amp; Services</strong> &gt; <strong>Credentials</strong> &gt; <strong>Create credentials</strong> &gt; <strong>OAuth client ID</strong>: application type
+    <strong>Desktop app</strong>, name <code>DA</code>, <strong>Create</strong>, then <strong>Download JSON</strong>.</li>
+<li>Save that file as <code>%LOCALAPPDATA%\DA\google-client.json</code> (in File Explorer, type <code>%LOCALAPPDATA%\DA</code> in the
+    address bar, then save it there with that name).</li>
+<li>In a terminal: <code>da share --setup</code>. Your browser asks you to choose your account and allow DA to <strong>send email
+    on your behalf</strong>. Google warns that the app isn't verified: it's your own app, so choose <strong>Continue</strong>.</li>
+</ol>
+<ul>
+<li>While the app is in <em>Testing</em>, Google asks you to sign in again every 7 days (<code>da share --setup</code>). To stop
+    that, on the <strong>OAuth consent screen</strong> choose <strong>Publish app</strong> (it stays your own, unverified app).</li>
+<li>The sign-in is kept in <code>%LOCALAPPDATA%\DA\google-token.json</code>, never in an archive. Delete that file to sign out.</li>
 </ul>
 <h3 id="da-find-passwords-set-aside-documents-that-hold-passwords">da find --passwords: set aside documents that hold passwords</h3>
 <p>Old statements, scanned letters and notes sometimes hold a password or a PIN. <code>da find --passwords</code> finds
@@ -2167,6 +2209,10 @@ anywhere else it's a photo. To decide for a whole run: <code>da run intake\old-s
 <td>Read the text in pictures; tag <code>text</code> / <code>document</code>; move documents</td>
 </tr>
 <tr>
+<td><code>da share &lt;folders&gt; --to &lt;list&gt; [--note "..."] [--send]</code></td>
+<td>Email a simple contact sheet from your Gmail (<code>--setup</code> once, <code>--lists</code>)</td>
+</tr>
+<tr>
 <td><code>da find --passwords [&lt;folder&gt;] [--move] [--include-weak]</code></td>
 <td>Find documents that hold passwords; move them to <code>_secure-holding</code></td>
 </tr>
@@ -2232,7 +2278,7 @@ anywhere else it's a photo. To decide for a whole run: <code>da run intake\old-s
 </tr>
 </tbody>
 </table>
-<footer>DA v2026.10.48 &middot; guide built 2026-10-18 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
+<footer>DA v2026.10.49 &middot; guide built 2026-10-18 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
 </main>
 </div>
 <script>

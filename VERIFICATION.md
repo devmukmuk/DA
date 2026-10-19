@@ -386,6 +386,11 @@ jane-copy's intake and process them **in jane-copy** (open its `Open DA.cmd`).
 | O17 | Click a video, then a PDF | The video plays; the PDF opens in the browser's viewer | ☐ |
 | O18 | On a photo: **Set as desktop** | *It's the desktop background now*, and it is | ☐ |
 | O19 | **Open its folder** | File Explorer opens with the file selected | ☐ |
+| O20 | Add a share list with just your own address to `da-archive.yaml` (`share:` > `lists:` > `me: [you@gmail.com]`); `da share --lists` | *me: 1 people* | ☐ |
+| O21 | `da share photos\organized\<a month> --to me --note "Test"` | *N photos*, the PDF's folder, *Nothing sent*; open the PDF: a note page, then 6 pictures a page with dates (and places) | ☐ |
+| O22 | Set up sharing once (the guide's *Set up sharing*), ending with `da share --setup` | The browser asks to allow sending; *Signed in to Gmail* | ☐ |
+| O23 | The same `da share` with `--send`, answer **y** | *Sent Photos: ...*; the email arrives with the PDF, and the To line doesn't show other addresses | ☐ |
+| O24 | In the dashboard, open a photo large and press **Share** | *Sent to me (1 people)*; the photo arrives | ☐ |
 
 ## P. Update sidecars (menu J)
 

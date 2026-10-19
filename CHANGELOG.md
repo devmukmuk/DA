@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.49 - 2026-10-18
+
+### New
+- da share - email a simple contact sheet from your Gmail; the dashboard's Share button
+
 ## v2026.10.48 - 2026-10-18
 
 ### New
