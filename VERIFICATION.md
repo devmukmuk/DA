@@ -69,13 +69,15 @@ you can try; skip a step whose files you don't have and mark it **skipped**.
 | A6 | Type `da --help` | A list of commands (setup, run, status, archives, guide, …) | ☐ |
 | A7 | Type `da guide` | The user guide opens in your browser | ☐ |
 | A8 | Type `da guide --pdf` | The guide's PDF opens | ☐ |
-| A9 | Type `da update` | It says which version you have and how to get the newest DA.exe | ☐ |
+| A9 | Type `da update --check` | *This is DA v...*, then *You have the newest DA* (or *DA v... is out*) | ☐ |
+| A9a | *(When a newer DA is out)* `da update`, answer **y** | *Downloading*, *its size and fingerprint match*, *Put in place: C:\Scripts\DA\DA.exe*, *Updated to DA v...*; a new terminal's `da version` shows it | ☐ |
+| A9b | *(When a newer DA is out)* Open the menu (`da`) | A yellow line under the status: *DA v... is out (you have v...): da update* | ☐ |
 | A10 | *(Python install - only if Windows blocks DA.exe, or to test it)* Follow the guide's [Install DA with Python](https://da.gamenightbymike.com/#install-da-with-python-if-windows-blocks-daexe): install Python from python.org | `py --version` in a new terminal shows `Python 3.…` | ☐ |
 | A11 | Type the guide's first line: `py -m venv C:\Scripts\DA\python` | No error; the folder `C:\Scripts\DA\python` exists | ☐ |
 | A12 | Type the second line (`…python.exe -m pip install -r https://da.gamenightbymike.com/python/requirements.txt`) | It downloads and ends with "Successfully installed … devmukmuk-da-…" | ☐ |
 | A13 | Type the third line (`…python.exe -m mindit install`) | "Installed C:\Scripts\DA\da.cmd (DA run by Python …)"; if a DA.exe was there: "Set aside DA.exe (now DA.exe.off)" | ☐ |
 | A14 | New terminal: `da version` | The version, with **no** Windows Security pop-up | ☐ |
-| A15 | `da update` | "Downloading the newest DA …" then "Now: DA v…" | ☐ |
+| A15 | `da update` | *You have the newest DA*, or (when one is out) *Downloading and installing it ...* then *Updated to DA v...* | ☐ |
 | A16 | Outside any archive, type `da status` | "Not inside an archive" and how to open one (no crash) | ☐ |
 | A17 | Type `da` on its own (outside any archive) | "You're not inside an archive" and an offer to create one (answer **n** for now) | ☐ |
 

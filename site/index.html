@@ -106,7 +106,7 @@ footer { color:var(--muted); font-size:14px; margin-top:60px; border-top:1px sol
 }
 </style>
 </head>
-<body data-version="2026.10.51">
+<body data-version="2026.10.52">
 <header>
   <span class="title">DA User Guide</span>
   <form id="guide-search" role="search">
@@ -116,7 +116,7 @@ footer { color:var(--muted); font-size:14px; margin-top:60px; border-top:1px sol
     <button id="guide-search-previous" type="button" disabled>Prev</button>
     <span id="guide-search-status" aria-live="polite"></span>
   </form>
-  <span class="version">DA v2026.10.51</span>
+  <span class="version">DA v2026.10.52</span>
   <a class="button" href="index.html">Guide</a>
   <a class="button" href="verification.html">Test plan</a>
   <a class="button" href="defects.html">Known problems</a>
@@ -126,7 +126,7 @@ footer { color:var(--muted); font-size:14px; margin-top:60px; border-top:1px sol
 <div class="layout">
 <nav aria-label="Contents"><ul><li><a href="#words-youll-see">Words you'll see</a></li><li><a href="#getting-started">Getting started</a><ul><li><a href="#1-get-da">1. Get DA</a></li><li><a href="#2-install-it-once-per-computer">2. Install it (once per computer)</a></li><li><a href="#install-da-with-python-if-windows-blocks-daexe">Install DA with Python (if Windows blocks DA.exe)</a></li><li><a href="#3-create-your-first-archive-once-per-archive">3. Create your first archive (once per archive)</a></li><li><a href="#4-open-it">4. Open it</a></li></ul></li><li><a href="#the-menu">The menu</a></li><li><a href="#common-workflows">Common workflows</a><ul><li><a href="#add-photos-from-a-phone-camera-or-memory-card">Add photos from a phone, camera or memory card</a></li><li><a href="#add-scanned-documents">Add scanned documents</a></li><li><a href="#da-run-file-new-photos-and-documents">da run: file new photos and documents</a></li><li><a href="#da-report-whats-in-the-archive-and-what-needs-you">da report: what's in the archive and what needs you</a></li><li><a href="#da-dashboard-the-archive-in-your-browser">da dashboard: the archive in your browser</a></li><li><a href="#fix-what-needs-review">Fix what needs review</a></li><li><a href="#fix-dates-photos-with-no-date-or-the-wrong-one">Fix dates: photos with no date, or the wrong one</a></li><li><a href="#duplicates-put-back-or-delete">Duplicates: put back or delete</a></li><li><a href="#da-split-move-files-to-the-right-decades-archive">da split: move files to the right decade's archive</a></li><li><a href="#da-share-send-photos-to-family-and-friends">da share: send photos to family and friends</a></li><li><a href="#da-find-passwords-set-aside-documents-that-hold-passwords">da find --passwords: set aside documents that hold passwords</a></li><li><a href="#da-find-search-the-archive">da find: search the archive</a></li><li><a href="#contact-sheets-a-folder-at-a-glance">Contact sheets: a folder at a glance</a></li><li><a href="#da-tag-label-photos-and-documents">da tag: label photos and documents</a></li><li><a href="#switch-between-archives">Switch between archives</a></li><li><a href="#update-da">Update DA</a></li></ul></li><li><a href="#less-common-workflows">Less common workflows</a><ul><li><a href="#videos">Videos</a></li><li><a href="#iphone-live-photos-mov-files">iPhone Live Photos (.MOV files)</a></li><li><a href="#iphone-heic-photos">iPhone HEIC photos</a></li><li><a href="#edit-an-archives-settings-da-archiveyaml">Edit an archive's settings (da-archive.yaml)</a></li><li><a href="#share-an-album-with-google-photos">Share an album with Google Photos</a></li><li><a href="#process-a-folder-from-somewhere-else">Process a folder from somewhere else</a></li><li><a href="#start-a-new-archive-for-another-person-or-decade">Start a new archive for another person or decade</a></li><li><a href="#use-da-on-another-computer">Use DA on another computer</a></li><li><a href="#merge-two-copies-of-an-archive">Merge two copies of an archive</a></li><li><a href="#back-up-an-archive">Back up an archive</a></li><li><a href="#move-an-archive-to-another-drive">Move an archive to another drive</a></li><li><a href="#delete-an-archive-you-no-longer-need">Delete an archive you no longer need</a></li><li><a href="#check-whats-already-filed">Check what's already filed</a></li><li><a href="#update-sidecars-the-metajson-files">Update sidecars (the .meta.json files)</a></li><li><a href="#do-the-runs-steps-one-at-a-time">Do the run's steps one at a time</a></li><li><a href="#move-folders-to-another-archive-by-hand">Move folders to another archive by hand</a></li><li><a href="#coming-soon">Coming soon</a></li></ul></li><li><a href="#location-and-gps-workflows">Location and GPS workflows</a><ul><li><a href="#works-today">Works today</a></li><li><a href="#look-up-where-photos-were-taken">Look up where photos were taken</a></li><li><a href="#group-a-month-into-location-folders">Group a month into location folders</a></li><li><a href="#rename-a-location-folder">Rename a location folder</a></li><li><a href="#set-a-place-by-hand">Set a place by hand</a></li></ul></li><li><a href="#config-tokens">Config tokens</a><ul><li><a href="#file-name-tokens">File-name tokens</a></li><li><a href="#folder-tokens">Folder tokens</a></li></ul></li><li><a href="#if-something-goes-wrong">If something goes wrong</a></li><li><a href="#reference">Reference</a><ul><li><a href="#how-da-works-out-a-date">How DA works out a date</a></li><li><a href="#photo-or-document">Photo or document?</a></li><li><a href="#which-archive-a-command-works-on">Which archive a command works on</a></li><li><a href="#commands">Commands</a></li></ul></li></ul></nav>
 <main>
-<p class="print-only">DA v2026.10.51 &middot; da.gamenightbymike.com &middot; 2026-10-18</p>
+<p class="print-only">DA v2026.10.52 &middot; da.gamenightbymike.com &middot; 2026-10-18</p>
 <h1 id="da-user-guide">DA User Guide</h1>
 <p><strong>DA</strong> (short for <em>Digital Archive</em>) puts your photos and scanned documents in order. You copy
 them into one folder, and DA:</p>
@@ -1167,14 +1167,19 @@ archive (its <code>Open DA.cmd</code>, or a command run inside it), so an archiv
 the first time you open it on that computer. An archive whose folder is gone (a drive that isn't
 plugged in) is left out of the list until it's back.</p>
 <h3 id="update-da">Update DA</h3>
+<p>Type <strong><code>da update</code></strong>. DA looks for a newer version, says which one, asks, and puts it in place: for DA.exe it
+downloads the new one, checks its size and fingerprint against the release and that it starts, then swaps it in
+(DA installed with Python is updated with pip). That's all.</p>
 <ul>
-<li><strong>DA installed with Python:</strong> type <code>da update</code>. That's all.</li>
-<li><strong>DA.exe:</strong> download the newest <a href="https://github.com/devmukmuk/DA/releases/latest/download/DA.exe">DA.exe</a>
-  and install it the same way as the first time (<a href="#2-install-it-once-per-computer">Getting started</a>).
-  Close any open DA windows first.</li>
+<li><code>da update --check</code> only says whether a newer DA is out. The menu says so too when one is (it looks at most
+    once a day).</li>
+<li>Windows already open, and a running dashboard, keep the old DA until they're closed. For the dashboard:
+    <code>da dashboard --stop</code>, then <code>da dashboard</code>.</li>
+<li>If anything goes wrong (no internet, a download that doesn't match), DA says so and nothing changes.</li>
+<li>By hand, if you prefer: download the newest <a href="https://github.com/devmukmuk/DA/releases/latest/download/DA.exe">DA.exe</a>
+    and install it the same way as the first time (<a href="#2-install-it-once-per-computer">Getting started</a>).</li>
 </ul>
-<p>Your archives aren't touched either way. To see which version you have: <code>da version</code> (and
-<code>da update</code> tells you how to update the kind you have).</p>
+<p>Your archives aren't touched either way. To see which version you have: <code>da version</code>.</p>
 <h2 id="less-common-workflows">Less common workflows</h2>
 <table>
 <thead>
@@ -2080,6 +2085,10 @@ from another month in that folder is still moved back to its own month folder. N
 <td>An older DA. Update it (<code>da update</code>, or the newest DA.exe), then try again; the sign-in you made with <code>da share --setup</code> stays.</td>
 </tr>
 <tr>
+<td>The dashboard says <em>Could not find a suitable TLS CA certificate bundle ... cacert.pem</em> (or another file is missing)</td>
+<td>An older DA.exe lost files when the window that started the dashboard closed. Update DA (<code>da update</code>), then <code>da dashboard --stop</code> and <code>da dashboard</code>.</td>
+</tr>
+<tr>
 <td>Sharing says <em>Gmail didn't send it (403): Gmail API has not been used in project ...</em></td>
 <td>The Gmail API isn't turned on in your Google Cloud project: <strong>APIs &amp; Services</strong> &gt; <strong>Library</strong> &gt; <strong>Gmail API</strong> &gt; <strong>Enable</strong> (see <a href="#set-up-sharing-once">Set up sharing</a>), wait a minute, try again.</td>
 </tr>
@@ -2283,8 +2292,8 @@ anywhere else it's a photo. To decide for a whole run: <code>da run intake\old-s
 <td>Which version of DA this is</td>
 </tr>
 <tr>
-<td><code>da update</code></td>
-<td>Update DA (installed with Python: does it; DA.exe: says how)</td>
+<td><code>da update [--check]</code></td>
+<td>Look for a newer DA and put it in place (DA.exe or Python)</td>
 </tr>
 <tr>
 <td><code>&lt;DA.exe&gt; install</code></td>
@@ -2292,7 +2301,7 @@ anywhere else it's a photo. To decide for a whole run: <code>da run intake\old-s
 </tr>
 </tbody>
 </table>
-<footer>DA v2026.10.51 &middot; guide built 2026-10-18 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
+<footer>DA v2026.10.52 &middot; guide built 2026-10-18 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
 </main>
 </div>
 <script>

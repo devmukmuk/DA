@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.52 - 2026-10-18
+
+### New
+- da update finds, downloads, checks and swaps in the newest DA.exe; fix the dashboard losing its files
+
 ## v2026.10.51 - 2026-10-18
 
 ### Fixed
