@@ -1,6 +1,6 @@
 # DA - Digital Archive
 
-**Latest version:** 2026.10.58 (2026-10-19)
+**Latest version:** 2026.10.59 (2026-10-19)
 
 DA files your photos, videos and scanned documents by the date they were taken. It sets exact
 duplicates aside, names each file by its date, and puts it in a `YYYY\YYYY-MM` folder, with a contact
@@ -24,13 +24,13 @@ sheet for every month. It never deletes anything, and it asks before it moves an
 - **Testing DA?** The [test plan](https://da.gamenightbymike.com/verification.html) (also as a
   [PDF](https://da.gamenightbymike.com/DA-Test-Plan.pdf) to print) and the [known problems](https://da.gamenightbymike.com/defects.html)
 
-## What's new in v2026.10.58
+## What's new in v2026.10.59
 
 ### New
-- Yellow face boxes and names on contact sheets and shares; people and tags in share emails
+- Resized copies set aside (the same picture, smaller); shares list the copies in holding
 
 ### Fixed
-- An empty GPS block isn't a position
+- Make services/similar a regular package (the wheel's package finder needs __init__.py)
 
 ## Found a problem?
 

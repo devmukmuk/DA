@@ -492,6 +492,13 @@ Needs a folder Picasa looked at, with its `Picasa.ini` (or hidden `.picasa.ini`)
 | X10 | A photo that was a duplicate (set aside) with a face in Picasa | Its details go to the copy that was kept (*the copy kept*) | ☐ |
 | X11 | `da contact-sheets <a month with Picasa faces>`, open `_contact-sheet.pdf` | A yellow box on each face, the name above it; page 1 has a **People** line | ☐ |
 | X12 | The same with a photo taken sideways (portrait) | The box is still on the face | ☐ |
+| X14 | Put a photo and a smaller copy of it (e.g. Picasa's 800 x 600 export) in intake, **1 Process intake** | Step 3: *1 resized copies (e.g. 800 x 600 of a 3072 x 2304 picture)*, a sample check, a question; the small one goes to `_duplicates-holding\<date>\resized\`, the big one is filed | ☐ |
+| X15 | `da similar` in an archive filed before this | *N resized copies* and a list; nothing moves | ☐ |
+| X16 | `da similar --apply` | A sample check, a question, *Moved N* and an Undo line | ☐ |
+| X17 | `da history --duplicates` | The resized ones too, each *a copy of* the filed original | ☐ |
+| X18 | `da share <a month with copies in holding>` | *N copies in holding*; each picture in `details.txt` lists *Copy: exact/resized copy in holding*; the PDF ends with **Copies in holding** pages | ☐ |
+| X19 | The same with `--no-copies` | No copies listed or shown | ☐ |
+| X20 | `da intake undo "<…\similar-moved.csv>"` | The resized copies are back where they were | ☐ |
 | X13 | `da share <that month> --to <your own list>` | Page 1: *People: …* and *Tags: …*; film strips with boxes; big pictures with boxes and names; `details.txt` starts with the people and each picture lists *People* and *Tags* | ☐ |
 
 ## W. Share with family and friends (da share)

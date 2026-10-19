@@ -2,6 +2,14 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.59 - 2026-10-19
+
+### New
+- Resized copies set aside (the same picture, smaller); shares list the copies in holding
+
+### Fixed
+- Make services/similar a regular package (the wheel's package finder needs __init__.py)
+
 ## v2026.10.58 - 2026-10-19
 
 ### New
