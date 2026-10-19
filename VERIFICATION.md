@@ -386,11 +386,6 @@ jane-copy's intake and process them **in jane-copy** (open its `Open DA.cmd`).
 | O17 | Click a video, then a PDF | The video plays; the PDF opens in the browser's viewer | ☐ |
 | O18 | On a photo: **Set as desktop** | *It's the desktop background now*, and it is | ☐ |
 | O19 | **Open its folder** | File Explorer opens with the file selected | ☐ |
-| O20 | Add a share list with just your own address to `da-archive.yaml` (`share:` > `lists:` > `me: [you@gmail.com]`); `da share --lists` | *me: 1 people* | ☐ |
-| O21 | `da share photos\organized\<a month> --to me --note "Test"` | *N photos*, the PDF's folder, *Nothing sent*; open the PDF: a note page, then 6 pictures a page with dates (and places) | ☐ |
-| O22 | Set up sharing once (the guide's *Set up sharing*), ending with `da share --setup` | The browser asks to allow sending; *Signed in to Gmail* | ☐ |
-| O23 | The same `da share` with `--send`, answer **y** | *Sent Photos: ...*; the email arrives with the PDF, and the To line doesn't show other addresses | ☐ |
-| O24 | In the dashboard, open a photo large and press **Share** | *Sent to me (1 people)*; the photo arrives | ☐ |
 
 ## P. Update sidecars (menu J)
 
@@ -459,6 +454,44 @@ Make a copy of `da-archive.yaml` first; put it back at the end.
 | U4 | Disconnect the internet, `da location lookup` on new GPS photos | It stops after two tries and says N photos still need a place; run again later | ☐ |
 | U5 | `da contact-sheets C:\nowhere` | "No such folder" | ☐ |
 | U6 | `da --help` and `da location --help` outside an archive | Help shows (no "not inside an archive") | ☐ |
+
+## W. Share with family and friends (da share)
+
+Sharing sends email **from your own Gmail**, so it needs a one-time setup in Google's developer pages (about ten
+minutes; the guide's *Set up sharing (once)* has the same steps). Use a list with only **your own address** while
+testing, so nobody else gets test emails. Google's screens change now and then: if a name below doesn't match, look
+for the nearest one (newer pages call the consent screen **Google Auth Platform**, with **Branding**, **Audience**
+and **Clients**).
+
+| # | Do this | You should see | Result |
+|---|---|---|---|
+| W1 | In `da-archive.yaml` add, at the end: `share:` / `  lists:` / `    me: [you@gmail.com]` (your own address); then `da share --lists` | *me: 1 people* | ☐ |
+| W2 | `da share photos\organized\<a month with photos> --to me --note "Test share"` | *Making the sheet: N photos* (videos and documents left out are counted), the PDF's folder in `output\shares\`, and *Nothing sent. To send it to me (1 people): add --send* | ☐ |
+| W3 | Open that PDF | Page 1: the month's name, *N pictures*, the dates, your note; then 6 pictures a page, each with its date (and place, for GPS photos) right under it | ☐ |
+| W4 | The same command with `--send` (before any setup) | *No Google client file at ...\google-client.json. See 'Set up sharing' in the guide*; nothing sent | ☐ |
+| W5 | Open https://console.cloud.google.com, sign in with your Gmail; at the top, **Select a project** > **New project**, give it a name of 4 to 30 characters (e.g. `DA-sharing`), **Create**, and select it | The page shows project your project at the top | ☐ |
+| W6 | **APIs & Services** > **Library**, search **Gmail API**, open it, **Enable** | *Gmail API* with **Manage** (it's enabled) | ☐ |
+| W7 | **APIs & Services** > **OAuth consent screen** (or **Google Auth Platform**): **External**; app name `DA-sharing` (or your project's name); your email where asked; save | The consent screen is set up, publishing status **Testing** | ☐ |
+| W8 | On the same pages, **Test users** (or **Audience**) > **Add users**: your own Gmail address; save | Your address is listed as a test user | ☐ |
+| W9 | **Credentials** (or **Clients**) > **Create credentials** > **OAuth client ID**; application type **Desktop app**, any name (e.g. `Desktop client 1`); **Create**; **Download JSON** | A file like `client_secret_...json` in Downloads | ☐ |
+| W10 | In File Explorer type `%LOCALAPPDATA%\DA` in the address bar; put the downloaded file there and rename it `google-client.json` | `%LOCALAPPDATA%\DA\google-client.json` exists | ☐ |
+| W11 | In a terminal: `da share --setup` | Your browser opens Google's sign-in: choose your account | ☐ |
+| W12 | | *Google hasn't verified this app*: choose **Continue** (it's your own app); then allow **Send email on your behalf** | ☐ |
+| W13 | Back in the terminal | *Signed in to Gmail (DA may only send). The sign-in is kept in ...\google-token.json* | ☐ |
+| W14 | Look in `%LOCALAPPDATA%\DA`, then search the archive folder for `google` | `google-token.json` is in `%LOCALAPPDATA%\DA`; nothing about Google is in the archive | ☐ |
+| W15 | `da share photos\organized\<the month> --to me --note "Test share" --send` | *Email 1 message to me (1 people)?*; answer **y**: *Sent Photos: ...* | ☐ |
+| W16 | Open your Gmail inbox | An email *Photos: <the month>*, your note in it, the PDF attached; the To line says *undisclosed-recipients* | ☐ |
+| W17 | Gmail's **Sent** folder | The same email, sent from your address | ☐ |
+| W18 | Add a second address of yours to the list (`me: [you@gmail.com, you2@example.com]`) and send again | Both get it; neither email shows the other address | ☐ |
+| W19 | Share a few months at once (big enough: 200+ photos), with `--send` | *2 PDFs* (or more) and emails *(1 of 2)*, *(2 of 2)*, each with the note page | ☐ |
+| W20 | `da share photos\organized\<the month> --to neighbours` | *No list called 'neighbours'*; nothing made | ☐ |
+| W21 | In the dashboard (menu **B**), open a photo large and press **Share** | (one list: *Email this photo to me?* - **OK**) *Sent to me (1 people)*; the photo arrives as a JPEG | ☐ |
+| W22 | Open a video or a document large | **Share** is greyed out (photos only) | ☐ |
+| W23 | Look at the end of `logs\da.jsonl` | `share` lines with the list's name and the counts, and no email addresses | ☐ |
+| W24 | *(Optional)* On the consent screen, **Publish app** (or **Audience** > **Publish**) | Publishing status **In production**; you won't be asked to sign in again every 7 days | ☐ |
+| W25 | Delete `%LOCALAPPDATA%\DA\google-token.json` (that's how to sign out), then share with `--send` | The browser opens to sign in again; after allowing it, the email is sent | ☐ |
+| W26 | *(Another computer)* Copy the same `google-client.json` into that computer's `%LOCALAPPDATA%\DA`, then `da share --setup` there | It signs in on that computer too (its own `google-token.json`); one OAuth client is enough for every computer | ☐ |
+| W27 | *(Someone else sends from their own Gmail, on their computer)* Add their address under **Test users** (or **Audience**), or publish the app (W24); they run `da share --setup` and sign in with their account | Their shares come from their address | ☐ |
 
 ## V. Clean up
 

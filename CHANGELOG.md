@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.51 - 2026-10-18
+
+### Fixed
+- Send with a plain HTTPS call - no "UnknownApiNameOrVersion: gmail v1"; Python installs get the google extra
+
 ## v2026.10.50 - 2026-10-18
 
 ### New

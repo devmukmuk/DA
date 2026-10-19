@@ -1,6 +1,6 @@
 # DA - Digital Archive
 
-**Latest version:** 2026.10.50 (2026-10-18)
+**Latest version:** 2026.10.51 (2026-10-18)
 
 DA files your photos, videos and scanned documents by the date they were taken. It sets exact
 duplicates aside, names each file by its date, and puts it in a `YYYY\YYYY-MM` folder, with a contact
@@ -24,10 +24,10 @@ sheet for every month. It never deletes anything, and it asks before it moves an
 - **Testing DA?** The [test plan](https://da.gamenightbymike.com/verification.html) (also as a
   [PDF](https://da.gamenightbymike.com/DA-Test-Plan.pdf) to print) and the [known problems](https://da.gamenightbymike.com/defects.html)
 
-## What's new in v2026.10.50
+## What's new in v2026.10.51
 
-### New
-- Logging: every change to an archive is logged, with the computer's name
+### Fixed
+- Send with a plain HTTPS call - no "UnknownApiNameOrVersion: gmail v1"; Python installs get the google extra
 
 ## Found a problem?
 

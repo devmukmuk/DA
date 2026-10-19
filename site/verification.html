@@ -174,11 +174,11 @@ tr.tp-issues li { margin:3px 0; }
 }
 </style>
 </head>
-<body data-version="2026.10.50">
+<body data-version="2026.10.51">
 <header>
   <span class="title">DA Test Plan</span>
   
-  <span class="version">DA v2026.10.50</span>
+  <span class="version">DA v2026.10.51</span>
   <a class="button" href="index.html">Guide</a>
   <a class="button" href="verification.html">Test plan</a>
   <a class="button" href="defects.html">Known problems</a>
@@ -186,9 +186,9 @@ tr.tp-issues li { margin:3px 0; }
   <a class="button" href="DA-Test-Plan.pdf">PDF version</a>
 </header>
 <div class="layout">
-<nav aria-label="Contents"><ul><li><a href="#before-you-start">Before you start</a><ul><li><a href="#make-a-test-kit">Make a test kit</a></li></ul></li><li><a href="#a-install-da">A. Install DA</a></li><li><a href="#b-create-an-archive">B. Create an archive</a></li><li><a href="#c-the-first-run-process-intake-menu-1">C. The first run: process intake (menu 1)</a></li><li><a href="#d-what-needs-review-menu-3">D. What needs review (menu 3)</a></li><li><a href="#e-status-and-the-index-menu-2-5">E. Status and the index (menu 2, 5)</a></li><li><a href="#f-duplicates-and-undo-menu-4">F. Duplicates and undo (menu 4)</a></li><li><a href="#g-documents-and-scans">G. Documents and scans</a></li><li><a href="#h-contact-sheets">H. Contact sheets</a></li><li><a href="#i-videos-live-photos-and-heic">I. Videos, Live Photos and HEIC</a></li><li><a href="#j-fix-dates-menu-d">J. Fix dates (menu D)</a></li><li><a href="#k-tags-terminal">K. Tags (terminal)</a></li><li><a href="#l-places-and-location-folders-menu-l">L. Places and location folders (menu L)</a></li><li><a href="#m-split-by-years-menu-s">M. Split by years (menu S)</a></li><li><a href="#n-merge-two-copies-menu-m">N. Merge two copies (menu M)</a></li><li><a href="#o-report-and-dashboard-menu-r-b">O. Report and dashboard (menu R, B)</a></li><li><a href="#p-update-sidecars-menu-j">P. Update sidecars (menu J)</a></li><li><a href="#q-checking-whats-filed-terminal">Q. Checking what's filed (terminal)</a></li><li><a href="#r-settings-da-archiveyaml">R. Settings (da-archive.yaml)</a></li><li><a href="#s-logs-records-and-safety">S. Logs, records and safety</a></li><li><a href="#t-another-pc-or-a-usb-drive">T. Another PC or a USB drive</a></li><li><a href="#u-messages-when-somethings-wrong">U. Messages when something's wrong</a></li><li><a href="#v-clean-up">V. Clean up</a></li><li><a href="#reporting-a-problem">Reporting a problem</a></li></ul></nav>
+<nav aria-label="Contents"><ul><li><a href="#before-you-start">Before you start</a><ul><li><a href="#make-a-test-kit">Make a test kit</a></li></ul></li><li><a href="#a-install-da">A. Install DA</a></li><li><a href="#b-create-an-archive">B. Create an archive</a></li><li><a href="#c-the-first-run-process-intake-menu-1">C. The first run: process intake (menu 1)</a></li><li><a href="#d-what-needs-review-menu-3">D. What needs review (menu 3)</a></li><li><a href="#e-status-and-the-index-menu-2-5">E. Status and the index (menu 2, 5)</a></li><li><a href="#f-duplicates-and-undo-menu-4">F. Duplicates and undo (menu 4)</a></li><li><a href="#g-documents-and-scans">G. Documents and scans</a></li><li><a href="#h-contact-sheets">H. Contact sheets</a></li><li><a href="#i-videos-live-photos-and-heic">I. Videos, Live Photos and HEIC</a></li><li><a href="#j-fix-dates-menu-d">J. Fix dates (menu D)</a></li><li><a href="#k-tags-terminal">K. Tags (terminal)</a></li><li><a href="#l-places-and-location-folders-menu-l">L. Places and location folders (menu L)</a></li><li><a href="#m-split-by-years-menu-s">M. Split by years (menu S)</a></li><li><a href="#n-merge-two-copies-menu-m">N. Merge two copies (menu M)</a></li><li><a href="#o-report-and-dashboard-menu-r-b">O. Report and dashboard (menu R, B)</a></li><li><a href="#p-update-sidecars-menu-j">P. Update sidecars (menu J)</a></li><li><a href="#q-checking-whats-filed-terminal">Q. Checking what's filed (terminal)</a></li><li><a href="#r-settings-da-archiveyaml">R. Settings (da-archive.yaml)</a></li><li><a href="#s-logs-records-and-safety">S. Logs, records and safety</a></li><li><a href="#t-another-pc-or-a-usb-drive">T. Another PC or a USB drive</a></li><li><a href="#u-messages-when-somethings-wrong">U. Messages when something's wrong</a></li><li><a href="#w-share-with-family-and-friends-da-share">W. Share with family and friends (da share)</a></li><li><a href="#v-clean-up">V. Clean up</a></li><li><a href="#reporting-a-problem">Reporting a problem</a></li></ul></nav>
 <main>
-<p class="print-only">DA v2026.10.50 &middot; da.gamenightbymike.com &middot; 2026-10-18</p>
+<p class="print-only">DA v2026.10.51 &middot; da.gamenightbymike.com &middot; 2026-10-18</p>
 <h1 id="da-test-plan">DA test plan</h1>
 <p>Thank you for testing DA. This plan walks through everything DA does, step by step: first with the
 <strong>menu</strong> (what most people use), then with <strong>commands typed in a terminal</strong> (for things the menu doesn't
@@ -1969,36 +1969,6 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
 <td>File Explorer opens with the file selected</td>
 <td>☐</td>
 </tr>
-<tr>
-<td>O20</td>
-<td>Add a share list with just your own address to <code>da-archive.yaml</code> (<code>share:</code> &gt; <code>lists:</code> &gt; <code>me: [you@gmail.com]</code>); <code>da share --lists</code></td>
-<td><em>me: 1 people</em></td>
-<td>☐</td>
-</tr>
-<tr>
-<td>O21</td>
-<td><code>da share photos\organized\&lt;a month&gt; --to me --note "Test"</code></td>
-<td><em>N photos</em>, the PDF's folder, <em>Nothing sent</em>; open the PDF: a note page, then 6 pictures a page with dates (and places)</td>
-<td>☐</td>
-</tr>
-<tr>
-<td>O22</td>
-<td>Set up sharing once (the guide's <em>Set up sharing</em>), ending with <code>da share --setup</code></td>
-<td>The browser asks to allow sending; <em>Signed in to Gmail</em></td>
-<td>☐</td>
-</tr>
-<tr>
-<td>O23</td>
-<td>The same <code>da share</code> with <code>--send</code>, answer <strong>y</strong></td>
-<td><em>Sent Photos: ...</em>; the email arrives with the PDF, and the To line doesn't show other addresses</td>
-<td>☐</td>
-</tr>
-<tr>
-<td>O24</td>
-<td>In the dashboard, open a photo large and press <strong>Share</strong></td>
-<td><em>Sent to me (1 people)</em>; the photo arrives</td>
-<td>☐</td>
-</tr>
 </tbody>
 </table>
 <h2 id="p-update-sidecars-menu-j">P. Update sidecars (menu J)</h2>
@@ -2296,6 +2266,186 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
 </tr>
 </tbody>
 </table>
+<h2 id="w-share-with-family-and-friends-da-share">W. Share with family and friends (da share)</h2>
+<p>Sharing sends email <strong>from your own Gmail</strong>, so it needs a one-time setup in Google's developer pages (about ten
+minutes; the guide's <em>Set up sharing (once)</em> has the same steps). Use a list with only <strong>your own address</strong> while
+testing, so nobody else gets test emails. Google's screens change now and then: if a name below doesn't match, look
+for the nearest one (newer pages call the consent screen <strong>Google Auth Platform</strong>, with <strong>Branding</strong>, <strong>Audience</strong>
+and <strong>Clients</strong>).</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Do this</th>
+<th>You should see</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>W1</td>
+<td>In <code>da-archive.yaml</code> add, at the end: <code>share:</code> / <code>lists:</code> / <code>me: [you@gmail.com]</code> (your own address); then <code>da share --lists</code></td>
+<td><em>me: 1 people</em></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>W2</td>
+<td><code>da share photos\organized\&lt;a month with photos&gt; --to me --note "Test share"</code></td>
+<td><em>Making the sheet: N photos</em> (videos and documents left out are counted), the PDF's folder in <code>output\shares\</code>, and <em>Nothing sent. To send it to me (1 people): add --send</em></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>W3</td>
+<td>Open that PDF</td>
+<td>Page 1: the month's name, <em>N pictures</em>, the dates, your note; then 6 pictures a page, each with its date (and place, for GPS photos) right under it</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>W4</td>
+<td>The same command with <code>--send</code> (before any setup)</td>
+<td><em>No Google client file at ...\google-client.json. See 'Set up sharing' in the guide</em>; nothing sent</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>W5</td>
+<td>Open https://console.cloud.google.com, sign in with your Gmail; at the top, <strong>Select a project</strong> &gt; <strong>New project</strong>, give it a name of 4 to 30 characters (e.g. <code>DA-sharing</code>), <strong>Create</strong>, and select it</td>
+<td>The page shows project your project at the top</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>W6</td>
+<td><strong>APIs &amp; Services</strong> &gt; <strong>Library</strong>, search <strong>Gmail API</strong>, open it, <strong>Enable</strong></td>
+<td><em>Gmail API</em> with <strong>Manage</strong> (it's enabled)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>W7</td>
+<td><strong>APIs &amp; Services</strong> &gt; <strong>OAuth consent screen</strong> (or <strong>Google Auth Platform</strong>): <strong>External</strong>; app name <code>DA-sharing</code> (or your project's name); your email where asked; save</td>
+<td>The consent screen is set up, publishing status <strong>Testing</strong></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>W8</td>
+<td>On the same pages, <strong>Test users</strong> (or <strong>Audience</strong>) &gt; <strong>Add users</strong>: your own Gmail address; save</td>
+<td>Your address is listed as a test user</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>W9</td>
+<td><strong>Credentials</strong> (or <strong>Clients</strong>) &gt; <strong>Create credentials</strong> &gt; <strong>OAuth client ID</strong>; application type <strong>Desktop app</strong>, any name (e.g. <code>Desktop client 1</code>); <strong>Create</strong>; <strong>Download JSON</strong></td>
+<td>A file like <code>client_secret_...json</code> in Downloads</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>W10</td>
+<td>In File Explorer type <code>%LOCALAPPDATA%\DA</code> in the address bar; put the downloaded file there and rename it <code>google-client.json</code></td>
+<td><code>%LOCALAPPDATA%\DA\google-client.json</code> exists</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>W11</td>
+<td>In a terminal: <code>da share --setup</code></td>
+<td>Your browser opens Google's sign-in: choose your account</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>W12</td>
+<td></td>
+<td><em>Google hasn't verified this app</em>: choose <strong>Continue</strong> (it's your own app); then allow <strong>Send email on your behalf</strong></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>W13</td>
+<td>Back in the terminal</td>
+<td><em>Signed in to Gmail (DA may only send). The sign-in is kept in ...\google-token.json</em></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>W14</td>
+<td>Look in <code>%LOCALAPPDATA%\DA</code>, then search the archive folder for <code>google</code></td>
+<td><code>google-token.json</code> is in <code>%LOCALAPPDATA%\DA</code>; nothing about Google is in the archive</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>W15</td>
+<td><code>da share photos\organized\&lt;the month&gt; --to me --note "Test share" --send</code></td>
+<td><em>Email 1 message to me (1 people)?</em>; answer <strong>y</strong>: <em>Sent Photos: ...</em></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>W16</td>
+<td>Open your Gmail inbox</td>
+<td>An email <em>Photos: <the month></em>, your note in it, the PDF attached; the To line says <em>undisclosed-recipients</em></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>W17</td>
+<td>Gmail's <strong>Sent</strong> folder</td>
+<td>The same email, sent from your address</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>W18</td>
+<td>Add a second address of yours to the list (<code>me: [you@gmail.com, you2@example.com]</code>) and send again</td>
+<td>Both get it; neither email shows the other address</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>W19</td>
+<td>Share a few months at once (big enough: 200+ photos), with <code>--send</code></td>
+<td><em>2 PDFs</em> (or more) and emails <em>(1 of 2)</em>, <em>(2 of 2)</em>, each with the note page</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>W20</td>
+<td><code>da share photos\organized\&lt;the month&gt; --to neighbours</code></td>
+<td><em>No list called 'neighbours'</em>; nothing made</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>W21</td>
+<td>In the dashboard (menu <strong>B</strong>), open a photo large and press <strong>Share</strong></td>
+<td>(one list: <em>Email this photo to me?</em> - <strong>OK</strong>) <em>Sent to me (1 people)</em>; the photo arrives as a JPEG</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>W22</td>
+<td>Open a video or a document large</td>
+<td><strong>Share</strong> is greyed out (photos only)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>W23</td>
+<td>Look at the end of <code>logs\da.jsonl</code></td>
+<td><code>share</code> lines with the list's name and the counts, and no email addresses</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>W24</td>
+<td><em>(Optional)</em> On the consent screen, <strong>Publish app</strong> (or <strong>Audience</strong> &gt; <strong>Publish</strong>)</td>
+<td>Publishing status <strong>In production</strong>; you won't be asked to sign in again every 7 days</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>W25</td>
+<td>Delete <code>%LOCALAPPDATA%\DA\google-token.json</code> (that's how to sign out), then share with <code>--send</code></td>
+<td>The browser opens to sign in again; after allowing it, the email is sent</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>W26</td>
+<td><em>(Another computer)</em> Copy the same <code>google-client.json</code> into that computer's <code>%LOCALAPPDATA%\DA</code>, then <code>da share --setup</code> there</td>
+<td>It signs in on that computer too (its own <code>google-token.json</code>); one OAuth client is enough for every computer</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>W27</td>
+<td><em>(Someone else sends from their own Gmail, on their computer)</em> Add their address under <strong>Test users</strong> (or <strong>Audience</strong>), or publish the app (W24); they run <code>da share --setup</code> and sign in with their account</td>
+<td>Their shares come from their address</td>
+<td>☐</td>
+</tr>
+</tbody>
+</table>
 <h2 id="v-clean-up">V. Clean up</h2>
 <table>
 <thead>
@@ -2333,7 +2483,7 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
 <li>If DA printed an error, the archive's <code>logs\da.jsonl</code> has the details: copy the last few lines.</li>
 <li>Leave out anything private: names, photos, and folder paths you'd rather not share.</li>
 </ol>
-<footer>DA v2026.10.50 &middot; guide built 2026-10-18 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
+<footer>DA v2026.10.51 &middot; guide built 2026-10-18 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
 </main>
 </div>
 
