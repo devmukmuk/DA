@@ -174,11 +174,11 @@ tr.tp-issues li { margin:3px 0; }
 }
 </style>
 </head>
-<body data-version="2026.10.60">
+<body data-version="2026.10.61">
 <header>
   <span class="title">DA Test Plan</span>
   
-  <span class="version">DA v2026.10.60</span>
+  <span class="version">DA v2026.10.61</span>
   <a class="button" href="index.html">Guide</a>
   <a class="button" href="verification.html">Test plan</a>
   <a class="button" href="defects.html">Known problems</a>
@@ -188,7 +188,7 @@ tr.tp-issues li { margin:3px 0; }
 <div class="layout">
 <nav aria-label="Contents"><ul><li><a href="#before-you-start">Before you start</a><ul><li><a href="#make-a-test-kit">Make a test kit</a></li></ul></li><li><a href="#a-install-da">A. Install DA</a></li><li><a href="#b-create-an-archive">B. Create an archive</a></li><li><a href="#c-the-first-run-process-intake-menu-1">C. The first run: process intake (menu 1)</a></li><li><a href="#d-what-needs-review-menu-3">D. What needs review (menu 3)</a></li><li><a href="#e-status-and-the-index-menu-2-5">E. Status and the index (menu 2, 5)</a></li><li><a href="#f-duplicates-and-undo-menu-4">F. Duplicates and undo (menu 4)</a></li><li><a href="#g-documents-and-scans">G. Documents and scans</a></li><li><a href="#h-contact-sheets">H. Contact sheets</a></li><li><a href="#i-videos-live-photos-and-heic">I. Videos, Live Photos and HEIC</a></li><li><a href="#j-fix-dates-menu-d">J. Fix dates (menu D)</a></li><li><a href="#k-tags-terminal">K. Tags (terminal)</a></li><li><a href="#l-places-and-location-folders-menu-l">L. Places and location folders (menu L)</a></li><li><a href="#m-split-by-years-menu-s">M. Split by years (menu S)</a></li><li><a href="#n-merge-two-copies-menu-m">N. Merge two copies (menu M)</a></li><li><a href="#o-report-and-dashboard-menu-r-b">O. Report and dashboard (menu R, B)</a></li><li><a href="#p-update-sidecars-menu-j">P. Update sidecars (menu J)</a></li><li><a href="#q-checking-whats-filed-terminal">Q. Checking what's filed (terminal)</a></li><li><a href="#r-settings-da-archiveyaml">R. Settings (da-archive.yaml)</a></li><li><a href="#s-logs-records-and-safety">S. Logs, records and safety</a></li><li><a href="#t-another-pc-or-a-usb-drive">T. Another PC or a USB drive</a></li><li><a href="#u-messages-when-somethings-wrong">U. Messages when something's wrong</a></li><li><a href="#x-picasa-da-picasa">X. Picasa (da picasa)</a></li><li><a href="#w-share-with-family-and-friends-da-share">W. Share with family and friends (da share)</a></li><li><a href="#v-clean-up">V. Clean up</a></li><li><a href="#reporting-a-problem">Reporting a problem</a></li></ul></nav>
 <main>
-<p class="print-only">DA v2026.10.60 &middot; da.gamenightbymike.com &middot; 2026-10-19</p>
+<p class="print-only">DA v2026.10.61 &middot; da.gamenightbymike.com &middot; 2026-10-19</p>
 <h1 id="da-test-plan">DA test plan</h1>
 <p>Thank you for testing DA. This plan walks through everything DA does, step by step: first with the
 <strong>menu</strong> (what most people use), then with <strong>commands typed in a terminal</strong> (for things the menu doesn't
@@ -2549,6 +2549,54 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
 <td>☐</td>
 </tr>
 <tr>
+<td>X28</td>
+<td><code>da similar</code></td>
+<td><em>N bursts (M photos ...) and K blurry photos - marked, never moved</em>; <code>bursts.csv</code>, <code>blurry.csv</code></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>X29</td>
+<td>Open <code>bursts.csv</code> and look at a burst's photos</td>
+<td>Shots of the same thing, a few seconds apart; one marked <em>best</em></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>X30</td>
+<td>Open <code>blurry.csv</code> and look at its photos</td>
+<td>Out of focus or accidental shots (not just foggy or plain ones)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>X31</td>
+<td><code>da similar --apply</code></td>
+<td>Nothing moves; <em>... marked: N sidecars (tags burst, burst:best, blurry)</em></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>X32</td>
+<td><code>da findit tags photos\organized -r burst:best -v</code></td>
+<td>The sharpest shot of each burst</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>X33</td>
+<td>A month's <code>_contact-sheet.pdf</code> with a burst</td>
+<td>Tiles say <em>burst 1 of 3</em>, <em>burst 2 of 3, best</em> ...; a blurry one <em>blurry</em></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>X34</td>
+<td><code>da tag &lt;that month&gt; --yes</code>, then a sidecar again</td>
+<td><code>burst</code> / <code>blurry</code> tags still there</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>X35</td>
+<td><code>da share</code> that month</td>
+<td><code>details.txt</code>: <em>Burst: shot 2 of 3 taken one after another (the sharpest ...)</em>, <em>Blurry: ...</em></td>
+<td>☐</td>
+</tr>
+<tr>
 <td>X13</td>
 <td><code>da share &lt;that month&gt; --to &lt;your own list&gt;</code></td>
 <td>Page 1: <em>People: …</em> and <em>Tags: …</em>; film strips with boxes; big pictures with boxes and names; <code>details.txt</code> starts with the people and each picture lists <em>People</em> and <em>Tags</em></td>
@@ -2779,7 +2827,7 @@ and <strong>Clients</strong>).</p>
 <li>If DA printed an error, the archive's <code>logs\da.jsonl</code> has the details: copy the last few lines.</li>
 <li>Leave out anything private: names, photos, and folder paths you'd rather not share.</li>
 </ol>
-<footer>DA v2026.10.60 &middot; guide built 2026-10-19 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
+<footer>DA v2026.10.61 &middot; guide built 2026-10-19 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
 </main>
 </div>
 

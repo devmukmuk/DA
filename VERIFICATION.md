@@ -506,6 +506,14 @@ Needs a folder Picasa looked at, with its `Picasa.ini` (or hidden `.picasa.ini`)
 | X25 | `da share` that month | The last pages: a framed box per picture with its copies and versions, each labelled | ☐ |
 | X26 | A burst (two shots a second apart of the same scene) | Neither set aside nor linked | ☐ |
 | X27 | A copy that had Photoshop Elements keywords, set aside | The kept photo's sidecar has a `keywords` block and those words in `user.tags` | ☐ |
+| X28 | `da similar` | *N bursts (M photos ...) and K blurry photos - marked, never moved*; `bursts.csv`, `blurry.csv` | ☐ |
+| X29 | Open `bursts.csv` and look at a burst's photos | Shots of the same thing, a few seconds apart; one marked *best* | ☐ |
+| X30 | Open `blurry.csv` and look at its photos | Out of focus or accidental shots (not just foggy or plain ones) | ☐ |
+| X31 | `da similar --apply` | Nothing moves; *... marked: N sidecars (tags burst, burst:best, blurry)* | ☐ |
+| X32 | `da findit tags photos\organized -r burst:best -v` | The sharpest shot of each burst | ☐ |
+| X33 | A month's `_contact-sheet.pdf` with a burst | Tiles say *burst 1 of 3*, *burst 2 of 3, best* ...; a blurry one *blurry* | ☐ |
+| X34 | `da tag <that month> --yes`, then a sidecar again | `burst` / `blurry` tags still there | ☐ |
+| X35 | `da share` that month | `details.txt`: *Burst: shot 2 of 3 taken one after another (the sharpest ...)*, *Blurry: ...* | ☐ |
 | X13 | `da share <that month> --to <your own list>` | Page 1: *People: …* and *Tags: …*; film strips with boxes; big pictures with boxes and names; `details.txt` starts with the people and each picture lists *People* and *Tags* | ☐ |
 
 ## W. Share with family and friends (da share)

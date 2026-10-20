@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.61 - 2026-10-19
+
+### New
+- Bursts and blurry photos marked (never moved)
+
 ## v2026.10.60 - 2026-10-19
 
 ### New
