@@ -534,6 +534,15 @@ Needs an archive where `da picasa --apply` has brought in Picasa's named faces (
 | Y9 | `da facial rename "<old>" "<new>"` | *Renamed N faces; N sidecars changed*; their `person:` tags have the new name | ☐ |
 | Y10 | `da facial forget --person "<someone>"`, then `da facial people` | They're gone from the list (Picasa's names in sidecars stay) | ☐ |
 | Y11 | On a PC with Smart App Control on: `da facial scan` | It works, or says plainly that Windows blocked it; other `da` commands still work | ☐ |
+| Y12 | `da dashboard`, **People** - **Show** | *N photos looked at, N faces, N people*; Everyone, Waiting for you (faces with *probably 0.62*), Who is this? groups | ☐ |
+| Y13 | Under a person, click a face that isn't them | It turns red with an X | ☐ |
+| Y14 | **Confirm the ticked ones** | *N faces named ...*, then *N faces: not them*; the person's count of photos goes up, the waiting faces go | ☐ |
+| Y15 | Open one of those photos' `.meta.json` | A `faces` block with the name and `"source": "you"`; `person:<name>` in `auto_tags` | ☐ |
+| Y16 | A group: type a name (the box offers known names), **Name the ticked ones** | The group goes; that person is in Everyone | ☐ |
+| Y17 | Another group: **Not a face** | It goes, and doesn't come back after `da facial suggest` | ☐ |
+| Y18 | Click a name in Everyone, type a new name | *<old> is <new> now*; their photos' tags have the new name | ☐ |
+| Y19 | `da facial suggest` again, then **Refresh** | The faces you turned down aren't suggested for that person again | ☐ |
+| Y20 | `da tag <a month with named faces> --yes` | The `person:` tags you gave are still there | ☐ |
 | X13 | `da share <that month> --to <your own list>` | Page 1: *People: …* and *Tags: …*; film strips with boxes; big pictures with boxes and names; `details.txt` starts with the people and each picture lists *People* and *Tags* | ☐ |
 
 ## W. Share with family and friends (da share)

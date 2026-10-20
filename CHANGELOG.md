@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.63 - 2026-10-20
+
+### New
+- The dashboard's People page - confirm suggestions, name groups
+
 ## v2026.10.62 - 2026-10-20
 
 ### New
