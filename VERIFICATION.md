@@ -51,7 +51,7 @@ you can try; skip a step whose files you don't have and mark it **skipped**.
 | `docs` | 3-5 PDFs (bills, letters) and a Word or Excel file | G |
 | `doubles` | 3 photos that are **exact copies** of photos in `phone` (copy them again) | F |
 | `old` | 3-5 photos taken in a different decade from the rest (say 2005 if the rest are 2020s) | M |
-| `other` | an old camera video (`.AVI` / `.MPG`), a `.CR2`/`.NEF` raw file with its JPG, a screenshot | D, I |
+| `other` | an old camera video (`.AVI` / `.MPG`), a `.CR2`/`.CR3`/`.NEF` raw file with its JPG and one without, a screenshot | D, I |
 
 ## A. Install DA
 
@@ -145,7 +145,9 @@ Copy the whole test kit (except `old`) into `jane-archive-202x\intake\photos\kit
 | D5 | Open that `review.csv` (double-click; it opens in Excel or Notepad) | One row per file: reason, file, detail | ☐ |
 | D6 | The screenshot from `other` | Filed by a date in its name, or listed under No date - not a crash | ☐ |
 | D7 | The raw file (`.CR2`/`.NEF`) | Moved and renamed together with its JPG (same new name, raw extension), not left alone | ☐ |
-| D8 | A raw file whose JPG isn't there | Left in intake | ☐ |
+| D8 | A raw file whose JPG isn't there (e.g. a Canon `.CR2`) | Filed as a photo by its own date: `photo_<date>_<time>_xxxx.cr2`, its sidecar has the camera; the contact sheet shows its picture | ☐ |
+| D8a | A Canon `.CR3` alone | The same as D8 (`…_xxxx.cr3`); the tile shows its preview the right way up | ☐ |
+| D8b | A `.CR3` with its `.JPG` (*RAW + JPEG*) | Both filed together, the same new name; one tile on the sheet | ☐ |
 
 ## E. Status and the index (menu 2, 5)
 
@@ -514,6 +516,24 @@ Needs a folder Picasa looked at, with its `Picasa.ini` (or hidden `.picasa.ini`)
 | X33 | A month's `_contact-sheet.pdf` with a burst | Tiles say *burst 1 of 3*, *burst 2 of 3, best* ...; a blurry one *blurry* | ☐ |
 | X34 | `da tag <that month> --yes`, then a sidecar again | `burst` / `blurry` tags still there | ☐ |
 | X35 | `da share` that month | `details.txt`: *Burst: shot 2 of 3 taken one after another (the sharpest ...)*, *Blurry: ...* | ☐ |
+
+## Y. People (da facial)
+
+Needs an archive where `da picasa --apply` has brought in Picasa's named faces (section X).
+
+| ID | Do this | Expect | ✓ |
+|---|---|---|---|
+| Y1 | `da facial scan` (the first time) | *Downloading face_detection_yunet ... (once)* and *face_recognition_sface ... (39 MB, once)*, then *N photos; N not looked at yet* | ☐ |
+| Y2 | Let it run (asks first when there are more than 500) | *Looked at N photos: N faces ... Faces with Picasa's names: N* | ☐ |
+| Y3 | `da facial scan` again | *0 not looked at yet*; quick | ☐ |
+| Y4 | `da facial people` | A table: each person, photos, *Named by Picasa*, *Suggested* (0 until suggest) | ☐ |
+| Y5 | `da facial suggest` | *Suggested: N faces probably someone known, N maybe; N not like anyone known (N groups)*, a CSV and a PDF | ☐ |
+| Y6 | Open the PDF | A page per person with faces suggested (*probably 0.62*); *Who is this? Group 1* pages of alike faces | ☐ |
+| Y7 | `da facial people` again | *Suggested: probably / maybe* counts filled in | ☐ |
+| Y8 | A person shown as an account id (`..._lh,4d61...`) | Marked *(a Picasa contact with no name)* with the rename line | ☐ |
+| Y9 | `da facial rename "<old>" "<new>"` | *Renamed N faces; N sidecars changed*; their `person:` tags have the new name | ☐ |
+| Y10 | `da facial forget --person "<someone>"`, then `da facial people` | They're gone from the list (Picasa's names in sidecars stay) | ☐ |
+| Y11 | On a PC with Smart App Control on: `da facial scan` | It works, or says plainly that Windows blocked it; other `da` commands still work | ☐ |
 | X13 | `da share <that month> --to <your own list>` | Page 1: *People: …* and *Tags: …*; film strips with boxes; big pictures with boxes and names; `details.txt` starts with the people and each picture lists *People* and *Tags* | ☐ |
 
 ## W. Share with family and friends (da share)

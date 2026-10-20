@@ -2,6 +2,12 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.62 - 2026-10-20
+
+### New
+- Canon CR2 / CR3 (and other raw files) on their own are filed as photos
+- da facial scan, people, suggest, rename, forget
+
 ## v2026.10.61 - 2026-10-19
 
 ### New
