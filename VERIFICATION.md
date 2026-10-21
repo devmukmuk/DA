@@ -117,12 +117,14 @@ Copy the whole test kit (except `old`) into `jane-archive-202x\intake\photos\kit
 | C2 | Press **1** (Process intake) | "Counting what's in intake …", then a list of intake's folders with file counts | ☐ |
 | C3 | Type the number of `photos` to open it | Its subfolders (`kit`) are listed; you can open further, go up, or filter by name | ☐ |
 | C4 | Type part of a name (for example `kit`) to filter | Only matching folders are listed | ☐ |
-| C5 | Go back up to the top of intake and choose to process **all of intake** | "Processing … DA asks before moving anything" | ☐ |
-| C6 | Watch step **1/7 Indexing** | A count of files indexed, no error | ☐ |
-| C7 | Step **2/7 Hashing** | A progress count, then a summary | ☐ |
-| C8 | Step **3/7** (duplicates): it asks whether to set exact copies aside; answer **y** | The 3 `doubles` are listed and moved to `_duplicates-holding` (see F) | ☐ |
-| C9 | Step **4/7 Preview** | "planning names and folders (nothing moves)" and a plan: how many files to file, how many need review | ☐ |
-| C10 | Step **5/7 Plan/check** | Numbers of files to file, raw files and Live Photo videos going with them, and problems to review | ☐ |
+| C5 | Go back up to the top of intake and choose to process **all of intake** | The **steps after filing** list: 8-11, with **9 Tags** ticked | ☐ |
+| C5a | Type **10**, then **10** again | Places switches on, then off | ☐ |
+| C5b | Type **8** and press **Enter** | *(Kept as your usual steps.)*, then "Processing … DA asks before moving anything"; `da-archive.yaml` now has `run:` `after_filing: [owners, tags]` | ☐ |
+| C6 | Watch step **1/11 Indexing** | A count of files indexed, no error | ☐ |
+| C7 | Step **2/11 Hashing** | A progress count, then a summary | ☐ |
+| C8 | Step **3/11** (duplicates): it asks whether to set exact copies aside; answer **y** | The 3 `doubles` are listed and moved to `_duplicates-holding` (see F) | ☐ |
+| C9 | Step **4/11 Preview** | "planning names and folders (nothing moves)" and a plan: how many files to file, how many need review | ☐ |
+| C10 | Step **5/11 Plan/check** | Numbers of files to file, raw files and Live Photo videos going with them, and problems to review | ☐ |
 | C11 | It asks whether to file them; answer **n** | It stops; nothing was moved; the run is recorded in `output\runs\` | ☐ |
 | C12 | Press **1** again and process all of intake again; answer **y** to each question | Steps 1-7 run; "Filed N; unchanged N (M re-hashed); problems: 0" and "Done. Run record: …" | ☐ |
 | C13 | | Right after, "Where things stand now:" and the Status (fewer files waiting) | ☐ |
@@ -131,6 +133,10 @@ Copy the whole test kit (except `old`) into `jane-archive-202x\intake\photos\kit
 | C16 | Check one photo's name against when it was taken (its date in the Photos app) | The date and time in the name match | ☐ |
 | C17 | Open one `.meta.json` in Notepad | A text file with `"schema": {"name": "mindit.sidecar", "version": 2}`, a `file` block with its sha256, and a `camera` block | ☐ |
 | C18 | Look in `intake\photos\kit` | Only files that need you are left (no date, other decade, …) | ☐ |
+| C18a | At the end of the run | *8/11 Camera owners:* (it asks about cameras with no owner, or says all are known), *9/11 Tags: N photos tagged*, *10/11 Places: skipped*, *11/11 Location folders: skipped* | ☐ |
+| C18b | In a terminal: `da run --skip tags --with places` on a new folder | *9/11 Tags: skipped*, *10/11 Places:* looks up the GPS photos just filed | ☐ |
+| C18c | `da run --yes --with groups` on a folder with GPS photos | *11/11 Location folders:* lists the months to group (`da location group ...`), asks nothing | ☐ |
+| C18d | `da run --skip photos` | A clear message: *isn't a step DA can switch* with the list | ☐ |
 | C19 | Back in the menu, press **2** (Status) | Organized photos/documents counts and the last run's time and "filed N" | ☐ |
 | C20 | Process intake a third time | "Nothing to file" (or only the review ones are planned) - nothing is filed twice | ☐ |
 

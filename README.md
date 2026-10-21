@@ -1,6 +1,6 @@
 # DA - Digital Archive
 
-**Latest version:** 2026.10.63 (2026-10-20)
+**Latest version:** 2026.10.64 (2026-10-20)
 
 DA files your photos, videos and scanned documents by the date they were taken. It sets exact
 duplicates aside, names each file by its date, and puts it in a `YYYY\YYYY-MM` folder, with a contact
@@ -24,10 +24,10 @@ sheet for every month. It never deletes anything, and it asks before it moves an
 - **Testing DA?** The [test plan](https://da.gamenightbymike.com/verification.html) (also as a
   [PDF](https://da.gamenightbymike.com/DA-Test-Plan.pdf) to print) and the [known problems](https://da.gamenightbymike.com/defects.html)
 
-## What's new in v2026.10.63
+## What's new in v2026.10.64
 
 ### New
-- The dashboard's People page - confirm suggestions, name groups
+- Process intake's steps after filing - 8 camera owners, 9 tags, 10 places, 11 location folders
 
 ## Found a problem?
 

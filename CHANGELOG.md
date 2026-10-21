@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.64 - 2026-10-20
+
+### New
+- Process intake's steps after filing - 8 camera owners, 9 tags, 10 places, 11 location folders
+
 ## v2026.10.63 - 2026-10-20
 
 ### New
