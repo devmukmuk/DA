@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.65 - 2026-10-21
+
+### New
+- Confirmed names on contact sheets, shares and history; Process intake step 12 Faces
+
 ## v2026.10.64 - 2026-10-20
 
 ### New
