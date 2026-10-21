@@ -532,6 +532,7 @@ Needs an archive where `da picasa --apply` has brought in Picasa's named faces (
 | Y1 | `da facial scan` (the first time) | *Downloading face_detection_yunet ... (once)* and *face_recognition_sface ... (39 MB, once)*, then *N photos; N not looked at yet* | ☐ |
 | Y2 | Let it run (asks first when there are more than 500) | *Looked at N photos: N faces ... Faces with Picasa's names: N* | ☐ |
 | Y3 | `da facial scan` again | *0 not looked at yet*; quick | ☐ |
+| Y3a | `da facial scan` on a big archive (10,000+ photos) | It keeps going at a steady pace (about 0.1 s a photo); Task Manager shows DA staying under about 1 GB of memory | ☐ |
 | Y4 | `da facial people` | A table: each person, photos, *Named by Picasa*, *Suggested* (0 until suggest) | ☐ |
 | Y5 | `da facial suggest` | *Suggested: N faces probably someone known, N maybe; N not like anyone known (N groups)*, a CSV and a PDF | ☐ |
 | Y6 | Open the PDF | A page per person with faces suggested (*probably 0.62*); *Who is this? Group 1* pages of alike faces | ☐ |

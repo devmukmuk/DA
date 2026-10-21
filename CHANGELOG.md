@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.66 - 2026-10-21
+
+### Fixed
+- da facial scan ran out of memory on a big archive
+
 ## v2026.10.65 - 2026-10-21
 
 ### New
