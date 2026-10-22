@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.69 - 2026-10-22
+
+### New
+- Keep every folder a file came in from; {from:N} tokens and folder: tags
+
 ## v2026.10.68 - 2026-10-22
 
 ### New

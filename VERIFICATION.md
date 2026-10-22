@@ -302,6 +302,13 @@ Copy the whole test kit (except `old`) into `jane-archive-202x\intake\photos\kit
 | K41 | Open `passwords.csv` from `output\runs\<date-time>-passwords\` | Both files, the password hidden | ☐ |
 | K42 | `da find --passwords --move`, answer **y** | *Moved 1 to ...\_secure-holding*; `logins.txt` is in `_secure-holding\<today>\intake\docs`, the PDF stays | ☐ |
 | K43 | `da intake undo "<the secure-moved.csv it printed>"` | `logins.txt` is back in `intake\docs` | ☐ |
+| K44 | Put photos in `intake\photos\Jones Family Photos\Scans\` and `...\Jones Family Photos\DCIM\100CANON\`, **1 Process intake**, open a sidecar | An `origin` block: `folders` `[Jones Family Photos, Scans]` | ☐ |
+| K45 | Its `auto_tags` | `folder:jones-family-photos` and `folder:scans`; none for `DCIM` or `100CANON` | ☐ |
+| K46 | `da findit tags photos\organized -r folder:jones-family-photos -v` | Both photos | ☐ |
+| K47 | Add `origin:` / `skip: [Scans]` to `da-archive.yaml`, `da tag photos\organized --yes` | `folder:scans` gone; `folder:jones-family-photos` kept | ☐ |
+| K48 | `da rename --folder "{YYYY}\{YYYY}-{MM}-{from:1}"` | The plan puts them in `2009\2009-01-Jones Family Photos` ...; nothing moves | ☐ |
+| K49 | In an archive filed before this version: `da tag`, then open a sidecar | An `origin` block from the path it came in with (`recorded_at` today) | ☐ |
+| K50 | **5 Refresh index**, `da db query "SELECT origin, count(*) FROM files GROUP BY origin"` | The folders photos came in from, with counts | ☐ |
 
 ## L. Places and location folders (menu L)
 
