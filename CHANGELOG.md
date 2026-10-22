@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.67 - 2026-10-21
+
+### New
+- One year or a decade for --years; set up the folder you're in
+
 ## v2026.10.66 - 2026-10-21
 
 ### Fixed

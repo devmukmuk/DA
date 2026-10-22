@@ -104,7 +104,10 @@ you can try; skip a step whose files you don't have and mark it **skipped**.
 | B17 | `da setup C:\DA-test\sam-archive-200x --years 2000-2009` again | It says the archive is already there and keeps its settings (nothing moved) | ☐ |
 | B18 | Make a folder `C:\DA-test\filled`, copy 3 kit photos into it, then `da setup C:\DA-test\filled` | It lists what's in the folder and asks before moving those into `intake\`; answer **n** | ☐ |
 | B19 | Run it again and answer **y** | The 3 photos are now in `C:\DA-test\filled\intake\`, and the archive's files appear | ☐ |
-| B20 | `da setup C:\DA-test\bad --years 1999-1990` | A clear message that years must look like 1990-1999 (nothing made) | ☐ |
+| B20 | `da setup C:\DA-test\bad --years 1999-1990` | A clear message that years look like 1990-1999, 1999 or 199x (nothing made) | ☐ |
+| B20a | Make `C:\DA-test\one-year`, `cd` into it, `da setup --here --yes --years 1999` | An archive there; its `da-archive.yaml` says `years: "1999-1999"` | ☐ |
+| B20b | Make `C:\DA-test\decade`, `cd` into it, type `da`; then **h** and `200x` | *You're not inside an archive*, your archives and **H** *make this folder an archive*; then it's an archive with years 2000-2009 and its menu opens | ☐ |
+| B20c | `cd C:\` and `da setup --here --yes` | Refused: *the top of a drive* (nothing made) | ☐ |
 
 ## C. The first run: process intake (menu 1)
 

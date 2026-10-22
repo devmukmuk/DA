@@ -174,11 +174,11 @@ tr.tp-issues li { margin:3px 0; }
 }
 </style>
 </head>
-<body data-version="2026.10.66">
+<body data-version="2026.10.67">
 <header>
   <span class="title">DA Test Plan</span>
   
-  <span class="version">DA v2026.10.66</span>
+  <span class="version">DA v2026.10.67</span>
   <a class="button" href="index.html">Guide</a>
   <a class="button" href="verification.html">Test plan</a>
   <a class="button" href="defects.html">Known problems</a>
@@ -188,7 +188,7 @@ tr.tp-issues li { margin:3px 0; }
 <div class="layout">
 <nav aria-label="Contents"><ul><li><a href="#before-you-start">Before you start</a><ul><li><a href="#make-a-test-kit">Make a test kit</a></li></ul></li><li><a href="#a-install-da">A. Install DA</a></li><li><a href="#b-create-an-archive">B. Create an archive</a></li><li><a href="#c-the-first-run-process-intake-menu-1">C. The first run: process intake (menu 1)</a></li><li><a href="#d-what-needs-review-menu-3">D. What needs review (menu 3)</a></li><li><a href="#e-status-and-the-index-menu-2-5">E. Status and the index (menu 2, 5)</a></li><li><a href="#f-duplicates-and-undo-menu-4">F. Duplicates and undo (menu 4)</a></li><li><a href="#g-documents-and-scans">G. Documents and scans</a></li><li><a href="#h-contact-sheets">H. Contact sheets</a></li><li><a href="#i-videos-live-photos-and-heic">I. Videos, Live Photos and HEIC</a></li><li><a href="#j-fix-dates-menu-d">J. Fix dates (menu D)</a></li><li><a href="#k-tags-terminal">K. Tags (terminal)</a></li><li><a href="#l-places-and-location-folders-menu-l">L. Places and location folders (menu L)</a></li><li><a href="#m-split-by-years-menu-s">M. Split by years (menu S)</a></li><li><a href="#n-merge-two-copies-menu-m">N. Merge two copies (menu M)</a></li><li><a href="#o-report-and-dashboard-menu-r-b">O. Report and dashboard (menu R, B)</a></li><li><a href="#p-update-sidecars-menu-j">P. Update sidecars (menu J)</a></li><li><a href="#q-checking-whats-filed-terminal">Q. Checking what's filed (terminal)</a></li><li><a href="#r-settings-da-archiveyaml">R. Settings (da-archive.yaml)</a></li><li><a href="#s-logs-records-and-safety">S. Logs, records and safety</a></li><li><a href="#t-another-pc-or-a-usb-drive">T. Another PC or a USB drive</a></li><li><a href="#u-messages-when-somethings-wrong">U. Messages when something's wrong</a></li><li><a href="#x-picasa-da-picasa">X. Picasa (da picasa)</a></li><li><a href="#y-people-da-facial">Y. People (da facial)</a></li><li><a href="#w-share-with-family-and-friends-da-share">W. Share with family and friends (da share)</a></li><li><a href="#v-clean-up">V. Clean up</a></li><li><a href="#reporting-a-problem">Reporting a problem</a></li></ul></nav>
 <main>
-<p class="print-only">DA v2026.10.66 &middot; da.gamenightbymike.com &middot; 2026-10-21</p>
+<p class="print-only">DA v2026.10.67 &middot; da.gamenightbymike.com &middot; 2026-10-21</p>
 <h1 id="da-test-plan">DA test plan</h1>
 <p>Thank you for testing DA. This plan walks through everything DA does, step by step: first with the
 <strong>menu</strong> (what most people use), then with <strong>commands typed in a terminal</strong> (for things the menu doesn't
@@ -560,7 +560,25 @@ you can try; skip a step whose files you don't have and mark it <strong>skipped<
 <tr>
 <td>B20</td>
 <td><code>da setup C:\DA-test\bad --years 1999-1990</code></td>
-<td>A clear message that years must look like 1990-1999 (nothing made)</td>
+<td>A clear message that years look like 1990-1999, 1999 or 199x (nothing made)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>B20a</td>
+<td>Make <code>C:\DA-test\one-year</code>, <code>cd</code> into it, <code>da setup --here --yes --years 1999</code></td>
+<td>An archive there; its <code>da-archive.yaml</code> says <code>years: "1999-1999"</code></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>B20b</td>
+<td>Make <code>C:\DA-test\decade</code>, <code>cd</code> into it, type <code>da</code>; then <strong>h</strong> and <code>200x</code></td>
+<td><em>You're not inside an archive</em>, your archives and <strong>H</strong> <em>make this folder an archive</em>; then it's an archive with years 2000-2009 and its menu opens</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>B20c</td>
+<td><code>cd C:\</code> and <code>da setup --here --yes</code></td>
+<td>Refused: <em>the top of a drive</em> (nothing made)</td>
 <td>☐</td>
 </tr>
 </tbody>
@@ -3045,7 +3063,7 @@ and <strong>Clients</strong>).</p>
 <li>If DA printed an error, the archive's <code>logs\da.jsonl</code> has the details: copy the last few lines.</li>
 <li>Leave out anything private: names, photos, and folder paths you'd rather not share.</li>
 </ol>
-<footer>DA v2026.10.66 &middot; guide built 2026-10-21 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
+<footer>DA v2026.10.67 &middot; guide built 2026-10-21 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
 </main>
 </div>
 
