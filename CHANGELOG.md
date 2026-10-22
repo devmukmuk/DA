@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.72 - 2026-10-22
+
+### Fixed
+- Tags: a raw file filed on its own is a photo for da tag
+
 ## v2026.10.71 - 2026-10-22
 
 ### Fixed
