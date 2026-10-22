@@ -2,6 +2,12 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.68 - 2026-10-22
+
+### New
+- Find files by the folder they came from, their camera or part of a name
+- Link an edit named after its photo; guide: edit a filed photo
+
 ## v2026.10.67 - 2026-10-21
 
 ### New

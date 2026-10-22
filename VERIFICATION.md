@@ -460,6 +460,10 @@ Make a copy of `da-archive.yaml` first; put it back at the end.
 | S1m | Same, with `--everywhere` (the same photo in another archive) | *Copies* also lists the other archive's | ☐ |
 | S1n | `da history --duplicates` | Each held copy, when it was set aside, and *a copy of* its filed original | ☐ |
 | S1o | `da history nothing-like-this.jpg` | *Nothing found ...* (and the `--everywhere` hint) | ☐ |
+| S1p | **5 Refresh index**, then `da history --from 100CANON` (a camera folder you processed; any part of a folder name) | *N files in <archive>*, counts by camera and by the folder they came from, then the files with where each is now | ☐ |
+| S1q | `da history --camera <part of a camera's name, e.g. iphone>` | Only that camera's files (`da tag --cameras` lists the names) | ☐ |
+| S1r | `da history --camera <camera> --name <part of one photo's old name>` | Exactly one: its whole story | ☐ |
+| S1s | `da history --from NOTAFOLDER` | *Nothing found for from 'NOTAFOLDER'* | ☐ |
 | S2 | Open `output\runs\` | A folder per run (`…-run`, `…-split`, `…-merge`, `…-location-group`, …) with its records | ☐ |
 | S3 | Start processing a big folder and press **Ctrl+C** during step 2 | It stops; run it again and it carries on (nothing half-moved) | ☐ |
 | S4 | Run `da run --yes` in one window and `da status` in another | Status works while the run is going (don't run two changing commands at once - see the known problems) | ☐ |
@@ -525,6 +529,9 @@ Needs a folder Picasa looked at, with its `Picasa.ini` (or hidden `.picasa.ini`)
 | X33 | A month's `_contact-sheet.pdf` with a burst | Tiles say *burst 1 of 3*, *burst 2 of 3, best* ...; a blurry one *blurry* | ☐ |
 | X34 | `da tag <that month> --yes`, then a sidecar again | `burst` / `blurry` tags still there | ☐ |
 | X35 | `da share` that month | `details.txt`: *Burst: shot 2 of 3 taken one after another (the sharpest ...)*, *Blurry: ...* | ☐ |
+| X36 | Open a filed photo in Windows Photos, make it much brighter (or black and white), **Save as copy** into `intake\photos\edits\` as `<its name>-edited.jpg` | The filed photo is unchanged | ☐ |
+| X37 | **1 Process intake** | The edit is filed in the same month folder, with a new name (same date and time, a new 4-letter ending) | ☐ |
+| X38 | `da similar --apply` | *Versions linked*; both sidecars have a `versions` block (role original / edited) | ☐ |
 
 ## Y. People (da facial)
 

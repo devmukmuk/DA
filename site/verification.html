@@ -174,11 +174,11 @@ tr.tp-issues li { margin:3px 0; }
 }
 </style>
 </head>
-<body data-version="2026.10.67">
+<body data-version="2026.10.68">
 <header>
   <span class="title">DA Test Plan</span>
   
-  <span class="version">DA v2026.10.67</span>
+  <span class="version">DA v2026.10.68</span>
   <a class="button" href="index.html">Guide</a>
   <a class="button" href="verification.html">Test plan</a>
   <a class="button" href="defects.html">Known problems</a>
@@ -188,7 +188,7 @@ tr.tp-issues li { margin:3px 0; }
 <div class="layout">
 <nav aria-label="Contents"><ul><li><a href="#before-you-start">Before you start</a><ul><li><a href="#make-a-test-kit">Make a test kit</a></li></ul></li><li><a href="#a-install-da">A. Install DA</a></li><li><a href="#b-create-an-archive">B. Create an archive</a></li><li><a href="#c-the-first-run-process-intake-menu-1">C. The first run: process intake (menu 1)</a></li><li><a href="#d-what-needs-review-menu-3">D. What needs review (menu 3)</a></li><li><a href="#e-status-and-the-index-menu-2-5">E. Status and the index (menu 2, 5)</a></li><li><a href="#f-duplicates-and-undo-menu-4">F. Duplicates and undo (menu 4)</a></li><li><a href="#g-documents-and-scans">G. Documents and scans</a></li><li><a href="#h-contact-sheets">H. Contact sheets</a></li><li><a href="#i-videos-live-photos-and-heic">I. Videos, Live Photos and HEIC</a></li><li><a href="#j-fix-dates-menu-d">J. Fix dates (menu D)</a></li><li><a href="#k-tags-terminal">K. Tags (terminal)</a></li><li><a href="#l-places-and-location-folders-menu-l">L. Places and location folders (menu L)</a></li><li><a href="#m-split-by-years-menu-s">M. Split by years (menu S)</a></li><li><a href="#n-merge-two-copies-menu-m">N. Merge two copies (menu M)</a></li><li><a href="#o-report-and-dashboard-menu-r-b">O. Report and dashboard (menu R, B)</a></li><li><a href="#p-update-sidecars-menu-j">P. Update sidecars (menu J)</a></li><li><a href="#q-checking-whats-filed-terminal">Q. Checking what's filed (terminal)</a></li><li><a href="#r-settings-da-archiveyaml">R. Settings (da-archive.yaml)</a></li><li><a href="#s-logs-records-and-safety">S. Logs, records and safety</a></li><li><a href="#t-another-pc-or-a-usb-drive">T. Another PC or a USB drive</a></li><li><a href="#u-messages-when-somethings-wrong">U. Messages when something's wrong</a></li><li><a href="#x-picasa-da-picasa">X. Picasa (da picasa)</a></li><li><a href="#y-people-da-facial">Y. People (da facial)</a></li><li><a href="#w-share-with-family-and-friends-da-share">W. Share with family and friends (da share)</a></li><li><a href="#v-clean-up">V. Clean up</a></li><li><a href="#reporting-a-problem">Reporting a problem</a></li></ul></nav>
 <main>
-<p class="print-only">DA v2026.10.67 &middot; da.gamenightbymike.com &middot; 2026-10-21</p>
+<p class="print-only">DA v2026.10.68 &middot; da.gamenightbymike.com &middot; 2026-10-22</p>
 <h1 id="da-test-plan">DA test plan</h1>
 <p>Thank you for testing DA. This plan walks through everything DA does, step by step: first with the
 <strong>menu</strong> (what most people use), then with <strong>commands typed in a terminal</strong> (for things the menu doesn't
@@ -2335,6 +2335,30 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
 <td>☐</td>
 </tr>
 <tr>
+<td>S1p</td>
+<td><strong>5 Refresh index</strong>, then <code>da history --from 100CANON</code> (a camera folder you processed; any part of a folder name)</td>
+<td><em>N files in <archive></em>, counts by camera and by the folder they came from, then the files with where each is now</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>S1q</td>
+<td><code>da history --camera &lt;part of a camera's name, e.g. iphone&gt;</code></td>
+<td>Only that camera's files (<code>da tag --cameras</code> lists the names)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>S1r</td>
+<td><code>da history --camera &lt;camera&gt; --name &lt;part of one photo's old name&gt;</code></td>
+<td>Exactly one: its whole story</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>S1s</td>
+<td><code>da history --from NOTAFOLDER</code></td>
+<td><em>Nothing found for from 'NOTAFOLDER'</em></td>
+<td>☐</td>
+</tr>
+<tr>
 <td>S2</td>
 <td>Open <code>output\runs\</code></td>
 <td>A folder per run (<code>…-run</code>, <code>…-split</code>, <code>…-merge</code>, <code>…-location-group</code>, …) with its records</td>
@@ -2660,6 +2684,24 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
 <td>X35</td>
 <td><code>da share</code> that month</td>
 <td><code>details.txt</code>: <em>Burst: shot 2 of 3 taken one after another (the sharpest ...)</em>, <em>Blurry: ...</em></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>X36</td>
+<td>Open a filed photo in Windows Photos, make it much brighter (or black and white), <strong>Save as copy</strong> into <code>intake\photos\edits\</code> as <code>&lt;its name&gt;-edited.jpg</code></td>
+<td>The filed photo is unchanged</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>X37</td>
+<td><strong>1 Process intake</strong></td>
+<td>The edit is filed in the same month folder, with a new name (same date and time, a new 4-letter ending)</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>X38</td>
+<td><code>da similar --apply</code></td>
+<td><em>Versions linked</em>; both sidecars have a <code>versions</code> block (role original / edited)</td>
 <td>☐</td>
 </tr>
 </tbody>
@@ -3063,7 +3105,7 @@ and <strong>Clients</strong>).</p>
 <li>If DA printed an error, the archive's <code>logs\da.jsonl</code> has the details: copy the last few lines.</li>
 <li>Leave out anything private: names, photos, and folder paths you'd rather not share.</li>
 </ol>
-<footer>DA v2026.10.67 &middot; guide built 2026-10-21 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
+<footer>DA v2026.10.68 &middot; guide built 2026-10-22 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
 </main>
 </div>
 
