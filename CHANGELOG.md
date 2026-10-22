@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.70 - 2026-10-22
+
+### Guide
+- Single quotes for folder patterns in da-archive.yaml; how the two folder settings fit
+
 ## v2026.10.69 - 2026-10-22
 
 ### New
