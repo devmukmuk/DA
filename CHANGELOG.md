@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.71 - 2026-10-22
+
+### Fixed
+- Checking: a camera's frame number (IMG_1900) is not a year
+
 ## v2026.10.70 - 2026-10-22
 
 ### Guide
