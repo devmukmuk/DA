@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.73 - 2026-10-23
+
+### New
+- da holding checks every held copy for its original; --empty sends those to the Recycle Bin
+
 ## v2026.10.72 - 2026-10-22
 
 ### Fixed

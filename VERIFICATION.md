@@ -182,6 +182,10 @@ Copy the whole test kit (except `old`) into `jane-archive-202x\intake\photos\kit
 | F4 | Process intake again (menu 1, answer y) | The doubles are set aside again (they're still exact copies of filed photos) | ☐ |
 | F5 | Press **4** and answer **n** | Nothing changes | ☐ |
 | F6 | Delete the folder in `_duplicates-holding` yourself (they're copies) | Fine: DA doesn't need them | ☐ |
+| F6a | Put a duplicate back in intake and process it again (it's set aside again), then `da holding` | *N files in holding: N have their original*; `holding-check.csv` in `output\runs\<date-time>-holding\` names each original | ☐ |
+| F6b | Put a file of your own in `_duplicates-holding\<date>\`, then `da holding` | *1 stay ... no original*, with its name | ☐ |
+| F6c | `da holding --empty`, answer **y** | The copies with an original are in the Recycle Bin (with their `.meta.json`); your own file is still there; `holding-emptied.csv` lists them | ☐ |
+| F6d | Restore one from the Recycle Bin | It comes back where it was | ☐ |
 | F7 | *(Optional, long paths off: skip it if A4c turned them on)* Put a copy of a kit photo in intake inside folders nested deep enough that its path is about 240 characters, and process intake | The step carries on; *Not moved ... path too long for Windows* for that copy, which stays in intake | ☐ |
 
 ## G. Documents and scans
