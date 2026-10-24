@@ -345,6 +345,7 @@ These need an internet connection, except L12.
 | L23 | Same month again, type `-` for a group | That group stays in the month folder | ☐ |
 | L24 | `untitled: '{camera}-{owner}'`, **L** on a month (cameras with owners: `da tag --cameras`) | Folders like `<YYYY-MM> Canon PowerShot A80-jane (...)` | ☐ |
 | L25 | `da location group <month>` (no `--yes`), then with `--yes` | First *using location.untitled ... Nothing moved*; then the folders are made | ☐ |
+| L25a | `untitled: '{camera}-{owner}'`, a month with groups in different towns from the same camera, Enter for each | One folder per place (`<YYYY-MM> <camera> (town-a)`, `(town-b)` ...), not one folder for all | ☐ |
 | L26 | Take `untitled` out again | Enter leaves groups in the month folder, as before | ☐ |
 
 ## M. Split by years (menu S)
