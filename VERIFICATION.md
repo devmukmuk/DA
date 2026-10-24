@@ -346,6 +346,9 @@ These need an internet connection, except L12.
 | L24 | `untitled: '{camera}-{owner}'`, **L** on a month (cameras with owners: `da tag --cameras`) | Folders like `<YYYY-MM> Canon PowerShot A80-jane (...)` | ☐ |
 | L25 | `da location group <month>` (no `--yes`), then with `--yes` | First *using location.untitled ... Nothing moved*; then the folders are made | ☐ |
 | L25a | `untitled: '{camera}-{owner}'`, a month with groups in different towns from the same camera, Enter for each | One folder per place (`<YYYY-MM> <camera> (town-a)`, `(town-b)` ...), not one folder for all | ☐ |
+| L25b | `da location group <month> --set-title "Trip"` (a month with groups in two places) | No question per group; *Every group: titled 'Trip'*; folders `<YYYY-MM> Trip (place-a)` and `(place-b)` | ☐ |
+| L25c | `da location group <month> --skip-title` (with `untitled` set) | No question per group; the untitled names, a folder per place | ☐ |
+| L25d | `--skip-title` with no `untitled` in `da-archive.yaml` | *...isn't set in da-archive.yaml ... Nothing moved* | ☐ |
 | L26 | Take `untitled` out again | Enter leaves groups in the month folder, as before | ☐ |
 
 ## M. Split by years (menu S)

@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.76 - 2026-10-24
+
+### New
+- Places: --skip-title and --set-title give every group one answer
+
 ## v2026.10.75 - 2026-10-24
 
 ### Fixed
