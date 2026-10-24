@@ -341,6 +341,11 @@ These need an internet connection, except L12.
 | L19 | `da location lookup --offline` | Uses only remembered places; nothing sent | ☐ |
 | L20 | In `da-archive.yaml` set `location:` `lookup: off`, run `da location lookup` | "Lookups are off in da-archive.yaml …"; set it back afterwards | ☐ |
 | L21 | `da location group C:\DA-test` (not a month folder) | A clear message that it isn't a month folder | ☐ |
+| L22 | Add `untitled: '{city}'` under `location:` in `da-archive.yaml`; **L** on a month with GPS photos | Each group's answer shows its city (e.g. *Springfield*); Enter makes `<YYYY-MM> Springfield (springfield-il)` | ☐ |
+| L23 | Same month again, type `-` for a group | That group stays in the month folder | ☐ |
+| L24 | `untitled: '{camera}-{owner}'`, **L** on a month (cameras with owners: `da tag --cameras`) | Folders like `<YYYY-MM> Canon PowerShot A80-jane (...)` | ☐ |
+| L25 | `da location group <month>` (no `--yes`), then with `--yes` | First *using location.untitled ... Nothing moved*; then the folders are made | ☐ |
+| L26 | Take `untitled` out again | Enter leaves groups in the month folder, as before | ☐ |
 
 ## M. Split by years (menu S)
 

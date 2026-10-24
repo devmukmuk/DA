@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.74 - 2026-10-24
+
+### New
+- Places: location.untitled names a group you don't title ({city}, {camera}-{owner} ...)
+
 ## v2026.10.73 - 2026-10-23
 
 ### New
