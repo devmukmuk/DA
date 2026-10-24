@@ -216,6 +216,13 @@ Copy the whole test kit (except `old`) into `jane-archive-202x\intake\photos\kit
 | H12 | Copy one more photo into a month folder (with no sidecar) and run `da validate <that month folder>` | Its contact sheet is made again and includes the new photo | ☐ |
 | H13 | `da contact-sheets photos\organized --force` | Every sheet made again | ☐ |
 | H14 | In `da-archive.yaml` set `contact_sheets:` `layout: 4x5`, save, run H9 | Sheets now 20 a page; set it back to `3x4` afterwards | ☐ |
+| H15 | `da contact-sheets documents\organized --kind document` | *N year folders with documents*; `documents\organized\<year>\_contact-sheet.pdf` in each | ☐ |
+| H16 | Open one | Page 1: documents, pages, read by da ocr, secrets, dates, months and the legend; then 2 x 2 first pages | ☐ |
+| H17 | A document page | Pages in a square (top left), schema in a circle (top right), SECRETS YES/NO/NOT CHECKED up the left, name + SHA-256 + dates under it | ☐ |
+| H18 | A year not read by `da ocr` yet | Blue borders, and *N documents aren't read by da ocr yet* | ☐ |
+| H19 | `da ocr` on that year, then H15 again | The borders are gone; dates and SECRETS shown | ☐ |
+| H20 | H15 again with nothing changed | *already up to date 1* | ☐ |
+| H21 | `da contact-sheets documents --kind letters` | Refused: *--kind is photo or document* | ☐ |
 
 ## I. Videos, Live Photos and HEIC
 

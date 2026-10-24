@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.79 - 2026-10-24
+
+### New
+- Contact sheets: --kind document makes one sheet per year of documents
+
 ## v2026.10.78 - 2026-10-24
 
 ### New
