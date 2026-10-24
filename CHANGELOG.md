@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.78 - 2026-10-24
+
+### New
+- da ocr notes each document's dates and Secrets yes/no in its sidecar
+
 ## v2026.10.77 - 2026-10-24
 
 ### New

@@ -313,6 +313,10 @@ Copy the whole test kit (except `old`) into `jane-archive-202x\intake\photos\kit
 | K48 | `da rename --folder "{YYYY}\{YYYY}-{MM}-{from:1}"` | The plan puts them in `2009\2009-01-Jones Family Photos` ...; nothing moves | ☐ |
 | K49 | In an archive filed before this version: `da tag`, then open a sidecar | An `origin` block from the path it came in with (`recorded_at` today) | ☐ |
 | K50 | **5 Refresh index**, `da db query "SELECT origin, count(*) FROM files GROUP BY origin"` | The folders photos came in from, with counts | ☐ |
+| K51 | `da ocr` in an archive with filed documents (a PDF, a scan, a letter with a date) | *Read N ... N have dates in them ... N hold a secret*; `ocr-facts.csv` in `output\runs\<date-time>-ocr-facts\` | ☐ |
+| K52 | Open a document's `.meta.json` | A `dates` block (`found`: the dates, oldest first) and a `secrets` block (`found` true/false) - no text, no secret | ☐ |
+| K53 | `da ocr` again | *Read 0, skipped N* | ☐ |
+| K54 | Change one document (or `--again`) | Only that one is read again | ☐ |
 
 ## L. Places and location folders (menu L)
 
