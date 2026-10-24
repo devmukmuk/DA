@@ -217,10 +217,10 @@ Copy the whole test kit (except `old`) into `jane-archive-202x\intake\photos\kit
 | H13 | `da contact-sheets photos\organized --force` | Every sheet made again | ☐ |
 | H14 | In `da-archive.yaml` set `contact_sheets:` `layout: 4x5`, save, run H9 | Sheets now 20 a page; set it back to `3x4` afterwards | ☐ |
 | H15 | `da contact-sheets documents\organized --kind document` | *N year folders with documents*; `documents\organized\<year>\_contact-sheet.pdf` in each | ☐ |
-| H16 | Open one | Page 1: documents, pages, read by da ocr, secrets, dates, months and the legend; then 2 x 2 first pages | ☐ |
-| H17 | A document page | Pages in a square (top left), schema in a circle (top right), SECRETS YES/NO/NOT CHECKED up the left, name + SHA-256 + dates under it | ☐ |
+| H16 | Open one | Page 1: the archive's name, documents, pages, read by da ocr, secrets, dates, months and the legend; then 2 x 2 first pages | ☐ |
+| H17 | A document page | Pages in a square (top left), schema in a circle (top right); under it File (bold), Folder, Hash256, Dates in one size; a red border on a document holding a secret | ☐ |
 | H18 | A year not read by `da ocr` yet | Blue borders, and *N documents aren't read by da ocr yet* | ☐ |
-| H19 | `da ocr` on that year, then H15 again | The borders are gone; dates and SECRETS shown | ☐ |
+| H19 | `da ocr` on that year, then H15 again | The blue borders are gone; dates shown; red borders on documents with a secret | ☐ |
 | H20 | H15 again with nothing changed | *already up to date 1* | ☐ |
 | H21 | `da contact-sheets documents --kind letters` | Refused: *--kind is photo or document* | ☐ |
 

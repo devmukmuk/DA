@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.80 - 2026-10-24
+
+### New
+- Contact sheets: document sheets show a secret as a red border; File/Folder/Hash256/Dates in one size
+
 ## v2026.10.79 - 2026-10-24
 
 ### New
