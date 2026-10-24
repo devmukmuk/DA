@@ -349,6 +349,9 @@ These need an internet connection, except L12.
 | L25b | `da location group <month> --set-title "Trip"` (a month with groups in two places) | No question per group; *Every group: titled 'Trip'*; folders `<YYYY-MM> Trip (place-a)` and `(place-b)` | ☐ |
 | L25c | `da location group <month> --skip-title` (with `untitled` set) | No question per group; the untitled names, a folder per place | ☐ |
 | L25d | `--skip-title` with no `untitled` in `da-archive.yaml` | *...isn't set in da-archive.yaml ... Nothing moved* | ☐ |
+| L25e | `da location group <year> --set-title "Trip" --yes` (a year with GPS photos in two months) | *2 months with GPS photos to group: ...*, then each month's folders; another year's photos stay | ☐ |
+| L25f | The same again | *No GPS photos in <year> left to group* | ☐ |
+| L25g | **L**, type a year | Each of its months in turn | ☐ |
 | L26 | Take `untitled` out again | Enter leaves groups in the month folder, as before | ☐ |
 
 ## M. Split by years (menu S)
