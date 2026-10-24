@@ -223,6 +223,9 @@ Copy the whole test kit (except `old`) into `jane-archive-202x\intake\photos\kit
 | H19 | `da ocr` on that year, then H15 again | The blue borders are gone; dates shown; red borders on documents with a secret | ☐ |
 | H20 | H15 again with nothing changed | *already up to date 1* | ☐ |
 | H21 | `da contact-sheets documents --kind letters` | Refused: *--kind is photo or document* | ☐ |
+| H22 | Open a photo sheet, click a picture | The photo opens | ☐ |
+| H23 | Open a document sheet, click a first page and a File line | The document opens | ☐ |
+| H24 | Copy the archive to another drive (or use the BACKUP4 copy), open a sheet there, click a picture | The copy's file opens (the links have no drive letter) | ☐ |
 
 ## I. Videos, Live Photos and HEIC
 
