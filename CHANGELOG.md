@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.81 - 2026-10-24
+
+### New
+- Contact sheets: no Hash256 line under each document
+
 ## v2026.10.80 - 2026-10-24
 
 ### New
