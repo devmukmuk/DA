@@ -2,6 +2,14 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.84 - 2026-10-26
+
+### New
+- Set a Mac's hidden "._" files aside in step 3
+
+### Fixed
+- Drop index rows outside the archive; step 3 names a missing kept copy
+
 ## v2026.10.83 - 2026-10-25
 
 ### New

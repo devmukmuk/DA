@@ -1,6 +1,6 @@
 # DA - Digital Archive
 
-**Latest version:** 2026.10.83 (2026-10-25)
+**Latest version:** 2026.10.84 (2026-10-26)
 
 DA files your photos, videos and scanned documents by the date they were taken. It sets exact
 duplicates aside, names each file by its date, and puts it in a `YYYY\YYYY-MM` folder, with a contact
@@ -24,10 +24,13 @@ sheet for every month. It never deletes anything, and it asks before it moves an
 - **Testing DA?** The [test plan](https://da.gamenightbymike.com/verification.html) (also as a
   [PDF](https://da.gamenightbymike.com/DA-Test-Plan.pdf) to print) and the [known problems](https://da.gamenightbymike.com/defects.html)
 
-## What's new in v2026.10.83
+## What's new in v2026.10.84
 
 ### New
-- Archives.json keeps each archive's details
+- Set a Mac's hidden "._" files aside in step 3
+
+### Fixed
+- Drop index rows outside the archive; step 3 names a missing kept copy
 
 ## Found a problem?
 
