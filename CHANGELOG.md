@@ -2,6 +2,13 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.85 - 2026-10-26
+
+### New
+- Show RAW and edit pairs on sheets, shares, history; edits follow their RAW into location folders
+- File each edit beside its RAW; the layout is the archive's choice
+- Keep a photographer's exports and pair each with its RAW
+
 ## v2026.10.84 - 2026-10-26
 
 ### New
