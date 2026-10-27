@@ -2,6 +2,12 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.88 - 2026-10-27
+
+### New
+- Homes and ages under each dated photo (phase 2)
+- da family - homes, birthdays and the family timeline (phase 1)
+
 ## v2026.10.87 - 2026-10-27
 
 ### New
