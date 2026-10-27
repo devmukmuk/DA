@@ -1,6 +1,6 @@
 # DA - Digital Archive
 
-**Latest version:** 2026.10.85 (2026-10-26)
+**Latest version:** 2026.10.86 (2026-10-26)
 
 DA files your photos, videos and scanned documents by the date they were taken. It sets exact
 duplicates aside, names each file by its date, and puts it in a `YYYY\YYYY-MM` folder, with a contact
@@ -24,12 +24,13 @@ sheet for every month. It never deletes anything, and it asks before it moves an
 - **Testing DA?** The [test plan](https://da.gamenightbymike.com/verification.html) (also as a
   [PDF](https://da.gamenightbymike.com/DA-Test-Plan.pdf) to print) and the [known problems](https://da.gamenightbymike.com/defects.html)
 
-## What's new in v2026.10.85
+## What's new in v2026.10.86
 
 ### New
-- Show RAW and edit pairs on sheets, shares, history; edits follow their RAW into location folders
-- File each edit beside its RAW; the layout is the archive's choice
-- Keep a photographer's exports and pair each with its RAW
+- da convert makes a JPG beside each RAW that has none
+
+### Fixed
+- Dates: a camera-set file prefix (8W9A1900) is a frame number, not a year
 
 ## Found a problem?
 

@@ -2,6 +2,14 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.86 - 2026-10-26
+
+### New
+- da convert makes a JPG beside each RAW that has none
+
+### Fixed
+- Dates: a camera-set file prefix (8W9A1900) is a frame number, not a year
+
 ## v2026.10.85 - 2026-10-26
 
 ### New
