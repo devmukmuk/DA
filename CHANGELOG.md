@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.89 - 2026-10-27
+
+### Fixed
+- Never use a town's position as a home; retry a busy lookup
+
 ## v2026.10.88 - 2026-10-27
 
 ### New
