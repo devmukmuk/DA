@@ -1,2 +1,2 @@
-# DA 2026.10.89 for Python: pip install --upgrade -r https://da.gamenightbymike.com/python/requirements.txt
-devmukmuk-da[google,faces] @ https://da.gamenightbymike.com/python/devmukmuk_da-2026.10.89-py3-none-any.whl
+# DA 2026.10.90 for Python: pip install --upgrade -r https://da.gamenightbymike.com/python/requirements.txt
+devmukmuk-da[google,faces] @ https://da.gamenightbymike.com/python/devmukmuk_da-2026.10.90-py3-none-any.whl

@@ -2,6 +2,14 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.90 - 2026-10-27
+
+### New
+- Houses name whose home they were; each archive shows its owner's
+
+### Fixed
+- Places: check certificates the way Windows does; say what to do when a lookup can't
+
 ## v2026.10.89 - 2026-10-27
 
 ### Fixed

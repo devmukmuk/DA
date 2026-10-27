@@ -106,7 +106,7 @@ footer { color:var(--muted); font-size:14px; margin-top:60px; border-top:1px sol
 }
 </style>
 </head>
-<body data-version="2026.10.89">
+<body data-version="2026.10.90">
 <header>
   <span class="title">DA User Guide</span>
   <form id="guide-search" role="search">
@@ -116,7 +116,7 @@ footer { color:var(--muted); font-size:14px; margin-top:60px; border-top:1px sol
     <button id="guide-search-previous" type="button" disabled>Prev</button>
     <span id="guide-search-status" aria-live="polite"></span>
   </form>
-  <span class="version">DA v2026.10.89</span>
+  <span class="version">DA v2026.10.90</span>
   <a class="button" href="index.html">Guide</a>
   <a class="button" href="verification.html">Test plan</a>
   <a class="button" href="defects.html">Known problems</a>
@@ -126,7 +126,7 @@ footer { color:var(--muted); font-size:14px; margin-top:60px; border-top:1px sol
 <div class="layout">
 <nav aria-label="Contents"><ul><li><a href="#words-youll-see">Words you'll see</a></li><li><a href="#getting-started">Getting started</a><ul><li><a href="#1-get-da">1. Get DA</a></li><li><a href="#2-install-it-once-per-computer">2. Install it (once per computer)</a></li><li><a href="#install-da-with-python-if-windows-blocks-daexe">Install DA with Python (if Windows blocks DA.exe)</a></li><li><a href="#3-create-your-first-archive-once-per-archive">3. Create your first archive (once per archive)</a></li><li><a href="#4-open-it">4. Open it</a></li></ul></li><li><a href="#the-menu">The menu</a></li><li><a href="#common-workflows">Common workflows</a><ul><li><a href="#add-photos-from-a-phone-camera-or-memory-card">Add photos from a phone, camera or memory card</a></li><li><a href="#add-scanned-documents">Add scanned documents</a></li><li><a href="#da-run-file-new-photos-and-documents">da run: file new photos and documents</a></li><li><a href="#da-report-whats-in-the-archive-and-what-needs-you">da report: what's in the archive and what needs you</a></li><li><a href="#da-dashboard-the-archive-in-your-browser">da dashboard: the archive in your browser</a></li><li><a href="#fix-what-needs-review">Fix what needs review</a></li><li><a href="#fix-dates-photos-with-no-date-or-the-wrong-one">Fix dates: photos with no date, or the wrong one</a></li><li><a href="#duplicates-put-back-or-delete">Duplicates: put back or delete</a></li><li><a href="#copies-that-arent-exact-resized-re-saved-edited-cropped">Copies that aren't exact: resized, re-saved, edited, cropped</a></li><li><a href="#edit-a-filed-photo-crop-brighten-fix-red-eye">Edit a filed photo: crop, brighten, fix red-eye</a></li><li><a href="#da-split-move-files-to-the-right-decades-archive">da split: move files to the right decade's archive</a></li><li><a href="#da-share-send-photos-to-family-and-friends">da share: send photos to family and friends</a></li><li><a href="#da-find-passwords-set-aside-documents-that-hold-passwords">da find --passwords: set aside documents that hold passwords</a></li><li><a href="#da-ocr-the-dates-in-each-document-and-whether-it-holds-a-secret">da ocr: the dates in each document, and whether it holds a secret</a></li><li><a href="#da-find-search-the-archive">da find: search the archive</a></li><li><a href="#contact-sheets-a-folder-at-a-glance">Contact sheets: a folder at a glance</a></li><li><a href="#da-tag-label-photos-and-documents">da tag: label photos and documents</a></li><li><a href="#bring-in-picasas-faces-and-captions">Bring in Picasa's faces and captions</a></li><li><a href="#da-facial-find-the-people-in-photos">da facial: find the people in photos</a></li><li><a href="#da-family-where-you-lived-and-how-old-everyone-was">da family: where you lived and how old everyone was</a></li><li><a href="#switch-between-archives">Switch between archives</a></li><li><a href="#update-da">Update DA</a></li></ul></li><li><a href="#less-common-workflows">Less common workflows</a><ul><li><a href="#videos">Videos</a></li><li><a href="#iphone-live-photos-mov-files">iPhone Live Photos (.MOV files)</a></li><li><a href="#iphone-heic-photos">iPhone HEIC photos</a></li><li><a href="#edit-an-archives-settings-da-archiveyaml">Edit an archive's settings (da-archive.yaml)</a></li><li><a href="#share-an-album-with-google-photos">Share an album with Google Photos</a></li><li><a href="#process-a-folder-from-somewhere-else">Process a folder from somewhere else</a></li><li><a href="#start-a-new-archive-for-another-person-or-decade">Start a new archive for another person or decade</a></li><li><a href="#use-da-on-another-computer">Use DA on another computer</a></li><li><a href="#merge-two-copies-of-an-archive">Merge two copies of an archive</a></li><li><a href="#back-up-an-archive">Back up an archive</a></li><li><a href="#move-an-archive-to-another-drive">Move an archive to another drive</a></li><li><a href="#delete-an-archive-you-no-longer-need">Delete an archive you no longer need</a></li><li><a href="#da-history-what-da-did-and-when">da history: what DA did, and when</a></li><li><a href="#check-whats-already-filed">Check what's already filed</a></li><li><a href="#update-sidecars-the-metajson-files">Update sidecars (the .meta.json files)</a></li><li><a href="#do-the-runs-steps-one-at-a-time">Do the run's steps one at a time</a></li><li><a href="#move-folders-to-another-archive-by-hand">Move folders to another archive by hand</a></li><li><a href="#coming-soon">Coming soon</a></li></ul></li><li><a href="#location-and-gps-workflows">Location and GPS workflows</a><ul><li><a href="#works-today">Works today</a></li><li><a href="#look-up-where-photos-were-taken">Look up where photos were taken</a></li><li><a href="#group-a-month-into-location-folders">Group a month into location folders</a></li><li><a href="#rename-a-location-folder">Rename a location folder</a></li><li><a href="#set-a-place-by-hand">Set a place by hand</a></li></ul></li><li><a href="#config-tokens">Config tokens</a><ul><li><a href="#file-name-tokens">File-name tokens</a></li><li><a href="#folder-tokens">Folder tokens</a></li></ul></li><li><a href="#if-something-goes-wrong">If something goes wrong</a></li><li><a href="#reference">Reference</a><ul><li><a href="#how-da-works-out-a-date">How DA works out a date</a></li><li><a href="#photo-or-document">Photo or document?</a></li><li><a href="#which-archive-a-command-works-on">Which archive a command works on</a></li><li><a href="#commands">Commands</a></li></ul></li></ul></nav>
 <main>
-<p class="print-only">DA v2026.10.89 &middot; da.gamenightbymike.com &middot; 2026-10-27</p>
+<p class="print-only">DA v2026.10.90 &middot; da.gamenightbymike.com &middot; 2026-10-27</p>
 <h1 id="da-user-guide">DA User Guide</h1>
 <p><strong>DA</strong> (short for <em>Digital Archive</em>) puts your photos and scanned documents in order. You copy
 them into one folder, and DA:</p>
@@ -1547,10 +1547,15 @@ each archive's <code>da-archive.yaml</code>:</p>
 <ul>
 <li><strong>houses.csv</strong> - every place the household lived. Leave <strong>to</strong> blank for the home you live in now; other columns
     (like a <code>#yrs</code> you worked out) are ignored. Several homes with the very same dates are fine (a year of moving
-    between cities).
-    <code>Date,to,address,city,state,zip
-    6/1/1990,8/1/1996,12 Elm Street,Springfield,UT,84000
-    8/1/1996,,40 Oak Lane,Riverton,UT,84065</code></li>
+    between cities). The optional <strong>people</strong> column says whose home it was (<code>sam</code> or <code>jane; sam</code>, the names in
+    people.csv); leave it blank for the household's homes. Each archive shows its owner's homes (the owner is
+    <code>archive: owner:</code>, else the name before <code>-archive</code>, so <code>sam-archive-201x</code> is sam's): the household's homes, and
+    from the day a home names sam, that one instead. So only a grown child's own homes need a name:
+    <code>Date,to,address,city,state,zip,people
+    6/1/1990,8/1/1996,12 Elm Street,Springfield,UT,84000,
+    8/1/1996,,40 Oak Lane,Riverton,UT,84065,
+    9/1/2013,,7 Pine Court,Ogden,UT,84401,sam</code>
+    <code>da family --person sam</code> shows anyone's timeline (<code>--person all</code>: every home).</li>
 <li><strong>people.csv</strong> - everyone whose age should show, children, grandchildren and grandparents alike. <strong>also_known_as</strong>
     lists the other names that person has in your photos (the names on faces from Picasa or <code>da facial</code>), separated by
     <code>;</code>, so <code>Jane Doe</code> in a photo is matched to <code>jane</code>. Capitals and extra spaces don't matter.
@@ -2056,7 +2061,9 @@ with it: <code>place:springfield-il</code>, <code>state:il</code>, <code>country
    <code>da location lookup photos\organized\2019</code>.</li>
 <li>DA says how many photos have a position and how many new places it has to look up, about one a
    second (1,000 new places: about 17 minutes). Press Enter to start.</li>
-<li>When it's done it lists the places it found, with how many photos each.</li>
+<li>When it's done it lists the places it found, with how many photos each. A lookup never moves a photo:
+   it ends with the command that makes <a href="#group-a-month-into-location-folders">location folders</a> for the
+   months it found, like <code>da location group 2024</code>.</li>
 </ol>
 <p><strong>Good to know:</strong>
 - Photos close together (within about 100 m) share one lookup, and every lookup is remembered in the
@@ -2787,6 +2794,10 @@ from another month in that folder is still moved back to its own month folder. N
 <td>An older DA.exe lost files when the window that started the dashboard closed. Update DA (<code>da update</code>), then <code>da dashboard --stop</code> and <code>da dashboard</code>.</td>
 </tr>
 <tr>
+<td>Looking up places (or homes) says <em>couldn't check the lookup service's security certificate</em> (<em>CERTIFICATE_VERIFY_FAILED</em>)</td>
+<td>Waiting won't fix it. Update DA (<code>da update</code>): DA now checks certificates the way Windows does. Still there? An antivirus that checks secure connections is usually in the way: turn off its HTTPS or web-shield scanning, or allow <code>nominatim.openstreetmap.org</code>. On a work or school network, ask whoever looks after it. The photos keep their GPS; run <code>da location lookup</code> again once it's fixed.</td>
+</tr>
+<tr>
 <td>Sharing says <em>Gmail didn't send it (403): Gmail API has not been used in project ...</em></td>
 <td>The Gmail API isn't turned on in your Google Cloud project: <strong>APIs &amp; Services</strong> &gt; <strong>Library</strong> &gt; <strong>Gmail API</strong> &gt; <strong>Enable</strong> (see <a href="#set-up-sharing-once">Set up sharing</a>), wait a minute, try again.</td>
 </tr>
@@ -3023,7 +3034,7 @@ anywhere else it's a photo. To decide for a whole run: <code>da run intake\old-s
 </tr>
 </tbody>
 </table>
-<footer>DA v2026.10.89 &middot; guide built 2026-10-27 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
+<footer>DA v2026.10.90 &middot; guide built 2026-10-27 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
 </main>
 </div>
 <script>
