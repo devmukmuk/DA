@@ -1,6 +1,6 @@
 # DA - Digital Archive
 
-**Latest version:** 2026.10.86 (2026-10-26)
+**Latest version:** 2026.10.87 (2026-10-27)
 
 DA files your photos, videos and scanned documents by the date they were taken. It sets exact
 duplicates aside, names each file by its date, and puts it in a `YYYY\YYYY-MM` folder, with a contact
@@ -24,13 +24,16 @@ sheet for every month. It never deletes anything, and it asks before it moves an
 - **Testing DA?** The [test plan](https://da.gamenightbymike.com/verification.html) (also as a
   [PDF](https://da.gamenightbymike.com/DA-Test-Plan.pdf) to print) and the [known problems](https://da.gamenightbymike.com/defects.html)
 
-## What's new in v2026.10.86
+## What's new in v2026.10.87
 
 ### New
-- da convert makes a JPG beside each RAW that has none
+- Word, Excel and PowerPoint documents show their first page
 
 ### Fixed
-- Dates: a camera-set file prefix (8W9A1900) is a frame number, not a year
+- Catch libtiff's "Bad code word" lines from damaged fax scans
+
+### Faster
+- Step 3b compares only pairs with a picture being filed, and remembers them
 
 ## Found a problem?
 

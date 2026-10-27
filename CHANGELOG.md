@@ -2,6 +2,17 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.87 - 2026-10-27
+
+### New
+- Word, Excel and PowerPoint documents show their first page
+
+### Fixed
+- Catch libtiff's "Bad code word" lines from damaged fax scans
+
+### Faster
+- Step 3b compares only pairs with a picture being filed, and remembers them
+
 ## v2026.10.86 - 2026-10-26
 
 ### New
