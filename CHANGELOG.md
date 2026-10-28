@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.91 - 2026-10-28
+
+### New
+- Document templates; da run --template files one company's bills by what's printed on them
+
 ## v2026.10.90 - 2026-10-27
 
 ### New

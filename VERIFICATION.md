@@ -198,6 +198,22 @@ Copy the whole test kit (except `old`) into `jane-archive-202x\intake\photos\kit
 | G4 | A PDF with flaws (an old scanner's PDF, if you have one) | Processed without a stream of red/yellow warnings on the screen | ☐ |
 | G5 | Put a `.jpg` scan of a letter in `intake\docs` and process | It's filed under `documents`, not `photos` | ☐ |
 
+## G2. Document templates (da template, da run --template)
+
+Needs 2-3 PDF bills from one company (the same kind every month) and a few other PDFs.
+
+| # | Do this | You should see | Result |
+|---|---|---|---|
+| GT1 | `da template new <company> --from <bill 1> --from <bill 2>` | *Wrote ...\templates\<company>.yaml: looks for '<the company's name>', reads date, account, ...*, then each sample *matched* with the values read | ☐ |
+| GT2 | Compare the values shown with the bills themselves | The bill date, account number and amount due are the ones printed (not a previous balance) | ☐ |
+| GT3 | `da template edit <company>`: add your account number under `account:` as `expect: ["<it>"]`, save, close Notepad | *<company> reads: date, account, ...* (no mistake) | ☐ |
+| GT4 | `da template test <company> <a folder with the bills and other PDFs>` | Every bill *matched*; every other PDF *failed* with a reason (*no '<company>' in it* ...); nothing moved | ☐ |
+| GT5 | Put the bills and the other PDFs in `intake\docs`; `da run --kind document --template <company> intake\docs -y` | A line per bill with its values; a *! <file> read by <company> template and failed: ...* line per other PDF; *N of M documents matched* | ☐ |
+| GT6 | Open `documents\organized` | Each bill in its bill date's month, named like `<company>_2025-09-15_4455_a709.pdf`; the other PDFs still in `intake\docs` | ☐ |
+| GT7 | Open one bill's `.meta.json` | A `template` block with every value read, and tags `template:<company>` | ☐ |
+| GT8 | `output\runs\<the run>\templates.csv` | One row per PDF: matched or failed, why, the values | ☐ |
+| GT9 | `da run --template nothing` | *No template 'nothing' in ...\templates (there: <company>)*; nothing done | ☐ |
+
 ## H. Contact sheets
 
 | # | Do this | You should see | Result |
