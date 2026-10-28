@@ -213,6 +213,8 @@ Needs 2-3 PDF bills from one company (the same kind every month) and a few other
 | GT7 | Open one bill's `.meta.json` | A `template` block with every value read, and tags `template:<company>` | ☐ |
 | GT8 | `output\runs\<the run>\templates.csv` | One row per PDF: matched or failed, why, the values | ☐ |
 | GT9 | `da run --template nothing` | *No template 'nothing' in ...\templates (there: <company>)*; nothing done | ☐ |
+| GT10 | Bills filed before the template (in `documents\organized\<year>` under their old names): `da run --template <company> documents\organized\<year>` | Step 5 *N filed already to rename where they are*, years by the bill dates; after it each bill is renamed in its month folder; other documents there untouched | ☐ |
+| GT11 | Add `folder: 'Bills\{title}\{YYYY}'` under `file:` (`da template edit`), run GT10 again | The bills move to `documents\organized\Bills\<title>\<year>\`; month folders they left empty are gone, the others' contact sheets remade | ☐ |
 
 ## H. Contact sheets
 

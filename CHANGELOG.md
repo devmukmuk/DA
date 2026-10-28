@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.92 - 2026-10-28
+
+### New
+- da run --template on an organized folder renames or moves documents already filed
+
 ## v2026.10.91 - 2026-10-28
 
 ### New
