@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.95 - 2026-10-28
+
+### New
+- --feedback / --no-feedback on any command; the setting chimes after long ones
+
 ## v2026.10.94 - 2026-10-28
 
 ### New
