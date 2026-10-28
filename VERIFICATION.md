@@ -415,6 +415,10 @@ Copy the kit's `old` photos (another decade) into jane-archive-202x's `intake\ph
 | M20 | Open it there (`Open DA.cmd`), choose **2 Status** and **4 Undo last set-aside** | The counts are as before; the undo finds its files at the new place | ☐ |
 | M21 | `da archives move <it> E:\<test archive>` (another drive or a USB stick), answer **y**, then **n** to the Recycle Bin question | *The copy is right: N files, M re-read in full*; the old folder has `MOVED.txt` and no `da-archive.yaml` | ☐ |
 | M22 | `da archives move <it> <a folder that has files in it>` | *isn't empty*; nothing moves | ☐ |
+| M23 | In the test archive: `da archives home`; then `da archives` | *home <this computer's name>*; the list's **home** column says the same | ☐ |
+| M24 | `da archives home OTHERPC --yes`, then `da tag` and `da status` | `da tag`: *This archive's home is OTHERPC; this PC is ...*, nothing tagged; `da status` works | ☐ |
+| M25 | Open the menu (`da`), choose **1 Process intake** | The header says *home: OTHERPC (this PC only looks)*; **1** stops with the same message | ☐ |
+| M26 | `da archives home <this computer's name> --yes`, then `da tag` | It tags as usual | ☐ |
 
 ## N. Merge two copies (menu M)
 
