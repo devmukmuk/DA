@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.97 - 2026-10-29
+
+### New
+- Say so when an archive has no home PC
+
 ## v2026.10.96 - 2026-10-29
 
 ### New

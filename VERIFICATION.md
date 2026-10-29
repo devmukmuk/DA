@@ -422,6 +422,7 @@ Copy the kit's `old` photos (another decade) into jane-archive-202x's `intake\ph
 | M24 | `da archives home OTHERPC --yes`, then `da tag` and `da status` | `da tag`: *This archive's home is OTHERPC; this PC is ...*, nothing tagged; `da status` works | ☐ |
 | M25 | Open the menu (`da`), choose **1 Autorun** | The header says *home: OTHERPC (this PC only looks)*; **1** stops with the same message | ☐ |
 | M26 | `da archives home <this computer's name> --yes`, then `da tag` | It tags as usual | ☐ |
+| M27 | Delete the `home:` line from the test archive's `da-archive.yaml`; `da tag`, then `da` | `da tag` starts with *This archive has no home PC ... da archives home <this computer's name>* and tags as usual; the menu header says *home: not set* | ☐ |
 
 ## N. Merge two copies (menu M)
 
