@@ -116,13 +116,16 @@ Copy the whole test kit (except `old`) into `jane-archive-202x\intake\photos\kit
 
 | # | Do this | You should see | Result |
 |---|---|---|---|
-| C1 | Open jane-archive-202x (its `Open DA.cmd`) | The Status shows the intake files, folder by folder, with counts | ☐ |
-| C2 | Press **1** (Process intake) | "Counting what's in intake …", then a list of intake's folders with file counts | ☐ |
+| C1 | Open jane-archive-202x (its `Open DA.cmd`) | The Status shows the intake files, folder by folder, with counts; the blue box ends *Run includes steps: 1,2,3,4,5,6,7,9 (P to change)* | ☐ |
+| C1a | Press **P** (Pre-run setup) | Every step 1-12 and *Bypass yes*, with `>` on 1; 1, 2, 4, 5, 6 marked `[*]` (always), 3, 7 and 9 ticked | ☐ |
+| C1b | Press **space** on 1 Index | It stays on, with *1 Index is always done: filing needs it.* | ☐ |
+| C1c | Use the **down** arrow to 10 Places, press **space** twice | Places switches on, then off; the list is redrawn in place, not printed again | ☐ |
+| C1d | Move to 8 Camera owners, press **space**, then **Enter** | *Kept for next time: Run includes steps: 1,2,3,4,5,6,7,8,9*; the blue box says the same; `da-archive.yaml` now has `run:` `after_filing: [owners, tags]` | ☐ |
+| C1e | Press **P** again, then **Esc** | *Nothing changed.*; the steps are as in C1d | ☐ |
+| C2 | Press **1** (Autorun) | "Counting what's in intake …", then a list of intake's folders with file counts | ☐ |
 | C3 | Type the number of `photos` to open it | Its subfolders (`kit`) are listed; you can open further, go up, or filter by name | ☐ |
 | C4 | Type part of a name (for example `kit`) to filter | Only matching folders are listed | ☐ |
-| C5 | Go back up to the top of intake and choose to process **all of intake** | The **steps after filing** list: 8-12, with **9 Tags** ticked | ☐ |
-| C5a | Type **10**, then **10** again | Places switches on, then off | ☐ |
-| C5b | Type **8** and press **Enter** | *(Kept as your usual steps.)*, then "Processing … DA asks before moving anything"; `da-archive.yaml` now has `run:` `after_filing: [owners, tags]` | ☐ |
+| C5 | Go back up to the top of intake and choose to process **all of intake** | *Run includes steps: 1,2,3,4,5,6,7,8,9*, then "Processing … DA asks before moving anything" | ☐ |
 | C6 | Watch step **1/12 Indexing** | A count of files indexed, no error | ☐ |
 | C7 | Step **2/12 Hashing** | A progress count, then a summary | ☐ |
 | C8 | Step **3/12** (duplicates): it asks whether to set exact copies aside; answer **y** | The 3 `doubles` are listed and moved to `_duplicates-holding` (see F) | ☐ |
@@ -305,7 +308,7 @@ Needs 2-3 PDF bills from one company (the same kind every month) and a few other
 | K12 | `da findit tags photos\organized -r owner:jane -v` | Photos from the camera you named in K3 | ☐ |
 | K13 | `da tag --refresh` (answer y) | Camera details read again from every photo; tags unchanged | ☐ |
 | K14 | Open a contact sheet made after K3 (run `da contact-sheets <month>`) | The camera sections now show **/ jane** | ☐ |
-| K15 | Copy 2-3 screenshots or photos of receipts into `intake\phone` and choose **1 Process intake** | They're filed under `photos\organized` | ☐ |
+| K15 | Copy 2-3 screenshots or photos of receipts into `intake\phone` and choose **1 Autorun** | They're filed under `photos\organized` | ☐ |
 | K16 | `da tag ocr photos\organised` (a typo) | *No such folder or file*; nothing is tagged | ☐ |
 | K17 | `da tag ocr photos\organized\<their year>` | A preview: how many are mostly text (document), with some text, without; *Nothing changed*; the path of `ocr-results.csv` | ☐ |
 | K18 | Open that `ocr-results.csv` in Excel | One row per picture: level, words, *would tag and move* for the screenshots, and the start of their text | ☐ |
@@ -326,7 +329,7 @@ Needs 2-3 PDF bills from one company (the same kind every month) and a few other
 | K33 | Press **N**, **1**, type the old pattern (`photo_{date_taken:%Y%m%d_%H%M%S}_{hash:4}`), answer **y** twice | Back as before; `da-archive.yaml` keeps both earlier patterns as notes, newest first | ☐ |
 | K34 | `da rename --folder "{owner}\{YYYY}"` | *N moved to another folder*, *had nothing for {owner}* for photos with no known owner; nothing moves | ☐ |
 | K35 | `da rename --folder "{owner}\{YYYY}" --kind photo --apply --save` and answer **y** twice | Photos of cameras with an owner are in `photos\organized\<owner>\<year>`, the others in `photos\organized\<year>`; the emptied month folders are gone; each folder has a contact sheet | ☐ |
-| K36 | Copy a new photo into intake and choose **1 Process intake** | It's filed by the new folder pattern | ☐ |
+| K36 | Copy a new photo into intake and choose **1 Autorun** | It's filed by the new folder pattern | ☐ |
 | K37 | `da intake undo "<the rename-moved.csv it printed>"`, then **N**, **1**, Enter, type `{YYYY}\{YYYY}-{MM}`, answer **y** twice | Back in year and month folders; `da-archive.yaml` keeps `# folder was (...)` notes | ☐ |
 | K38 | *(Optional: do it between K35 and K37, while the photos are in the owner layout)* `da location group <a month with GPS photos, e.g. 2024-07>` and give group 1 a title | The month's photos are found in `<owner>\<year>`; the location folder is made there (`<owner>\<year>\<year-month> <title> (<place>)`) | ☐ |
 | K39 | Make a text file `logins.txt` in `intake\docs` with the line `Password: Test-1234`, and a PDF that only says *change your password* | (setup) | ☐ |
@@ -334,7 +337,7 @@ Needs 2-3 PDF bills from one company (the same kind every month) and a few other
 | K41 | Open `passwords.csv` from `output\runs\<date-time>-passwords\` | Both files, the password hidden | ☐ |
 | K42 | `da find --passwords --move`, answer **y** | *Moved 1 to ...\_secure-holding*; `logins.txt` is in `_secure-holding\<today>\intake\docs`, the PDF stays | ☐ |
 | K43 | `da intake undo "<the secure-moved.csv it printed>"` | `logins.txt` is back in `intake\docs` | ☐ |
-| K44 | Put photos in `intake\photos\Jones Family Photos\Scans\` and `...\Jones Family Photos\DCIM\100CANON\`, **1 Process intake**, open a sidecar | An `origin` block: `folders` `[Jones Family Photos, Scans]` | ☐ |
+| K44 | Put photos in `intake\photos\Jones Family Photos\Scans\` and `...\Jones Family Photos\DCIM\100CANON\`, **1 Autorun**, open a sidecar | An `origin` block: `folders` `[Jones Family Photos, Scans]` | ☐ |
 | K45 | Its `auto_tags` | `folder:jones-family-photos` and `folder:scans`; none for `DCIM` or `100CANON` | ☐ |
 | K46 | `da findit tags photos\organized -r folder:jones-family-photos -v` | Both photos | ☐ |
 | K47 | Add `origin:` / `skip: [Scans]` to `da-archive.yaml`, `da tag photos\organized --yes` | `folder:scans` gone; `folder:jones-family-photos` kept | ☐ |
@@ -396,7 +399,7 @@ Copy the kit's `old` photos (another decade) into jane-archive-202x's `intake\ph
 | M1 | In jane-archive-202x press **S** | "Working out the dates …", "N files in intake were taken outside 2020-2029", and which archive each belongs in | ☐ |
 | M2 | | "Move them to:" with sam-archive-200x listed; choose it | ☐ |
 | M3 | | What will move (from → to) and "Move them?"; answer **y** | ☐ |
-| M4 | | "Moved N files", an Undo line, and "Next: open sam-archive-200x … 1 Process intake" | ☐ |
+| M4 | | "Moved N files", an Undo line, and "Next: open sam-archive-200x … 1 Autorun" | ☐ |
 | M5 | Open sam-archive-200x's `intake\photos\from-jane-archive-202x` | The old photos (and their sidecars) | ☐ |
 | M6 | In sam-archive-200x, process intake | They're filed in `2000s` year folders | ☐ |
 | M7 | Terminal (jane-archive-202x): `da split` | "0 files in intake were taken outside 2020-2029" | ☐ |
@@ -417,7 +420,7 @@ Copy the kit's `old` photos (another decade) into jane-archive-202x's `intake\ph
 | M22 | `da archives move <it> <a folder that has files in it>` | *isn't empty*; nothing moves | ☐ |
 | M23 | In the test archive: `da archives home`; then `da archives` | *home <this computer's name>*; the list's **home** column says the same | ☐ |
 | M24 | `da archives home OTHERPC --yes`, then `da tag` and `da status` | `da tag`: *This archive's home is OTHERPC; this PC is ...*, nothing tagged; `da status` works | ☐ |
-| M25 | Open the menu (`da`), choose **1 Process intake** | The header says *home: OTHERPC (this PC only looks)*; **1** stops with the same message | ☐ |
+| M25 | Open the menu (`da`), choose **1 Autorun** | The header says *home: OTHERPC (this PC only looks)*; **1** stops with the same message | ☐ |
 | M26 | `da archives home <this computer's name> --yes`, then `da tag` | It tags as usual | ☐ |
 
 ## N. Merge two copies (menu M)
@@ -480,7 +483,7 @@ jane-copy's intake and process them **in jane-copy** (open its `Open DA.cmd`).
 | Q1 | `da validate photos\organized` | A summary: files checked, problems found (0 or a few notes), nothing moved | ☐ |
 | Q2 | Rename a filed photo in Explorer to `test.jpg` (keep its `.meta.json` renamed to match: `test.jpg.meta.json`), then `da validate <its folder>` | A "wrong name" problem for it, nothing moved | ☐ |
 | Q3 | `da validate <its folder> --mode repair` | It's renamed back to `photo_…` | ☐ |
-| Q4 | `da validate intake --mode repair` | Refused: repair isn't for intake (use 1 Process intake / `da run`) | ☐ |
+| Q4 | `da validate intake --mode repair` | Refused: repair isn't for intake (use 1 Autorun / `da run`) | ☐ |
 | Q5 | `da validate C:\DA-test\kit-copy --archive C:\DA-test\jane-archive-202x` (any folder outside) | It checks that folder using jane's settings | ☐ |
 | Q6 | `da run intake\photos\kit\camera --yes` | That folder alone is processed, no questions | ☐ |
 | Q7 | `da check "<the preview report path from a run>"` | A check of that report | ☐ |
@@ -554,7 +557,7 @@ Needs a folder Picasa looked at, with its `Picasa.ini` (or hidden `.picasa.ini`)
 
 | ID | Do this | Expect | ✓ |
 |---|---|---|---|
-| X1 | Copy the folder into `intake\photos\`, **1 Process intake** | The photos are filed; the `Picasa.ini` stays in intake | ☐ |
+| X1 | Copy the folder into `intake\photos\`, **1 Autorun** | The photos are filed; the `Picasa.ini` stays in intake | ☐ |
 | X2 | `da picasa` | *N Picasa.ini files*, *N photos found: N faces (N named, N people)*; nothing written | ☐ |
 | X3 | Open the `picasa-plan.csv` it names | A row per photo: the filed photo, the people, *followed through DA's moves* | ☐ |
 | X4 | `da picasa --apply` | *Picasa details written for N photos*; the `Picasa.ini` is now in `picasa\photos\<folder>\` | ☐ |
@@ -566,7 +569,7 @@ Needs a folder Picasa looked at, with its `Picasa.ini` (or hidden `.picasa.ini`)
 | X10 | A photo that was a duplicate (set aside) with a face in Picasa | Its details go to the copy that was kept (*the copy kept*) | ☐ |
 | X11 | `da contact-sheets <a month with Picasa faces>`, open `_contact-sheet.pdf` | A yellow box on each face, the name above it; page 1 has a **People** line | ☐ |
 | X12 | The same with a photo taken sideways (portrait) | The box is still on the face | ☐ |
-| X14 | Put a photo and a smaller copy of it (e.g. Picasa's 800 x 600 export) in intake, **1 Process intake** | Step 3: *1 resized copies (e.g. 800 x 600 of a 3072 x 2304 picture)*, a sample check, a question; the small one goes to `_duplicates-holding\<date>\resized\`, the big one is filed | ☐ |
+| X14 | Put a photo and a smaller copy of it (e.g. Picasa's 800 x 600 export) in intake, **1 Autorun** | Step 3: *1 resized copies (e.g. 800 x 600 of a 3072 x 2304 picture)*, a sample check, a question; the small one goes to `_duplicates-holding\<date>\resized\`, the big one is filed | ☐ |
 | X15 | `da similar` in an archive filed before this | *N resized copies* and a list; nothing moves | ☐ |
 | X16 | `da similar --apply` | A sample check, a question, *Moved N* and an Undo line | ☐ |
 | X17 | `da history --duplicates` | The resized ones too, each *a copy of* the filed original | ☐ |
@@ -589,7 +592,7 @@ Needs a folder Picasa looked at, with its `Picasa.ini` (or hidden `.picasa.ini`)
 | X34 | `da tag <that month> --yes`, then a sidecar again | `burst` / `blurry` tags still there | ☐ |
 | X35 | `da share` that month | `details.txt`: *Burst: shot 2 of 3 taken one after another (the sharpest ...)*, *Blurry: ...* | ☐ |
 | X36 | Open a filed photo in Windows Photos, make it much brighter (or black and white), **Save as copy** into `intake\photos\edits\` as `<its name>-edited.jpg` | The filed photo is unchanged | ☐ |
-| X37 | **1 Process intake** | The edit is filed in the same month folder, with a new name (same date and time, a new 4-letter ending) | ☐ |
+| X37 | **1 Autorun** | The edit is filed in the same month folder, with a new name (same date and time, a new 4-letter ending) | ☐ |
 | X38 | `da similar --apply` | *Versions linked*; both sidecars have a `versions` block (role original / edited) | ☐ |
 
 ## Y. People (da facial)
@@ -623,7 +626,7 @@ Needs an archive where `da picasa --apply` has brought in Picasa's named faces (
 | Y22 | A photo Picasa named and you confirmed too | One yellow box on that face, not two | ☐ |
 | Y23 | `da share` that month | The names on the big pictures and in *People:* on page 1 and the email | ☐ |
 | Y24 | `da history <one of those photos>` | A *People:* line with the names | ☐ |
-| Y25 | **1 Process intake**: switch on **12** and process a folder | *12/12 Faces: N photos looked at, N faces ...; suggested: ...*; the new faces are on the People page | ☐ |
+| Y25 | **P Pre-run setup**: switch on **12**, Enter; then **1 Autorun** a folder | *12/12 Faces: N photos looked at, N faces ...; suggested: ...*; the new faces are on the People page | ☐ |
 | X13 | `da share <that month> --to <your own list>` | Page 1: *People: …* and *Tags: …*; film strips with boxes; big pictures with boxes and names; `details.txt` starts with the people and each picture lists *People* and *Tags* | ☐ |
 
 ## W. Share with family and friends (da share)

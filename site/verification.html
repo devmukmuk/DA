@@ -174,11 +174,11 @@ tr.tp-issues li { margin:3px 0; }
 }
 </style>
 </head>
-<body data-version="2026.10.95">
+<body data-version="2026.10.96">
 <header>
   <span class="title">DA Test Plan</span>
   
-  <span class="version">DA v2026.10.95</span>
+  <span class="version">DA v2026.10.96</span>
   <a class="button" href="index.html">Guide</a>
   <a class="button" href="verification.html">Test plan</a>
   <a class="button" href="defects.html">Known problems</a>
@@ -188,7 +188,7 @@ tr.tp-issues li { margin:3px 0; }
 <div class="layout">
 <nav aria-label="Contents"><ul><li><a href="#before-you-start">Before you start</a><ul><li><a href="#make-a-test-kit">Make a test kit</a></li></ul></li><li><a href="#a-install-da">A. Install DA</a></li><li><a href="#b-create-an-archive">B. Create an archive</a></li><li><a href="#c-the-first-run-process-intake-menu-1">C. The first run: process intake (menu 1)</a></li><li><a href="#d-what-needs-review-menu-3">D. What needs review (menu 3)</a></li><li><a href="#e-status-and-the-index-menu-2-5">E. Status and the index (menu 2, 5)</a></li><li><a href="#f-duplicates-and-undo-menu-4">F. Duplicates and undo (menu 4)</a></li><li><a href="#g-documents-and-scans">G. Documents and scans</a></li><li><a href="#g2-document-templates-da-template-da-run-template">G2. Document templates (da template, da run --template)</a></li><li><a href="#h-contact-sheets">H. Contact sheets</a></li><li><a href="#i-videos-live-photos-and-heic">I. Videos, Live Photos and HEIC</a></li><li><a href="#j-fix-dates-menu-d">J. Fix dates (menu D)</a></li><li><a href="#k-tags-terminal">K. Tags (terminal)</a></li><li><a href="#l-places-and-location-folders-menu-l">L. Places and location folders (menu L)</a></li><li><a href="#m-split-by-years-menu-s">M. Split by years (menu S)</a></li><li><a href="#n-merge-two-copies-menu-m">N. Merge two copies (menu M)</a></li><li><a href="#o-report-and-dashboard-menu-r-b">O. Report and dashboard (menu R, B)</a></li><li><a href="#p-update-sidecars-menu-j">P. Update sidecars (menu J)</a></li><li><a href="#q-checking-whats-filed-terminal">Q. Checking what's filed (terminal)</a></li><li><a href="#r-settings-da-archiveyaml">R. Settings (da-archive.yaml)</a></li><li><a href="#s-logs-records-and-safety">S. Logs, records and safety</a></li><li><a href="#t-another-pc-or-a-usb-drive">T. Another PC or a USB drive</a></li><li><a href="#u-messages-when-somethings-wrong">U. Messages when something's wrong</a></li><li><a href="#x-picasa-da-picasa">X. Picasa (da picasa)</a></li><li><a href="#y-people-da-facial">Y. People (da facial)</a></li><li><a href="#w-share-with-family-and-friends-da-share">W. Share with family and friends (da share)</a></li><li><a href="#v-clean-up">V. Clean up</a></li><li><a href="#reporting-a-problem">Reporting a problem</a></li></ul></nav>
 <main>
-<p class="print-only">DA v2026.10.95 &middot; da.gamenightbymike.com &middot; 2026-10-28</p>
+<p class="print-only">DA v2026.10.96 &middot; da.gamenightbymike.com &middot; 2026-10-29</p>
 <h1 id="da-test-plan">DA test plan</h1>
 <p>Thank you for testing DA. This plan walks through everything DA does, step by step: first with the
 <strong>menu</strong> (what most people use), then with <strong>commands typed in a terminal</strong> (for things the menu doesn't
@@ -599,12 +599,42 @@ you can try; skip a step whose files you don't have and mark it <strong>skipped<
 <tr>
 <td>C1</td>
 <td>Open jane-archive-202x (its <code>Open DA.cmd</code>)</td>
-<td>The Status shows the intake files, folder by folder, with counts</td>
+<td>The Status shows the intake files, folder by folder, with counts; the blue box ends <em>Run includes steps: 1,2,3,4,5,6,7,9 (P to change)</em></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>C1a</td>
+<td>Press <strong>P</strong> (Pre-run setup)</td>
+<td>Every step 1-12 and <em>Bypass yes</em>, with <code>&gt;</code> on 1; 1, 2, 4, 5, 6 marked <code>[*]</code> (always), 3, 7 and 9 ticked</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>C1b</td>
+<td>Press <strong>space</strong> on 1 Index</td>
+<td>It stays on, with <em>1 Index is always done: filing needs it.</em></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>C1c</td>
+<td>Use the <strong>down</strong> arrow to 10 Places, press <strong>space</strong> twice</td>
+<td>Places switches on, then off; the list is redrawn in place, not printed again</td>
+<td>☐</td>
+</tr>
+<tr>
+<td>C1d</td>
+<td>Move to 8 Camera owners, press <strong>space</strong>, then <strong>Enter</strong></td>
+<td><em>Kept for next time: Run includes steps: 1,2,3,4,5,6,7,8,9</em>; the blue box says the same; <code>da-archive.yaml</code> now has <code>run:</code> <code>after_filing: [owners, tags]</code></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>C1e</td>
+<td>Press <strong>P</strong> again, then <strong>Esc</strong></td>
+<td><em>Nothing changed.</em>; the steps are as in C1d</td>
 <td>☐</td>
 </tr>
 <tr>
 <td>C2</td>
-<td>Press <strong>1</strong> (Process intake)</td>
+<td>Press <strong>1</strong> (Autorun)</td>
 <td>"Counting what's in intake …", then a list of intake's folders with file counts</td>
 <td>☐</td>
 </tr>
@@ -623,19 +653,7 @@ you can try; skip a step whose files you don't have and mark it <strong>skipped<
 <tr>
 <td>C5</td>
 <td>Go back up to the top of intake and choose to process <strong>all of intake</strong></td>
-<td>The <strong>steps after filing</strong> list: 8-12, with <strong>9 Tags</strong> ticked</td>
-<td>☐</td>
-</tr>
-<tr>
-<td>C5a</td>
-<td>Type <strong>10</strong>, then <strong>10</strong> again</td>
-<td>Places switches on, then off</td>
-<td>☐</td>
-</tr>
-<tr>
-<td>C5b</td>
-<td>Type <strong>8</strong> and press <strong>Enter</strong></td>
-<td><em>(Kept as your usual steps.)</em>, then "Processing … DA asks before moving anything"; <code>da-archive.yaml</code> now has <code>run:</code> <code>after_filing: [owners, tags]</code></td>
+<td><em>Run includes steps: 1,2,3,4,5,6,7,8,9</em>, then "Processing … DA asks before moving anything"</td>
 <td>☐</td>
 </tr>
 <tr>
@@ -1568,7 +1586,7 @@ you can try; skip a step whose files you don't have and mark it <strong>skipped<
 </tr>
 <tr>
 <td>K15</td>
-<td>Copy 2-3 screenshots or photos of receipts into <code>intake\phone</code> and choose <strong>1 Process intake</strong></td>
+<td>Copy 2-3 screenshots or photos of receipts into <code>intake\phone</code> and choose <strong>1 Autorun</strong></td>
 <td>They're filed under <code>photos\organized</code></td>
 <td>☐</td>
 </tr>
@@ -1694,7 +1712,7 @@ you can try; skip a step whose files you don't have and mark it <strong>skipped<
 </tr>
 <tr>
 <td>K36</td>
-<td>Copy a new photo into intake and choose <strong>1 Process intake</strong></td>
+<td>Copy a new photo into intake and choose <strong>1 Autorun</strong></td>
 <td>It's filed by the new folder pattern</td>
 <td>☐</td>
 </tr>
@@ -1742,7 +1760,7 @@ you can try; skip a step whose files you don't have and mark it <strong>skipped<
 </tr>
 <tr>
 <td>K44</td>
-<td>Put photos in <code>intake\photos\Jones Family Photos\Scans\</code> and <code>...\Jones Family Photos\DCIM\100CANON\</code>, <strong>1 Process intake</strong>, open a sidecar</td>
+<td>Put photos in <code>intake\photos\Jones Family Photos\Scans\</code> and <code>...\Jones Family Photos\DCIM\100CANON\</code>, <strong>1 Autorun</strong>, open a sidecar</td>
 <td>An <code>origin</code> block: <code>folders</code> <code>[Jones Family Photos, Scans]</code></td>
 <td>☐</td>
 </tr>
@@ -2054,7 +2072,7 @@ you can try; skip a step whose files you don't have and mark it <strong>skipped<
 <tr>
 <td>M4</td>
 <td></td>
-<td>"Moved N files", an Undo line, and "Next: open sam-archive-200x … 1 Process intake"</td>
+<td>"Moved N files", an Undo line, and "Next: open sam-archive-200x … 1 Autorun"</td>
 <td>☐</td>
 </tr>
 <tr>
@@ -2179,7 +2197,7 @@ you can try; skip a step whose files you don't have and mark it <strong>skipped<
 </tr>
 <tr>
 <td>M25</td>
-<td>Open the menu (<code>da</code>), choose <strong>1 Process intake</strong></td>
+<td>Open the menu (<code>da</code>), choose <strong>1 Autorun</strong></td>
 <td>The header says <em>home: OTHERPC (this PC only looks)</em>; <strong>1</strong> stops with the same message</td>
 <td>☐</td>
 </tr>
@@ -2474,7 +2492,7 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
 <tr>
 <td>Q4</td>
 <td><code>da validate intake --mode repair</code></td>
-<td>Refused: repair isn't for intake (use 1 Process intake / <code>da run</code>)</td>
+<td>Refused: repair isn't for intake (use 1 Autorun / <code>da run</code>)</td>
 <td>☐</td>
 </tr>
 <tr>
@@ -2810,7 +2828,7 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
 <tbody>
 <tr>
 <td>X1</td>
-<td>Copy the folder into <code>intake\photos\</code>, <strong>1 Process intake</strong></td>
+<td>Copy the folder into <code>intake\photos\</code>, <strong>1 Autorun</strong></td>
 <td>The photos are filed; the <code>Picasa.ini</code> stays in intake</td>
 <td>☐</td>
 </tr>
@@ -2882,7 +2900,7 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
 </tr>
 <tr>
 <td>X14</td>
-<td>Put a photo and a smaller copy of it (e.g. Picasa's 800 x 600 export) in intake, <strong>1 Process intake</strong></td>
+<td>Put a photo and a smaller copy of it (e.g. Picasa's 800 x 600 export) in intake, <strong>1 Autorun</strong></td>
 <td>Step 3: <em>1 resized copies (e.g. 800 x 600 of a 3072 x 2304 picture)</em>, a sample check, a question; the small one goes to <code>_duplicates-holding\&lt;date&gt;\resized\</code>, the big one is filed</td>
 <td>☐</td>
 </tr>
@@ -3020,7 +3038,7 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
 </tr>
 <tr>
 <td>X37</td>
-<td><strong>1 Process intake</strong></td>
+<td><strong>1 Autorun</strong></td>
 <td>The edit is filed in the same month folder, with a new name (same date and time, a new 4-letter ending)</td>
 <td>☐</td>
 </tr>
@@ -3196,7 +3214,7 @@ jane-copy's intake and process them <strong>in jane-copy</strong> (open its <cod
 </tr>
 <tr>
 <td>Y25</td>
-<td><strong>1 Process intake</strong>: switch on <strong>12</strong> and process a folder</td>
+<td><strong>P Pre-run setup</strong>: switch on <strong>12</strong>, Enter; then <strong>1 Autorun</strong> a folder</td>
 <td><em>12/12 Faces: N photos looked at, N faces ...; suggested: ...</em>; the new faces are on the People page</td>
 <td>☐</td>
 </tr>
@@ -3431,7 +3449,7 @@ and <strong>Clients</strong>).</p>
 <li>If DA printed an error, the archive's <code>logs\da.jsonl</code> has the details: copy the last few lines.</li>
 <li>Leave out anything private: names, photos, and folder paths you'd rather not share.</li>
 </ol>
-<footer>DA v2026.10.95 &middot; guide built 2026-10-28 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
+<footer>DA v2026.10.96 &middot; guide built 2026-10-29 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
 </main>
 </div>
 

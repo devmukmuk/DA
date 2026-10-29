@@ -2,6 +2,14 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.96 - 2026-10-29
+
+### New
+- Menu: 1 Autorun and P Pre-run setup (arrow-key step list, bypass yes)
+
+### Guide
+- Screen captures for the 2026-10-28 walkthrough
+
 ## v2026.10.95 - 2026-10-28
 
 ### New
