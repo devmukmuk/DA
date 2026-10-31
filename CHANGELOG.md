@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.10.98 - 2026-10-31
+
+### New
+- Python -m da runs DA, and document the dev install
+
 ## v2026.10.97 - 2026-10-29
 
 ### New
