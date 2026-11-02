@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.11.3 - 2026-11-02
+
+### New
+- da imports, a plan and a progress page for the drives being brought in
+
 ## v2026.11.2 - 2026-11-02
 
 - Small fixes and tidying.

@@ -546,6 +546,10 @@ Make a copy of `da-archive.yaml` first; put it back at the end.
 | T8 | The same again | *Nothing to copy* (everything is in intake now) | ☐ |
 | T9 | **1 Autorun** | The imported photos and papers are filed; a PDF bill without a date in its name is filed under the month printed on it | ☐ |
 | T10 | `da intake undo "<the import-log.csv T7 named>"` on a fresh import of another folder | The copies are gone again | ☐ |
+| T10a | In the test archive: `da imports --init C:\DA-test-kit` | *Made ...imports.yaml*, a table with each folder *not started*; `imports.html` beside the archives | ☐ |
+| T10b | `da import --plan --apply`, answer **y** | *From ...imports.yaml: N folders for <archive>*, then the copy; *Imports page updated* | ☐ |
+| T10c | Open `imports.html` in a browser; **1 Autorun** in the menu | The page shows *copied*, then (after a minute) *done* or *needs dates*, and a **Next** line | ☐ |
+| T10d | `da import --plan` again | *Nothing planned for <archive> is left to bring in* | ☐ |
 
 ## T3. Back up (da backup, menu K)
 
