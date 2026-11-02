@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DA Quick Cards</title>
+<meta name="description" content="How to use DA (Digital Archive) to file photos and scanned documents by date.">
+<style>
+:root { --bg:#ffffff; --fg:#1d2329; --muted:#5b6670; --line:#dde3e8; --accent:#1f6feb; --code:#f3f5f7;
+        --side:#f7f9fb; --head:#0f3d6e; --headfg:#ffffff; }
+@media (prefers-color-scheme: dark) {
+  :root { --bg:#14181c; --fg:#e4e8ec; --muted:#9aa5ae; --line:#2b333a; --accent:#6aa6ff; --code:#1d232a;
+          --side:#181d22; --head:#0b2b4d; --headfg:#ffffff; }
+}
+* { box-sizing: border-box; }
+html { scroll-padding-top: 72px; }
+body { margin:0; background:var(--bg); color:var(--fg); font: 17px/1.6 "Segoe UI", system-ui, sans-serif; }
+header { position:sticky; top:0; z-index:2; display:flex; flex-wrap:wrap; gap:8px 16px; align-items:center;
+         padding:10px 20px; background:var(--head); color:var(--headfg); }
+header .title { font-weight:700; font-size:20px; margin-right:auto; }
+header .version { opacity:.8; font-size:14px; }
+header a.button { color:var(--headfg); text-decoration:none; border:1px solid rgba(255,255,255,.5);
+                  border-radius:6px; padding:5px 12px; font-size:15px; white-space:nowrap; }
+header a.button.primary { background:#2ea043; border-color:#2ea043; }
+#guide-search { display:flex; align-items:center; gap:6px; margin:0; font-size:14px; }
+#guide-search label { white-space:nowrap; }
+#guide-search input { width:min(28vw, 260px); min-width:130px; padding:6px 8px; border:1px solid var(--line);
+                     border-radius:5px; font:inherit; }
+#guide-search button { padding:6px 10px; border:1px solid rgba(255,255,255,.5); border-radius:5px;
+                       background:transparent; color:var(--headfg); font:inherit; cursor:pointer; }
+#guide-search button:disabled { opacity:.5; cursor:default; }
+#guide-search-status { min-width:70px; white-space:nowrap; font-size:13px; }
+mark.guide-search-match { background:#ffe66d; color:#1d2329; }
+mark.guide-search-match.is-current { background:#ffad33; outline:2px solid #ffad33; }
+.layout { display:flex; max-width:1240px; margin:0 auto; }
+nav { flex:0 0 270px; position:sticky; top:56px; align-self:flex-start; max-height:calc(100vh - 56px);
+      overflow:auto; padding:18px 14px 40px 20px; background:var(--side); border-right:1px solid var(--line);
+      font-size:15px; }
+nav ul { list-style:none; margin:0; padding-left:0; }
+nav ul ul { padding-left:14px; margin-bottom:6px; }
+nav li { margin:3px 0; }
+nav a { color:var(--fg); text-decoration:none; }
+nav a:hover { color:var(--accent); }
+nav > ul > li > a { font-weight:600; }
+main { flex:1; min-width:0; padding:8px 32px 80px; }
+h1 { font-size:34px; margin:18px 0 8px; }
+h2 { font-size:26px; margin:44px 0 10px; padding-top:10px; border-top:2px solid var(--line); }
+h3 { font-size:21px; margin:32px 0 8px; }
+h4 { font-size:18px; margin:24px 0 6px; }
+a { color:var(--accent); }
+code { background:var(--code); border-radius:4px; padding:1px 5px; font: 15px Consolas, "Cascadia Mono", monospace; }
+pre { background:var(--code); border:1px solid var(--line); border-radius:8px; padding:12px 14px; overflow:auto; }
+pre code { padding:0; background:none; font-size:14px; line-height:1.45; }
+table { border-collapse:collapse; width:100%; margin:12px 0; font-size:16px; display:block; overflow-x:auto; }
+th, td { border:1px solid var(--line); padding:7px 10px; text-align:left; vertical-align:top; }
+th { background:var(--side); }
+/* The test plan's checklists: #, Do this, You should see, a tick box. */
+table:has(th:nth-child(4)) { display:table; table-layout:fixed; }
+table:has(th:nth-child(4)) th:nth-child(1) { width:7%; }
+table:has(th:nth-child(4)) th:nth-child(2) { width:44%; }
+table:has(th:nth-child(4)) th:nth-child(3) { width:36%; }
+table:has(th:nth-child(4)) th:nth-child(4), table:has(th:nth-child(4)) td:nth-child(4) { width:13%; text-align:center; }
+table:has(th:nth-child(4)) td { overflow-wrap:anywhere; }
+.print-only { display:none; color:var(--muted); font-size:14px; }
+footer { color:var(--muted); font-size:14px; margin-top:60px; border-top:1px solid var(--line); padding-top:12px; }
+@media (max-width: 860px) {
+  .layout { display:block; }
+  nav { position:static; max-height:none; border-right:0; border-bottom:1px solid var(--line); }
+  main { padding:8px 16px 60px; }
+  body { font-size:16px; }
+  table:has(th:nth-child(4)) th:nth-child(1) { width:8%; }
+  table:has(th:nth-child(4)) th:nth-child(2) { width:40%; }
+  table:has(th:nth-child(4)) th:nth-child(3) { width:35%; }
+  table:has(th:nth-child(4)) th:nth-child(4), table:has(th:nth-child(4)) td:nth-child(4) { width:17%; }
+  main .tp-step-time { white-space:normal; }
+}
+@media (max-width: 540px) {
+  #guide-search input { width:min(34vw, 200px); min-width:100px; }
+  table:has(th:nth-child(4)) th:nth-child(1) { width:9%; }
+  table:has(th:nth-child(4)) th:nth-child(2) { width:32%; }
+  table:has(th:nth-child(4)) th:nth-child(3) { width:32%; }
+  table:has(th:nth-child(4)) th:nth-child(4), table:has(th:nth-child(4)) td:nth-child(4) { width:27%; }
+}
+@media (max-width: 360px) {
+  table:has(th:nth-child(4)) th:nth-child(1) { width:11%; }
+  table:has(th:nth-child(4)) th:nth-child(2) { width:27%; }
+  table:has(th:nth-child(4)) th:nth-child(3) { width:28%; }
+  table:has(th:nth-child(4)) th:nth-child(4), table:has(th:nth-child(4)) td:nth-child(4) { width:34%; }
+  main .tp-step-time { font-size:11px; }
+}
+@media print {
+  table { display:table; table-layout:fixed; font-size:12px; }
+  td, th { word-wrap:break-word; }
+  table code { font-size:0.85em; }
+  tr { break-inside:avoid; }
+  header, nav { display:none; }
+  mark.guide-search-match { background:transparent; color:inherit; }
+  .layout { display:block; }
+  main { padding:0; }
+  body { font-size:11pt; background:#fff; color:#000; }
+  h2, h3 { break-after:avoid; }
+  h2 { border-top:0; margin-top:28px; }
+  .print-only { display:block; }
+  pre, table, tr { break-inside:avoid; }
+  a { color:#000; text-decoration:none; }
+}
+
+main { font-size:22px; line-height:1.55; }
+main h2 { font-size:34px; }
+main li { margin:10px 0; }
+main table { font-size:20px; }
+main td { height:1.7em; }
+main code { font-size:0.95em; }
+@media print {
+  main { font-size:19pt; }
+  main h2 { break-before:page; font-size:28pt; margin-top:0; }
+  main table { font-size:16pt; }
+}
+</style>
+</head>
+<body data-version="2026.11.2">
+<header>
+  <span class="title">DA Quick Cards</span>
+  
+  <span class="version">DA v2026.11.2</span>
+  <a class="button" href="index.html">Guide</a>
+  <a class="button" href="quick-cards.html">Quick cards</a>
+  <a class="button" href="verification.html">Test plan</a>
+  <a class="button" href="defects.html">Known problems</a>
+  <a class="button primary" href="https://github.com/devmukmuk/DA/releases/latest/download/DA.exe">Download DA</a>
+  <a class="button" href="DA-Quick-Cards.pdf">PDF version</a>
+</header>
+<div class="layout">
+<nav aria-label="Contents"><ul><li><a href="#your-desktop-shortcuts">Your desktop shortcuts</a></li><li><a href="#card-1-add-photos-from-a-phone-or-camera">Card 1: Add photos from a phone or camera</a></li><li><a href="#card-2-add-papers-and-scans">Card 2: Add papers and scans</a></li><li><a href="#card-3-name-the-events-in-a-month">Card 3: Name the events in a month</a></li><li><a href="#card-4-look-at-photos-and-papers">Card 4: Look at photos and papers</a></li><li><a href="#card-5-find-something">Card 5: Find something</a></li><li><a href="#card-6-back-up-once-a-week">Card 6: Back up (once a week)</a></li><li><a href="#card-7-when-something-looks-wrong">Card 7: When something looks wrong</a></li><li><a href="#for-the-helper-setting-up-a-computer">For the helper: setting up a computer</a></li></ul></nav>
+<main>
+<p class="print-only">DA v2026.11.2 &middot; da.gamenightbymike.com &middot; 2026-11-02</p>
+<h1 id="da-quick-cards">DA Quick Cards</h1>
+<p>The everyday jobs, one card each, in a few steps. Print them (the <strong>PDF version</strong> button above) and keep
+them by the computer. The full <a href="https://da.gamenightbymike.com">user guide</a> explains everything else.</p>
+<p><strong>My archive</strong> (fill this in when DA is set up):</p>
+<table>
+<thead>
+<tr>
+<th>My archive</th>
+<th>(write it here)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>My archives are in</td>
+<td></td>
+</tr>
+<tr>
+<td>New photos and papers go to the archive</td>
+<td></td>
+</tr>
+<tr>
+<td>My backup drive is</td>
+<td></td>
+</tr>
+<tr>
+<td>For help, call or text</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="your-desktop-shortcuts">Your desktop shortcuts</h2>
+<p>Each job starts with a double-click on a shortcut, so you never have to find a folder or type a
+command. A shortcut is just a door into a folder or a job: deleting a shortcut deletes nothing else.
+The cards use these:</p>
+<table>
+<thead>
+<tr>
+<th>Shortcut</th>
+<th>What it opens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Open DA</strong></td>
+<td>DA's menu, in your newest archive</td>
+</tr>
+<tr>
+<td><strong>New photos</strong></td>
+<td>The folder new photos go in</td>
+</tr>
+<tr>
+<td><strong>New papers</strong></td>
+<td>The folder new papers and scans go in</td>
+</tr>
+<tr>
+<td><strong>Archives</strong></td>
+<td>All your archives, to look at photos and papers</td>
+</tr>
+<tr>
+<td><strong>Back up archives</strong></td>
+<td>Copies everything to the backup drive</td>
+</tr>
+</tbody>
+</table>
+<h2 id="card-1-add-photos-from-a-phone-or-camera">Card 1: Add photos from a phone or camera</h2>
+<ol>
+<li>Plug in the phone or camera (or put its memory card in the computer).</li>
+<li>Double-click <strong>New photos</strong>.</li>
+<li>Make a folder named for what happened: right-click an empty spot, <strong>New &gt; Folder</strong>, and type a name
+    like <code>Beach trip</code> or <code>Emma's birthday</code>. No date needed: DA adds it.</li>
+<li>Copy the photos from the phone or camera into that folder.</li>
+<li>Double-click <strong>Open DA</strong>, type <strong>1</strong> and press <strong>Enter</strong>.</li>
+<li>Wait. DA is done when it shows <strong>Where things stand now</strong>.</li>
+</ol>
+<p>Your photos are now in the year, in a folder like <code>2026-06 Beach trip</code>. Copies of photos you already had
+are set aside, not filed twice. Keep the photos on the phone until after the next backup (Card 6).</p>
+<h2 id="card-2-add-papers-and-scans">Card 2: Add papers and scans</h2>
+<ol>
+<li>Scan the papers, or save the PDF (a bill, a statement), into <strong>New papers</strong>.
+    Several at once is fine.</li>
+<li>Double-click <strong>Open DA</strong>, type <strong>1</strong> and press <strong>Enter</strong>.</li>
+<li>Wait for <strong>Where things stand now</strong>.</li>
+</ol>
+<p>DA files each paper by the date printed on it, in a folder for its year and month.</p>
+<h2 id="card-3-name-the-events-in-a-month">Card 3: Name the events in a month</h2>
+<p>For photos already filed that sit together in one month's folder.</p>
+<ol>
+<li>Double-click <strong>Open DA</strong>, type <strong>L</strong> and press <strong>Enter</strong>.</li>
+<li>DA lists the months. Type the number of the month and press <strong>Enter</strong>.</li>
+<li>DA shows the photos in groups, a group for each outing or day. For each group:<ul>
+<li>press <strong>Enter</strong> to take the name shown,</li>
+<li>or type a better name, like <code>Grandma's 80th</code>, and press <strong>Enter</strong>,</li>
+<li>or type <strong>-</strong> and press <strong>Enter</strong> to leave that group where it is.</li>
+</ul>
+</li>
+<li>Give two groups the <strong>same name</strong> to put them in one folder.</li>
+<li>Press <strong>Enter</strong> when DA asks to move them.</li>
+</ol>
+<h2 id="card-4-look-at-photos-and-papers">Card 4: Look at photos and papers</h2>
+<ol>
+<li>Double-click <strong>Archives</strong>.</li>
+<li>Open the archive for the years you want: the one ending <strong>201x</strong> holds 2010 to 2019.</li>
+<li>Open <strong>photos</strong>, then <strong>organized</strong>, then the year, then the month or event.</li>
+<li>Double-click a photo to see it. Each folder also has a <strong>_contact-sheet.pdf</strong>: the whole folder on a
+    few pages, to find the photo you're after quickly.</li>
+</ol>
+<p>Papers are in the same archive, under <strong>documents</strong>, then <strong>organized</strong>, then the year.</p>
+<p>To look in a web browser instead: double-click <strong>Open DA</strong>, type <strong>B</strong> and press <strong>Enter</strong>.</p>
+<h2 id="card-5-find-something">Card 5: Find something</h2>
+<ol>
+<li>Double-click <strong>Archives</strong>.</li>
+<li>Click in the <strong>Search</strong> box at the top right of the window.</li>
+<li>Type a word from the event or the paper: <code>Beach</code>, <code>2019</code>, <code>birthday</code>, <code>Water Company</code>.</li>
+<li>Wait a moment for the list, then double-click what you want.</li>
+</ol>
+<h2 id="card-6-back-up-once-a-week">Card 6: Back up (once a week)</h2>
+<ol>
+<li>Plug in the backup drive.</li>
+<li>Double-click <strong>Back up archives</strong>.</li>
+<li>Wait. The first time takes a long while; after that, only what changed is copied.</li>
+<li>When it says <strong>You can unplug the backup drive</strong>, press any key, then unplug it.</li>
+<li>Put the backup drive away from the computer.</li>
+</ol>
+<p>If it says <strong>The backup drive isn't there</strong>, plug it in and try again. If it says anything else, don't
+try again: call for help.</p>
+<h2 id="card-7-when-something-looks-wrong">Card 7: When something looks wrong</h2>
+<ol>
+<li><strong>Stop.</strong> Don't move, rename or delete anything in the archive folders yourself.</li>
+<li>Take a photo of the screen with your phone, or write down what it says.</li>
+<li>Call or text for help (the number is on the first page).</li>
+</ol>
+<p><strong>Nothing is lost.</strong> DA never deletes your photos or papers: copies are only set aside, and everything DA
+moves can be put back. Your helper can see your screen from their home: in Windows, click <strong>Start</strong>, type
+<strong>Quick Assist</strong>, and read them the code it shows.</p>
+<h2 id="for-the-helper-setting-up-a-computer">For the helper: setting up a computer</h2>
+<p>Once per computer, with DA installed (see <em>Getting started</em> in the <a href="https://da.gamenightbymike.com">user guide</a>):</p>
+<ol>
+<li><strong>Archives:</strong> <code>da setup &lt;folder&gt;</code> for each decade, e.g. <code>D:\archives\jane-archive-202x --years 2020-2029</code>.</li>
+<li><strong>Old drives:</strong> in each archive, <a href="https://da.gamenightbymike.com/#da-import-bring-in-a-whole-drive-or-folder"><code>da import &lt;drives&gt; --apply</code></a>,
+    most complete first, then <strong>1 Autorun</strong> and <strong>S Split by years</strong>.</li>
+<li><strong>No questions:</strong> in the newest archive, <strong>P Pre-run setup</strong>: switch on <strong>11 Location folders</strong> and <strong>Bypass yes</strong>.</li>
+<li><strong>Backup:</strong> with the backup drive plugged in, <code>da backup --setup E:\DA-backup</code> (its letter). Run the
+    <strong>Back up archives</strong> shortcut it makes once.</li>
+<li><strong>Shortcuts:</strong> right-click, <strong>Send to &gt; Desktop (create shortcut)</strong>, and rename: the newest archive's
+    <strong>Open DA.cmd</strong> (Open DA), its <code>intake\photos</code> (New photos) and <code>intake\docs</code> (New papers), and the
+    folder holding the archives (Archives).</li>
+<li>Fill in <strong>My archive</strong> on the first page, print the cards, and do Card 1 together once.</li>
+</ol>
+<footer>DA v2026.11.2 &middot; guide built 2026-11-02 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
+</main>
+</div>
+
+
+</body>
+</html>

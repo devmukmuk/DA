@@ -351,7 +351,8 @@ Needs 2-3 PDF bills from one company (the same kind every month) and a few other
 
 ## L. Places and location folders (menu L)
 
-These need an internet connection, except L12.
+These need an internet connection, except L12. New archives also group photos **without** GPS; for
+L1-L26, set `without_gps: false` under `location:` in `da-archive.yaml` first (L27 turns it back on).
 
 | # | Do this | You should see | Result |
 |---|---|---|---|
@@ -384,10 +385,13 @@ These need an internet connection, except L12.
 | L25b | `da location group <month> --set-title "Trip"` (a month with groups in two places) | No question per group; *Every group: titled 'Trip'*; folders `<YYYY-MM> Trip (place-a)` and `(place-b)` | ☐ |
 | L25c | `da location group <month> --skip-title` (with `untitled` set) | No question per group; the untitled names, a folder per place | ☐ |
 | L25d | `--skip-title` with no `untitled` in `da-archive.yaml` | *...isn't set in da-archive.yaml ... Nothing moved* | ☐ |
-| L25e | `da location group <year> --set-title "Trip" --yes` (a year with GPS photos in two months) | *2 months with GPS photos to group: ...*, then each month's folders; another year's photos stay | ☐ |
+| L25e | `da location group <year> --set-title "Trip" --yes` (a year with GPS photos in two months) | *2 months with GPS photos to group: ...* (*photos to group* with `without_gps: true`), then each month's folders; another year's photos stay | ☐ |
 | L25f | The same again | *No GPS photos in <year> left to group* | ☐ |
 | L25g | **L**, type a year | Each of its months in turn | ☐ |
 | L26 | Take `untitled` out again | Enter leaves groups in the month folder, as before | ☐ |
+| L27 | Put back `untitled: '{event}'` and `without_gps: true`; copy 3 photos with no GPS (the `camera` folder) into a new folder `intake\photos\Beach day`; **P Pre-run setup**: switch on **11** and **Bypass yes**; **1 Autorun** | Step 11 says *without GPS, by time alone*; the photos are in `<year>\<YYYY-MM> Beach day` with no question asked | ☐ |
+| L28 | Copy 2 more photos with no GPS straight into `intake\photos` (no folder of their own); **1 Autorun** | They stay in the plain month folder (no event name to give them) | ☐ |
+| L29 | **L** on that month; for the group of those two, type `Picnic` | The group is offered with no name; after `Picnic`, the photos are in `<YYYY-MM> Picnic` | ☐ |
 
 ## M. Split by years (menu S)
 
@@ -531,6 +535,27 @@ Make a copy of `da-archive.yaml` first; put it back at the end.
 | S3 | Start processing a big folder and press **Ctrl+C** during step 2 | It stops; run it again and it carries on (nothing half-moved) | ☐ |
 | S4 | Run `da run --yes` in one window and `da status` in another | Status works while the run is going (don't run two changing commands at once - see the known problems) | ☐ |
 | S5 | Throughout: did DA ever delete a photo? | No (it only moves, and asks first) | ☐ |
+
+## T2. Bring in a drive (da import)
+
+| # | Do this | You should see | Result |
+|---|---|---|---|
+| T5 | Terminal, in the test archive: `da import C:\DA-test-kit` | A preview: files *new: to copy*, *copies of a file met earlier here* (the `doubles` folder), counts for `intake\photos`, `intake\scans`, `intake\docs`; *Nothing copied* | ☐ |
+| T6 | Open the `import-plan.csv` it names | A line per file with its kind and why (*camera: ...*, *pdf text: N words*, *no camera, no text* ...); a bill's date in `date` | ☐ |
+| T7 | `da import C:\DA-test-kit --apply`, answer **y** | *Copied N files: ... docs, ... photos, ... scans*; folders `intake\<kind>\from-C-DA-test-kit\...`; `C:\DA-test-kit` unchanged | ☐ |
+| T8 | The same again | *Nothing to copy* (everything is in intake now) | ☐ |
+| T9 | **1 Autorun** | The imported photos and papers are filed; a PDF bill without a date in its name is filed under the month printed on it | ☐ |
+| T10 | `da intake undo "<the import-log.csv T7 named>"` on a fresh import of another folder | The copies are gone again | ☐ |
+
+## T3. Back up (da backup, menu K)
+
+| # | Do this | You should see | Result |
+|---|---|---|---|
+| T11 | Plug in a USB stick (say `F:`); `da backup --setup F:\DA-backup` | *Backups go to F:\DA-backup*; a **Back up archives** shortcut on the desktop | ☐ |
+| T12 | Double-click **Back up archives** | Each archive on this PC, its file count, *done*; *You can unplug the backup drive*; `F:\DA-backup\<archive>` holds a copy (no `.da\thumbs`) | ☐ |
+| T13 | Add a photo, run Autorun, then menu **K** | Done quickly (only what changed); the new photo is in the backup | ☐ |
+| T14 | Unplug the stick, menu **K** | *The backup drive isn't there ... Plug it in* | ☐ |
+| T15 | Plug in a different stick as `F:` with an empty `DA-backup` folder; menu **K** | *isn't this PC's backup folder ... nothing was copied* | ☐ |
 
 ## T. Another PC or a USB drive
 
