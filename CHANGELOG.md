@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.11.1 - 2026-11-02
+
+### New
+- da import, and event folders for photos without GPS
+
 ## v2026.10.98 - 2026-10-31
 
 ### New
