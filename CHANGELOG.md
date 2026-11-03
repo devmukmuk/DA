@@ -2,6 +2,13 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.11.5 - 2026-11-03
+
+### Fixed
+- A camera's own photo in intake\scans keeps its date
+- A scanning app's name and a later edit don't date a scan
+- Places: event folders leave photos waiting for a date alone
+
 ## v2026.11.4 - 2026-11-03
 
 ### New
