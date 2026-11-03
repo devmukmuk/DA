@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.11.4 - 2026-11-03
+
+### New
+- Scanned prints, the review folder, cameras.json and the dashboard's Dates page
+
 ## v2026.11.3 - 2026-11-02
 
 ### New

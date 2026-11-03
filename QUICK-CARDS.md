@@ -61,6 +61,20 @@ For photos already filed that sit together in one month's folder.
 4. Give two groups the **same name** to put them in one folder.
 5. Press **Enter** when DA asks to move them.
 
+## Card 3b: Date old photos
+
+For scanned prints and other photos DA couldn't date: they wait in **review**, a folder at a time.
+
+1. Double-click **Open DA**, type **V** and press **Enter**. The **Dates** page opens in the browser.
+2. Pick a folder at the top. Click the photos that were taken together (they get a tick).
+3. The big date shows DA's best guess. Press **−** or **+** to go a month older or newer, **−−** or **++**
+    for a year. Or click the date and type it, like `1987-03`.
+4. Press **Set**. The photos show **dated** in green.
+5. Do the next photos. Made a mistake? Press **Undo**.
+6. When you're done, press **File dated photos** (or type **1** in DA next time).
+
+A month is enough. If you only know the year, set it anyway: the photo waits until you know the month.
+
 ## Card 4: Look at photos and papers
 
 1. Double-click **Archives**.
@@ -109,9 +123,11 @@ Once per computer, with DA installed (see *Getting started* in the [user guide](
 2. **Old drives:** in each archive, [`da import <drives> --apply`](https://da.gamenightbymike.com/#da-import-bring-in-a-whole-drive-or-folder),
     most complete first, then **1 Autorun** and **S Split by years**.
 3. **No questions:** in the newest archive, **P Pre-run setup**: switch on **11 Location folders** and **Bypass yes**.
-4. **Backup:** with the backup drive plugged in, `da backup --setup E:\DA-backup` (its letter). Run the
+4. **Cameras:** share one list: `cameras_file: ..\cameras.json` in each archive's `da-archive.yaml`, then
+    `da cameras --detect` in each, and **C Cameras** to fill in owners, film cameras and their years.
+5. **Backup:** with the backup drive plugged in, `da backup --setup E:\DA-backup` (its letter). Run the
     **Back up archives** shortcut it makes once.
-5. **Shortcuts:** right-click, **Send to > Desktop (create shortcut)**, and rename: the newest archive's
+6. **Shortcuts:** right-click, **Send to > Desktop (create shortcut)**, and rename: the newest archive's
     **Open DA.cmd** (Open DA), its `intake\photos` (New photos) and `intake\docs` (New papers), and the
     folder holding the archives (Archives).
-6. Fill in **My archive** on the first page, print the cards, and do Card 1 together once.
+7. Fill in **My archive** on the first page, print the cards, and do Card 1 and Card 3b together once.

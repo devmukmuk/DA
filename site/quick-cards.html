@@ -118,11 +118,11 @@ main code { font-size:0.95em; }
 }
 </style>
 </head>
-<body data-version="2026.11.3">
+<body data-version="2026.11.4">
 <header>
   <span class="title">DA Quick Cards</span>
   
-  <span class="version">DA v2026.11.3</span>
+  <span class="version">DA v2026.11.4</span>
   <a class="button" href="index.html">Guide</a>
   <a class="button" href="quick-cards.html">Quick cards</a>
   <a class="button" href="verification.html">Test plan</a>
@@ -131,9 +131,9 @@ main code { font-size:0.95em; }
   <a class="button" href="DA-Quick-Cards.pdf">PDF version</a>
 </header>
 <div class="layout">
-<nav aria-label="Contents"><ul><li><a href="#your-desktop-shortcuts">Your desktop shortcuts</a></li><li><a href="#card-1-add-photos-from-a-phone-or-camera">Card 1: Add photos from a phone or camera</a></li><li><a href="#card-2-add-papers-and-scans">Card 2: Add papers and scans</a></li><li><a href="#card-3-name-the-events-in-a-month">Card 3: Name the events in a month</a></li><li><a href="#card-4-look-at-photos-and-papers">Card 4: Look at photos and papers</a></li><li><a href="#card-5-find-something">Card 5: Find something</a></li><li><a href="#card-6-back-up-once-a-week">Card 6: Back up (once a week)</a></li><li><a href="#card-7-when-something-looks-wrong">Card 7: When something looks wrong</a></li><li><a href="#for-the-helper-setting-up-a-computer">For the helper: setting up a computer</a></li></ul></nav>
+<nav aria-label="Contents"><ul><li><a href="#your-desktop-shortcuts">Your desktop shortcuts</a></li><li><a href="#card-1-add-photos-from-a-phone-or-camera">Card 1: Add photos from a phone or camera</a></li><li><a href="#card-2-add-papers-and-scans">Card 2: Add papers and scans</a></li><li><a href="#card-3-name-the-events-in-a-month">Card 3: Name the events in a month</a></li><li><a href="#card-3b-date-old-photos">Card 3b: Date old photos</a></li><li><a href="#card-4-look-at-photos-and-papers">Card 4: Look at photos and papers</a></li><li><a href="#card-5-find-something">Card 5: Find something</a></li><li><a href="#card-6-back-up-once-a-week">Card 6: Back up (once a week)</a></li><li><a href="#card-7-when-something-looks-wrong">Card 7: When something looks wrong</a></li><li><a href="#for-the-helper-setting-up-a-computer">For the helper: setting up a computer</a></li></ul></nav>
 <main>
-<p class="print-only">DA v2026.11.3 &middot; da.gamenightbymike.com &middot; 2026-11-02</p>
+<p class="print-only">DA v2026.11.4 &middot; da.gamenightbymike.com &middot; 2026-11-03</p>
 <h1 id="da-quick-cards">DA Quick Cards</h1>
 <p>The everyday jobs, one card each, in a few steps. Print them (the <strong>PDF version</strong> button above) and keep
 them by the computer. The full <a href="https://da.gamenightbymike.com">user guide</a> explains everything else.</p>
@@ -232,6 +232,18 @@ are set aside, not filed twice. Keep the photos on the phone until after the nex
 <li>Give two groups the <strong>same name</strong> to put them in one folder.</li>
 <li>Press <strong>Enter</strong> when DA asks to move them.</li>
 </ol>
+<h2 id="card-3b-date-old-photos">Card 3b: Date old photos</h2>
+<p>For scanned prints and other photos DA couldn't date: they wait in <strong>review</strong>, a folder at a time.</p>
+<ol>
+<li>Double-click <strong>Open DA</strong>, type <strong>V</strong> and press <strong>Enter</strong>. The <strong>Dates</strong> page opens in the browser.</li>
+<li>Pick a folder at the top. Click the photos that were taken together (they get a tick).</li>
+<li>The big date shows DA's best guess. Press <strong>−</strong> or <strong>+</strong> to go a month older or newer, <strong>−−</strong> or <strong>++</strong>
+    for a year. Or click the date and type it, like <code>1987-03</code>.</li>
+<li>Press <strong>Set</strong>. The photos show <strong>dated</strong> in green.</li>
+<li>Do the next photos. Made a mistake? Press <strong>Undo</strong>.</li>
+<li>When you're done, press <strong>File dated photos</strong> (or type <strong>1</strong> in DA next time).</li>
+</ol>
+<p>A month is enough. If you only know the year, set it anyway: the photo waits until you know the month.</p>
 <h2 id="card-4-look-at-photos-and-papers">Card 4: Look at photos and papers</h2>
 <ol>
 <li>Double-click <strong>Archives</strong>.</li>
@@ -275,14 +287,16 @@ moves can be put back. Your helper can see your screen from their home: in Windo
 <li><strong>Old drives:</strong> in each archive, <a href="https://da.gamenightbymike.com/#da-import-bring-in-a-whole-drive-or-folder"><code>da import &lt;drives&gt; --apply</code></a>,
     most complete first, then <strong>1 Autorun</strong> and <strong>S Split by years</strong>.</li>
 <li><strong>No questions:</strong> in the newest archive, <strong>P Pre-run setup</strong>: switch on <strong>11 Location folders</strong> and <strong>Bypass yes</strong>.</li>
+<li><strong>Cameras:</strong> share one list: <code>cameras_file: ..\cameras.json</code> in each archive's <code>da-archive.yaml</code>, then
+    <code>da cameras --detect</code> in each, and <strong>C Cameras</strong> to fill in owners, film cameras and their years.</li>
 <li><strong>Backup:</strong> with the backup drive plugged in, <code>da backup --setup E:\DA-backup</code> (its letter). Run the
     <strong>Back up archives</strong> shortcut it makes once.</li>
 <li><strong>Shortcuts:</strong> right-click, <strong>Send to &gt; Desktop (create shortcut)</strong>, and rename: the newest archive's
     <strong>Open DA.cmd</strong> (Open DA), its <code>intake\photos</code> (New photos) and <code>intake\docs</code> (New papers), and the
     folder holding the archives (Archives).</li>
-<li>Fill in <strong>My archive</strong> on the first page, print the cards, and do Card 1 together once.</li>
+<li>Fill in <strong>My archive</strong> on the first page, print the cards, and do Card 1 and Card 3b together once.</li>
 </ol>
-<footer>DA v2026.11.3 &middot; guide built 2026-11-02 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
+<footer>DA v2026.11.4 &middot; guide built 2026-11-03 &middot; <a href="https://da.gamenightbymike.com">da.gamenightbymike.com</a></footer>
 </main>
 </div>
 

@@ -561,6 +561,25 @@ Make a copy of `da-archive.yaml` first; put it back at the end.
 | T14 | Unplug the stick, menu **K** | *The backup drive isn't there ... Plug it in* | ☐ |
 | T15 | Plug in a different stick as `F:` with an empty `DA-backup` folder; menu **K** | *isn't this PC's backup folder ... nothing was copied* | ☐ |
 
+## T4. Scanned prints and the Dates page (menu V, C)
+
+Needs a new archive (`da setup`, so it has `scans: scanphoto` and `review_folder: review`) and a few scans: pictures
+from a scanner, or any photos copied into `intake\scans`.
+
+| # | Do this | You should see | Result |
+|---|---|---|---|
+| T16 | Put scans in `intake\scans\1998\06-15 Party`, `intake\scans\1995\Christmas` and `intake\scans\Box 3`; **1 Autorun** | The `06-15 Party` ones filed under `1998\1998-06`; the others in `photos\organized\review\1995\Christmas` and `...\review\Box 3`, names unchanged; nothing under the scan's own year | ☐ |
+| T17 | `da review` | The two review folders, each with its count and best guess: *1995 (folder: 1995)*, *before YYYY-MM (scanned)* | ☐ |
+| T18 | Menu **V** | The same list, then the dashboard opens at **Dates** | ☐ |
+| T19 | On the Dates page, pick `1995\Christmas`, click two photos, press **−** and **+** a few times, then click the big date and type `1995-12` | The count says *2 selected*; the date moves a month at a time; it shows *1995-12* | ☐ |
+| T20 | Press **Set** | *1995-12 set on 2 photos*; the two show **dated 1995-12** in green; *Last set* and **Undo** appear | ☐ |
+| T21 | Press **Undo**, then **Set** again | The dates go, then come back | ☐ |
+| T22 | One photo: **Edit**, type `1995-12-25`, pick a camera (if any), people `Sam`, **Save** | *date 1995-12-25, tags*; its line shows the new date | ☐ |
+| T23 | **File dated photos** (or **1 Autorun**) | After a moment, the dated photos are in `1995\1995-12`; the emptied review folder is gone | ☐ |
+| T24 | `da cameras --detect`, then menu **C** | The scanner listed as *scanner*, dates *scanned*; changing an owner there saves it; `da tag` then gives `owner:` tags | ☐ |
+| T25 | `da cameras add "Pentax K1000" --owner jane --years 1985-1990`; Edit a review photo and pick it as **Taken with** | The photo's guesses include *1985-1990 (camera: Pentax K1000)*; its tags `camera:pentax-k1000 owner:jane` | ☐ |
+| T26 | Autorun on one folder of `intake\scans`; at *Set a date for the photos here*, type `1987-03` | Those photos are filed under `1987\1987-03` | ☐ |
+
 ## T. Another PC or a USB drive
 
 | # | Do this | You should see | Result |
