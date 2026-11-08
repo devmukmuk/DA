@@ -1,6 +1,6 @@
 # DA - Digital Archive
 
-**Latest version:** 2026.11.5 (2026-11-03)
+**Latest version:** 2026.11.7 (2026-11-07)
 
 DA files your photos, videos and scanned documents by the date they were taken. It sets exact
 duplicates aside, names each file by its date, and puts it in a `YYYY\YYYY-MM` folder, with a contact
@@ -26,12 +26,13 @@ sheet for every month. It never deletes anything, and it asks before it moves an
 - **Testing DA?** The [test plan](https://da.gamenightbymike.com/verification.html) (also as a
   [PDF](https://da.gamenightbymike.com/DA-Test-Plan.pdf) to print) and the [known problems](https://da.gamenightbymike.com/defects.html)
 
-## What's new in v2026.11.5
+## What's new in v2026.11.7
 
 ### Fixed
-- A camera's own photo in intake\scans keeps its date
-- A scanning app's name and a later edit don't date a scan
-- Places: event folders leave photos waiting for a date alone
+- da facial scan gets its models past web filters, reads HEIC and non-English paths
+
+### Guide
+- Quick cards 1b (Live Photo key photo) and 1c (clean up before filing)
 
 ## Found a problem?
 

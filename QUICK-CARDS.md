@@ -39,6 +39,39 @@ The cards use these:
 Your photos are now in the year, in a folder like `2026-06 Beach trip`. Copies of photos you already had
 are set aside, not filed twice. Keep the photos on the phone until after the next backup (Card 6).
 
+Before step 4, you can pick a better moment for an iPhone Live Photo (Card 1b). Between steps 4 and 5,
+you can delete the shots you don't want (Card 1c).
+
+## Card 1b: Change the key photo in an iPhone Live Photo
+
+The *key photo* is the moment a Live Photo shows. Pick a better one (eyes open, smiling) on the iPhone,
+**before** copying the photos (Card 1).
+
+1. In **Photos**, tap the Live Photo (**LIVE** at the top left), then **Edit**.
+2. Tap **Live** (the round icon at the bottom).
+3. Slide the white frame along the strip to the moment you want.
+4. Tap **Make Key Photo**, then **Done**. (**Edit**, **Revert** undoes it.)
+
+In **New photos** you'll see `IMG_1234` (as taken, with its video) and `IMG_E1234` (the new key photo).
+**Keep both:** DA files them side by side.
+
+## Card 1c: Clean up camera photos before filing
+
+After copying into **New photos** and **before pressing 1** (Card 1): nothing is filed yet, so it's safe.
+
+1. Double-click **New photos** and open the folder you just made.
+2. Click **View**, then **Large icons**, to see the pictures.
+3. Click a shot you don't want: blurry, a finger on the lens, taken by mistake, or one of many alike.
+    Hold **Ctrl** and click to pick more.
+4. Press **Delete**. They go to the **Recycle Bin**, so you can still get them back.
+5. Carry on with Card 1, step 5.
+
+Files with the same name go together: delete both or neither (`IMG_1234.HEIC` and its video
+`IMG_1234.MOV`; `IMG_0574.JPG` and its RAW `IMG_0574.CR2`).
+
+**Only in New photos**, never in **Archives** (Card 7). Copies you already have need no deleting: DA sets
+them aside.
+
 ## Card 2: Add papers and scans
 
 1. Scan the papers, or save the PDF (a bill, a statement), into **New papers**.

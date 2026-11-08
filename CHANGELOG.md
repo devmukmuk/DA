@@ -2,6 +2,14 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.11.7 - 2026-11-07
+
+### Fixed
+- da facial scan gets its models past web filters, reads HEIC and non-English paths
+
+### Guide
+- Quick cards 1b (Live Photo key photo) and 1c (clean up before filing)
+
 ## v2026.11.5 - 2026-11-03
 
 ### Fixed
