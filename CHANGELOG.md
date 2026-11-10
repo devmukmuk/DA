@@ -2,6 +2,15 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.11.8 - 2026-11-10
+
+### New
+- Intake: da run sets aside Apple Photos edit recipes (.aae, adjustment .plist)
+- Pair-movies pairs Live Photo videos by Apple's content id
+
+### Fixed
+- Checking: a backup app's hex asset id in a name is not a date
+
 ## v2026.11.7 - 2026-11-07
 
 ### Fixed
