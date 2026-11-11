@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.11.11 - 2026-11-11
+
+### Faster
+- Index only new or changed files (files.index_stamp)
+
 ## v2026.11.10 - 2026-11-11
 
 ### Fixed
