@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.11.9 - 2026-11-10
+
+### Fixed
+- Wait for the index lock instead of failing with 'database is locked'
+
 ## v2026.11.8 - 2026-11-10
 
 ### New

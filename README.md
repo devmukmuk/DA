@@ -1,6 +1,6 @@
 # DA - Digital Archive
 
-**Latest version:** 2026.11.8 (2026-11-10)
+**Latest version:** 2026.11.9 (2026-11-10)
 
 DA files your photos, videos and scanned documents by the date they were taken. It sets exact
 duplicates aside, names each file by its date, and puts it in a `YYYY\YYYY-MM` folder, with a contact
@@ -26,14 +26,10 @@ sheet for every month. It never deletes anything, and it asks before it moves an
 - **Testing DA?** The [test plan](https://da.gamenightbymike.com/verification.html) (also as a
   [PDF](https://da.gamenightbymike.com/DA-Test-Plan.pdf) to print) and the [known problems](https://da.gamenightbymike.com/defects.html)
 
-## What's new in v2026.11.8
-
-### New
-- Intake: da run sets aside Apple Photos edit recipes (.aae, adjustment .plist)
-- Pair-movies pairs Live Photo videos by Apple's content id
+## What's new in v2026.11.9
 
 ### Fixed
-- Checking: a backup app's hex asset id in a name is not a date
+- Wait for the index lock instead of failing with 'database is locked'
 
 ## Found a problem?
 
