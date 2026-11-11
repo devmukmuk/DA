@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.11.10 - 2026-11-11
+
+### Fixed
+- Drop the index rows of an area whose folder was removed
+
 ## v2026.11.9 - 2026-11-10
 
 ### Fixed
