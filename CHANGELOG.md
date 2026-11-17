@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.11.12 - 2026-11-17
+
+### Fixed
+- Wait for a busy index instead of failing with "database is locked"
+
 ## v2026.11.11 - 2026-11-11
 
 ### Faster
