@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.11.13 - 2026-11-19
+
+### New
+- Keep every earlier report in watch-status-history (#521)
+
 ## v2026.11.12 - 2026-11-17
 
 ### Fixed
