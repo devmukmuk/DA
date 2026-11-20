@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.11.14 - 2026-11-20
+
+### New
+- da move puts chosen filed files in a folder of their own in each year (#527)
+
 ## v2026.11.13 - 2026-11-19
 
 ### New
