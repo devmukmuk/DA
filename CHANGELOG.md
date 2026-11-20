@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.11.15 - 2026-11-20
+
+### New
+- List archives one block each, saved to archives-list.txt
+
 ## v2026.11.14 - 2026-11-20
 
 ### New
