@@ -2,6 +2,11 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.11.16 - 2026-11-21
+
+### New
+- Shared-drive archives - index follows the archive, several homes, one PC at a time
+
 ## v2026.11.15 - 2026-11-20
 
 ### New
