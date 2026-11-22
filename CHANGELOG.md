@@ -2,6 +2,12 @@
 
 What changed in each version of DA, newest first. The user guide is at https://da.gamenightbymike.com.
 
+## v2026.11.17 - 2026-11-22
+
+### New
+- da watch replaces the standalone watch-status script
+- Per-computer watch-status.yaml; skip an index with no files table
+
 ## v2026.11.16 - 2026-11-21
 
 ### New
